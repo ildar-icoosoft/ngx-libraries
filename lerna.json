@@ -1,6 +1,6 @@
 {
   "packages": [
-    "packages/*"
+    "projects/ildar-icoosoft/*"
   ],
   "version": "independent"
 }

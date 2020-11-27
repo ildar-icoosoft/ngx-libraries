@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import { NgxFormComponent } from './ngx-form.component';
 import { FormValidationErrorsComponent } from './components/form-validation-errors/form-validation-errors.component';
 import { ValidationControlComponent } from './components/validation-control/validation-control.component';
@@ -56,4 +56,17 @@ const defaultConfig: INgxFormModuleConfig = {
     useValue: defaultConfig
   }]
 })
-export class NgxFormModule { }
+export class NgxFormModule {
+  static forRoot(config: INgxFormModuleConfig): ModuleWithProviders<NgxFormModule> {
+    return {
+      ngModule: NgxFormModule,
+      providers: [{
+        provide: NGX_FORM_MODULE_CONFIG,
+        useValue: Object.assign({}, {
+          validators: Object.assign({}, defaultConfig.validators, config.validators),
+          errorMessages: Object.assign({}, defaultConfig.errorMessages, config.errorMessages),
+        })
+      }]
+    };
+  }
+}

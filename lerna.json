@@ -1,0 +1,11 @@
+{
+  "packages": [
+    "projects/ildar-icoosoft/*"
+  ],
+  "version": "independent",
+  "command": {
+    "publish": {
+      "conventionalCommits": true
+    }
+  }
+}

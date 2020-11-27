@@ -1,6 +1,7 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {INgxFormModuleConfig} from '../interfaces/ngx-form-module-config';
 import {NGX_FORM_MODULE_CONFIG} from '../constants/ngx-form-module-config';
+import {prepareValidationMessage} from '../utils/error';
 
 @Pipe({
   name: 'validationMessage'
@@ -22,10 +23,12 @@ export class ValidationMessagePipe implements PipeTransform {
 
       if (typeof errorData === 'object') {
         for (const key in errorData) {
-          messageTemplate = messageTemplate.replace(
-            '{' + key + '}',
-            errorData[key]
-          );
+          if (errorData.hasOwnProperty(key)) {
+            messageTemplate = messageTemplate.replace(
+              '{' + key + '}',
+              errorData[key]
+            );
+          }
         }
       }
 

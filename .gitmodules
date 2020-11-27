@@ -1,0 +1,3 @@
+[submodule "projects/ildar-icoosoft/ngx-form"]
+	path = projects/ildar-icoosoft/ngx-form
+	url = ../ngx-form.git

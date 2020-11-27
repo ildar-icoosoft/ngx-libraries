@@ -5,7 +5,7 @@ export const validateEqual = (
   a: FormControl | string,
   b: FormControl | string
 ) => {
-  return function(group: FormGroup): { [s: string]: boolean } {
+  return (group: FormGroup): { [s: string]: boolean } => {
     const controlA = a instanceof FormControl ? a : group.root.get(a);
     const controlB = b instanceof FormControl ? b : group.root.get(b);
 

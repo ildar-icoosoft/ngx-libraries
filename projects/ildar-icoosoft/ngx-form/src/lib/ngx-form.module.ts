@@ -7,6 +7,7 @@ import {CommonModule} from '@angular/common';
 import {INgxFormModuleConfig} from './interfaces/ngx-form-module-config';
 import {Validators} from '@angular/forms';
 import {NGX_FORM_MODULE_CONFIG} from './constants/ngx-form-module-config';
+import {validateEqual} from './validators';
 
 const defaultConfig: INgxFormModuleConfig = {
   validators: {

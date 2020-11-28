@@ -1,6 +1,9 @@
 {
   "name": "@ildar-icoosoft/ngx-common",
   "version": "0.0.1",
+  "scripts": {
+    "build": "ng build @ildar-icoosoft/ngx-common"
+  },
   "peerDependencies": {
     "@angular/common": "^10.2.0",
     "@angular/core": "^10.2.0"

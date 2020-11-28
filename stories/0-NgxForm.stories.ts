@@ -5,9 +5,15 @@ import {
 } from '../projects/ildar-icoosoft/ngx-form/src/public-api';
 import {Meta} from '@storybook/angular/types-6-0';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {setFormErrors} from '../projects/ildar-icoosoft/ngx-form/src/lib/utils/error';
 
-const handleChange = (data: any) => {
-  action('form-change');
+const handleSubmit = (group: FormGroup) => {
+  action('submit-click');
+  window.setTimeout(() => {
+    setFormErrors(group, [{
+      message: 'Some form error'
+    }]);
+  }, 3000);
 };
 
 export default {
@@ -27,11 +33,16 @@ export default {
   ],
 } as Meta;
 
-export const html = () => ({
+export const formSample = () => ({
   template: `
-  <form [formGroup]="group" novalidate>
-    <input type="email" formControlName="email" placeholder="email">
-    <input type="password" formControlName="password" placeholder="password">
+  <form [formGroup]="group" novalidate (submit)="handleSubmit(group)">
+    <ii-form-validation-errors group="group"></ii-form-validation-errors>
+    <ii-validation-control [control]="group.controls.email">
+      <input type="email" formControlName="email" placeholder="email">
+    </ii-validation-control>
+    <ii-validation-control [control]="group.controls.password">
+        <input type="password" formControlName="password" placeholder="password">
+    </ii-validation-control>
     <button [disabled]="!group.valid">Submit</button>
 </form>
 `,
@@ -39,9 +50,8 @@ export const html = () => ({
     group: new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)])
-    })
+    }),
+    handleSubmit
   },
 });
-html.story = {
-  name: `Simple form with validation messages`
-};
+formSample.storyName = 'Form sample with validation-control and form validation message';

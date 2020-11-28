@@ -1,18 +1,14 @@
 import { moduleMetadata } from '@storybook/angular';
 import {Meta} from '@storybook/angular/types-6-0';
-import {SafePipe} from '../projects/ildar-icoosoft/ngx-common/src/lib/pipes/safe.pipe';
+import {NgxCommonModule} from '../projects/ildar-icoosoft/ngx-common/src/lib/ngx-common.module';
 
 export default {
   title: 'Example/NgxCommon',
   decorators: [
     moduleMetadata({
       imports: [
+        NgxCommonModule
       ],
-      schemas: [],
-      declarations: [
-        SafePipe
-      ],
-      providers: [],
     })
   ],
 } as Meta;

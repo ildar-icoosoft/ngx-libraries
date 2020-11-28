@@ -431,6 +431,14 @@
                 "type": "literal type"
             },
             {
+                "name": "safePipe",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/1-NgxCommon.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\r\n  template: `\r\n  <h4>An untrusted URL:</h4>\r\n<p><a class=\"e2e-dangerous-url\" [href]=\"dangerousUrl\">Click me</a></p>\r\n<h4>A trusted URL:</h4>\r\n<p><a class=\"e2e-trusted-url\" [href]=\"dangerousUrl | safe:'url'\">Click me</a></p>\r\n`,\r\n  props: {\r\n    dangerousUrl: 'javascript:alert(\"Hi there\")'\r\n  },\r\n})"
+            },
+            {
                 "name": "setFormErrors",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -445,14 +453,6 @@
                 "file": "projects/ildar-icoosoft/ngx-form/src/lib/validators/index.ts",
                 "type": "",
                 "defaultValue": "(\r\n  a: FormControl | string,\r\n  b: FormControl | string\r\n) => {\r\n  return (group: FormGroup): { [s: string]: boolean } => {\r\n    const controlA = a instanceof FormControl ? a : group.root.get(a);\r\n    const controlB = b instanceof FormControl ? b : group.root.get(b);\r\n\r\n    const controlBErrors = controlB.errors;\r\n\r\n    if (controlA && controlB && controlA.value !== controlB.value) {\r\n      controlB.setErrors(\r\n        Object.assign({}, controlBErrors, {\r\n          mismatch: true\r\n        })\r\n      );\r\n    } else {\r\n      if (controlB.hasError('mismatch')) {\r\n        const newErrors = _omit(controlBErrors, 'mismatch');\r\n        controlB.setErrors(_isEmpty(newErrors) ? null : newErrors);\r\n      }\r\n    }\r\n    return null;\r\n  };\r\n}"
-            },
-            {
-                "name": "videoSample",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "stories/1-NgxCommon.stories.ts",
-                "type": "",
-                "defaultValue": "() => ({\r\n  template: `\r\n  <video width=\"320\" height=\"240\" controls [src]=\"'https://www.w3schools.com/tags/movie.mp4'\">\r\n</video>\r\n`,\r\n  props: {\r\n  },\r\n})"
             }
         ],
         "functions": [],
@@ -557,6 +557,16 @@
                     "defaultValue": "new InjectionToken<INgxFormModuleConfig>('NGX_FORM_MODULE_CONFIG')"
                 }
             ],
+            "stories/1-NgxCommon.stories.ts": [
+                {
+                    "name": "safePipe",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/1-NgxCommon.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  template: `\r\n  <h4>An untrusted URL:</h4>\r\n<p><a class=\"e2e-dangerous-url\" [href]=\"dangerousUrl\">Click me</a></p>\r\n<h4>A trusted URL:</h4>\r\n<p><a class=\"e2e-trusted-url\" [href]=\"dangerousUrl | safe:'url'\">Click me</a></p>\r\n`,\r\n  props: {\r\n    dangerousUrl: 'javascript:alert(\"Hi there\")'\r\n  },\r\n})"
+                }
+            ],
             "projects/ildar-icoosoft/ngx-form/src/lib/validators/index.ts": [
                 {
                     "name": "validateEqual",
@@ -565,16 +575,6 @@
                     "file": "projects/ildar-icoosoft/ngx-form/src/lib/validators/index.ts",
                     "type": "",
                     "defaultValue": "(\r\n  a: FormControl | string,\r\n  b: FormControl | string\r\n) => {\r\n  return (group: FormGroup): { [s: string]: boolean } => {\r\n    const controlA = a instanceof FormControl ? a : group.root.get(a);\r\n    const controlB = b instanceof FormControl ? b : group.root.get(b);\r\n\r\n    const controlBErrors = controlB.errors;\r\n\r\n    if (controlA && controlB && controlA.value !== controlB.value) {\r\n      controlB.setErrors(\r\n        Object.assign({}, controlBErrors, {\r\n          mismatch: true\r\n        })\r\n      );\r\n    } else {\r\n      if (controlB.hasError('mismatch')) {\r\n        const newErrors = _omit(controlBErrors, 'mismatch');\r\n        controlB.setErrors(_isEmpty(newErrors) ? null : newErrors);\r\n      }\r\n    }\r\n    return null;\r\n  };\r\n}"
-                }
-            ],
-            "stories/1-NgxCommon.stories.ts": [
-                {
-                    "name": "videoSample",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "stories/1-NgxCommon.stories.ts",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  template: `\r\n  <video width=\"320\" height=\"240\" controls [src]=\"'https://www.w3schools.com/tags/movie.mp4'\">\r\n</video>\r\n`,\r\n  props: {\r\n  },\r\n})"
                 }
             ]
         },
@@ -766,7 +766,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "videoSample",
+                "name": "safePipe",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

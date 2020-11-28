@@ -100,24 +100,7 @@
             "methods": []
         }
     ],
-    "injectables": [
-        {
-            "name": "NgxFormService",
-            "id": "injectable-NgxFormService-e8b6eef7d3848c5def56f30b7f896473",
-            "file": "projects/ildar-icoosoft/ngx-form/src/lib/ngx-form.service.ts",
-            "properties": [],
-            "methods": [],
-            "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class NgxFormService {\r\n\r\n  constructor() { }\r\n}\r\n",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "args": [],
-                "line": 6
-            },
-            "type": "injectable"
-        }
-    ],
+    "injectables": [],
     "classes": [],
     "directives": [],
     "components": [
@@ -182,53 +165,6 @@
                 "OnInit"
             ],
             "templateData": "<div class=\"form-validation-errors\">\n  <ng-container *ngIf=\"group.errors\">\n    <div *ngFor=\"let error of group.errors | keyvalue\" class=\"alert alert-danger form-validation-errors__item\">{{error.key | validationMessage:error.value}}</div>\n  </ng-container>\n</div>\n\n"
-        },
-        {
-            "name": "NgxFormComponent",
-            "id": "component-NgxFormComponent-3ed3a2533be7e74dd17c5e9ceca380c5",
-            "file": "projects/ildar-icoosoft/ngx-form/src/lib/ngx-form.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "lib-ngx-form",
-            "styleUrls": [],
-            "styles": [],
-            "template": "<p>\n  ngx-form works!\n</p>\n",
-            "templateUrl": [],
-            "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [
-                {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 17
-                }
-            ],
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "",
-            "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'lib-ngx-form',\r\n  template: `\r\n    <p>\r\n      ngx-form works!\r\n    </p>\r\n  `,\r\n  styles: [\r\n  ]\r\n})\r\nexport class NgxFormComponent implements OnInit {\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "args": [],
-                "line": 13
-            },
-            "implements": [
-                "OnInit"
-            ]
         },
         {
             "name": "ValidationControlComponent",
@@ -296,9 +232,6 @@
                             "name": "FormValidationErrorsComponent"
                         },
                         {
-                            "name": "NgxFormComponent"
-                        },
-                        {
                             "name": "ValidationControlComponent"
                         },
                         {
@@ -315,9 +248,6 @@
                     "elements": [
                         {
                             "name": "FormValidationErrorsComponent"
-                        },
-                        {
-                            "name": "NgxFormComponent"
                         },
                         {
                             "name": "ValidationControlComponent"
@@ -572,15 +502,6 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/ngx-form.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "NgxFormComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/3",
-                "status": "low"
-            },
-            {
                 "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/ngx-form.module.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -588,15 +509,6 @@
                 "name": "defaultConfig",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/ngx-form.service.ts",
-                "type": "injectable",
-                "linktype": "injectable",
-                "name": "NgxFormService",
-                "coveragePercent": 0,
-                "coverageCount": "0/2",
                 "status": "low"
             },
             {

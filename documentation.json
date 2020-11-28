@@ -1,8 +1,53 @@
 {
     "pipes": [
         {
+            "name": "SafePipe",
+            "id": "pipe-SafePipe-e919e68e52cef945b24fbfdb6fda0950",
+            "file": "projects/ildar-icoosoft/ngx-common/src/lib/pipes/safe.pipe.ts",
+            "type": "pipe",
+            "description": "",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "any"
+                        },
+                        {
+                            "name": "type",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "SafeHtml | SafeStyle | SafeScript | SafeUrl | SafeResourceUrl",
+                    "typeParameters": [],
+                    "line": 17,
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "type",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "ngname": "safe",
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\nimport {\n  DomSanitizer,\n  SafeHtml,\n  SafeResourceUrl,\n  SafeScript,\n  SafeStyle,\n  SafeUrl\n} from '@angular/platform-browser';\n\n@Pipe({\n  name: 'safe'\n})\nexport class SafePipe implements PipeTransform {\n  constructor(protected sanitizer: DomSanitizer) {}\n\n  transform(\n    value: any,\n    type: string\n  ): SafeHtml | SafeStyle | SafeScript | SafeUrl | SafeResourceUrl {\n    switch (type) {\n      case 'html':\n        return this.sanitizer.bypassSecurityTrustHtml(value);\n\n      case 'style':\n        return this.sanitizer.bypassSecurityTrustStyle(value);\n\n      case 'script':\n        return this.sanitizer.bypassSecurityTrustScript(value);\n\n      case 'url':\n        return this.sanitizer.bypassSecurityTrustUrl(value);\n\n      case 'resourceUrl':\n        return this.sanitizer.bypassSecurityTrustResourceUrl(value);\n\n      default:\n        throw new Error(`Invalid safe type specified: ${type}`);\n    }\n  }\n}\n"
+        },
+        {
             "name": "ValidationMessagePipe",
-            "id": "pipe-ValidationMessagePipe-e7de12bf4e44411e64bdfa543bbba51b",
+            "id": "pipe-ValidationMessagePipe-acaf40a936662d5c26cbbba7d5596e6f",
             "file": "projects/ildar-icoosoft/ngx-form/src/lib/pipes/validation-message.pipe.ts",
             "type": "pipe",
             "description": "",
@@ -43,7 +88,7 @@
                 }
             ],
             "ngname": "validationMessage",
-            "sourceCode": "import {Inject, Pipe, PipeTransform} from '@angular/core';\nimport {prepareValidationMessage} from '../utils/error';\nimport {NGX_FORM_MODULE_CONFIG} from '../constants/ngx-form-module-config';\nimport {INgxFormModuleConfig} from '../interfaces/ngx-form-module-config';\n\n@Pipe({\n  name: 'validationMessage'\n})\nexport class ValidationMessagePipe implements PipeTransform {\n\n  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: INgxFormModuleConfig) {}\n\n  transform(errorKey: string, errorData: any): string {\n    if (errorKey === 'custom') {\n      return prepareValidationMessage(errorData);\n    }\n    if (errorKey === 'customArr') {\n      return errorData.map(item => prepareValidationMessage(item)).join(', ');\n    }\n\n    if (this.config.errorMessages[errorKey]) {\n      let messageTemplate = this.config.errorMessages[errorKey];\n\n      if (typeof errorData === 'object') {\n        for (const key in errorData) {\n          if (errorData.hasOwnProperty(key)) {\n            messageTemplate = messageTemplate.replace(\n              '{' + key + '}',\n              errorData[key]\n            );\n          }\n        }\n      }\n\n      return messageTemplate;\n    }\n\n    return `[${errorKey}]`;\n  }\n\n}\n"
+            "sourceCode": "import {Inject, Pipe, PipeTransform} from '@angular/core';\r\nimport {prepareValidationMessage} from '../utils/error';\r\nimport {NGX_FORM_MODULE_CONFIG} from '../constants/ngx-form-module-config';\r\nimport {INgxFormModuleConfig} from '../interfaces/ngx-form-module-config';\r\n\r\n@Pipe({\r\n  name: 'validationMessage'\r\n})\r\nexport class ValidationMessagePipe implements PipeTransform {\r\n\r\n  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: INgxFormModuleConfig) {}\r\n\r\n  transform(errorKey: string, errorData: any): string {\r\n    if (errorKey === 'custom') {\r\n      return prepareValidationMessage(errorData);\r\n    }\r\n    if (errorKey === 'customArr') {\r\n      return errorData.map(item => prepareValidationMessage(item)).join(', ');\r\n    }\r\n\r\n    if (this.config.errorMessages[errorKey]) {\r\n      let messageTemplate = this.config.errorMessages[errorKey];\r\n\r\n      if (typeof errorData === 'object') {\r\n        for (const key in errorData) {\r\n          if (errorData.hasOwnProperty(key)) {\r\n            messageTemplate = messageTemplate.replace(\r\n              '{' + key + '}',\r\n              errorData[key]\r\n            );\r\n          }\r\n        }\r\n      }\r\n\r\n      return messageTemplate;\r\n    }\r\n\r\n    return `[${errorKey}]`;\r\n  }\r\n\r\n}\r\n"
         }
     ],
     "interfaces": [
@@ -106,7 +151,7 @@
     "components": [
         {
             "name": "FormValidationErrorsComponent",
-            "id": "component-FormValidationErrorsComponent-42d1ceb7fbc9366ffff16ddc8336fdaa",
+            "id": "component-FormValidationErrorsComponent-75a7ed502c155cf7360e4b3d456e7dbf",
             "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/form-validation-errors/form-validation-errors.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -146,7 +191,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {Component, Input, OnInit} from '@angular/core';\nimport {FormGroup} from '@angular/forms';\n\n@Component({\n  selector: 'ii-form-validation-errors',\n  templateUrl: './form-validation-errors.component.html',\n  styleUrls: ['./form-validation-errors.component.css']\n})\nexport class FormValidationErrorsComponent implements OnInit {\n\n  @Input()\n  group: FormGroup;\n\n  constructor() {}\n\n  ngOnInit(): void {}\n\n}\n",
+            "sourceCode": "import {Component, Input, OnInit} from '@angular/core';\r\nimport {FormGroup} from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'ii-form-validation-errors',\r\n  templateUrl: './form-validation-errors.component.html',\r\n  styleUrls: ['./form-validation-errors.component.css']\r\n})\r\nexport class FormValidationErrorsComponent implements OnInit {\r\n\r\n  @Input()\r\n  group: FormGroup;\r\n\r\n  constructor() {}\r\n\r\n  ngOnInit(): void {}\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -164,11 +209,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"form-validation-errors\">\n  <ng-container *ngIf=\"group.errors\">\n    <div *ngFor=\"let error of group.errors | keyvalue\" class=\"alert alert-danger form-validation-errors__item\">{{error.key | validationMessage:error.value}}</div>\n  </ng-container>\n</div>\n\n"
+            "templateData": "<div class=\"form-validation-errors\">\r\n  <ng-container *ngIf=\"group.errors\">\r\n    <div *ngFor=\"let error of group.errors | keyvalue\" class=\"alert alert-danger form-validation-errors__item\">{{error.key | validationMessage:error.value}}</div>\r\n  </ng-container>\r\n</div>\r\n\r\n"
         },
         {
             "name": "ValidationControlComponent",
-            "id": "component-ValidationControlComponent-cd2499b299120689d336eacd26752252",
+            "id": "component-ValidationControlComponent-47b3f809ba3ead241dcfbef7afbdad01",
             "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/validation-control/validation-control.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -199,7 +244,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {Component, Input} from '@angular/core';\nimport {FormControl} from '@angular/forms';\n\n@Component({\n  selector: 'ii-validation-control',\n  templateUrl: './validation-control.component.html',\n  styleUrls: ['./validation-control.component.css']\n})\nexport class ValidationControlComponent {\n  @Input()\n  control: FormControl;\n\n  constructor() {}\n\n}\n",
+            "sourceCode": "import {Component, Input} from '@angular/core';\r\nimport {FormControl} from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'ii-validation-control',\r\n  templateUrl: './validation-control.component.html',\r\n  styleUrls: ['./validation-control.component.css']\r\n})\r\nexport class ValidationControlComponent {\r\n  @Input()\r\n  control: FormControl;\r\n\r\n  constructor() {}\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -214,10 +259,47 @@
                 "args": [],
                 "line": 11
             },
-            "templateData": "<div class=\"validation-control\"\n     [class.has-error]=\"control.invalid && control.touched\">\n  <ng-content></ng-content>\n  <ng-container *ngIf=\"control.invalid && control.touched\">\n    <div *ngFor=\"let error of control.errors | keyvalue\" class=\"alert alert-danger validation-control__error\">{{error.key | validationMessage:error.value}}</div>\n  </ng-container>\n</div>\n\n"
+            "templateData": "<div class=\"validation-control\"\r\n     [class.has-error]=\"control.invalid && control.touched\">\r\n  <ng-content></ng-content>\r\n  <ng-container *ngIf=\"control.invalid && control.touched\">\r\n    <div *ngFor=\"let error of control.errors | keyvalue\" class=\"alert alert-danger validation-control__error\">{{error.key | validationMessage:error.value}}</div>\r\n  </ng-container>\r\n</div>\r\n\r\n"
         }
     ],
     "modules": [
+        {
+            "name": "NgxCommonModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SafePipe"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SafePipe"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
         {
             "name": "NgxFormModule",
             "children": [
@@ -270,6 +352,14 @@
     ],
     "miscellaneous": {
         "variables": [
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ildar-icoosoft/ngx-common/src/test.ts",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
             {
                 "name": "context",
                 "ctype": "miscellaneous",
@@ -330,6 +420,13 @@
                 "name": "require",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ildar-icoosoft/ngx-common/src/test.ts",
+                "type": "literal type"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ildar-icoosoft/ngx-form/src/test.ts",
                 "type": "literal type"
             },
@@ -348,12 +445,37 @@
                 "file": "projects/ildar-icoosoft/ngx-form/src/lib/validators/index.ts",
                 "type": "",
                 "defaultValue": "(\r\n  a: FormControl | string,\r\n  b: FormControl | string\r\n) => {\r\n  return (group: FormGroup): { [s: string]: boolean } => {\r\n    const controlA = a instanceof FormControl ? a : group.root.get(a);\r\n    const controlB = b instanceof FormControl ? b : group.root.get(b);\r\n\r\n    const controlBErrors = controlB.errors;\r\n\r\n    if (controlA && controlB && controlA.value !== controlB.value) {\r\n      controlB.setErrors(\r\n        Object.assign({}, controlBErrors, {\r\n          mismatch: true\r\n        })\r\n      );\r\n    } else {\r\n      if (controlB.hasError('mismatch')) {\r\n        const newErrors = _omit(controlBErrors, 'mismatch');\r\n        controlB.setErrors(_isEmpty(newErrors) ? null : newErrors);\r\n      }\r\n    }\r\n    return null;\r\n  };\r\n}"
+            },
+            {
+                "name": "videoSample",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/1-NgxCommon.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\r\n  template: `\r\n  <video width=\"320\" height=\"240\" controls [src]=\"'https://www.w3schools.com/tags/movie.mp4'\">\r\n</video>\r\n`,\r\n  props: {\r\n  },\r\n})"
             }
         ],
         "functions": [],
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
+            "projects/ildar-icoosoft/ngx-common/src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ildar-icoosoft/ngx-common/src/test.ts",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ildar-icoosoft/ngx-common/src/test.ts",
+                    "type": "literal type"
+                }
+            ],
             "projects/ildar-icoosoft/ngx-form/src/test.ts": [
                 {
                     "name": "context",
@@ -444,6 +566,16 @@
                     "type": "",
                     "defaultValue": "(\r\n  a: FormControl | string,\r\n  b: FormControl | string\r\n) => {\r\n  return (group: FormGroup): { [s: string]: boolean } => {\r\n    const controlA = a instanceof FormControl ? a : group.root.get(a);\r\n    const controlB = b instanceof FormControl ? b : group.root.get(b);\r\n\r\n    const controlBErrors = controlB.errors;\r\n\r\n    if (controlA && controlB && controlA.value !== controlB.value) {\r\n      controlB.setErrors(\r\n        Object.assign({}, controlBErrors, {\r\n          mismatch: true\r\n        })\r\n      );\r\n    } else {\r\n      if (controlB.hasError('mismatch')) {\r\n        const newErrors = _omit(controlBErrors, 'mismatch');\r\n        controlB.setErrors(_isEmpty(newErrors) ? null : newErrors);\r\n      }\r\n    }\r\n    return null;\r\n  };\r\n}"
                 }
+            ],
+            "stories/1-NgxCommon.stories.ts": [
+                {
+                    "name": "videoSample",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/1-NgxCommon.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  template: `\r\n  <video width=\"320\" height=\"240\" controls [src]=\"'https://www.w3schools.com/tags/movie.mp4'\">\r\n</video>\r\n`,\r\n  props: {\r\n  },\r\n})"
+                }
             ]
         },
         "groupedFunctions": {},
@@ -455,6 +587,35 @@
         "count": 0,
         "status": "low",
         "files": [
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-common/src/lib/pipes/safe.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "SafePipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-common/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-common/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
             {
                 "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/components/form-validation-errors/form-validation-errors.component.ts",
                 "type": "component",
@@ -596,6 +757,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "handleSubmit",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/1-NgxCommon.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "videoSample",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

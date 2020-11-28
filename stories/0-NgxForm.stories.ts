@@ -36,7 +36,7 @@ export default {
 export const formSample = () => ({
   template: `
   <form [formGroup]="group" novalidate (submit)="handleSubmit(group)">
-    <ii-form-validation-errors group="group"></ii-form-validation-errors>
+    <ii-form-validation-errors [group]="group"></ii-form-validation-errors>
     <ii-validation-control [control]="group.controls.email">
       <input type="email" formControlName="email" placeholder="email">
     </ii-validation-control>

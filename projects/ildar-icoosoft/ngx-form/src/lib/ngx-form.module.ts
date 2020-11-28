@@ -10,29 +10,6 @@ import {NGX_FORM_MODULE_CONFIG} from './constants/ngx-form-module-config';
 import {validateEqual} from './validators';
 
 const defaultConfig: INgxFormModuleConfig = {
-  validators: {
-    required: {
-      isGroupValidator: false,
-      validator: () => {
-        return Validators.required;
-      }
-    },
-    email: {
-      isGroupValidator: false,
-      validator: () => {
-        return Validators.email;
-      }
-    },
-    passwordMatch: {
-      isGroupValidator: true,
-      validator: (fieldData) => {
-        const a = 'password';
-        const b = fieldData.name;
-
-        return validateEqual(a, b);
-      }
-    }
-  },
   errorMessages: {
     required: 'This field is required',
     email: 'Wrong email format',
@@ -63,7 +40,6 @@ export class NgxFormModule {
       providers: [{
         provide: NGX_FORM_MODULE_CONFIG,
         useValue: Object.assign({}, {
-          validators: Object.assign({}, defaultConfig.validators, config.validators),
           errorMessages: Object.assign({}, defaultConfig.errorMessages, config.errorMessages),
         })
       }]

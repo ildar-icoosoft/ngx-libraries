@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgxFormComponent } from './ngx-form.component';
+import { ValidationControlComponent } from './validation-control.component';
 
-describe('NgxFormComponent', () => {
-  let component: NgxFormComponent;
-  let fixture: ComponentFixture<NgxFormComponent>;
+describe('ValidationControlComponent', () => {
+  let component: ValidationControlComponent;
+  let fixture: ComponentFixture<ValidationControlComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgxFormComponent ]
+      declarations: [ ValidationControlComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgxFormComponent);
+    fixture = TestBed.createComponent(ValidationControlComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,605 @@
+{
+    "pipes": [
+        {
+            "name": "ValidationMessagePipe",
+            "id": "pipe-ValidationMessagePipe-e7de12bf4e44411e64bdfa543bbba51b",
+            "file": "projects/ildar-icoosoft/ngx-form/src/lib/pipes/validation-message.pipe.ts",
+            "type": "pipe",
+            "description": "",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "errorKey",
+                            "type": "string"
+                        },
+                        {
+                            "name": "errorData",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 13,
+                    "jsdoctags": [
+                        {
+                            "name": "errorKey",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "errorData",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "ngname": "validationMessage",
+            "sourceCode": "import {Inject, Pipe, PipeTransform} from '@angular/core';\nimport {prepareValidationMessage} from '../utils/error';\nimport {NGX_FORM_MODULE_CONFIG} from '../constants/ngx-form-module-config';\nimport {INgxFormModuleConfig} from '../interfaces/ngx-form-module-config';\n\n@Pipe({\n  name: 'validationMessage'\n})\nexport class ValidationMessagePipe implements PipeTransform {\n\n  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: INgxFormModuleConfig) {}\n\n  transform(errorKey: string, errorData: any): string {\n    if (errorKey === 'custom') {\n      return prepareValidationMessage(errorData);\n    }\n    if (errorKey === 'customArr') {\n      return errorData.map(item => prepareValidationMessage(item)).join(', ');\n    }\n\n    if (this.config.errorMessages[errorKey]) {\n      let messageTemplate = this.config.errorMessages[errorKey];\n\n      if (typeof errorData === 'object') {\n        for (const key in errorData) {\n          if (errorData.hasOwnProperty(key)) {\n            messageTemplate = messageTemplate.replace(\n              '{' + key + '}',\n              errorData[key]\n            );\n          }\n        }\n      }\n\n      return messageTemplate;\n    }\n\n    return `[${errorKey}]`;\n  }\n\n}\n"
+        }
+    ],
+    "interfaces": [
+        {
+            "name": "IFormError",
+            "id": "interface-IFormError-6b06a4bf6be01b90afd0f595ab9917ba",
+            "file": "projects/ildar-icoosoft/ngx-form/src/lib/interfaces/form-error.ts",
+            "type": "interface",
+            "sourceCode": "export interface IFormError {\r\n  formControlName?: string;\r\n  code?: string;\r\n  message: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "formControlName",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "message",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "INgxFormModuleConfig",
+            "id": "interface-INgxFormModuleConfig-bf7d1164d9a51601d4b3ed2c6f4c8c1d",
+            "file": "projects/ildar-icoosoft/ngx-form/src/lib/interfaces/ngx-form-module-config.ts",
+            "type": "interface",
+            "sourceCode": "export interface INgxFormModuleConfig {\r\n  errorMessages?: {\r\n    [key: string]: string\r\n  };\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "errorMessages",
+                    "type": "literal type",
+                    "optional": true,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        }
+    ],
+    "injectables": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "FormValidationErrorsComponent",
+            "id": "component-FormValidationErrorsComponent-42d1ceb7fbc9366ffff16ddc8336fdaa",
+            "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/form-validation-errors/form-validation-errors.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ii-form-validation-errors",
+            "styleUrls": [
+                "./form-validation-errors.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./form-validation-errors.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "group",
+                    "line": 12,
+                    "type": "FormGroup"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import {Component, Input, OnInit} from '@angular/core';\nimport {FormGroup} from '@angular/forms';\n\n@Component({\n  selector: 'ii-form-validation-errors',\n  templateUrl: './form-validation-errors.component.html',\n  styleUrls: ['./form-validation-errors.component.css']\n})\nexport class FormValidationErrorsComponent implements OnInit {\n\n  @Input()\n  group: FormGroup;\n\n  constructor() {}\n\n  ngOnInit(): void {}\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./form-validation-errors.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 12
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"form-validation-errors\">\n  <ng-container *ngIf=\"group.errors\">\n    <div *ngFor=\"let error of group.errors | keyvalue\" class=\"alert alert-danger form-validation-errors__item\">{{error.key | validationMessage:error.value}}</div>\n  </ng-container>\n</div>\n\n"
+        },
+        {
+            "name": "ValidationControlComponent",
+            "id": "component-ValidationControlComponent-cd2499b299120689d336eacd26752252",
+            "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/validation-control/validation-control.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ii-validation-control",
+            "styleUrls": [
+                "./validation-control.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./validation-control.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "control",
+                    "line": 11,
+                    "type": "FormControl"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import {Component, Input} from '@angular/core';\nimport {FormControl} from '@angular/forms';\n\n@Component({\n  selector: 'ii-validation-control',\n  templateUrl: './validation-control.component.html',\n  styleUrls: ['./validation-control.component.css']\n})\nexport class ValidationControlComponent {\n  @Input()\n  control: FormControl;\n\n  constructor() {}\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./validation-control.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 11
+            },
+            "templateData": "<div class=\"validation-control\"\n     [class.has-error]=\"control.invalid && control.touched\">\n  <ng-content></ng-content>\n  <ng-container *ngIf=\"control.invalid && control.touched\">\n    <div *ngFor=\"let error of control.errors | keyvalue\" class=\"alert alert-danger validation-control__error\">{{error.key | validationMessage:error.value}}</div>\n  </ng-container>\n</div>\n\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "NgxFormModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "FormValidationErrorsComponent"
+                        },
+                        {
+                            "name": "ValidationControlComponent"
+                        },
+                        {
+                            "name": "ValidationMessagePipe"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "FormValidationErrorsComponent"
+                        },
+                        {
+                            "name": "ValidationControlComponent"
+                        },
+                        {
+                            "name": "ValidationMessagePipe"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ildar-icoosoft/ngx-form/src/test.ts",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "defaultConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ildar-icoosoft/ngx-form/src/lib/ngx-form.module.ts",
+                "type": "INgxFormModuleConfig",
+                "defaultValue": "{\r\n  errorMessages: {\r\n    required: 'This field is required',\r\n    email: 'Wrong email format',\r\n    mismatch: 'Field values mismatch',\r\n    minlength: 'Field length is too short must be {requiredLength}, actual is {actualLength}',\r\n    maxlength: 'Field length is too long must be {requiredLength}, actual is {actualLength}',\r\n    age: 'The age under {requiredAge} is not accepted',\r\n    min: 'The minimum value for an input field is {min}',\r\n    max: 'The maximum value for an input field is {max}',\r\n  }\r\n}"
+            },
+            {
+                "name": "formSample",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/0-NgxForm.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\r\n  template: `\r\n  <form [formGroup]=\"group\" novalidate (submit)=\"handleSubmit(group)\">\r\n    <ii-form-validation-errors [group]=\"group\"></ii-form-validation-errors>\r\n    <ii-validation-control [control]=\"group.controls.email\">\r\n      <input type=\"email\" formControlName=\"email\" placeholder=\"email\">\r\n    </ii-validation-control>\r\n    <ii-validation-control [control]=\"group.controls.password\">\r\n        <input type=\"password\" formControlName=\"password\" placeholder=\"password\">\r\n    </ii-validation-control>\r\n    <button [disabled]=\"!group.valid\">Submit</button>\r\n</form>\r\n`,\r\n  props: {\r\n    group: new FormGroup({\r\n      email: new FormControl('', [Validators.required, Validators.email]),\r\n      password: new FormControl('', [Validators.required, Validators.minLength(8)])\r\n    }),\r\n    handleSubmit\r\n  },\r\n})"
+            },
+            {
+                "name": "handleSubmit",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/0-NgxForm.stories.ts",
+                "type": "",
+                "defaultValue": "(group: FormGroup) => {\r\n  action('submit-click');\r\n  window.setTimeout(() => {\r\n    setFormErrors(group, [{\r\n      message: 'Some form error'\r\n    }]);\r\n  }, 3000);\r\n}"
+            },
+            {
+                "name": "markAllFormControlsAsTouched",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ildar-icoosoft/ngx-form/src/lib/utils/error.ts",
+                "type": "",
+                "defaultValue": "(formGroup: FormGroup): void => {\r\n  Object.keys(formGroup.controls).forEach(field => {\r\n    const control = formGroup.get(field);\r\n    if (control instanceof FormControl) {\r\n      control.markAsTouched({ onlySelf: true });\r\n    } else if (control instanceof FormGroup) {\r\n      markAllFormControlsAsTouched(control);\r\n    }\r\n  });\r\n}"
+            },
+            {
+                "name": "NGX_FORM_MODULE_CONFIG",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ildar-icoosoft/ngx-form/src/lib/constants/ngx-form-module-config.ts",
+                "type": "",
+                "defaultValue": "new InjectionToken<INgxFormModuleConfig>('NGX_FORM_MODULE_CONFIG')"
+            },
+            {
+                "name": "prepareValidationMessage",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ildar-icoosoft/ngx-form/src/lib/utils/error.ts",
+                "type": "",
+                "defaultValue": "(value: string): string => {\r\n  return value;\r\n}"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ildar-icoosoft/ngx-form/src/test.ts",
+                "type": "literal type"
+            },
+            {
+                "name": "setFormErrors",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ildar-icoosoft/ngx-form/src/lib/utils/error.ts",
+                "type": "",
+                "defaultValue": "(\r\n  formGroup: FormGroup,\r\n  formErrors: IFormError[]\r\n): void => {\r\n  const formGroupErrors: string[] = [];\r\n  const formControlErrors: Record<string, string[]> = {};\r\n\r\n  formErrors.forEach(item => {\r\n    const formControlName = item.formControlName;\r\n\r\n    if (!formControlName) {\r\n      return formGroupErrors.push(item.message);\r\n    }\r\n\r\n    const formControl = formGroup.get(formControlName);\r\n\r\n    if (formControl) {\r\n      if (!formControlErrors[formControlName]) {\r\n        formControlErrors[formControlName] = [];\r\n      }\r\n      formControlErrors[formControlName].push(item.message);\r\n    } else {\r\n      formGroupErrors.push(item.message);\r\n    }\r\n  });\r\n\r\n  if (formGroupErrors.length) {\r\n    formGroup.setErrors({\r\n      customArr: formGroupErrors\r\n    });\r\n  }\r\n\r\n  for (const formControlName in formControlErrors) {\r\n    const formControl = formGroup.get(formControlName);\r\n\r\n    formControl.setErrors({\r\n      customArr: formControlErrors[formControlName]\r\n    });\r\n  }\r\n\r\n  markAllFormControlsAsTouched(formGroup);\r\n}"
+            },
+            {
+                "name": "validateEqual",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ildar-icoosoft/ngx-form/src/lib/validators/index.ts",
+                "type": "",
+                "defaultValue": "(\r\n  a: FormControl | string,\r\n  b: FormControl | string\r\n) => {\r\n  return (group: FormGroup): { [s: string]: boolean } => {\r\n    const controlA = a instanceof FormControl ? a : group.root.get(a);\r\n    const controlB = b instanceof FormControl ? b : group.root.get(b);\r\n\r\n    const controlBErrors = controlB.errors;\r\n\r\n    if (controlA && controlB && controlA.value !== controlB.value) {\r\n      controlB.setErrors(\r\n        Object.assign({}, controlBErrors, {\r\n          mismatch: true\r\n        })\r\n      );\r\n    } else {\r\n      if (controlB.hasError('mismatch')) {\r\n        const newErrors = _omit(controlBErrors, 'mismatch');\r\n        controlB.setErrors(_isEmpty(newErrors) ? null : newErrors);\r\n      }\r\n    }\r\n    return null;\r\n  };\r\n}"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [],
+        "groupedVariables": {
+            "projects/ildar-icoosoft/ngx-form/src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ildar-icoosoft/ngx-form/src/test.ts",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ildar-icoosoft/ngx-form/src/test.ts",
+                    "type": "literal type"
+                }
+            ],
+            "projects/ildar-icoosoft/ngx-form/src/lib/ngx-form.module.ts": [
+                {
+                    "name": "defaultConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ildar-icoosoft/ngx-form/src/lib/ngx-form.module.ts",
+                    "type": "INgxFormModuleConfig",
+                    "defaultValue": "{\r\n  errorMessages: {\r\n    required: 'This field is required',\r\n    email: 'Wrong email format',\r\n    mismatch: 'Field values mismatch',\r\n    minlength: 'Field length is too short must be {requiredLength}, actual is {actualLength}',\r\n    maxlength: 'Field length is too long must be {requiredLength}, actual is {actualLength}',\r\n    age: 'The age under {requiredAge} is not accepted',\r\n    min: 'The minimum value for an input field is {min}',\r\n    max: 'The maximum value for an input field is {max}',\r\n  }\r\n}"
+                }
+            ],
+            "stories/0-NgxForm.stories.ts": [
+                {
+                    "name": "formSample",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/0-NgxForm.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  template: `\r\n  <form [formGroup]=\"group\" novalidate (submit)=\"handleSubmit(group)\">\r\n    <ii-form-validation-errors [group]=\"group\"></ii-form-validation-errors>\r\n    <ii-validation-control [control]=\"group.controls.email\">\r\n      <input type=\"email\" formControlName=\"email\" placeholder=\"email\">\r\n    </ii-validation-control>\r\n    <ii-validation-control [control]=\"group.controls.password\">\r\n        <input type=\"password\" formControlName=\"password\" placeholder=\"password\">\r\n    </ii-validation-control>\r\n    <button [disabled]=\"!group.valid\">Submit</button>\r\n</form>\r\n`,\r\n  props: {\r\n    group: new FormGroup({\r\n      email: new FormControl('', [Validators.required, Validators.email]),\r\n      password: new FormControl('', [Validators.required, Validators.minLength(8)])\r\n    }),\r\n    handleSubmit\r\n  },\r\n})"
+                },
+                {
+                    "name": "handleSubmit",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/0-NgxForm.stories.ts",
+                    "type": "",
+                    "defaultValue": "(group: FormGroup) => {\r\n  action('submit-click');\r\n  window.setTimeout(() => {\r\n    setFormErrors(group, [{\r\n      message: 'Some form error'\r\n    }]);\r\n  }, 3000);\r\n}"
+                }
+            ],
+            "projects/ildar-icoosoft/ngx-form/src/lib/utils/error.ts": [
+                {
+                    "name": "markAllFormControlsAsTouched",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ildar-icoosoft/ngx-form/src/lib/utils/error.ts",
+                    "type": "",
+                    "defaultValue": "(formGroup: FormGroup): void => {\r\n  Object.keys(formGroup.controls).forEach(field => {\r\n    const control = formGroup.get(field);\r\n    if (control instanceof FormControl) {\r\n      control.markAsTouched({ onlySelf: true });\r\n    } else if (control instanceof FormGroup) {\r\n      markAllFormControlsAsTouched(control);\r\n    }\r\n  });\r\n}"
+                },
+                {
+                    "name": "prepareValidationMessage",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ildar-icoosoft/ngx-form/src/lib/utils/error.ts",
+                    "type": "",
+                    "defaultValue": "(value: string): string => {\r\n  return value;\r\n}"
+                },
+                {
+                    "name": "setFormErrors",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ildar-icoosoft/ngx-form/src/lib/utils/error.ts",
+                    "type": "",
+                    "defaultValue": "(\r\n  formGroup: FormGroup,\r\n  formErrors: IFormError[]\r\n): void => {\r\n  const formGroupErrors: string[] = [];\r\n  const formControlErrors: Record<string, string[]> = {};\r\n\r\n  formErrors.forEach(item => {\r\n    const formControlName = item.formControlName;\r\n\r\n    if (!formControlName) {\r\n      return formGroupErrors.push(item.message);\r\n    }\r\n\r\n    const formControl = formGroup.get(formControlName);\r\n\r\n    if (formControl) {\r\n      if (!formControlErrors[formControlName]) {\r\n        formControlErrors[formControlName] = [];\r\n      }\r\n      formControlErrors[formControlName].push(item.message);\r\n    } else {\r\n      formGroupErrors.push(item.message);\r\n    }\r\n  });\r\n\r\n  if (formGroupErrors.length) {\r\n    formGroup.setErrors({\r\n      customArr: formGroupErrors\r\n    });\r\n  }\r\n\r\n  for (const formControlName in formControlErrors) {\r\n    const formControl = formGroup.get(formControlName);\r\n\r\n    formControl.setErrors({\r\n      customArr: formControlErrors[formControlName]\r\n    });\r\n  }\r\n\r\n  markAllFormControlsAsTouched(formGroup);\r\n}"
+                }
+            ],
+            "projects/ildar-icoosoft/ngx-form/src/lib/constants/ngx-form-module-config.ts": [
+                {
+                    "name": "NGX_FORM_MODULE_CONFIG",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ildar-icoosoft/ngx-form/src/lib/constants/ngx-form-module-config.ts",
+                    "type": "",
+                    "defaultValue": "new InjectionToken<INgxFormModuleConfig>('NGX_FORM_MODULE_CONFIG')"
+                }
+            ],
+            "projects/ildar-icoosoft/ngx-form/src/lib/validators/index.ts": [
+                {
+                    "name": "validateEqual",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ildar-icoosoft/ngx-form/src/lib/validators/index.ts",
+                    "type": "",
+                    "defaultValue": "(\r\n  a: FormControl | string,\r\n  b: FormControl | string\r\n) => {\r\n  return (group: FormGroup): { [s: string]: boolean } => {\r\n    const controlA = a instanceof FormControl ? a : group.root.get(a);\r\n    const controlB = b instanceof FormControl ? b : group.root.get(b);\r\n\r\n    const controlBErrors = controlB.errors;\r\n\r\n    if (controlA && controlB && controlA.value !== controlB.value) {\r\n      controlB.setErrors(\r\n        Object.assign({}, controlBErrors, {\r\n          mismatch: true\r\n        })\r\n      );\r\n    } else {\r\n      if (controlB.hasError('mismatch')) {\r\n        const newErrors = _omit(controlBErrors, 'mismatch');\r\n        controlB.setErrors(_isEmpty(newErrors) ? null : newErrors);\r\n      }\r\n    }\r\n    return null;\r\n  };\r\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/components/form-validation-errors/form-validation-errors.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FormValidationErrorsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/components/validation-control/validation-control.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ValidationControlComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/constants/ngx-form-module-config.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "NGX_FORM_MODULE_CONFIG",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/interfaces/form-error.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IFormError",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/interfaces/ngx-form-module-config.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "INgxFormModuleConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/ngx-form.module.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "defaultConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/pipes/validation-message.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "ValidationMessagePipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/utils/error.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "markAllFormControlsAsTouched",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/utils/error.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "prepareValidationMessage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/utils/error.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "setFormErrors",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/validators/index.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "validateEqual",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-form/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-form/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/0-NgxForm.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "formSample",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/0-NgxForm.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "handleSubmit",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

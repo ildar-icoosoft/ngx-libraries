@@ -17,12 +17,10 @@
     ],
     "paths": {
       "@ildar-icoosoft/ngx-form": [
-        "dist/ildar-icoosoft/ngx-form/ildar-icoosoft-ngx-form",
-        "dist/ildar-icoosoft/ngx-form"
+        "projects/ildar-icoosoft/ngx-form/dist"
       ],
       "@ildar-icoosoft/ngx-common": [
-        "dist/ildar-icoosoft/ngx-common/ildar-icoosoft-ngx-common",
-        "dist/ildar-icoosoft/ngx-common"
+        "projects/ildar-icoosoft/ngx-common/dist"
       ]
     }
   }

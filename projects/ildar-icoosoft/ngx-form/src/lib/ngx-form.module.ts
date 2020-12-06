@@ -3,10 +3,12 @@ import { FormValidationErrorsComponent } from './components/form-validation-erro
 import { ValidationControlComponent } from './components/validation-control/validation-control.component';
 import { ValidationMessagePipe } from './pipes/validation-message.pipe';
 import {CommonModule} from '@angular/common';
-import {INgxFormModuleConfig} from './interfaces/ngx-form-module-config';
+import {NgxFormModuleConfig} from './interfaces/ngx-form-module-config';
 import {NGX_FORM_MODULE_CONFIG} from './constants/ngx-form-module-config';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { DynamicFieldDirective } from './directives/dynamic-field.directive';
 
-const defaultConfig: INgxFormModuleConfig = {
+const defaultConfig: NgxFormModuleConfig = {
   errorMessages: {
     required: 'This field is required',
     email: 'Wrong email format',
@@ -20,18 +22,18 @@ const defaultConfig: INgxFormModuleConfig = {
 };
 
 @NgModule({
-  declarations: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe],
+  declarations: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective],
   imports: [
     CommonModule
   ],
-  exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe],
+  exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective],
   providers: [{
     provide: NGX_FORM_MODULE_CONFIG,
     useValue: defaultConfig
   }]
 })
 export class NgxFormModule {
-  static forRoot(config: INgxFormModuleConfig): ModuleWithProviders<NgxFormModule> {
+  static forRoot(config: NgxFormModuleConfig): ModuleWithProviders<NgxFormModule> {
     return {
       ngModule: NgxFormModule,
       providers: [{

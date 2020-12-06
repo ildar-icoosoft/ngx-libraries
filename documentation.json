@@ -458,7 +458,46 @@
             "methods": []
         }
     ],
-    "injectables": [],
+    "injectables": [
+        {
+            "name": "UnsubscribeService",
+            "id": "injectable-UnsubscribeService-25015814c5ac999b28dbc92e0a37d305",
+            "file": "projects/ildar-icoosoft/ngx-common/src/lib/services/unsubscribe.service.ts",
+            "properties": [
+                {
+                    "name": "ngUnsubscribe$",
+                    "defaultValue": "new Subject<void>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        132
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12
+                }
+            ],
+            "description": "",
+            "sourceCode": "import {Injectable, OnDestroy} from '@angular/core';\r\nimport {Observable, Subject} from 'rxjs';\r\n\r\n@Injectable()\r\nexport class UnsubscribeService extends Observable<void> implements OnDestroy {\r\n  readonly ngUnsubscribe$ = new Subject<void>();\r\n\r\n  constructor() {\r\n    super(subscriber => this.ngUnsubscribe$.subscribe(subscriber));\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.ngUnsubscribe$.next();\r\n    this.ngUnsubscribe$.complete();\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 6
+            },
+            "extends": "Observable",
+            "type": "injectable"
+        }
+    ],
     "classes": [],
     "directives": [
         {
@@ -648,7 +687,7 @@
     "components": [
         {
             "name": "DynamicFormComponent",
-            "id": "component-DynamicFormComponent-23c2fd2ac0e8008083f77dcc68754e7f",
+            "id": "component-DynamicFormComponent-25d604dc5804a4a68d0b6a788e524210",
             "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/dynamic-form/dynamic-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -668,23 +707,23 @@
                 {
                     "name": "buttons",
                     "defaultValue": "[{\r\n    label: 'Submit',\r\n    onClick: () => this.validateAndSubmit()\r\n  }]",
-                    "line": 34,
+                    "line": 35,
                     "type": "DynamicFormButton[]"
                 },
                 {
                     "name": "formCssClass",
                     "defaultValue": "''",
-                    "line": 26
+                    "line": 27
                 },
                 {
                     "name": "formData",
-                    "line": 25,
+                    "line": 26,
                     "type": "DynamicFormData"
                 },
                 {
                     "name": "initialValues",
                     "defaultValue": "{}",
-                    "line": 27,
+                    "line": 28,
                     "type": "Record<string | any>"
                 }
             ],
@@ -692,46 +731,35 @@
                 {
                     "name": "controlChange",
                     "defaultValue": "new EventEmitter()",
-                    "line": 32,
+                    "line": 33,
                     "type": "EventEmitter<ControlChangeData>"
                 },
                 {
                     "name": "groupChange",
                     "defaultValue": "new EventEmitter()",
-                    "line": 31,
+                    "line": 32,
                     "type": "EventEmitter<Record<string, any>>"
                 },
                 {
                     "name": "loadForm",
                     "defaultValue": "new EventEmitter()",
-                    "line": 30,
+                    "line": 31,
                     "type": "EventEmitter<DynamicFormComponent>"
                 },
                 {
                     "name": "submitForm",
                     "defaultValue": "new EventEmitter()",
-                    "line": 29,
+                    "line": 30,
                     "type": "EventEmitter<FormSubmitData>"
                 }
             ],
             "propertiesClass": [
                 {
-                    "name": "destroy$",
-                    "defaultValue": "new Subject<void>()",
-                    "type": "Subject<void>",
-                    "optional": false,
-                    "description": "",
-                    "line": 45,
-                    "modifierKind": [
-                        112
-                    ]
-                },
-                {
                     "name": "dynamicComponents",
                     "type": "QueryList<DynamicFieldDirective>",
                     "optional": false,
                     "description": "",
-                    "line": 43,
+                    "line": 44,
                     "decorators": [
                         {
                             "name": "ViewChildren",
@@ -744,7 +772,7 @@
                     "type": "FormGroup",
                     "optional": false,
                     "description": "",
-                    "line": 39
+                    "line": 40
                 },
                 {
                     "name": "isSubmitting",
@@ -752,7 +780,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 41
+                    "line": 42
                 }
             ],
             "methodsClass": [
@@ -767,7 +795,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 122,
+                    "line": 116,
                     "jsdoctags": [
                         {
                             "name": "fieldData",
@@ -789,7 +817,7 @@
                     "optional": false,
                     "returnType": "AbstractControl",
                     "typeParameters": [],
-                    "line": 103,
+                    "line": 97,
                     "jsdoctags": [
                         {
                             "name": "name",
@@ -811,7 +839,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 111,
+                    "line": 105,
                     "jsdoctags": [
                         {
                             "name": "name",
@@ -833,7 +861,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 128,
+                    "line": 122,
                     "jsdoctags": [
                         {
                             "name": "fieldData",
@@ -850,7 +878,7 @@
                     "optional": false,
                     "returnType": "FormGroup",
                     "typeParameters": [],
-                    "line": 91
+                    "line": 85
                 },
                 {
                     "name": "getLabelCssClass",
@@ -863,7 +891,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 134,
+                    "line": 128,
                     "jsdoctags": [
                         {
                             "name": "fieldData",
@@ -880,7 +908,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 95
+                    "line": 89
                 },
                 {
                     "name": "getValues",
@@ -888,7 +916,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 99
+                    "line": 93
                 },
                 {
                     "name": "needToShowLabelOutside",
@@ -901,7 +929,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 140,
+                    "line": 134,
                     "jsdoctags": [
                         {
                             "name": "fieldData",
@@ -918,15 +946,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 49
-                },
-                {
-                    "name": "ngOnDestroy",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 86
+                    "line": 48
                 },
                 {
                     "name": "ngOnInit",
@@ -934,7 +954,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 53
+                    "line": 52
                 },
                 {
                     "name": "onButtonClick",
@@ -951,7 +971,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 144,
+                    "line": 138,
                     "jsdoctags": [
                         {
                             "name": "button",
@@ -980,7 +1000,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 184,
+                    "line": 178,
                     "jsdoctags": [
                         {
                             "name": "values",
@@ -1002,7 +1022,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 171,
+                    "line": 165,
                     "jsdoctags": [
                         {
                             "name": "formErrors",
@@ -1024,7 +1044,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 176,
+                    "line": 170,
                     "jsdoctags": [
                         {
                             "name": "isSubmitting",
@@ -1046,7 +1066,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 180,
+                    "line": 174,
                     "jsdoctags": [
                         {
                             "name": "values",
@@ -1063,7 +1083,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 153
+                    "line": 147
                 }
             ],
             "hostBindings": [],
@@ -1071,7 +1091,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {AfterViewInit, Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, QueryList, ViewChildren} from '@angular/core';\r\nimport {DynamicFormData} from '../../interfaces/dynamic-form-data';\r\nimport {FormSubmitData} from '../../interfaces/form-submit-data';\r\nimport {ControlChangeData} from '../../interfaces/control-change-data';\r\nimport {AbstractControl, FormControl, FormGroup, ValidatorFn} from '@angular/forms';\r\nimport {DynamicFormButton} from '../../interfaces/dynamic-form-button';\r\nimport {Subject} from 'rxjs';\r\nimport {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';\r\nimport {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';\r\nimport {DynamicFieldDirective} from '../../directives/dynamic-field.directive';\r\nimport {DynamicFieldData} from '../../interfaces/dynamic-field-data';\r\nimport {getFieldDataOptionValue, getGroupValidators, getValidators, needToShowLabelOutside} from '../../utils/dynamic-form';\r\nimport {takeUntil} from 'rxjs/operators';\r\nimport {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';\r\nimport {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';\r\nimport {FormError} from '../../interfaces/form-error';\r\n\r\n@Component({\r\n  selector: 'ii-dynamic-form',\r\n  templateUrl: './dynamic-form.component.html',\r\n  styleUrls: ['./dynamic-form.component.css']\r\n})\r\nexport class DynamicFormComponent implements OnInit, AfterViewInit, OnDestroy {\r\n\r\n  @Input() formData: DynamicFormData;\r\n  @Input() formCssClass = '';\r\n  @Input() initialValues: Record<string, 'any'> = {};\r\n\r\n  @Output() submitForm: EventEmitter<FormSubmitData> = new EventEmitter();\r\n  @Output() loadForm: EventEmitter<DynamicFormComponent> = new EventEmitter();\r\n  @Output() groupChange: EventEmitter<Record<string, any>> = new EventEmitter();\r\n  @Output() controlChange: EventEmitter<ControlChangeData> = new EventEmitter();\r\n\r\n  @Input() buttons: DynamicFormButton[] = [{\r\n    label: 'Submit',\r\n    onClick: () => this.validateAndSubmit()\r\n  }];\r\n\r\n  group: FormGroup;\r\n\r\n  isSubmitting = false;\r\n\r\n  @ViewChildren(DynamicFieldDirective) dynamicComponents: QueryList<DynamicFieldDirective>;\r\n\r\n  private destroy$: Subject<void> = new Subject<void>();\r\n\r\n  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}\r\n\r\n  ngAfterViewInit(): void {\r\n    this.loadForm.emit(this);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n\r\n    const groupValidators: ValidatorFn[] = [];\r\n\r\n    this.group = new FormGroup({});\r\n\r\n    this.formData.items.forEach((item: DynamicFieldData) => {\r\n      const validators: ValidatorFn[] = getValidators(item, this.config);\r\n\r\n      groupValidators.push(...getGroupValidators(item, this.config));\r\n\r\n      const value = this.initialValues[item.name];\r\n\r\n      const formControl = new FormControl(value, validators);\r\n\r\n      formControl.valueChanges.pipe(\r\n        takeUntil(this.destroy$)\r\n      ).subscribe(controlValue => this.controlChange.emit({\r\n        name: item.name,\r\n        formControl,\r\n        value: controlValue\r\n      }) );\r\n\r\n      this.group.addControl(item.name, formControl);\r\n    });\r\n\r\n    this.group.setValidators(groupValidators);\r\n\r\n    this.group.valueChanges.pipe(\r\n      takeUntil(this.destroy$)\r\n    ).subscribe(values => this.groupChange.emit(values));\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.destroy$.next();\r\n    this.destroy$.unsubscribe();\r\n  }\r\n\r\n  getGroup(): FormGroup {\r\n    return this.group;\r\n  }\r\n\r\n  getRawValues(): any {\r\n    return this.group.getRawValue();\r\n  }\r\n\r\n  getValues(): any {\r\n    return this.group.value;\r\n  }\r\n\r\n  getFormControl(name: string): AbstractControl {\r\n    if (!this.group.controls[name]) {\r\n      throw Error(`form control ${name} not found`);\r\n    }\r\n\r\n    return this.group.controls[name];\r\n  }\r\n\r\n  getFormElement(name: string): any {\r\n    const arr = this.dynamicComponents.toArray();\r\n\r\n    const connectFieldDirective = arr.find(item => item.fieldData.name === name);\r\n    if (!connectFieldDirective) {\r\n      throw Error(`component ${name} not found`);\r\n    }\r\n\r\n    return connectFieldDirective.component.instance;\r\n  }\r\n\r\n  getCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'cssClass', '');\r\n  }\r\n\r\n  getFormGroupCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'formGroupCssClass', '');\r\n  }\r\n\r\n  getLabelCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');\r\n  }\r\n\r\n  needToShowLabelOutside(fieldData: DynamicFieldData): boolean {\r\n    return needToShowLabelOutside(fieldData, this.config);\r\n  }\r\n\r\n  onButtonClick(button, event): void {\r\n    event.preventDefault();\r\n\r\n    button.onClick({\r\n      form: this,\r\n      nativeEvent: event\r\n    });\r\n  }\r\n\r\n  validateAndSubmit(): void {\r\n    if (this.isSubmitting) {\r\n      return;\r\n    }\r\n    if (this.group.invalid) {\r\n      return markAllFormControlsAsTouched(this.group);\r\n    }\r\n\r\n    const formData: any = this.group.getRawValue();\r\n\r\n    this.isSubmitting = true;\r\n    this.submitForm.emit({\r\n      values: formData,\r\n      setSubmitting: (isSubmitting: boolean) => this.setSubmitting(isSubmitting),\r\n      setErrors: (errors: FormError[]) => this.setErrors(errors)\r\n    });\r\n  }\r\n\r\n  setErrors(formErrors: FormError[]): void {\r\n    setFormErrors(this.group, formErrors);\r\n    this.isSubmitting = false;\r\n  }\r\n\r\n  setSubmitting(isSubmitting: boolean): void {\r\n    this.isSubmitting = isSubmitting;\r\n  }\r\n\r\n  setValues(values: any): void {\r\n    this.group.setValue(values);\r\n  }\r\n\r\n  patchValues(values: any): void {\r\n    this.group.patchValue(values);\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import {AfterViewInit, Component, EventEmitter, Inject, Input, OnInit, Output, QueryList, ViewChildren} from '@angular/core';\r\nimport {UnsubscribeService} from 'ii-ngx-common';\r\nimport {DynamicFormData} from '../../interfaces/dynamic-form-data';\r\nimport {FormSubmitData} from '../../interfaces/form-submit-data';\r\nimport {ControlChangeData} from '../../interfaces/control-change-data';\r\nimport {AbstractControl, FormControl, FormGroup, ValidatorFn} from '@angular/forms';\r\nimport {DynamicFormButton} from '../../interfaces/dynamic-form-button';\r\nimport {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';\r\nimport {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';\r\nimport {DynamicFieldDirective} from '../../directives/dynamic-field.directive';\r\nimport {DynamicFieldData} from '../../interfaces/dynamic-field-data';\r\nimport {getFieldDataOptionValue, getGroupValidators, getValidators, needToShowLabelOutside} from '../../utils/dynamic-form';\r\nimport {takeUntil} from 'rxjs/operators';\r\nimport {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';\r\nimport {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';\r\nimport {FormError} from '../../interfaces/form-error';\r\n\r\n\r\n@Component({\r\n  selector: 'ii-dynamic-form',\r\n  templateUrl: './dynamic-form.component.html',\r\n  styleUrls: ['./dynamic-form.component.css']\r\n})\r\nexport class DynamicFormComponent implements OnInit, AfterViewInit {\r\n\r\n  @Input() formData: DynamicFormData;\r\n  @Input() formCssClass = '';\r\n  @Input() initialValues: Record<string, 'any'> = {};\r\n\r\n  @Output() submitForm: EventEmitter<FormSubmitData> = new EventEmitter();\r\n  @Output() loadForm: EventEmitter<DynamicFormComponent> = new EventEmitter();\r\n  @Output() groupChange: EventEmitter<Record<string, any>> = new EventEmitter();\r\n  @Output() controlChange: EventEmitter<ControlChangeData> = new EventEmitter();\r\n\r\n  @Input() buttons: DynamicFormButton[] = [{\r\n    label: 'Submit',\r\n    onClick: () => this.validateAndSubmit()\r\n  }];\r\n\r\n  group: FormGroup;\r\n\r\n  isSubmitting = false;\r\n\r\n  @ViewChildren(DynamicFieldDirective) dynamicComponents: QueryList<DynamicFieldDirective>;\r\n\r\n  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig, private ngUnsubscribe$: UnsubscribeService) {}\r\n\r\n  ngAfterViewInit(): void {\r\n    this.loadForm.emit(this);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n\r\n    const groupValidators: ValidatorFn[] = [];\r\n\r\n    this.group = new FormGroup({});\r\n\r\n    this.formData.items.forEach((item: DynamicFieldData) => {\r\n      const validators: ValidatorFn[] = getValidators(item, this.config);\r\n\r\n      groupValidators.push(...getGroupValidators(item, this.config));\r\n\r\n      const value = this.initialValues[item.name];\r\n\r\n      const formControl = new FormControl(value, validators);\r\n\r\n      formControl.valueChanges.pipe(\r\n        takeUntil(this.ngUnsubscribe$)\r\n      ).subscribe(controlValue => this.controlChange.emit({\r\n        name: item.name,\r\n        formControl,\r\n        value: controlValue\r\n      }) );\r\n\r\n      this.group.addControl(item.name, formControl);\r\n    });\r\n\r\n    this.group.setValidators(groupValidators);\r\n\r\n    this.group.valueChanges.pipe(\r\n      takeUntil(this.ngUnsubscribe$)\r\n    ).subscribe(values => this.groupChange.emit(values));\r\n  }\r\n\r\n  getGroup(): FormGroup {\r\n    return this.group;\r\n  }\r\n\r\n  getRawValues(): any {\r\n    return this.group.getRawValue();\r\n  }\r\n\r\n  getValues(): any {\r\n    return this.group.value;\r\n  }\r\n\r\n  getFormControl(name: string): AbstractControl {\r\n    if (!this.group.controls[name]) {\r\n      throw Error(`form control ${name} not found`);\r\n    }\r\n\r\n    return this.group.controls[name];\r\n  }\r\n\r\n  getFormElement(name: string): any {\r\n    const arr = this.dynamicComponents.toArray();\r\n\r\n    const connectFieldDirective = arr.find(item => item.fieldData.name === name);\r\n    if (!connectFieldDirective) {\r\n      throw Error(`component ${name} not found`);\r\n    }\r\n\r\n    return connectFieldDirective.component.instance;\r\n  }\r\n\r\n  getCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'cssClass', '');\r\n  }\r\n\r\n  getFormGroupCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'formGroupCssClass', '');\r\n  }\r\n\r\n  getLabelCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');\r\n  }\r\n\r\n  needToShowLabelOutside(fieldData: DynamicFieldData): boolean {\r\n    return needToShowLabelOutside(fieldData, this.config);\r\n  }\r\n\r\n  onButtonClick(button, event): void {\r\n    event.preventDefault();\r\n\r\n    button.onClick({\r\n      form: this,\r\n      nativeEvent: event\r\n    });\r\n  }\r\n\r\n  validateAndSubmit(): void {\r\n    if (this.isSubmitting) {\r\n      return;\r\n    }\r\n    if (this.group.invalid) {\r\n      return markAllFormControlsAsTouched(this.group);\r\n    }\r\n\r\n    const formData: any = this.group.getRawValue();\r\n\r\n    this.isSubmitting = true;\r\n    this.submitForm.emit({\r\n      values: formData,\r\n      setSubmitting: (isSubmitting: boolean) => this.setSubmitting(isSubmitting),\r\n      setErrors: (errors: FormError[]) => this.setErrors(errors)\r\n    });\r\n  }\r\n\r\n  setErrors(formErrors: FormError[]): void {\r\n    setFormErrors(this.group, formErrors);\r\n    this.isSubmitting = false;\r\n  }\r\n\r\n  setSubmitting(isSubmitting: boolean): void {\r\n    this.isSubmitting = isSubmitting;\r\n  }\r\n\r\n  setValues(values: any): void {\r\n    this.group.setValue(values);\r\n  }\r\n\r\n  patchValues(values: any): void {\r\n    this.group.patchValue(values);\r\n  }\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1087,13 +1107,24 @@
                     {
                         "name": "config",
                         "type": "NgxFormModuleConfig"
+                    },
+                    {
+                        "name": "ngUnsubscribe$",
+                        "type": "UnsubscribeService"
                     }
                 ],
-                "line": 45,
+                "line": 44,
                 "jsdoctags": [
                     {
                         "name": "config",
                         "type": "NgxFormModuleConfig",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "ngUnsubscribe$",
+                        "type": "UnsubscribeService",
                         "tagName": {
                             "text": "param"
                         }
@@ -1102,8 +1133,7 @@
             },
             "implements": [
                 "OnInit",
-                "AfterViewInit",
-                "OnDestroy"
+                "AfterViewInit"
             ],
             "templateData": "template: `\r\n<form [formGroup]=\"group\" novalidate *ngIf=\"formData\" [class]=\"formCssClass\">\r\n  <ii-form-validation-errors [group]=\"group\"></ii-form-validation-errors>\r\n\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div *ngFor=\"let fieldData of formData.items; let i = index\" [class]=\"getCssClass(fieldData)\">\r\n        <div [class]=\"'form-group ' + getFormGroupCssClass(fieldData)\">\r\n          <ii-validation-control [control]=\"group.controls[fieldData.name]\">\r\n            <label [for]=\"fieldData.name + '_' + i\" *ngIf=\"needToShowLabelOutside(fieldData)\" [innerHTML]=\"fieldData.label\" [class]=\"getLabelCssClass(fieldData)\"></label>\r\n            <ng-container\r\n              iiDynamicField\r\n              [inputId]=\"fieldData.name + '_' + i\"\r\n              [formControl]=\"group.controls[fieldData.name]\"\r\n              [fieldData]=\"fieldData\">\r\n            </ng-container>\r\n          </ii-validation-control>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-12\">\r\n        <div class=\"connect-form-buttons-container\">\r\n          <div [class]=\"button.cssContainerClass || ''\" *ngFor=\"let button of buttons\">\r\n            <button [class]=\"'btn btn-primary ' + (button.cssClass || '')\" [class.disabled]=\"group.invalid\" (click)=\"onButtonClick(button, $event)\">\r\n              <i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSubmitting\"></i>\r\n              {{button.label}}\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</form>\r\n`\r\n"
         },
@@ -2110,7 +2140,7 @@
         },
         {
             "name": "ReCaptchaComponent",
-            "id": "component-ReCaptchaComponent-0a16bc613757a3d0220c8dabe5cf0cc7",
+            "id": "component-ReCaptchaComponent-0d55f2c185c8bb5dae07b3e5e93a58b7",
             "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/re-captcha/re-captcha.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2197,19 +2227,19 @@
                     ],
                     "jsdoctags": [
                         {
-                            "pos": 804,
-                            "end": 813,
+                            "pos": 832,
+                            "end": 841,
                             "flags": 0,
                             "kind": 288,
                             "atToken": {
-                                "pos": 804,
-                                "end": 805,
+                                "pos": 832,
+                                "end": 833,
                                 "flags": 0,
                                 "kind": 57
                             },
                             "tagName": {
-                                "pos": 805,
-                                "end": 813,
+                                "pos": 833,
+                                "end": 841,
                                 "flags": 0,
                                 "escapedText": "internal"
                             },
@@ -2228,19 +2258,19 @@
                     ],
                     "jsdoctags": [
                         {
-                            "pos": 869,
-                            "end": 878,
+                            "pos": 900,
+                            "end": 909,
                             "flags": 0,
                             "kind": 288,
                             "atToken": {
-                                "pos": 869,
-                                "end": 870,
+                                "pos": 900,
+                                "end": 901,
                                 "flags": 0,
                                 "kind": 57
                             },
                             "tagName": {
-                                "pos": 870,
-                                "end": 878,
+                                "pos": 901,
+                                "end": 909,
                                 "flags": 0,
                                 "escapedText": "internal"
                             },
@@ -2367,7 +2397,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {Component, forwardRef, Input, ViewChild} from '@angular/core';\nimport {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';\nimport {RecaptchaComponent} from 'ng-recaptcha';\n\nlet nextId = 0;\n\n@Component({\n  selector: 'ii-re-captcha',\n  templateUrl: './re-captcha.component.html',\n  styleUrls: ['./re-captcha.component.css'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => ReCaptchaComponent),\n      multi: true\n    }\n  ]\n})\nexport class ReCaptchaComponent implements ControlValueAccessor {\n\n  @Input() id = `ngrecaptcha-${nextId++}`;\n  @Input() siteKey: string;\n  @Input() theme: ReCaptchaV2.Theme;\n  @Input() type: ReCaptchaV2.Type;\n  @Input() size: ReCaptchaV2.Size;\n  @Input() tabIndex: number;\n  @Input() badge: ReCaptchaV2.Badge;\n\n  /** @internal */\n  private onChange: (value: string) => void;\n\n  /** @internal */\n  private onTouched: () => void;\n\n  @ViewChild(RecaptchaComponent, {\n    static: true\n  }) private host !: RecaptchaComponent;\n\n  constructor() {\n  }\n\n  public writeValue(value: string): void {\n    if (!value) {\n      this.host.reset();\n    }\n  }\n\n  public registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  public registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  onResolve($event: string): void {\n    if (this.onChange) {\n      this.onChange($event);\n    }\n    if (this.onTouched) {\n      this.onTouched();\n    }\n  }\n\n}\n\n",
+            "sourceCode": "import {Component, forwardRef, Input, ViewChild} from '@angular/core';\r\nimport {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';\r\nimport {RecaptchaComponent} from 'ng-recaptcha';\r\n\r\nlet nextId = 0;\r\n\r\n@Component({\r\n  selector: 'ii-re-captcha',\r\n  templateUrl: './re-captcha.component.html',\r\n  styleUrls: ['./re-captcha.component.css'],\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => ReCaptchaComponent),\r\n      multi: true\r\n    }\r\n  ]\r\n})\r\nexport class ReCaptchaComponent implements ControlValueAccessor {\r\n\r\n  @Input() id = `ngrecaptcha-${nextId++}`;\r\n  @Input() siteKey: string;\r\n  @Input() theme: ReCaptchaV2.Theme;\r\n  @Input() type: ReCaptchaV2.Type;\r\n  @Input() size: ReCaptchaV2.Size;\r\n  @Input() tabIndex: number;\r\n  @Input() badge: ReCaptchaV2.Badge;\r\n\r\n  /** @internal */\r\n  private onChange: (value: string) => void;\r\n\r\n  /** @internal */\r\n  private onTouched: () => void;\r\n\r\n  @ViewChild(RecaptchaComponent, {\r\n    static: true\r\n  }) private host !: RecaptchaComponent;\r\n\r\n  constructor() {\r\n  }\r\n\r\n  public writeValue(value: string): void {\r\n    if (!value) {\r\n      this.host.reset();\r\n    }\r\n  }\r\n\r\n  public registerOnChange(fn: (value: string) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  public registerOnTouched(fn: () => void): void {\r\n    this.onTouched = fn;\r\n  }\r\n\r\n  onResolve($event: string): void {\r\n    if (this.onChange) {\r\n      this.onChange($event);\r\n    }\r\n    if (this.onTouched) {\r\n      this.onTouched();\r\n    }\r\n  }\r\n\r\n}\r\n\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2385,7 +2415,7 @@
             "implements": [
                 "ControlValueAccessor"
             ],
-            "templateData": "<re-captcha\n  [id]=\"id\"\n  [siteKey]=\"siteKey\"\n  [theme]=\"theme\"\n  [type]=\"type\"\n  [size]=\"size\"\n  [tabIndex]=\"tabIndex\"\n  [badge]=\"badge\"\n  (resolved)=\"onResolve($event)\"\n></re-captcha>\n"
+            "templateData": "<re-captcha\r\n  [id]=\"id\"\r\n  [siteKey]=\"siteKey\"\r\n  [theme]=\"theme\"\r\n  [type]=\"type\"\r\n  [size]=\"size\"\r\n  [tabIndex]=\"tabIndex\"\r\n  [badge]=\"badge\"\r\n  (resolved)=\"onResolve($event)\"\r\n></re-captcha>\r\n"
         },
         {
             "name": "SelectComponent",
@@ -3056,7 +3086,7 @@
                 "subtype": "variable",
                 "file": "data-sample/dynamic-form.ts",
                 "type": "DynamicFormData",
-                "defaultValue": "{\r\n  items: [\r\n    {\r\n      label: 'Custom HTML',\r\n      name: 'html',\r\n      type: 'html',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Text <span class=\"required-sign\">(*)</span>',\r\n      name: 'text',\r\n      type: 'text',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Textarea <span class=\"required-sign\">(*)</span>',\r\n      name: 'textarea',\r\n      type: 'textarea',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text plaeeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Email <span class=\"required-sign\">(*)</span>',\r\n      name: 'email',\r\n      type: 'email',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'email placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\":\"email\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'password',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Confirm Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'confirmPassword',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'confirm password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\": \"passwordMatch\", \"options\": []}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Select',\r\n      name: 'select',\r\n      type: 'select',\r\n      options: [\r\n        {\r\n          name: 'default',\r\n          value: 'twitter-share-button',\r\n        },\r\n        {\r\n          name: 'options',\r\n          value:\r\n            '[{\"name\":\"twitter-share-button\",\"label\":\"Share\",\"position\":\"0\"},{\"name\":\"twitter-follow-button\",\"label\":\"Follow\",\"position\":\"1\"},{\"name\":\"twitter-hashtag-button\",\"label\":\"Hashtag\",\"position\":\"2\"},{\"name\":\"twitter-mention-button\",\"label\":\"Mention\",\"position\":\"3\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-timeline\",\"label\":\"Timeline\",\"position\":\"5\"}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'text',\r\n      name: 'Text',\r\n      type: 'text',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Fieldset',\r\n      name: 'fieldset',\r\n      type: 'fieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Text',\r\n          name: 'Text2',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Text',\r\n          name: 'text3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text 2',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n    {\r\n      label: 'Multi Fieldset',\r\n      name: 'multiFieldset',\r\n      type: 'multiFieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Text',\r\n          name: 'Text3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Checkbox',\r\n          name: 'text2',\r\n          type: 'text',\r\n          options: [],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n  ]\r\n\r\n}"
+                "defaultValue": "{\r\n  items: [\r\n    {\r\n      label: 'Custom HTML',\r\n      name: 'html',\r\n      type: 'html',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Text <span class=\"required-sign\">(*)</span>',\r\n      name: 'text',\r\n      type: 'text',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Textarea <span class=\"required-sign\">(*)</span>',\r\n      name: 'textarea',\r\n      type: 'textarea',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text plaeeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Email <span class=\"required-sign\">(*)</span>',\r\n      name: 'email',\r\n      type: 'email',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'email placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\":\"email\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'password',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Confirm Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'confirmPassword',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'confirm password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\": \"passwordMatch\", \"options\": []}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Select',\r\n      name: 'select',\r\n      type: 'select',\r\n      options: [\r\n        {\r\n          name: 'default',\r\n          value: 'twitter-share-button',\r\n        },\r\n        {\r\n          name: 'options',\r\n          value:\r\n            '[{\"name\":\"twitter-share-button\",\"label\":\"Share\",\"position\":\"0\"},{\"name\":\"twitter-follow-button\",\"label\":\"Follow\",\"position\":\"1\"},{\"name\":\"twitter-hashtag-button\",\"label\":\"Hashtag\",\"position\":\"2\"},{\"name\":\"twitter-mention-button\",\"label\":\"Mention\",\"position\":\"3\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-timeline\",\"label\":\"Timeline\",\"position\":\"5\"}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'text',\r\n      name: 'Text',\r\n      type: 'text',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Fieldset',\r\n      name: 'fieldset',\r\n      type: 'fieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Text',\r\n          name: 'Text2',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Text',\r\n          name: 'text3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text 2',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n    {\r\n      label: 'Multi Fieldset',\r\n      name: 'multiFieldset',\r\n      type: 'multiFieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Text',\r\n          name: 'Text3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Checkbox',\r\n          name: 'text2',\r\n          type: 'text',\r\n          options: [],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n    {\r\n      label: 'Recaptcha',\r\n      name: 'recaptcha',\r\n      type: 'reCaptcha',\r\n      options: [\r\n        {\r\n          name: 'doNotEncrypt',\r\n          value: '1',\r\n        },\r\n        {\r\n          name: 'doNotSave',\r\n          value: '1',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'siteKey',\r\n          value: '6LfKP_sZAAAAAAIsTU7sV8QofHdP_P_4gpqMf5g1',\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n  ]\r\n\r\n}"
             },
             {
                 "name": "fieldset",
@@ -3128,7 +3158,7 @@
                 "subtype": "variable",
                 "file": "stories/1-NgxForm-dynamic-form.stories.ts",
                 "type": "",
-                "defaultValue": "() => ({\r\n  template: `<ii-html [(ngModel)]=\"model\" [label]=\"'Custom HTML'\"></ii-html>`,\r\n  props: {\r\n    label: 'Text',\r\n    model: text('model',  '<span>Any custom HTML</span>'),\r\n  },\r\n})"
+                "defaultValue": "() => ({\r\n  template: `<ii-html [(ngModel)]=\"model\"></ii-html>`,\r\n  props: {\r\n    model: text('model',  '<span>Any custom HTML</span>'),\r\n  },\r\n})"
             },
             {
                 "name": "InputEmail",
@@ -3344,7 +3374,7 @@
                     "subtype": "variable",
                     "file": "stories/1-NgxForm-dynamic-form.stories.ts",
                     "type": "",
-                    "defaultValue": "() => ({\r\n  template: `<ii-html [(ngModel)]=\"model\" [label]=\"'Custom HTML'\"></ii-html>`,\r\n  props: {\r\n    label: 'Text',\r\n    model: text('model',  '<span>Any custom HTML</span>'),\r\n  },\r\n})"
+                    "defaultValue": "() => ({\r\n  template: `<ii-html [(ngModel)]=\"model\"></ii-html>`,\r\n  props: {\r\n    model: text('model',  '<span>Any custom HTML</span>'),\r\n  },\r\n})"
                 },
                 {
                     "name": "InputEmail",
@@ -3402,7 +3432,7 @@
                     "subtype": "variable",
                     "file": "data-sample/dynamic-form.ts",
                     "type": "DynamicFormData",
-                    "defaultValue": "{\r\n  items: [\r\n    {\r\n      label: 'Custom HTML',\r\n      name: 'html',\r\n      type: 'html',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Text <span class=\"required-sign\">(*)</span>',\r\n      name: 'text',\r\n      type: 'text',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Textarea <span class=\"required-sign\">(*)</span>',\r\n      name: 'textarea',\r\n      type: 'textarea',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text plaeeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Email <span class=\"required-sign\">(*)</span>',\r\n      name: 'email',\r\n      type: 'email',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'email placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\":\"email\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'password',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Confirm Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'confirmPassword',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'confirm password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\": \"passwordMatch\", \"options\": []}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Select',\r\n      name: 'select',\r\n      type: 'select',\r\n      options: [\r\n        {\r\n          name: 'default',\r\n          value: 'twitter-share-button',\r\n        },\r\n        {\r\n          name: 'options',\r\n          value:\r\n            '[{\"name\":\"twitter-share-button\",\"label\":\"Share\",\"position\":\"0\"},{\"name\":\"twitter-follow-button\",\"label\":\"Follow\",\"position\":\"1\"},{\"name\":\"twitter-hashtag-button\",\"label\":\"Hashtag\",\"position\":\"2\"},{\"name\":\"twitter-mention-button\",\"label\":\"Mention\",\"position\":\"3\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-timeline\",\"label\":\"Timeline\",\"position\":\"5\"}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'text',\r\n      name: 'Text',\r\n      type: 'text',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Fieldset',\r\n      name: 'fieldset',\r\n      type: 'fieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Text',\r\n          name: 'Text2',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Text',\r\n          name: 'text3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text 2',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n    {\r\n      label: 'Multi Fieldset',\r\n      name: 'multiFieldset',\r\n      type: 'multiFieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Text',\r\n          name: 'Text3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Checkbox',\r\n          name: 'text2',\r\n          type: 'text',\r\n          options: [],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n  ]\r\n\r\n}"
+                    "defaultValue": "{\r\n  items: [\r\n    {\r\n      label: 'Custom HTML',\r\n      name: 'html',\r\n      type: 'html',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Text <span class=\"required-sign\">(*)</span>',\r\n      name: 'text',\r\n      type: 'text',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Textarea <span class=\"required-sign\">(*)</span>',\r\n      name: 'textarea',\r\n      type: 'textarea',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text plaeeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Email <span class=\"required-sign\">(*)</span>',\r\n      name: 'email',\r\n      type: 'email',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'email placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\":\"email\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'password',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Confirm Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'confirmPassword',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'confirm password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\": \"passwordMatch\", \"options\": []}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Select',\r\n      name: 'select',\r\n      type: 'select',\r\n      options: [\r\n        {\r\n          name: 'default',\r\n          value: 'twitter-share-button',\r\n        },\r\n        {\r\n          name: 'options',\r\n          value:\r\n            '[{\"name\":\"twitter-share-button\",\"label\":\"Share\",\"position\":\"0\"},{\"name\":\"twitter-follow-button\",\"label\":\"Follow\",\"position\":\"1\"},{\"name\":\"twitter-hashtag-button\",\"label\":\"Hashtag\",\"position\":\"2\"},{\"name\":\"twitter-mention-button\",\"label\":\"Mention\",\"position\":\"3\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-timeline\",\"label\":\"Timeline\",\"position\":\"5\"}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'text',\r\n      name: 'Text',\r\n      type: 'text',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Fieldset',\r\n      name: 'fieldset',\r\n      type: 'fieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Text',\r\n          name: 'Text2',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Text',\r\n          name: 'text3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text 2',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n    {\r\n      label: 'Multi Fieldset',\r\n      name: 'multiFieldset',\r\n      type: 'multiFieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Text',\r\n          name: 'Text3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Checkbox',\r\n          name: 'text2',\r\n          type: 'text',\r\n          options: [],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n    {\r\n      label: 'Recaptcha',\r\n      name: 'recaptcha',\r\n      type: 'reCaptcha',\r\n      options: [\r\n        {\r\n          name: 'doNotEncrypt',\r\n          value: '1',\r\n        },\r\n        {\r\n          name: 'doNotSave',\r\n          value: '1',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'siteKey',\r\n          value: '6LfKP_sZAAAAAAIsTU7sV8QofHdP_P_4gpqMf5g1',\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n  ]\r\n\r\n}"
                 }
             ],
             "stories/0-NgxForm-validation.stories.ts": [
@@ -3553,6 +3583,15 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/ildar-icoosoft/ngx-common/src/lib/services/unsubscribe.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "UnsubscribeService",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/ildar-icoosoft/ngx-common/src/test.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -3578,7 +3617,7 @@
                 "linktype": "component",
                 "name": "DynamicFormComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/32",
+                "coverageCount": "0/30",
                 "status": "low"
             },
             {

@@ -12,7 +12,9 @@
     "build-storybook": "npm run docs:json && build-storybook"
   },
   "private": true,
-  "workspaces": ["projects/ildar-icoosoft/*"],
+  "workspaces": [
+    "projects/ildar-icoosoft/*"
+  ],
   "dependencies": {
     "@angular/animations": "~10.2.0",
     "@angular/common": "~10.2.0",
@@ -22,7 +24,6 @@
     "@angular/platform-browser": "~10.2.0",
     "@angular/platform-browser-dynamic": "~10.2.0",
     "@angular/router": "~10.2.0",
-    "@storybook/addon-knobs": "^6.1.10",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
@@ -35,8 +36,9 @@
     "@compodoc/compodoc": "^1.1.11",
     "@storybook/addon-actions": "^6.1.8",
     "@storybook/addon-essentials": "^6.1.8",
+    "@storybook/addon-knobs": "^6.1.10",
     "@storybook/addon-links": "^6.1.8",
-    "@storybook/angular": "^6.1.8",
+    "@storybook/angular": "^6.1.10",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",

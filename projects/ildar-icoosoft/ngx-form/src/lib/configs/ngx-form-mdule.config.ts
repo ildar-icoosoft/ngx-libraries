@@ -4,6 +4,9 @@ import {DynamicFieldData} from '../interfaces/dynamic-field-data';
 import {DynamicFieldDataOption} from '../interfaces/dynamic-field-data-option';
 import {Validators} from '@angular/forms';
 import {validateEqual} from '../validators';
+import {InputComponent} from '../components/input/input.component';
+import {SelectComponent} from '../components/select/select.component';
+import {TextareaComponent} from '../components/textarea/textarea.component';
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
   fields: {

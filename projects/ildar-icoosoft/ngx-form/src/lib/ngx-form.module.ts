@@ -9,16 +9,19 @@ import {DynamicFormComponent} from './components/dynamic-form/dynamic-form.compo
 import {DynamicFieldDirective} from './directives/dynamic-field.directive';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {defaultNgxFormModuleConfig} from './configs/ngx-form-mdule.config';
+import { InputComponent } from './components/input/input.component';
+import { TextareaComponent } from './components/textarea/textarea.component';
+import { SelectComponent } from './components/select/select.component';
 
 
 @NgModule({
-  declarations: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective],
+  declarations: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective],
+  exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent],
   providers: [{
     provide: NGX_FORM_MODULE_CONFIG,
     useValue: defaultNgxFormModuleConfig

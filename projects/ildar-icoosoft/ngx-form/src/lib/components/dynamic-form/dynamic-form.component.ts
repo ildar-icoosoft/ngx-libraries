@@ -1,10 +1,9 @@
-import {AfterViewInit, Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, QueryList, ViewChildren} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Inject, Input, OnInit, Output, QueryList, ViewChildren} from '@angular/core';
 import {DynamicFormData} from '../../interfaces/dynamic-form-data';
 import {FormSubmitData} from '../../interfaces/form-submit-data';
 import {ControlChangeData} from '../../interfaces/control-change-data';
 import {AbstractControl, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
 import {DynamicFormButton} from '../../interfaces/dynamic-form-button';
-import {Subject} from 'rxjs';
 import {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';
 import {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';
 import {DynamicFieldDirective} from '../../directives/dynamic-field.directive';
@@ -14,13 +13,14 @@ import {takeUntil} from 'rxjs/operators';
 import {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';
 import {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';
 import {FormError} from '../../interfaces/form-error';
+import {UnsubscribeService} from 'ii-ngx-common';
 
 @Component({
   selector: 'ii-dynamic-form',
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.css']
 })
-export class DynamicFormComponent implements OnInit, AfterViewInit, OnDestroy {
+export class DynamicFormComponent implements OnInit, AfterViewInit {
 
   @Input() formData: DynamicFormData;
   @Input() formCssClass = '';
@@ -42,9 +42,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChildren(DynamicFieldDirective) dynamicComponents: QueryList<DynamicFieldDirective>;
 
-  private destroy$: Subject<void> = new Subject<void>();
-
-  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}
+  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig, private ngUnsubscribe$: UnsubscribeService) {}
 
   ngAfterViewInit(): void {
     this.loadForm.emit(this);
@@ -66,7 +64,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit, OnDestroy {
       const formControl = new FormControl(value, validators);
 
       formControl.valueChanges.pipe(
-        takeUntil(this.destroy$)
+        takeUntil(this.ngUnsubscribe$)
       ).subscribe(controlValue => this.controlChange.emit({
         name: item.name,
         formControl,
@@ -79,13 +77,8 @@ export class DynamicFormComponent implements OnInit, AfterViewInit, OnDestroy {
     this.group.setValidators(groupValidators);
 
     this.group.valueChanges.pipe(
-      takeUntil(this.destroy$)
+      takeUntil(this.ngUnsubscribe$)
     ).subscribe(values => this.groupChange.emit(values));
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.unsubscribe();
   }
 
   getGroup(): FormGroup {

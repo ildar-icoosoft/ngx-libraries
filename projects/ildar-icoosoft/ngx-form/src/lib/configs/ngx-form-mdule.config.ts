@@ -10,6 +10,7 @@ import {TextareaComponent} from '../components/textarea/textarea.component';
 import {HtmlComponent} from '../components/html/html.component';
 import {MultiFieldsetComponent} from '../components/multi-fieldset/multi-fieldset.component';
 import {FieldsetComponent} from '../components/fieldset/fieldset.component';
+import {ReCaptchaComponent} from '../components/re-captcha/re-captcha.component';
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
   fields: {
@@ -62,6 +63,23 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
         return {
           placeholder,
           readonly
+        };
+      }
+    },
+    reCaptcha: {
+      component: ReCaptchaComponent,
+      needToShowLabelOutside: true,
+      props: {},
+      mapConnectDataToProps: (connectData: DynamicFieldData) => {
+        const fieldDataOptions: DynamicFieldDataOption[] = connectData.options;
+
+        return {
+          theme: getFieldDataOptionValue(fieldDataOptions, 'theme'),
+          type: getFieldDataOptionValue(fieldDataOptions, 'type'),
+          size: getFieldDataOptionValue(fieldDataOptions, 'size'),
+          tabIndex: getFieldDataOptionValue(fieldDataOptions, 'tabIndex'),
+          badge: getFieldDataOptionValue(fieldDataOptions, 'badge'),
+          siteKey: getFieldDataOptionValue(fieldDataOptions, 'siteKey'),
         };
       }
     },

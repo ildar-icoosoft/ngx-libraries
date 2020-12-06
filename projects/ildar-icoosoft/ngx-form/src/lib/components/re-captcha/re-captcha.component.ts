@@ -1,5 +1,6 @@
 import {Component, forwardRef, Input, ViewChild} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {RecaptchaComponent} from 'ng-recaptcha';
 
 let nextId = 0;
 

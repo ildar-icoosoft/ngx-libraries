@@ -9,6 +9,7 @@
     "@angular/core": "^10.2.0"
   },
   "dependencies": {
+    "ii-ngx-common": "^0.1.0",
     "ng-recaptcha": "^6.1.0",
     "tslib": "^2.0.0"
   }

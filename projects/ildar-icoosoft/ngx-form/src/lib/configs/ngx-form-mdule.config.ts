@@ -7,6 +7,9 @@ import {validateEqual} from '../validators';
 import {InputComponent} from '../components/input/input.component';
 import {SelectComponent} from '../components/select/select.component';
 import {TextareaComponent} from '../components/textarea/textarea.component';
+import {HtmlComponent} from '../components/html/html.component';
+import {MultiFieldsetComponent} from '../components/multi-fieldset/multi-fieldset.component';
+import {FieldsetComponent} from '../components/fieldset/fieldset.component';
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
   fields: {
@@ -16,8 +19,8 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       props: {
         type: 'text'
       },
-      mapConnectDataToProps: (connectData: DynamicFieldData) => {
-        const fieldDataOptions: DynamicFieldDataOption[] = connectData.options;
+      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
+        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
 
         const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);
 
@@ -34,8 +37,8 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       props: {
         type: 'number'
       },
-      mapConnectDataToProps: (connectData: DynamicFieldData) => {
-        const fieldDataOptions: DynamicFieldDataOption[] = connectData.options;
+      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
+        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
 
         const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);
 
@@ -50,8 +53,8 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       component: TextareaComponent,
       needToShowLabelOutside: true,
       props: {},
-      mapConnectDataToProps: (connectData: DynamicFieldData) => {
-        const fieldDataOptions: DynamicFieldDataOption[] = connectData.options;
+      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
+        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
 
         const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);
 
@@ -65,8 +68,8 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
     select: {
       component: SelectComponent,
       needToShowLabelOutside: true,
-      mapConnectDataToProps: (connectData: DynamicFieldData) => {
-        const fieldDataOptions: DynamicFieldDataOption[] = connectData.options;
+      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
+        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
 
         let selectOptions = [];
 
@@ -89,12 +92,42 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       props: {
         type: 'email'
       },
-      mapConnectDataToProps: (connectData: DynamicFieldData) => {
-        const fieldDataOptions: DynamicFieldDataOption[] = connectData.options;
+      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
+        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
 
         const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');
         return {
           placeholder
+        };
+      }
+    },
+    fieldset: {
+      component: FieldsetComponent,
+      needToShowLabelOutside: true,
+      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
+        return {
+          items: fieldData.items
+        };
+      }
+    },
+    multiFieldset: {
+      component: MultiFieldsetComponent,
+      needToShowLabelOutside: true,
+      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
+        return {
+          items: fieldData.items
+        };
+      }
+    },
+    html: {
+      component: HtmlComponent,
+      needToShowLabelOutside: true,
+      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
+        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
+
+        return {
+          // label: connectData.label,
+          cssClass: getFieldDataOptionValue(fieldDataOptions, 'inputCssClass', '')
         };
       }
     },

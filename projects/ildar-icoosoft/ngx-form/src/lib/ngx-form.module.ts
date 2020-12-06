@@ -12,16 +12,19 @@ import {defaultNgxFormModuleConfig} from './configs/ngx-form-mdule.config';
 import { InputComponent } from './components/input/input.component';
 import { TextareaComponent } from './components/textarea/textarea.component';
 import { SelectComponent } from './components/select/select.component';
+import { HtmlComponent } from './components/html/html.component';
+import { FieldsetComponent } from './components/fieldset/fieldset.component';
+import { MultiFieldsetComponent } from './components/multi-fieldset/multi-fieldset.component';
 
 
 @NgModule({
-  declarations: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent],
+  declarations: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent],
+  exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent],
   providers: [{
     provide: NGX_FORM_MODULE_CONFIG,
     useValue: defaultNgxFormModuleConfig

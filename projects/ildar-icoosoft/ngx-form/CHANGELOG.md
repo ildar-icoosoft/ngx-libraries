@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/ii-ngx-form@0.1.0...ii-ngx-form@0.2.0) (2020-12-06)
+
+
+### Features
+
+* NGXLIBRARIES-6 dynamic form components ([#12](https://github.com/ildar-icoosoft/ngx-libraries/issues/12)) ([b376928](https://github.com/ildar-icoosoft/ngx-libraries/commit/b3769282adb060fc76ff8c69d5b6641f20dd3793))
+
+
+
+
+
 # 0.1.0 (2020-11-28)
 
 

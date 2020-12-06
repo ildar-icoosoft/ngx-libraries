@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/ii-ngx-common@0.1.0...ii-ngx-common@0.2.0) (2020-12-06)
+
+
+### Features
+
+* NGXLIBRARIES-13 create unsubscribe method ([#14](https://github.com/ildar-icoosoft/ngx-libraries/issues/14)) ([0b29adb](https://github.com/ildar-icoosoft/ngx-libraries/commit/0b29adb072fc00d1e33d91ae6c21d4f150ee81ce))
+
+
+
+
+
 # 0.1.0 (2020-11-28)
 
 

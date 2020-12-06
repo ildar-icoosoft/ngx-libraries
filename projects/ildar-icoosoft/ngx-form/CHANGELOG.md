@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/ii-ngx-form@0.2.0...ii-ngx-form@0.3.0) (2020-12-06)
+
+
+### Features
+
+* NGXLIBRARIES-12 recaptcha ([#13](https://github.com/ildar-icoosoft/ngx-libraries/issues/13)) ([19a866a](https://github.com/ildar-icoosoft/ngx-libraries/commit/19a866ad8ee7bef67356058b785fe3e1df6afb6b))
+
+
+
+
+
 # [0.2.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/ii-ngx-form@0.1.0...ii-ngx-form@0.2.0) (2020-12-06)
 
 

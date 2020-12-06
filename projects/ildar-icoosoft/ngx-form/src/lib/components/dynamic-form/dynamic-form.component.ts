@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, EventEmitter, Inject, Input, OnInit, Output, QueryList, ViewChildren} from '@angular/core';
+import {UnsubscribeService} from 'ii-ngx-common';
 import {DynamicFormData} from '../../interfaces/dynamic-form-data';
 import {FormSubmitData} from '../../interfaces/form-submit-data';
 import {ControlChangeData} from '../../interfaces/control-change-data';
@@ -13,12 +14,13 @@ import {takeUntil} from 'rxjs/operators';
 import {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';
 import {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';
 import {FormError} from '../../interfaces/form-error';
-import {UnsubscribeService} from 'ii-ngx-common';
+
 
 @Component({
   selector: 'ii-dynamic-form',
   templateUrl: './dynamic-form.component.html',
-  styleUrls: ['./dynamic-form.component.css']
+  styleUrls: ['./dynamic-form.component.css'],
+  providers: [UnsubscribeService]
 })
 export class DynamicFormComponent implements OnInit, AfterViewInit {
 

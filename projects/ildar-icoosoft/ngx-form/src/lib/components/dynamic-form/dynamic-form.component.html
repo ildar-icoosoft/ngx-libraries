@@ -23,7 +23,7 @@ template: `
       <div class="col-12">
         <div class="connect-form-buttons-container">
           <div [class]="button.cssContainerClass || ''" *ngFor="let button of buttons">
-            <button [class]="'btn btn-primary ' + button.cssClass || ''" [class.disabled]="group.invalid" (click)="onButtonClick(button, $event)">
+            <button [class]="'btn btn-primary ' + (button.cssClass || '')" [class.disabled]="group.invalid" (click)="onButtonClick(button, $event)">
               <i class="fa fa-spinner fa-pulse" *ngIf="isSubmitting"></i>
               {{button.label}}
             </button>

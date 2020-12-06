@@ -24,6 +24,15 @@ import { MultiFieldsetComponent } from './components/multi-fieldset/multi-fields
     FormsModule,
     ReactiveFormsModule,
   ],
+  entryComponents: [
+    InputComponent,
+    ValidationControlComponent,
+    FieldsetComponent,
+    HtmlComponent,
+    MultiFieldsetComponent,
+    SelectComponent,
+    TextareaComponent
+  ],
   exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent],
   providers: [{
     provide: NGX_FORM_MODULE_CONFIG,

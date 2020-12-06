@@ -1,10 +1,11 @@
 import {DynamicFieldData} from './dynamic-field-data';
 import {ControlValueAccessor, ValidatorFn} from '@angular/forms';
+import {Type} from '@angular/core';
 
 export interface NgxFormModuleConfig {
   fields?: {
     [key: string]: {
-      component: ControlValueAccessor,
+      component: Type<ControlValueAccessor>,
       needToShowLabelOutside?: boolean;
       props?: {
         [key: string]: any

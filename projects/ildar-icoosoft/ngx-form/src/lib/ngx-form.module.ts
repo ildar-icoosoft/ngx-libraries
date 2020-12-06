@@ -7,6 +7,7 @@ import {NgxFormModuleConfig} from './interfaces/ngx-form-module-config';
 import {NGX_FORM_MODULE_CONFIG} from './constants/ngx-form-module-config';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { DynamicFieldDirective } from './directives/dynamic-field.directive';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 const defaultConfig: NgxFormModuleConfig = {
   errorMessages: {
@@ -24,7 +25,9 @@ const defaultConfig: NgxFormModuleConfig = {
 @NgModule({
   declarations: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective],
   providers: [{

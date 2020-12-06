@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/ii-ngx-form@0.3.0...ii-ngx-form@0.4.0) (2020-12-06)
+
+
+### Features
+
+* NGXLIBRARIES-15 use unsubscribe service in NgxForm module ([#15](https://github.com/ildar-icoosoft/ngx-libraries/issues/15)) ([4010386](https://github.com/ildar-icoosoft/ngx-libraries/commit/4010386adc90d17ce540cfc6bd6661f89b1f3974))
+* NGXLIBRARIES-15 use unsubscribe service in NgxForm module ([#16](https://github.com/ildar-icoosoft/ngx-libraries/issues/16)) ([8e5347f](https://github.com/ildar-icoosoft/ngx-libraries/commit/8e5347f9a2807d0abe962fe7dd0d6ce4c660e732))
+
+
+
+
+
 # [0.3.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/ii-ngx-form@0.2.0...ii-ngx-form@0.3.0) (2020-12-06)
 
 

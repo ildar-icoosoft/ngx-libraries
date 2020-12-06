@@ -1,20 +1,20 @@
 template: `
 <form [formGroup]="group" novalidate *ngIf="formData" [class]="formCssClass">
-  <bubbleup-form-validation-errors [group]="group"></bubbleup-form-validation-errors>
+  <ii-form-validation-errors [group]="group"></ii-form-validation-errors>
 
   <div class="container">
     <div class="row">
       <div *ngFor="let fieldData of formData.items; let i = index" [class]="getCssClass(fieldData)">
         <div [class]="'form-group ' + getFormGroupCssClass(fieldData)">
-          <bubbleup-validation-control [control]="group.controls[fieldData.name]">
+          <ii-validation-control [control]="group.controls[fieldData.name]">
             <label [for]="fieldData.name + '_' + i" *ngIf="needToShowLabelOutside(fieldData)" [innerHTML]="fieldData.label" [class]="getLabelCssClass(fieldData)"></label>
             <ng-container
-              bubbleupConnectField
+              iiDynamicField
               [inputId]="fieldData.name + '_' + i"
               [formControl]="group.controls[fieldData.name]"
               [fieldData]="fieldData">
             </ng-container>
-          </bubbleup-validation-control>
+          </ii-validation-control>
         </div>
       </div>
     </div>

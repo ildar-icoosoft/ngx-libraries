@@ -1,17 +1,18 @@
 import { moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
 import { text, withKnobs } from '@storybook/addon-knobs';
-import {FormSubmitData} from '../projects/ildar-icoosoft/ngx-form/src/lib/interfaces/form-submit-data';
-import {NgxFormModule} from '../projects/ildar-icoosoft/ngx-form/src/lib/ngx-form.module';
-import {InputComponent} from '../projects/ildar-icoosoft/ngx-form/src/lib/components/input/input.component';
-import {DynamicFieldData} from '../projects/ildar-icoosoft/ngx-form/src/lib/interfaces/dynamic-field-data';
-import {DynamicFieldDataOption} from '../projects/ildar-icoosoft/ngx-form/src/lib/interfaces/dynamic-field-data-option';
-import {getFieldDataOptionValue} from '../projects/ildar-icoosoft/ngx-form/src/lib/utils/dynamic-form';
-import {DynamicFormComponent} from '../projects/ildar-icoosoft/ngx-form/src/lib/components/dynamic-form/dynamic-form.component';
+import {FormSubmitData} from 'ii-ngx-form/src/lib/interfaces/form-submit-data';
+import {NgxFormModule} from 'ii-ngx-form/src/lib/ngx-form.module';
+import {InputComponent} from 'ii-ngx-form/src/lib/components/input/input.component';
+import {DynamicFieldData} from 'ii-ngx-form/src/lib/interfaces/dynamic-field-data';
+import {DynamicFieldDataOption} from 'ii-ngx-form/src/lib/interfaces/dynamic-field-data-option';
+import {getFieldDataOptionValue} from 'ii-ngx-form/src/lib/utils/dynamic-form';
+import {DynamicFormComponent} from 'ii-ngx-form/src/lib/components/dynamic-form/dynamic-form.component';
 import {dynamicFormData} from '../data-sample/dynamic-form';
-import {SelectComponent} from '../projects/ildar-icoosoft/ngx-form/src/lib/components/select/select.component';
-import {FieldsetComponent} from '../projects/ildar-icoosoft/ngx-form/src/lib/components/fieldset/fieldset.component';
-import {MultiFieldsetComponent} from '../projects/ildar-icoosoft/ngx-form/src/lib/components/multi-fieldset/multi-fieldset.component';
+import {SelectComponent} from 'ii-ngx-form/src/lib/components/select/select.component';
+import {FieldsetComponent} from 'ii-ngx-form/src/lib/components/fieldset/fieldset.component';
+import {MultiFieldsetComponent} from 'ii-ngx-form/src/lib/components/multi-fieldset/multi-fieldset.component';
+import {ReCaptchaComponent} from 'ii-ngx-form/src/lib/components/re-captcha/re-captcha.component';
 
 
 const handleSubmit = (data: FormSubmitData) => {
@@ -137,6 +138,16 @@ export const Select = () => ({
 });
 Select.story = {
   name: `<ii-select>`
+};
+
+export const recaptcha = () => ({
+  component: ReCaptchaComponent,
+  props: {
+    siteKey: '6LfKP_sZAAAAAAIsTU7sV8QofHdP_P_4gpqMf5g1',
+  },
+});
+recaptcha.story = {
+  name: `<ii-re-captcha>`
 };
 
 export const html = () => ({

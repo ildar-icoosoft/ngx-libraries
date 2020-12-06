@@ -463,11 +463,11 @@
     "directives": [
         {
             "name": "DynamicFieldDirective",
-            "id": "directive-DynamicFieldDirective-99354d7c41fc7d505896e955b2b508bc",
+            "id": "directive-DynamicFieldDirective-571853f6ebf1371a42f8f591c3e4ff66",
             "file": "projects/ildar-icoosoft/ngx-form/src/lib/directives/dynamic-field.directive.ts",
             "type": "directive",
             "description": "",
-            "sourceCode": "import {\n  ComponentFactory,\n  ComponentFactoryResolver,\n  ComponentRef,\n  Directive,\n  forwardRef,\n  Inject,\n  Input,\n  OnInit,\n  ViewContainerRef\n} from '@angular/core';\nimport {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';\nimport {DynamicFieldData} from '../interfaces/dynamic-field-data';\nimport {NGX_FORM_MODULE_CONFIG} from '../constants/ngx-form-module-config';\nimport {NgxFormModuleConfig} from '../interfaces/ngx-form-module-config';\n\n@Directive({\n  selector: '[iiDynamicField]',\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => DynamicFieldDirective),\n      multi: true\n    }\n  ]\n})\nexport class DynamicFieldDirective implements OnInit, ControlValueAccessor {\n\n  @Input() fieldData: DynamicFieldData;\n  @Input() inputId: string;\n\n  component: ComponentRef<ControlValueAccessor>;\n\n  constructor(\n    private componentFactoryResolver: ComponentFactoryResolver,\n    private viewContainerRef: ViewContainerRef,\n    @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig\n  ) {\n  }\n\n  ngOnInit(): void {\n    const fieldData: DynamicFieldData = this.fieldData;\n\n    const itemConfig = this.config.fields[fieldData.type];\n\n    if (!itemConfig) {\n      const supportedTypes: string = Object.keys(this.config.fields).join(', ');\n      throw Error(\n        `Trying to use an unsupported type (${fieldData.type}).\n        Supported types: ${supportedTypes}`\n      );\n    }\n\n    const componentFactory: ComponentFactory<ControlValueAccessor> =\n      this.componentFactoryResolver.resolveComponentFactory(itemConfig.component);\n\n    this.component = this.viewContainerRef.createComponent(componentFactory);\n\n    const props: Record<string, any> = {};\n\n    if (this.inputId) {\n      props.inputId = this.inputId;\n    }\n\n    if (itemConfig.props) {\n      Object.assign(props, itemConfig.props);\n    }\n    if (itemConfig.mapConnectDataToProps) {\n      Object.assign(props, itemConfig.mapConnectDataToProps(fieldData));\n    }\n\n    Object.assign(this.component.instance, props);\n\n    this.component.changeDetectorRef.detectChanges();\n  }\n\n  registerOnChange(fn): void {\n    if (!this.component || !this.component.instance) {\n      return;\n    }\n\n    return this.component.instance.registerOnChange(fn);\n  }\n\n  registerOnTouched(fn): void {\n    if (!this.component || !this.component.instance) {\n      return;\n    }\n\n    return this.component.instance.registerOnTouched(fn);\n  }\n\n  writeValue(value: string | undefined): void {\n    if (!this.component || !this.component.instance) {\n      return;\n    }\n\n    this.component.instance.writeValue(value);\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    if (!this.component || !this.component.instance) {\n      return;\n    }\n\n    this.component.instance.setDisabledState(isDisabled);\n  }\n\n}\n",
+            "sourceCode": "import {\r\n  ComponentFactory,\r\n  ComponentFactoryResolver,\r\n  ComponentRef,\r\n  Directive,\r\n  forwardRef,\r\n  Inject,\r\n  Input,\r\n  OnInit,\r\n  ViewContainerRef\r\n} from '@angular/core';\r\nimport {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';\r\nimport {DynamicFieldData} from '../interfaces/dynamic-field-data';\r\nimport {NGX_FORM_MODULE_CONFIG} from '../constants/ngx-form-module-config';\r\nimport {NgxFormModuleConfig} from '../interfaces/ngx-form-module-config';\r\n\r\n@Directive({\r\n  selector: '[iiDynamicField]',\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => DynamicFieldDirective),\r\n      multi: true\r\n    }\r\n  ]\r\n})\r\nexport class DynamicFieldDirective implements OnInit, ControlValueAccessor {\r\n\r\n  @Input() fieldData: DynamicFieldData;\r\n  @Input() inputId: string;\r\n\r\n  component: ComponentRef<ControlValueAccessor>;\r\n\r\n  constructor(\r\n    private componentFactoryResolver: ComponentFactoryResolver,\r\n    private viewContainerRef: ViewContainerRef,\r\n    @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig\r\n  ) {\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    const fieldData: DynamicFieldData = this.fieldData;\r\n\r\n    const itemConfig = this.config.fields[fieldData.type];\r\n\r\n    if (!itemConfig) {\r\n      const supportedTypes: string = Object.keys(this.config.fields).join(', ');\r\n      throw Error(\r\n        `Trying to use an unsupported type (${fieldData.type}).\r\n        Supported types: ${supportedTypes}`\r\n      );\r\n    }\r\n\r\n    const componentFactory: ComponentFactory<ControlValueAccessor> =\r\n      this.componentFactoryResolver.resolveComponentFactory(itemConfig.component);\r\n\r\n    this.component = this.viewContainerRef.createComponent(componentFactory);\r\n\r\n    const props: Record<string, any> = {};\r\n\r\n    if (this.inputId) {\r\n      props.inputId = this.inputId;\r\n    }\r\n\r\n    if (itemConfig.props) {\r\n      Object.assign(props, itemConfig.props);\r\n    }\r\n    if (itemConfig.mapConnectDataToProps) {\r\n      Object.assign(props, itemConfig.mapConnectDataToProps(fieldData));\r\n    }\r\n\r\n    Object.assign(this.component.instance, props);\r\n\r\n    this.component.changeDetectorRef.detectChanges();\r\n  }\r\n\r\n  registerOnChange(fn): void {\r\n    if (!this.component || !this.component.instance) {\r\n      return;\r\n    }\r\n\r\n    return this.component.instance.registerOnChange(fn);\r\n  }\r\n\r\n  registerOnTouched(fn): void {\r\n    if (!this.component || !this.component.instance) {\r\n      return;\r\n    }\r\n\r\n    return this.component.instance.registerOnTouched(fn);\r\n  }\r\n\r\n  writeValue(value: string | undefined): void {\r\n    if (!this.component || !this.component.instance) {\r\n      return;\r\n    }\r\n\r\n    this.component.instance.writeValue(value);\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    if (!this.component || !this.component.instance) {\r\n      return;\r\n    }\r\n\r\n    this.component.instance.setDisabledState(isDisabled);\r\n  }\r\n\r\n}\r\n",
             "selector": "[iiDynamicField]",
             "providers": [
                 {
@@ -648,7 +648,7 @@
     "components": [
         {
             "name": "DynamicFormComponent",
-            "id": "component-DynamicFormComponent-4f713d84210998c396722543e3135b9e",
+            "id": "component-DynamicFormComponent-23c2fd2ac0e8008083f77dcc68754e7f",
             "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/dynamic-form/dynamic-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -667,7 +667,7 @@
             "inputsClass": [
                 {
                     "name": "buttons",
-                    "defaultValue": "[{\n    label: 'Submit',\n    onClick: () => this.validateAndSubmit()\n  }]",
+                    "defaultValue": "[{\r\n    label: 'Submit',\r\n    onClick: () => this.validateAndSubmit()\r\n  }]",
                     "line": 34,
                     "type": "DynamicFormButton[]"
                 },
@@ -1071,7 +1071,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {AfterViewInit, Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, QueryList, ViewChildren} from '@angular/core';\nimport {DynamicFormData} from '../../interfaces/dynamic-form-data';\nimport {FormSubmitData} from '../../interfaces/form-submit-data';\nimport {ControlChangeData} from '../../interfaces/control-change-data';\nimport {AbstractControl, FormControl, FormGroup, ValidatorFn} from '@angular/forms';\nimport {DynamicFormButton} from '../../interfaces/dynamic-form-button';\nimport {Subject} from 'rxjs';\nimport {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';\nimport {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';\nimport {DynamicFieldDirective} from '../../directives/dynamic-field.directive';\nimport {DynamicFieldData} from '../../interfaces/dynamic-field-data';\nimport {getFieldDataOptionValue, getGroupValidators, getValidators, needToShowLabelOutside} from '../../utils/dynamic-form';\nimport {takeUntil} from 'rxjs/operators';\nimport {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';\nimport {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';\nimport {FormError} from '../../interfaces/form-error';\n\n@Component({\n  selector: 'ii-dynamic-form',\n  templateUrl: './dynamic-form.component.html',\n  styleUrls: ['./dynamic-form.component.css']\n})\nexport class DynamicFormComponent implements OnInit, AfterViewInit, OnDestroy {\n\n  @Input() formData: DynamicFormData;\n  @Input() formCssClass = '';\n  @Input() initialValues: Record<string, 'any'> = {};\n\n  @Output() submitForm: EventEmitter<FormSubmitData> = new EventEmitter();\n  @Output() loadForm: EventEmitter<DynamicFormComponent> = new EventEmitter();\n  @Output() groupChange: EventEmitter<Record<string, any>> = new EventEmitter();\n  @Output() controlChange: EventEmitter<ControlChangeData> = new EventEmitter();\n\n  @Input() buttons: DynamicFormButton[] = [{\n    label: 'Submit',\n    onClick: () => this.validateAndSubmit()\n  }];\n\n  group: FormGroup;\n\n  isSubmitting = false;\n\n  @ViewChildren(DynamicFieldDirective) dynamicComponents: QueryList<DynamicFieldDirective>;\n\n  private destroy$: Subject<void> = new Subject<void>();\n\n  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}\n\n  ngAfterViewInit(): void {\n    this.loadForm.emit(this);\n  }\n\n  ngOnInit(): void {\n\n    const groupValidators: ValidatorFn[] = [];\n\n    this.group = new FormGroup({});\n\n    this.formData.items.forEach((item: DynamicFieldData) => {\n      const validators: ValidatorFn[] = getValidators(item, this.config);\n\n      groupValidators.push(...getGroupValidators(item, this.config));\n\n      const value = this.initialValues[item.name];\n\n      const formControl = new FormControl(value, validators);\n\n      formControl.valueChanges.pipe(\n        takeUntil(this.destroy$)\n      ).subscribe(controlValue => this.controlChange.emit({\n        name: item.name,\n        formControl,\n        value: controlValue\n      }) );\n\n      this.group.addControl(item.name, formControl);\n    });\n\n    this.group.setValidators(groupValidators);\n\n    this.group.valueChanges.pipe(\n      takeUntil(this.destroy$)\n    ).subscribe(values => this.groupChange.emit(values));\n  }\n\n  ngOnDestroy(): void {\n    this.destroy$.next();\n    this.destroy$.unsubscribe();\n  }\n\n  getGroup(): FormGroup {\n    return this.group;\n  }\n\n  getRawValues(): any {\n    return this.group.getRawValue();\n  }\n\n  getValues(): any {\n    return this.group.value;\n  }\n\n  getFormControl(name: string): AbstractControl {\n    if (!this.group.controls[name]) {\n      throw Error(`form control ${name} not found`);\n    }\n\n    return this.group.controls[name];\n  }\n\n  getFormElement(name: string): any {\n    const arr = this.dynamicComponents.toArray();\n\n    const connectFieldDirective = arr.find(item => item.fieldData.name === name);\n    if (!connectFieldDirective) {\n      throw Error(`component ${name} not found`);\n    }\n\n    return connectFieldDirective.component.instance;\n  }\n\n  getCssClass(fieldData: DynamicFieldData): string {\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\n\n    return getFieldDataOptionValue(fieldDataOptions, 'cssClass', '');\n  }\n\n  getFormGroupCssClass(fieldData: DynamicFieldData): string {\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\n\n    return getFieldDataOptionValue(fieldDataOptions, 'formGroupCssClass', '');\n  }\n\n  getLabelCssClass(fieldData: DynamicFieldData): string {\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\n\n    return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');\n  }\n\n  needToShowLabelOutside(fieldData: DynamicFieldData): boolean {\n    return needToShowLabelOutside(fieldData, this.config);\n  }\n\n  onButtonClick(button, event): void {\n    event.preventDefault();\n\n    button.onClick({\n      form: this,\n      nativeEvent: event\n    });\n  }\n\n  validateAndSubmit(): void {\n    if (this.isSubmitting) {\n      return;\n    }\n    if (this.group.invalid) {\n      return markAllFormControlsAsTouched(this.group);\n    }\n\n    const formData: any = this.group.getRawValue();\n\n    this.isSubmitting = true;\n    this.submitForm.emit({\n      values: formData,\n      setSubmitting: (isSubmitting: boolean) => this.setSubmitting(isSubmitting),\n      setErrors: (errors: FormError[]) => this.setErrors(errors)\n    });\n  }\n\n  setErrors(formErrors: FormError[]): void {\n    setFormErrors(this.group, formErrors);\n    this.isSubmitting = false;\n  }\n\n  setSubmitting(isSubmitting: boolean): void {\n    this.isSubmitting = isSubmitting;\n  }\n\n  setValues(values: any): void {\n    this.group.setValue(values);\n  }\n\n  patchValues(values: any): void {\n    this.group.patchValue(values);\n  }\n\n}\n",
+            "sourceCode": "import {AfterViewInit, Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, QueryList, ViewChildren} from '@angular/core';\r\nimport {DynamicFormData} from '../../interfaces/dynamic-form-data';\r\nimport {FormSubmitData} from '../../interfaces/form-submit-data';\r\nimport {ControlChangeData} from '../../interfaces/control-change-data';\r\nimport {AbstractControl, FormControl, FormGroup, ValidatorFn} from '@angular/forms';\r\nimport {DynamicFormButton} from '../../interfaces/dynamic-form-button';\r\nimport {Subject} from 'rxjs';\r\nimport {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';\r\nimport {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';\r\nimport {DynamicFieldDirective} from '../../directives/dynamic-field.directive';\r\nimport {DynamicFieldData} from '../../interfaces/dynamic-field-data';\r\nimport {getFieldDataOptionValue, getGroupValidators, getValidators, needToShowLabelOutside} from '../../utils/dynamic-form';\r\nimport {takeUntil} from 'rxjs/operators';\r\nimport {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';\r\nimport {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';\r\nimport {FormError} from '../../interfaces/form-error';\r\n\r\n@Component({\r\n  selector: 'ii-dynamic-form',\r\n  templateUrl: './dynamic-form.component.html',\r\n  styleUrls: ['./dynamic-form.component.css']\r\n})\r\nexport class DynamicFormComponent implements OnInit, AfterViewInit, OnDestroy {\r\n\r\n  @Input() formData: DynamicFormData;\r\n  @Input() formCssClass = '';\r\n  @Input() initialValues: Record<string, 'any'> = {};\r\n\r\n  @Output() submitForm: EventEmitter<FormSubmitData> = new EventEmitter();\r\n  @Output() loadForm: EventEmitter<DynamicFormComponent> = new EventEmitter();\r\n  @Output() groupChange: EventEmitter<Record<string, any>> = new EventEmitter();\r\n  @Output() controlChange: EventEmitter<ControlChangeData> = new EventEmitter();\r\n\r\n  @Input() buttons: DynamicFormButton[] = [{\r\n    label: 'Submit',\r\n    onClick: () => this.validateAndSubmit()\r\n  }];\r\n\r\n  group: FormGroup;\r\n\r\n  isSubmitting = false;\r\n\r\n  @ViewChildren(DynamicFieldDirective) dynamicComponents: QueryList<DynamicFieldDirective>;\r\n\r\n  private destroy$: Subject<void> = new Subject<void>();\r\n\r\n  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}\r\n\r\n  ngAfterViewInit(): void {\r\n    this.loadForm.emit(this);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n\r\n    const groupValidators: ValidatorFn[] = [];\r\n\r\n    this.group = new FormGroup({});\r\n\r\n    this.formData.items.forEach((item: DynamicFieldData) => {\r\n      const validators: ValidatorFn[] = getValidators(item, this.config);\r\n\r\n      groupValidators.push(...getGroupValidators(item, this.config));\r\n\r\n      const value = this.initialValues[item.name];\r\n\r\n      const formControl = new FormControl(value, validators);\r\n\r\n      formControl.valueChanges.pipe(\r\n        takeUntil(this.destroy$)\r\n      ).subscribe(controlValue => this.controlChange.emit({\r\n        name: item.name,\r\n        formControl,\r\n        value: controlValue\r\n      }) );\r\n\r\n      this.group.addControl(item.name, formControl);\r\n    });\r\n\r\n    this.group.setValidators(groupValidators);\r\n\r\n    this.group.valueChanges.pipe(\r\n      takeUntil(this.destroy$)\r\n    ).subscribe(values => this.groupChange.emit(values));\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.destroy$.next();\r\n    this.destroy$.unsubscribe();\r\n  }\r\n\r\n  getGroup(): FormGroup {\r\n    return this.group;\r\n  }\r\n\r\n  getRawValues(): any {\r\n    return this.group.getRawValue();\r\n  }\r\n\r\n  getValues(): any {\r\n    return this.group.value;\r\n  }\r\n\r\n  getFormControl(name: string): AbstractControl {\r\n    if (!this.group.controls[name]) {\r\n      throw Error(`form control ${name} not found`);\r\n    }\r\n\r\n    return this.group.controls[name];\r\n  }\r\n\r\n  getFormElement(name: string): any {\r\n    const arr = this.dynamicComponents.toArray();\r\n\r\n    const connectFieldDirective = arr.find(item => item.fieldData.name === name);\r\n    if (!connectFieldDirective) {\r\n      throw Error(`component ${name} not found`);\r\n    }\r\n\r\n    return connectFieldDirective.component.instance;\r\n  }\r\n\r\n  getCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'cssClass', '');\r\n  }\r\n\r\n  getFormGroupCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'formGroupCssClass', '');\r\n  }\r\n\r\n  getLabelCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');\r\n  }\r\n\r\n  needToShowLabelOutside(fieldData: DynamicFieldData): boolean {\r\n    return needToShowLabelOutside(fieldData, this.config);\r\n  }\r\n\r\n  onButtonClick(button, event): void {\r\n    event.preventDefault();\r\n\r\n    button.onClick({\r\n      form: this,\r\n      nativeEvent: event\r\n    });\r\n  }\r\n\r\n  validateAndSubmit(): void {\r\n    if (this.isSubmitting) {\r\n      return;\r\n    }\r\n    if (this.group.invalid) {\r\n      return markAllFormControlsAsTouched(this.group);\r\n    }\r\n\r\n    const formData: any = this.group.getRawValue();\r\n\r\n    this.isSubmitting = true;\r\n    this.submitForm.emit({\r\n      values: formData,\r\n      setSubmitting: (isSubmitting: boolean) => this.setSubmitting(isSubmitting),\r\n      setErrors: (errors: FormError[]) => this.setErrors(errors)\r\n    });\r\n  }\r\n\r\n  setErrors(formErrors: FormError[]): void {\r\n    setFormErrors(this.group, formErrors);\r\n    this.isSubmitting = false;\r\n  }\r\n\r\n  setSubmitting(isSubmitting: boolean): void {\r\n    this.isSubmitting = isSubmitting;\r\n  }\r\n\r\n  setValues(values: any): void {\r\n    this.group.setValue(values);\r\n  }\r\n\r\n  patchValues(values: any): void {\r\n    this.group.patchValue(values);\r\n  }\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1105,11 +1105,11 @@
                 "AfterViewInit",
                 "OnDestroy"
             ],
-            "templateData": "template: `\n<form [formGroup]=\"group\" novalidate *ngIf=\"formData\" [class]=\"formCssClass\">\n  <ii-form-validation-errors [group]=\"group\"></ii-form-validation-errors>\n\n  <div class=\"container\">\n    <div class=\"row\">\n      <div *ngFor=\"let fieldData of formData.items; let i = index\" [class]=\"getCssClass(fieldData)\">\n        <div [class]=\"'form-group ' + getFormGroupCssClass(fieldData)\">\n          <ii-validation-control [control]=\"group.controls[fieldData.name]\">\n            <label [for]=\"fieldData.name + '_' + i\" *ngIf=\"needToShowLabelOutside(fieldData)\" [innerHTML]=\"fieldData.label\" [class]=\"getLabelCssClass(fieldData)\"></label>\n            <ng-container\n              iiDynamicField\n              [inputId]=\"fieldData.name + '_' + i\"\n              [formControl]=\"group.controls[fieldData.name]\"\n              [fieldData]=\"fieldData\">\n            </ng-container>\n          </ii-validation-control>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"row\">\n      <div class=\"col-12\">\n        <div class=\"connect-form-buttons-container\">\n          <div [class]=\"button.cssContainerClass || ''\" *ngFor=\"let button of buttons\">\n            <button [class]=\"'btn btn-primary ' + button.cssClass || ''\" [class.disabled]=\"group.invalid\" (click)=\"onButtonClick(button, $event)\">\n              <i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSubmitting\"></i>\n              {{button.label}}\n            </button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</form>\n`\n"
+            "templateData": "template: `\r\n<form [formGroup]=\"group\" novalidate *ngIf=\"formData\" [class]=\"formCssClass\">\r\n  <ii-form-validation-errors [group]=\"group\"></ii-form-validation-errors>\r\n\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div *ngFor=\"let fieldData of formData.items; let i = index\" [class]=\"getCssClass(fieldData)\">\r\n        <div [class]=\"'form-group ' + getFormGroupCssClass(fieldData)\">\r\n          <ii-validation-control [control]=\"group.controls[fieldData.name]\">\r\n            <label [for]=\"fieldData.name + '_' + i\" *ngIf=\"needToShowLabelOutside(fieldData)\" [innerHTML]=\"fieldData.label\" [class]=\"getLabelCssClass(fieldData)\"></label>\r\n            <ng-container\r\n              iiDynamicField\r\n              [inputId]=\"fieldData.name + '_' + i\"\r\n              [formControl]=\"group.controls[fieldData.name]\"\r\n              [fieldData]=\"fieldData\">\r\n            </ng-container>\r\n          </ii-validation-control>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-12\">\r\n        <div class=\"connect-form-buttons-container\">\r\n          <div [class]=\"button.cssContainerClass || ''\" *ngFor=\"let button of buttons\">\r\n            <button [class]=\"'btn btn-primary ' + (button.cssClass || '')\" [class.disabled]=\"group.invalid\" (click)=\"onButtonClick(button, $event)\">\r\n              <i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSubmitting\"></i>\r\n              {{button.label}}\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</form>\r\n`\r\n"
         },
         {
             "name": "FieldsetComponent",
-            "id": "component-FieldsetComponent-fb063601070cd77577117df045fa89e2",
+            "id": "component-FieldsetComponent-95137862ecbbecddeeddca6e522b1a2f",
             "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/fieldset/fieldset.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1317,7 +1317,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {Component, forwardRef, Inject, Input, OnInit} from '@angular/core';\nimport {ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn} from '@angular/forms';\nimport {DynamicFieldData} from '../../interfaces/dynamic-field-data';\nimport {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';\nimport {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';\nimport {getFieldDataOptionValue, getValidators, needToShowLabelOutside} from '../../utils/dynamic-form';\nimport {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';\n\n@Component({\n  selector: 'ii-fieldset',\n  templateUrl: './fieldset.component.html',\n  styleUrls: ['./fieldset.component.css'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => FieldsetComponent),\n      multi: true\n    }\n  ]\n})\nexport class FieldsetComponent implements OnInit, ControlValueAccessor {\n\n  @Input() items: DynamicFieldData[] = [];\n\n  @Input() initialValues: any = {};\n\n  group: FormGroup;\n\n  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}\n\n  ngOnInit(): void {\n\n    this.group = new FormGroup({});\n\n    this.items.forEach((item: DynamicFieldData) => {\n      const validators: ValidatorFn[] = getValidators(item, this.config);\n\n      const value = this.initialValues[item.name];\n      this.group.addControl(item.name, new FormControl(value, validators));\n    });\n\n    this.group.valueChanges.subscribe((val) => {\n      this.propagateChange(val);\n    });\n  }\n\n  getLabelCssClass(fieldData: DynamicFieldData): string {\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\n\n    return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');\n  }\n\n  needToShowLabelOutside(fieldData: DynamicFieldData): boolean {\n    return needToShowLabelOutside(fieldData, this.config);\n  }\n\n\n  propagateChange = (_: any) => {};\n  propagateTouch = () => {};\n\n  registerOnChange(fn): void {\n    this.propagateChange = fn;\n  }\n\n  registerOnTouched(fn): void {\n    this.propagateTouch = fn;\n  }\n\n  writeValue(value: any): void {\n    if (value) {\n      this.group.setValue(value, {\n        emitEvent: false\n      });\n    }\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    if (isDisabled) {\n      this.group.disable();\n    } else {\n      this.group.enable();\n    }\n  }\n}\n",
+            "sourceCode": "import {Component, forwardRef, Inject, Input, OnInit} from '@angular/core';\r\nimport {ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn} from '@angular/forms';\r\nimport {DynamicFieldData} from '../../interfaces/dynamic-field-data';\r\nimport {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';\r\nimport {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';\r\nimport {getFieldDataOptionValue, getValidators, needToShowLabelOutside} from '../../utils/dynamic-form';\r\nimport {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';\r\n\r\n@Component({\r\n  selector: 'ii-fieldset',\r\n  templateUrl: './fieldset.component.html',\r\n  styleUrls: ['./fieldset.component.css'],\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => FieldsetComponent),\r\n      multi: true\r\n    }\r\n  ]\r\n})\r\nexport class FieldsetComponent implements OnInit, ControlValueAccessor {\r\n\r\n  @Input() items: DynamicFieldData[] = [];\r\n\r\n  @Input() initialValues: any = {};\r\n\r\n  group: FormGroup;\r\n\r\n  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}\r\n\r\n  ngOnInit(): void {\r\n\r\n    this.group = new FormGroup({});\r\n\r\n    this.items.forEach((item: DynamicFieldData) => {\r\n      const validators: ValidatorFn[] = getValidators(item, this.config);\r\n\r\n      const value = this.initialValues[item.name];\r\n      this.group.addControl(item.name, new FormControl(value, validators));\r\n    });\r\n\r\n    this.group.valueChanges.subscribe((val) => {\r\n      this.propagateChange(val);\r\n    });\r\n  }\r\n\r\n  getLabelCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');\r\n  }\r\n\r\n  needToShowLabelOutside(fieldData: DynamicFieldData): boolean {\r\n    return needToShowLabelOutside(fieldData, this.config);\r\n  }\r\n\r\n\r\n  propagateChange = (_: any) => {};\r\n  propagateTouch = () => {};\r\n\r\n  registerOnChange(fn): void {\r\n    this.propagateChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn): void {\r\n    this.propagateTouch = fn;\r\n  }\r\n\r\n  writeValue(value: any): void {\r\n    if (value) {\r\n      this.group.setValue(value, {\r\n        emitEvent: false\r\n      });\r\n    }\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    if (isDisabled) {\r\n      this.group.disable();\r\n    } else {\r\n      this.group.enable();\r\n    }\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1350,7 +1350,7 @@
                 "OnInit",
                 "ControlValueAccessor"
             ],
-            "templateData": "<fieldset [formGroup]=\"group\" novalidate>\n  <ii-validation-control [control]=\"group.controls[fieldData.name]\" *ngFor=\"let fieldData of items\">\n    <label [for]=\"fieldData.name\" *ngIf=\"needToShowLabelOutside(fieldData)\" [innerHTML]=\"fieldData.label\" [class]=\"getLabelCssClass(fieldData)\"></label>\n    <ng-container\n      iiDynamicField\n      [inputId]=\"fieldData.name\"\n      [formControl]=\"group.controls[fieldData.name]\"\n      [fieldData]=\"fieldData\">\n    </ng-container>\n  </ii-validation-control>\n</fieldset>\n"
+            "templateData": "<fieldset [formGroup]=\"group\" novalidate>\r\n  <ii-validation-control [control]=\"group.controls[fieldData.name]\" *ngFor=\"let fieldData of items\">\r\n    <label [for]=\"fieldData.name\" *ngIf=\"needToShowLabelOutside(fieldData)\" [innerHTML]=\"fieldData.label\" [class]=\"getLabelCssClass(fieldData)\"></label>\r\n    <ng-container\r\n      iiDynamicField\r\n      [inputId]=\"fieldData.name\"\r\n      [formControl]=\"group.controls[fieldData.name]\"\r\n      [fieldData]=\"fieldData\">\r\n    </ng-container>\r\n  </ii-validation-control>\r\n</fieldset>\r\n"
         },
         {
             "name": "FormValidationErrorsComponent",
@@ -1416,7 +1416,7 @@
         },
         {
             "name": "HtmlComponent",
-            "id": "component-HtmlComponent-426f8b848112b7933c869a89a0fc793a",
+            "id": "component-HtmlComponent-b6e79f9088ecf1f4cdb6d128e597bd41",
             "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/html/html.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1574,7 +1574,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {Component, forwardRef, Input} from '@angular/core';\nimport {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';\n\n@Component({\n  selector: 'ii-html',\n  templateUrl: './html.component.html',\n  styleUrls: ['./html.component.css'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => HtmlComponent),\n      multi: true\n    }\n  ]\n})\nexport class HtmlComponent implements ControlValueAccessor {\n\n  @Input() cssClass = '';\n\n  value = '';\n\n  isDisabled = false;\n\n  constructor() { }\n\n  propagateChange = (_: any) => {};\n  propagateTouch = () => {};\n\n  registerOnChange(fn): void {\n    this.propagateChange = fn;\n  }\n\n  registerOnTouched(fn): void {\n    this.propagateTouch = fn;\n  }\n\n  writeValue(value: string | undefined): void {\n    if (value !== undefined) {\n      this.value = value;\n    }\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.isDisabled = isDisabled;\n  }\n\n}\n\n",
+            "sourceCode": "import {Component, forwardRef, Input} from '@angular/core';\r\nimport {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'ii-html',\r\n  templateUrl: './html.component.html',\r\n  styleUrls: ['./html.component.css'],\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => HtmlComponent),\r\n      multi: true\r\n    }\r\n  ]\r\n})\r\nexport class HtmlComponent implements ControlValueAccessor {\r\n\r\n  @Input() cssClass = '';\r\n\r\n  value = '';\r\n\r\n  isDisabled = false;\r\n\r\n  constructor() { }\r\n\r\n  propagateChange = (_: any) => {};\r\n  propagateTouch = () => {};\r\n\r\n  registerOnChange(fn): void {\r\n    this.propagateChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn): void {\r\n    this.propagateTouch = fn;\r\n  }\r\n\r\n  writeValue(value: string | undefined): void {\r\n    if (value !== undefined) {\r\n      this.value = value;\r\n    }\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.isDisabled = isDisabled;\r\n  }\r\n\r\n}\r\n\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1592,11 +1592,11 @@
             "implements": [
                 "ControlValueAccessor"
             ],
-            "templateData": "<div [class]=\"cssClass\" [innerHTML]=\"value\"></div>\n"
+            "templateData": "<div [class]=\"cssClass\" [innerHTML]=\"value\"></div>\r\n"
         },
         {
             "name": "InputComponent",
-            "id": "component-InputComponent-245dfcc161616270c9f4a752fc9067e0",
+            "id": "component-InputComponent-f903f67f0cf8cfca96f46f1d74e51ad7",
             "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/input/input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1769,7 +1769,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {Component, forwardRef, Input, OnInit} from '@angular/core';\nimport {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';\n\n@Component({\n  selector: 'ii-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.css'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => InputComponent),\n      multi: true\n    }\n  ]\n})\nexport class InputComponent implements ControlValueAccessor {\n\n  @Input() type = 'text';\n  @Input() placeholder = '';\n  @Input() inputId = '';\n  @Input() readonly = false;\n\n  value = '';\n\n  isDisabled = false;\n\n  constructor() { }\n\n  propagateChange = (_: any) => {};\n  propagateTouch = () => {};\n\n  registerOnChange(fn): void {\n    this.propagateChange = fn;\n  }\n\n  registerOnTouched(fn): void {\n    this.propagateTouch = fn;\n  }\n\n  writeValue(value: string | undefined): void {\n    if (value !== undefined) {\n      this.value = value;\n    }\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.isDisabled = isDisabled;\n  }\n\n}\n",
+            "sourceCode": "import {Component, forwardRef, Input, OnInit} from '@angular/core';\r\nimport {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'ii-input',\r\n  templateUrl: './input.component.html',\r\n  styleUrls: ['./input.component.css'],\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => InputComponent),\r\n      multi: true\r\n    }\r\n  ]\r\n})\r\nexport class InputComponent implements ControlValueAccessor {\r\n\r\n  @Input() type = 'text';\r\n  @Input() placeholder = '';\r\n  @Input() inputId = '';\r\n  @Input() readonly = false;\r\n\r\n  value = '';\r\n\r\n  isDisabled = false;\r\n\r\n  constructor() { }\r\n\r\n  propagateChange = (_: any) => {};\r\n  propagateTouch = () => {};\r\n\r\n  registerOnChange(fn): void {\r\n    this.propagateChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn): void {\r\n    this.propagateTouch = fn;\r\n  }\r\n\r\n  writeValue(value: string | undefined): void {\r\n    if (value !== undefined) {\r\n      this.value = value;\r\n    }\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.isDisabled = isDisabled;\r\n  }\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1787,11 +1787,11 @@
             "implements": [
                 "ControlValueAccessor"
             ],
-            "templateData": "<input\n  [value]=\"value\"\n  [type]=\"type\"\n  [id]=\"inputId\"\n  [placeholder]=\"placeholder\"\n  (input)=\"propagateChange($event.target.value)\"\n  (blur)=\"propagateTouch()\"\n  [readonly]=\"readonly\"\n  [disabled]=\"isDisabled\">\n"
+            "templateData": "<input\r\n  [value]=\"value\"\r\n  [type]=\"type\"\r\n  [id]=\"inputId\"\r\n  [placeholder]=\"placeholder\"\r\n  (input)=\"propagateChange($event.target.value)\"\r\n  (blur)=\"propagateTouch()\"\r\n  [readonly]=\"readonly\"\r\n  [disabled]=\"isDisabled\">\r\n"
         },
         {
             "name": "MultiFieldsetComponent",
-            "id": "component-MultiFieldsetComponent-159fecc0e0265e1e211e20e28f8b4f1a",
+            "id": "component-MultiFieldsetComponent-364fda83645aca5e094f4777736e98f3",
             "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/multi-fieldset/multi-fieldset.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2073,7 +2073,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {Component, forwardRef, Inject, Input, OnInit} from '@angular/core';\nimport {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn} from '@angular/forms';\nimport {DynamicFieldData} from '../../interfaces/dynamic-field-data';\nimport {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';\nimport {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';\nimport {getFieldDataOptionValue, getValidators, needToShowLabelOutside} from '../../utils/dynamic-form';\nimport {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';\n\n@Component({\n  selector: 'ii-multi-fieldset',\n  templateUrl: './multi-fieldset.component.html',\n  styleUrls: ['./multi-fieldset.component.css'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => MultiFieldsetComponent),\n      multi: true\n    }\n  ]\n})\nexport class MultiFieldsetComponent implements OnInit, ControlValueAccessor {\n\n  @Input() items: DynamicFieldData[] = [];\n\n  @Input() initialValues: any = {};\n\n  group: FormGroup;\n\n  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}\n\n  addItem(): void {\n    const groupItem = this.generateGroupItem();\n\n    (this.group.controls.items as FormArray).push(groupItem);\n  }\n\n  getFormArrayControls(formGroup: FormGroup, key: string): FormGroup[] {\n    return (formGroup.controls[key] as FormArray).controls as FormGroup[];\n  }\n\n  removeItem(index: number): void {\n    (this.group.controls.items as FormArray).removeAt(index);\n  }\n\n  ngOnInit(): void {\n\n    const groupItem = this.generateGroupItem();\n\n    const formArray = new FormArray([\n      groupItem\n    ]);\n\n    this.group = new FormGroup({\n      items: formArray\n    });\n\n    // debugger;\n\n    this.group.valueChanges.subscribe((val) => {\n      this.propagateChange(val);\n    });\n  }\n\n  getLabelCssClass(fieldData: DynamicFieldData): string {\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\n\n    return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');\n  }\n\n  needToShowLabelOutside(fieldData: DynamicFieldData): boolean {\n    return needToShowLabelOutside(fieldData, this.config);\n  }\n\n  private generateGroupItem(): FormGroup {\n    const group = new FormGroup({});\n\n    this.items.forEach((item: DynamicFieldData) => {\n      const validators: ValidatorFn[] = getValidators(item, this.config);\n\n      const value = this.initialValues[item.name];\n      group.addControl(item.name, new FormControl(value, validators));\n    });\n\n    return group;\n  }\n\n\n  propagateChange = (_: any) => {};\n  propagateTouch = () => {};\n\n  registerOnChange(fn): void {\n    this.propagateChange = fn;\n  }\n\n  registerOnTouched(fn): void {\n    this.propagateTouch = fn;\n  }\n\n  writeValue(value: any): void {\n    if (value) {\n      this.group.setValue(value, {\n        emitEvent: false\n      });\n    }\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    if (isDisabled) {\n      this.group.disable();\n    } else {\n      this.group.enable();\n    }\n  }\n}\n\n",
+            "sourceCode": "import {Component, forwardRef, Inject, Input, OnInit} from '@angular/core';\r\nimport {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn} from '@angular/forms';\r\nimport {DynamicFieldData} from '../../interfaces/dynamic-field-data';\r\nimport {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';\r\nimport {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';\r\nimport {getFieldDataOptionValue, getValidators, needToShowLabelOutside} from '../../utils/dynamic-form';\r\nimport {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';\r\n\r\n@Component({\r\n  selector: 'ii-multi-fieldset',\r\n  templateUrl: './multi-fieldset.component.html',\r\n  styleUrls: ['./multi-fieldset.component.css'],\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => MultiFieldsetComponent),\r\n      multi: true\r\n    }\r\n  ]\r\n})\r\nexport class MultiFieldsetComponent implements OnInit, ControlValueAccessor {\r\n\r\n  @Input() items: DynamicFieldData[] = [];\r\n\r\n  @Input() initialValues: any = {};\r\n\r\n  group: FormGroup;\r\n\r\n  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}\r\n\r\n  addItem(): void {\r\n    const groupItem = this.generateGroupItem();\r\n\r\n    (this.group.controls.items as FormArray).push(groupItem);\r\n  }\r\n\r\n  getFormArrayControls(formGroup: FormGroup, key: string): FormGroup[] {\r\n    return (formGroup.controls[key] as FormArray).controls as FormGroup[];\r\n  }\r\n\r\n  removeItem(index: number): void {\r\n    (this.group.controls.items as FormArray).removeAt(index);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n\r\n    const groupItem = this.generateGroupItem();\r\n\r\n    const formArray = new FormArray([\r\n      groupItem\r\n    ]);\r\n\r\n    this.group = new FormGroup({\r\n      items: formArray\r\n    });\r\n\r\n    // debugger;\r\n\r\n    this.group.valueChanges.subscribe((val) => {\r\n      this.propagateChange(val);\r\n    });\r\n  }\r\n\r\n  getLabelCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');\r\n  }\r\n\r\n  needToShowLabelOutside(fieldData: DynamicFieldData): boolean {\r\n    return needToShowLabelOutside(fieldData, this.config);\r\n  }\r\n\r\n  private generateGroupItem(): FormGroup {\r\n    const group = new FormGroup({});\r\n\r\n    this.items.forEach((item: DynamicFieldData) => {\r\n      const validators: ValidatorFn[] = getValidators(item, this.config);\r\n\r\n      const value = this.initialValues[item.name];\r\n      group.addControl(item.name, new FormControl(value, validators));\r\n    });\r\n\r\n    return group;\r\n  }\r\n\r\n\r\n  propagateChange = (_: any) => {};\r\n  propagateTouch = () => {};\r\n\r\n  registerOnChange(fn): void {\r\n    this.propagateChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn): void {\r\n    this.propagateTouch = fn;\r\n  }\r\n\r\n  writeValue(value: any): void {\r\n    if (value) {\r\n      this.group.setValue(value, {\r\n        emitEvent: false\r\n      });\r\n    }\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    if (isDisabled) {\r\n      this.group.disable();\r\n    } else {\r\n      this.group.enable();\r\n    }\r\n  }\r\n}\r\n\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2106,11 +2106,290 @@
                 "OnInit",
                 "ControlValueAccessor"
             ],
-            "templateData": "<div [formGroup]=\"group\" novalidate>\n  <fieldset *ngFor=\"let groupItem of getFormArrayControls(group, 'items'); let i = index\">\n    <ii-validation-control [control]=\"groupItem.controls[fieldData.name]\" *ngFor=\"let fieldData of items\">\n      <label [for]=\"fieldData.name + '_' + i\" *ngIf=\"needToShowLabelOutside(fieldData)\" [innerHTML]=\"fieldData.label\" [class]=\"getLabelCssClass(fieldData)\"></label>\n      <ng-container\n        iiDynamicField\n        [inputId]=\"fieldData.name + '_' + i\"\n        [formControl]=\"groupItem.controls[fieldData.name]\"\n        [fieldData]=\"fieldData\">\n      </ng-container>\n    </ii-validation-control>\n    <button (click)=\"removeItem(i)\" class=\"btn btn-warning\">Remove</button>\n  </fieldset>\n  <button (click)=\"addItem()\" class=\"btn btn-success mt-3\">Add</button>\n</div>\n"
+            "templateData": "<div [formGroup]=\"group\" novalidate>\r\n  <fieldset *ngFor=\"let groupItem of getFormArrayControls(group, 'items'); let i = index\">\r\n    <ii-validation-control [control]=\"groupItem.controls[fieldData.name]\" *ngFor=\"let fieldData of items\">\r\n      <label [for]=\"fieldData.name + '_' + i\" *ngIf=\"needToShowLabelOutside(fieldData)\" [innerHTML]=\"fieldData.label\" [class]=\"getLabelCssClass(fieldData)\"></label>\r\n      <ng-container\r\n        iiDynamicField\r\n        [inputId]=\"fieldData.name + '_' + i\"\r\n        [formControl]=\"groupItem.controls[fieldData.name]\"\r\n        [fieldData]=\"fieldData\">\r\n      </ng-container>\r\n    </ii-validation-control>\r\n    <button (click)=\"removeItem(i)\" class=\"btn btn-warning\">Remove</button>\r\n  </fieldset>\r\n  <button (click)=\"addItem()\" class=\"btn btn-success mt-3\">Add</button>\r\n</div>\r\n"
+        },
+        {
+            "name": "ReCaptchaComponent",
+            "id": "component-ReCaptchaComponent-0a16bc613757a3d0220c8dabe5cf0cc7",
+            "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/re-captcha/re-captcha.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "{\n    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ReCaptchaComponent), multi: true\n}",
+                    "type": "component"
+                }
+            ],
+            "selector": "ii-re-captcha",
+            "styleUrls": [
+                "./re-captcha.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./re-captcha.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "badge",
+                    "line": 27,
+                    "type": "ReCaptchaV2.Badge"
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "`ngrecaptcha-${nextId++}`",
+                    "line": 21
+                },
+                {
+                    "name": "siteKey",
+                    "line": 22,
+                    "type": "string"
+                },
+                {
+                    "name": "size",
+                    "line": 25,
+                    "type": "ReCaptchaV2.Size"
+                },
+                {
+                    "name": "tabIndex",
+                    "line": 26,
+                    "type": "number"
+                },
+                {
+                    "name": "theme",
+                    "line": 23,
+                    "type": "ReCaptchaV2.Theme"
+                },
+                {
+                    "name": "type",
+                    "line": 24,
+                    "type": "ReCaptchaV2.Type"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "host",
+                    "type": "RecaptchaComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 37,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "RecaptchaComponent, {static: true}"
+                        }
+                    ],
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "onChange",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 30,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "pos": 804,
+                            "end": 813,
+                            "flags": 0,
+                            "kind": 288,
+                            "atToken": {
+                                "pos": 804,
+                                "end": 805,
+                                "flags": 0,
+                                "kind": 57
+                            },
+                            "tagName": {
+                                "pos": 805,
+                                "end": 813,
+                                "flags": 0,
+                                "escapedText": "internal"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "onTouched",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 33,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "pos": 869,
+                            "end": 878,
+                            "flags": 0,
+                            "kind": 288,
+                            "atToken": {
+                                "pos": 869,
+                                "end": 870,
+                                "flags": 0,
+                                "kind": 57
+                            },
+                            "tagName": {
+                                "pos": 870,
+                                "end": 878,
+                                "flags": 0,
+                                "escapedText": "internal"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "onResolve",
+                    "args": [
+                        {
+                            "name": "$event",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 56,
+                    "jsdoctags": [
+                        {
+                            "name": "$event",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "string"
+                                }
+                            ],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": []
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 52,
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 42,
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import {Component, forwardRef, Input, ViewChild} from '@angular/core';\nimport {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';\nimport {RecaptchaComponent} from 'ng-recaptcha';\n\nlet nextId = 0;\n\n@Component({\n  selector: 'ii-re-captcha',\n  templateUrl: './re-captcha.component.html',\n  styleUrls: ['./re-captcha.component.css'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => ReCaptchaComponent),\n      multi: true\n    }\n  ]\n})\nexport class ReCaptchaComponent implements ControlValueAccessor {\n\n  @Input() id = `ngrecaptcha-${nextId++}`;\n  @Input() siteKey: string;\n  @Input() theme: ReCaptchaV2.Theme;\n  @Input() type: ReCaptchaV2.Type;\n  @Input() size: ReCaptchaV2.Size;\n  @Input() tabIndex: number;\n  @Input() badge: ReCaptchaV2.Badge;\n\n  /** @internal */\n  private onChange: (value: string) => void;\n\n  /** @internal */\n  private onTouched: () => void;\n\n  @ViewChild(RecaptchaComponent, {\n    static: true\n  }) private host !: RecaptchaComponent;\n\n  constructor() {\n  }\n\n  public writeValue(value: string): void {\n    if (!value) {\n      this.host.reset();\n    }\n  }\n\n  public registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  public registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  onResolve($event: string): void {\n    if (this.onChange) {\n      this.onChange($event);\n    }\n    if (this.onTouched) {\n      this.onTouched();\n    }\n  }\n\n}\n\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./re-captcha.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 37
+            },
+            "implements": [
+                "ControlValueAccessor"
+            ],
+            "templateData": "<re-captcha\n  [id]=\"id\"\n  [siteKey]=\"siteKey\"\n  [theme]=\"theme\"\n  [type]=\"type\"\n  [size]=\"size\"\n  [tabIndex]=\"tabIndex\"\n  [badge]=\"badge\"\n  (resolved)=\"onResolve($event)\"\n></re-captcha>\n"
         },
         {
             "name": "SelectComponent",
-            "id": "component-SelectComponent-edde3f5a54dcbb5ff28fd7872a1f3639",
+            "id": "component-SelectComponent-cc00f29bdbc101dad923515a85b2b663",
             "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/select/select.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2329,7 +2608,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {Component, forwardRef, Input} from '@angular/core';\nimport {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';\nimport {SelectOption} from '../../interfaces/select-option';\n\n@Component({\n  selector: 'ii-select',\n  templateUrl: './select.component.html',\n  styleUrls: ['./select.component.css'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => SelectComponent),\n      multi: true\n    }\n  ]\n})\nexport class SelectComponent implements ControlValueAccessor {\n\n  @Input() options: SelectOption[] = [];\n\n  @Input() inputId = '';\n\n  value = '';\n\n  isDisabled = false;\n\n  constructor() { }\n\n  trackByOption(index: number, item: SelectOption): string {\n    return item.id;\n  }\n\n  propagateChange = (_: any) => {};\n  propagateTouch = () => {};\n\n  registerOnChange(fn): void {\n    this.propagateChange = fn;\n  }\n\n  registerOnTouched(fn): void {\n    this.propagateTouch = fn;\n  }\n\n  writeValue(value: string | undefined): void {\n    if (value !== undefined) {\n      this.value = value;\n    }\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.isDisabled = isDisabled;\n  }\n\n  setOptions(options: SelectOption[]): void {\n    this.options = options;\n  }\n}\n",
+            "sourceCode": "import {Component, forwardRef, Input} from '@angular/core';\r\nimport {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';\r\nimport {SelectOption} from '../../interfaces/select-option';\r\n\r\n@Component({\r\n  selector: 'ii-select',\r\n  templateUrl: './select.component.html',\r\n  styleUrls: ['./select.component.css'],\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => SelectComponent),\r\n      multi: true\r\n    }\r\n  ]\r\n})\r\nexport class SelectComponent implements ControlValueAccessor {\r\n\r\n  @Input() options: SelectOption[] = [];\r\n\r\n  @Input() inputId = '';\r\n\r\n  value = '';\r\n\r\n  isDisabled = false;\r\n\r\n  constructor() { }\r\n\r\n  trackByOption(index: number, item: SelectOption): string {\r\n    return item.id;\r\n  }\r\n\r\n  propagateChange = (_: any) => {};\r\n  propagateTouch = () => {};\r\n\r\n  registerOnChange(fn): void {\r\n    this.propagateChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn): void {\r\n    this.propagateTouch = fn;\r\n  }\r\n\r\n  writeValue(value: string | undefined): void {\r\n    if (value !== undefined) {\r\n      this.value = value;\r\n    }\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.isDisabled = isDisabled;\r\n  }\r\n\r\n  setOptions(options: SelectOption[]): void {\r\n    this.options = options;\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2347,11 +2626,11 @@
             "implements": [
                 "ControlValueAccessor"
             ],
-            "templateData": "<select\n  [ngModel]=\"value\"\n  [id]=\"inputId\"\n  (change)=\"propagateChange($event.target.value)\"\n  (blur)=\"propagateTouch()\"\n  [disabled]=\"isDisabled\">\n  <option [value]=\"option.id\" *ngFor=\"let option of options; trackBy: trackByOption\">{{option.value}}</option>\n</select>\n"
+            "templateData": "<select\r\n  [ngModel]=\"value\"\r\n  [id]=\"inputId\"\r\n  (change)=\"propagateChange($event.target.value)\"\r\n  (blur)=\"propagateTouch()\"\r\n  [disabled]=\"isDisabled\">\r\n  <option [value]=\"option.id\" *ngFor=\"let option of options; trackBy: trackByOption\">{{option.value}}</option>\r\n</select>\r\n"
         },
         {
             "name": "TextareaComponent",
-            "id": "component-TextareaComponent-26805fc3688e57ea712bc376110ca8d5",
+            "id": "component-TextareaComponent-745c8857482eff12d6ec02508d022ff9",
             "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/textarea/textarea.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2524,7 +2803,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {Component, forwardRef, Input, OnInit} from '@angular/core';\nimport {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';\n\n@Component({\n  selector: 'ii-textarea',\n  templateUrl: './textarea.component.html',\n  styleUrls: ['./textarea.component.css'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => TextareaComponent),\n      multi: true\n    }\n  ]\n})\nexport class TextareaComponent implements ControlValueAccessor {\n\n  @Input() type = 'text';\n  @Input() placeholder = '';\n  @Input() inputId = '';\n  @Input() readonly = false;\n\n  value = '';\n\n  isDisabled = false;\n\n  constructor() { }\n\n  propagateChange = (_: any) => {};\n  propagateTouch = () => {};\n\n  registerOnChange(fn): void {\n    this.propagateChange = fn;\n  }\n\n  registerOnTouched(fn): void {\n    this.propagateTouch = fn;\n  }\n\n  writeValue(value: string | undefined): void {\n    if (value !== undefined) {\n      this.value = value;\n    }\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.isDisabled = isDisabled;\n  }\n\n}\n\n\n",
+            "sourceCode": "import {Component, forwardRef, Input, OnInit} from '@angular/core';\r\nimport {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'ii-textarea',\r\n  templateUrl: './textarea.component.html',\r\n  styleUrls: ['./textarea.component.css'],\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => TextareaComponent),\r\n      multi: true\r\n    }\r\n  ]\r\n})\r\nexport class TextareaComponent implements ControlValueAccessor {\r\n\r\n  @Input() type = 'text';\r\n  @Input() placeholder = '';\r\n  @Input() inputId = '';\r\n  @Input() readonly = false;\r\n\r\n  value = '';\r\n\r\n  isDisabled = false;\r\n\r\n  constructor() { }\r\n\r\n  propagateChange = (_: any) => {};\r\n  propagateTouch = () => {};\r\n\r\n  registerOnChange(fn): void {\r\n    this.propagateChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn): void {\r\n    this.propagateTouch = fn;\r\n  }\r\n\r\n  writeValue(value: string | undefined): void {\r\n    if (value !== undefined) {\r\n      this.value = value;\r\n    }\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.isDisabled = isDisabled;\r\n  }\r\n\r\n}\r\n\r\n\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2542,7 +2821,7 @@
             "implements": [
                 "ControlValueAccessor"
             ],
-            "templateData": "<textarea\n  [value]=\"value\"\n  [id]=\"inputId\"\n  [placeholder]=\"placeholder\"\n  (input)=\"propagateChange($event.target.value)\"\n  (blur)=\"propagateTouch()\"\n  [readonly]=\"readonly\"\n  [disabled]=\"isDisabled\"></textarea>\n"
+            "templateData": "<textarea\r\n  [value]=\"value\"\r\n  [id]=\"inputId\"\r\n  [placeholder]=\"placeholder\"\r\n  (input)=\"propagateChange($event.target.value)\"\r\n  (blur)=\"propagateTouch()\"\r\n  [readonly]=\"readonly\"\r\n  [disabled]=\"isDisabled\"></textarea>\r\n"
         },
         {
             "name": "ValidationControlComponent",
@@ -2665,6 +2944,9 @@
                             "name": "MultiFieldsetComponent"
                         },
                         {
+                            "name": "ReCaptchaComponent"
+                        },
+                        {
                             "name": "SelectComponent"
                         },
                         {
@@ -2705,6 +2987,9 @@
                         },
                         {
                             "name": "MultiFieldsetComponent"
+                        },
+                        {
+                            "name": "ReCaptchaComponent"
                         },
                         {
                             "name": "SelectComponent"
@@ -2755,7 +3040,7 @@
                 "subtype": "variable",
                 "file": "projects/ildar-icoosoft/ngx-form/src/lib/configs/ngx-form-mdule.config.ts",
                 "type": "NgxFormModuleConfig",
-                "defaultValue": "{\r\n  fields: {\r\n    text: {\r\n      component: InputComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {\r\n        type: 'text'\r\n      },\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder,\r\n          readonly\r\n        };\r\n      }\r\n    },\r\n    number: {\r\n      component: InputComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {\r\n        type: 'number'\r\n      },\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder,\r\n          readonly\r\n        };\r\n      }\r\n    },\r\n    textarea: {\r\n      component: TextareaComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {},\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder,\r\n          readonly\r\n        };\r\n      }\r\n    },\r\n    select: {\r\n      component: SelectComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        let selectOptions = [];\r\n\r\n        const selectOptionsStr: string = getFieldDataOptionValue(fieldDataOptions, 'options');\r\n        if (selectOptionsStr) {\r\n          selectOptions = JSON.parse(selectOptionsStr).map(item => ({\r\n            id: item.name,\r\n            value: item.label\r\n          }));\r\n        }\r\n\r\n        return {\r\n          options: selectOptions\r\n        };\r\n      }\r\n    },\r\n    email: {\r\n      component: InputComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {\r\n        type: 'email'\r\n      },\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder\r\n        };\r\n      }\r\n    },\r\n    fieldset: {\r\n      component: FieldsetComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        return {\r\n          items: fieldData.items\r\n        };\r\n      }\r\n    },\r\n    multiFieldset: {\r\n      component: MultiFieldsetComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        return {\r\n          items: fieldData.items\r\n        };\r\n      }\r\n    },\r\n    html: {\r\n      component: HtmlComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        return {\r\n          // label: connectData.label,\r\n          cssClass: getFieldDataOptionValue(fieldDataOptions, 'inputCssClass', '')\r\n        };\r\n      }\r\n    },\r\n  },\r\n  validators: {\r\n    required: {\r\n      isGroupValidator: false,\r\n      validator: () => {\r\n        return Validators.required;\r\n      }\r\n    },\r\n    email: {\r\n      isGroupValidator: false,\r\n      validator: () => {\r\n        return Validators.email;\r\n      }\r\n    },\r\n    passwordMatch: {\r\n      isGroupValidator: true,\r\n      validator: (fieldData: DynamicFieldData) => {\r\n        const a = 'password';\r\n        const b = fieldData.name;\r\n\r\n        return validateEqual(a, b);\r\n      }\r\n    }\r\n  },\r\n  errorMessages: {\r\n    required: 'This field is required',\r\n    email: 'Wrong email format',\r\n    mismatch: 'Field values mismatch',\r\n    minlength: 'Field length is too short must be {requiredLength}, actual is {actualLength}',\r\n    maxlength: 'Field length is too long must be {requiredLength}, actual is {actualLength}',\r\n    age: 'The age under {requiredAge} is not accepted',\r\n    min: 'The minimum value for an input field is {min}',\r\n    max: 'The maximum value for an input field is {max}',\r\n  }\r\n}"
+                "defaultValue": "{\r\n  fields: {\r\n    text: {\r\n      component: InputComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {\r\n        type: 'text'\r\n      },\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder,\r\n          readonly\r\n        };\r\n      }\r\n    },\r\n    number: {\r\n      component: InputComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {\r\n        type: 'number'\r\n      },\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder,\r\n          readonly\r\n        };\r\n      }\r\n    },\r\n    textarea: {\r\n      component: TextareaComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {},\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder,\r\n          readonly\r\n        };\r\n      }\r\n    },\r\n    reCaptcha: {\r\n      component: ReCaptchaComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {},\r\n      mapConnectDataToProps: (connectData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = connectData.options;\r\n\r\n        return {\r\n          theme: getFieldDataOptionValue(fieldDataOptions, 'theme'),\r\n          type: getFieldDataOptionValue(fieldDataOptions, 'type'),\r\n          size: getFieldDataOptionValue(fieldDataOptions, 'size'),\r\n          tabIndex: getFieldDataOptionValue(fieldDataOptions, 'tabIndex'),\r\n          badge: getFieldDataOptionValue(fieldDataOptions, 'badge'),\r\n          siteKey: getFieldDataOptionValue(fieldDataOptions, 'siteKey'),\r\n        };\r\n      }\r\n    },\r\n    select: {\r\n      component: SelectComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        let selectOptions = [];\r\n\r\n        const selectOptionsStr: string = getFieldDataOptionValue(fieldDataOptions, 'options');\r\n        if (selectOptionsStr) {\r\n          selectOptions = JSON.parse(selectOptionsStr).map(item => ({\r\n            id: item.name,\r\n            value: item.label\r\n          }));\r\n        }\r\n\r\n        return {\r\n          options: selectOptions\r\n        };\r\n      }\r\n    },\r\n    email: {\r\n      component: InputComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {\r\n        type: 'email'\r\n      },\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder\r\n        };\r\n      }\r\n    },\r\n    fieldset: {\r\n      component: FieldsetComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        return {\r\n          items: fieldData.items\r\n        };\r\n      }\r\n    },\r\n    multiFieldset: {\r\n      component: MultiFieldsetComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        return {\r\n          items: fieldData.items\r\n        };\r\n      }\r\n    },\r\n    html: {\r\n      component: HtmlComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        return {\r\n          // label: connectData.label,\r\n          cssClass: getFieldDataOptionValue(fieldDataOptions, 'inputCssClass', '')\r\n        };\r\n      }\r\n    },\r\n  },\r\n  validators: {\r\n    required: {\r\n      isGroupValidator: false,\r\n      validator: () => {\r\n        return Validators.required;\r\n      }\r\n    },\r\n    email: {\r\n      isGroupValidator: false,\r\n      validator: () => {\r\n        return Validators.email;\r\n      }\r\n    },\r\n    passwordMatch: {\r\n      isGroupValidator: true,\r\n      validator: (fieldData: DynamicFieldData) => {\r\n        const a = 'password';\r\n        const b = fieldData.name;\r\n\r\n        return validateEqual(a, b);\r\n      }\r\n    }\r\n  },\r\n  errorMessages: {\r\n    required: 'This field is required',\r\n    email: 'Wrong email format',\r\n    mismatch: 'Field values mismatch',\r\n    minlength: 'Field length is too short must be {requiredLength}, actual is {actualLength}',\r\n    maxlength: 'Field length is too long must be {requiredLength}, actual is {actualLength}',\r\n    age: 'The age under {requiredAge} is not accepted',\r\n    min: 'The minimum value for an input field is {min}',\r\n    max: 'The maximum value for an input field is {max}',\r\n  }\r\n}"
             },
             {
                 "name": "DynamicForm",
@@ -2763,7 +3048,7 @@
                 "subtype": "variable",
                 "file": "stories/1-NgxForm-dynamic-form.stories.ts",
                 "type": "",
-                "defaultValue": "() => ({\r\n  component: DynamicFormComponent,\r\n  props: {\r\n    formData: dynamicFormData,\r\n    initialValues: {\r\n      html: text('html', 'some HTML text'),\r\n      text: 'some text',\r\n      select: 'twitter-follow-button'\r\n    },\r\n    submit: handleSubmit,\r\n    groupChange: handleChange\r\n  },\r\n})"
+                "defaultValue": "() => ({\r\n  component: DynamicFormComponent,\r\n  props: {\r\n    formData: dynamicFormData,\r\n    initialValues: {\r\n      html: text('html', 'some HTML text'),\r\n      text: 'some text',\r\n      select: 'twitter-follow-button'\r\n    },\r\n    submitForm: handleSubmit,\r\n    groupChange: handleChange\r\n  },\r\n})"
             },
             {
                 "name": "dynamicFormData",
@@ -2771,7 +3056,7 @@
                 "subtype": "variable",
                 "file": "data-sample/dynamic-form.ts",
                 "type": "DynamicFormData",
-                "defaultValue": "{\r\n  items: [\r\n    {\r\n      label: 'Custom HTML',\r\n      name: 'html',\r\n      type: 'html',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Text <span class=\"required-sign\">(*)</span>',\r\n      name: 'text',\r\n      type: 'text',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Textarea <span class=\"required-sign\">(*)</span>',\r\n      name: 'textarea',\r\n      type: 'textarea',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text plaeeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Email <span class=\"required-sign\">(*)</span>',\r\n      name: 'email',\r\n      type: 'email',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'email placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\":\"email\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'password',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Confirm Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'confirmPassword',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'confirm password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\": \"passwordMatch\", \"options\": []}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Select',\r\n      name: 'select',\r\n      type: 'select',\r\n      options: [\r\n        {\r\n          name: 'default',\r\n          value: 'twitter-share-button',\r\n        },\r\n        {\r\n          name: 'options',\r\n          value:\r\n            '[{\"name\":\"twitter-share-button\",\"label\":\"Share\",\"position\":\"0\"},{\"name\":\"twitter-follow-button\",\"label\":\"Follow\",\"position\":\"1\"},{\"name\":\"twitter-hashtag-button\",\"label\":\"Hashtag\",\"position\":\"2\"},{\"name\":\"twitter-mention-button\",\"label\":\"Mention\",\"position\":\"3\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-timeline\",\"label\":\"Timeline\",\"position\":\"5\"}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Webix text',\r\n      name: 'webixText',\r\n      type: 'webixText',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Fieldset',\r\n      name: 'fieldset',\r\n      type: 'fieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Webix Text',\r\n          name: 'webixText2',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Webix Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Webix Text',\r\n          name: 'webixText3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Webix Text 2',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n    {\r\n      label: 'Multi Fieldset',\r\n      name: 'multiFieldset',\r\n      type: 'multiFieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Webix Text',\r\n          name: 'webixText3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Webix Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Webix Checkbox',\r\n          name: 'text2',\r\n          type: 'text',\r\n          options: [],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n  ]\r\n\r\n}"
+                "defaultValue": "{\r\n  items: [\r\n    {\r\n      label: 'Custom HTML',\r\n      name: 'html',\r\n      type: 'html',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Text <span class=\"required-sign\">(*)</span>',\r\n      name: 'text',\r\n      type: 'text',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Textarea <span class=\"required-sign\">(*)</span>',\r\n      name: 'textarea',\r\n      type: 'textarea',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text plaeeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Email <span class=\"required-sign\">(*)</span>',\r\n      name: 'email',\r\n      type: 'email',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'email placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\":\"email\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'password',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Confirm Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'confirmPassword',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'confirm password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\": \"passwordMatch\", \"options\": []}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Select',\r\n      name: 'select',\r\n      type: 'select',\r\n      options: [\r\n        {\r\n          name: 'default',\r\n          value: 'twitter-share-button',\r\n        },\r\n        {\r\n          name: 'options',\r\n          value:\r\n            '[{\"name\":\"twitter-share-button\",\"label\":\"Share\",\"position\":\"0\"},{\"name\":\"twitter-follow-button\",\"label\":\"Follow\",\"position\":\"1\"},{\"name\":\"twitter-hashtag-button\",\"label\":\"Hashtag\",\"position\":\"2\"},{\"name\":\"twitter-mention-button\",\"label\":\"Mention\",\"position\":\"3\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-timeline\",\"label\":\"Timeline\",\"position\":\"5\"}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'text',\r\n      name: 'Text',\r\n      type: 'text',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Fieldset',\r\n      name: 'fieldset',\r\n      type: 'fieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Text',\r\n          name: 'Text2',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Text',\r\n          name: 'text3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text 2',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n    {\r\n      label: 'Multi Fieldset',\r\n      name: 'multiFieldset',\r\n      type: 'multiFieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Text',\r\n          name: 'Text3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Checkbox',\r\n          name: 'text2',\r\n          type: 'text',\r\n          options: [],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n  ]\r\n\r\n}"
             },
             {
                 "name": "fieldset",
@@ -2779,7 +3064,7 @@
                 "subtype": "variable",
                 "file": "stories/1-NgxForm-dynamic-form.stories.ts",
                 "type": "",
-                "defaultValue": "() => ({\r\n  component: FieldsetComponent,\r\n  props: {\r\n    label: 'Fieldset',\r\n    items: [\r\n      {\r\n        label: 'Webix Text',\r\n        name: 'webixText',\r\n        type: 'webixText',\r\n        options: [],\r\n        items: [],\r\n      },\r\n      {\r\n        label: 'Webix Checkbox',\r\n        name: 'webixCheckbox',\r\n        type: 'webixCheckbox',\r\n        options: [],\r\n        items: [],\r\n      },\r\n    ]\r\n  },\r\n})"
+                "defaultValue": "() => ({\r\n  component: FieldsetComponent,\r\n  props: {\r\n    label: 'Fieldset',\r\n    items: [\r\n      {\r\n        label: 'Text 1',\r\n        name: 'text1',\r\n        type: 'text',\r\n        options: [],\r\n        items: [],\r\n      },\r\n      {\r\n        label: 'Text 2',\r\n        name: 'text2',\r\n        type: 'text',\r\n        options: [],\r\n        items: [],\r\n      },\r\n    ]\r\n  },\r\n})"
             },
             {
                 "name": "formSample",
@@ -2843,7 +3128,7 @@
                 "subtype": "variable",
                 "file": "stories/1-NgxForm-dynamic-form.stories.ts",
                 "type": "",
-                "defaultValue": "() => ({\r\n  template: `<ii-html [(ngModel)]=\"model\" [label]=\"'Custom HTML'\"></ii-html>`,\r\n  props: {\r\n    label: 'Webix Text',\r\n    model: text('model',  '<span>Any custom HTML</span>'),\r\n  },\r\n})"
+                "defaultValue": "() => ({\r\n  template: `<ii-html [(ngModel)]=\"model\" [label]=\"'Custom HTML'\"></ii-html>`,\r\n  props: {\r\n    label: 'Text',\r\n    model: text('model',  '<span>Any custom HTML</span>'),\r\n  },\r\n})"
             },
             {
                 "name": "InputEmail",
@@ -2894,6 +3179,14 @@
                 "defaultValue": "(fieldData: DynamicFieldData, config: NgxFormModuleConfig): boolean => {\r\n  const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n  let result = getFieldDataOptionValue(fieldDataOptions, 'needToShowLabelOutside');\r\n\r\n  if (result !== undefined) {\r\n    return result;\r\n  }\r\n\r\n  const itemConfig = config.fields[fieldData.type];\r\n  if (!itemConfig) {\r\n    const supportedTypes: string = Object.keys(config.fields).join(', ');\r\n    throw Error(\r\n      `Trying to use an unsupported type (${fieldData.type}).\r\n        Supported types: ${supportedTypes}`\r\n    );\r\n  }\r\n\r\n  result = itemConfig.needToShowLabelOutside || false;\r\n\r\n  return result;\r\n}"
             },
             {
+                "name": "nextId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/re-captcha/re-captcha.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
                 "name": "NGX_FORM_MODULE_CONFIG",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2908,6 +3201,14 @@
                 "file": "projects/ildar-icoosoft/ngx-form/src/lib/utils/error.ts",
                 "type": "",
                 "defaultValue": "(value: string): string => {\r\n  return value;\r\n}"
+            },
+            {
+                "name": "recaptcha",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/1-NgxForm-dynamic-form.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: ReCaptchaComponent,\r\n  props: {\r\n    siteKey: '6LfKP_sZAAAAAAIsTU7sV8QofHdP_P_4gpqMf5g1',\r\n  },\r\n})"
             },
             {
                 "name": "require",
@@ -3001,7 +3302,7 @@
                     "subtype": "variable",
                     "file": "projects/ildar-icoosoft/ngx-form/src/lib/configs/ngx-form-mdule.config.ts",
                     "type": "NgxFormModuleConfig",
-                    "defaultValue": "{\r\n  fields: {\r\n    text: {\r\n      component: InputComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {\r\n        type: 'text'\r\n      },\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder,\r\n          readonly\r\n        };\r\n      }\r\n    },\r\n    number: {\r\n      component: InputComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {\r\n        type: 'number'\r\n      },\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder,\r\n          readonly\r\n        };\r\n      }\r\n    },\r\n    textarea: {\r\n      component: TextareaComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {},\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder,\r\n          readonly\r\n        };\r\n      }\r\n    },\r\n    select: {\r\n      component: SelectComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        let selectOptions = [];\r\n\r\n        const selectOptionsStr: string = getFieldDataOptionValue(fieldDataOptions, 'options');\r\n        if (selectOptionsStr) {\r\n          selectOptions = JSON.parse(selectOptionsStr).map(item => ({\r\n            id: item.name,\r\n            value: item.label\r\n          }));\r\n        }\r\n\r\n        return {\r\n          options: selectOptions\r\n        };\r\n      }\r\n    },\r\n    email: {\r\n      component: InputComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {\r\n        type: 'email'\r\n      },\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder\r\n        };\r\n      }\r\n    },\r\n    fieldset: {\r\n      component: FieldsetComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        return {\r\n          items: fieldData.items\r\n        };\r\n      }\r\n    },\r\n    multiFieldset: {\r\n      component: MultiFieldsetComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        return {\r\n          items: fieldData.items\r\n        };\r\n      }\r\n    },\r\n    html: {\r\n      component: HtmlComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        return {\r\n          // label: connectData.label,\r\n          cssClass: getFieldDataOptionValue(fieldDataOptions, 'inputCssClass', '')\r\n        };\r\n      }\r\n    },\r\n  },\r\n  validators: {\r\n    required: {\r\n      isGroupValidator: false,\r\n      validator: () => {\r\n        return Validators.required;\r\n      }\r\n    },\r\n    email: {\r\n      isGroupValidator: false,\r\n      validator: () => {\r\n        return Validators.email;\r\n      }\r\n    },\r\n    passwordMatch: {\r\n      isGroupValidator: true,\r\n      validator: (fieldData: DynamicFieldData) => {\r\n        const a = 'password';\r\n        const b = fieldData.name;\r\n\r\n        return validateEqual(a, b);\r\n      }\r\n    }\r\n  },\r\n  errorMessages: {\r\n    required: 'This field is required',\r\n    email: 'Wrong email format',\r\n    mismatch: 'Field values mismatch',\r\n    minlength: 'Field length is too short must be {requiredLength}, actual is {actualLength}',\r\n    maxlength: 'Field length is too long must be {requiredLength}, actual is {actualLength}',\r\n    age: 'The age under {requiredAge} is not accepted',\r\n    min: 'The minimum value for an input field is {min}',\r\n    max: 'The maximum value for an input field is {max}',\r\n  }\r\n}"
+                    "defaultValue": "{\r\n  fields: {\r\n    text: {\r\n      component: InputComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {\r\n        type: 'text'\r\n      },\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder,\r\n          readonly\r\n        };\r\n      }\r\n    },\r\n    number: {\r\n      component: InputComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {\r\n        type: 'number'\r\n      },\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder,\r\n          readonly\r\n        };\r\n      }\r\n    },\r\n    textarea: {\r\n      component: TextareaComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {},\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder,\r\n          readonly\r\n        };\r\n      }\r\n    },\r\n    reCaptcha: {\r\n      component: ReCaptchaComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {},\r\n      mapConnectDataToProps: (connectData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = connectData.options;\r\n\r\n        return {\r\n          theme: getFieldDataOptionValue(fieldDataOptions, 'theme'),\r\n          type: getFieldDataOptionValue(fieldDataOptions, 'type'),\r\n          size: getFieldDataOptionValue(fieldDataOptions, 'size'),\r\n          tabIndex: getFieldDataOptionValue(fieldDataOptions, 'tabIndex'),\r\n          badge: getFieldDataOptionValue(fieldDataOptions, 'badge'),\r\n          siteKey: getFieldDataOptionValue(fieldDataOptions, 'siteKey'),\r\n        };\r\n      }\r\n    },\r\n    select: {\r\n      component: SelectComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        let selectOptions = [];\r\n\r\n        const selectOptionsStr: string = getFieldDataOptionValue(fieldDataOptions, 'options');\r\n        if (selectOptionsStr) {\r\n          selectOptions = JSON.parse(selectOptionsStr).map(item => ({\r\n            id: item.name,\r\n            value: item.label\r\n          }));\r\n        }\r\n\r\n        return {\r\n          options: selectOptions\r\n        };\r\n      }\r\n    },\r\n    email: {\r\n      component: InputComponent,\r\n      needToShowLabelOutside: true,\r\n      props: {\r\n        type: 'email'\r\n      },\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');\r\n        return {\r\n          placeholder\r\n        };\r\n      }\r\n    },\r\n    fieldset: {\r\n      component: FieldsetComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        return {\r\n          items: fieldData.items\r\n        };\r\n      }\r\n    },\r\n    multiFieldset: {\r\n      component: MultiFieldsetComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        return {\r\n          items: fieldData.items\r\n        };\r\n      }\r\n    },\r\n    html: {\r\n      component: HtmlComponent,\r\n      needToShowLabelOutside: true,\r\n      mapConnectDataToProps: (fieldData: DynamicFieldData) => {\r\n        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n        return {\r\n          // label: connectData.label,\r\n          cssClass: getFieldDataOptionValue(fieldDataOptions, 'inputCssClass', '')\r\n        };\r\n      }\r\n    },\r\n  },\r\n  validators: {\r\n    required: {\r\n      isGroupValidator: false,\r\n      validator: () => {\r\n        return Validators.required;\r\n      }\r\n    },\r\n    email: {\r\n      isGroupValidator: false,\r\n      validator: () => {\r\n        return Validators.email;\r\n      }\r\n    },\r\n    passwordMatch: {\r\n      isGroupValidator: true,\r\n      validator: (fieldData: DynamicFieldData) => {\r\n        const a = 'password';\r\n        const b = fieldData.name;\r\n\r\n        return validateEqual(a, b);\r\n      }\r\n    }\r\n  },\r\n  errorMessages: {\r\n    required: 'This field is required',\r\n    email: 'Wrong email format',\r\n    mismatch: 'Field values mismatch',\r\n    minlength: 'Field length is too short must be {requiredLength}, actual is {actualLength}',\r\n    maxlength: 'Field length is too long must be {requiredLength}, actual is {actualLength}',\r\n    age: 'The age under {requiredAge} is not accepted',\r\n    min: 'The minimum value for an input field is {min}',\r\n    max: 'The maximum value for an input field is {max}',\r\n  }\r\n}"
                 }
             ],
             "stories/1-NgxForm-dynamic-form.stories.ts": [
@@ -3011,7 +3312,7 @@
                     "subtype": "variable",
                     "file": "stories/1-NgxForm-dynamic-form.stories.ts",
                     "type": "",
-                    "defaultValue": "() => ({\r\n  component: DynamicFormComponent,\r\n  props: {\r\n    formData: dynamicFormData,\r\n    initialValues: {\r\n      html: text('html', 'some HTML text'),\r\n      text: 'some text',\r\n      select: 'twitter-follow-button'\r\n    },\r\n    submit: handleSubmit,\r\n    groupChange: handleChange\r\n  },\r\n})"
+                    "defaultValue": "() => ({\r\n  component: DynamicFormComponent,\r\n  props: {\r\n    formData: dynamicFormData,\r\n    initialValues: {\r\n      html: text('html', 'some HTML text'),\r\n      text: 'some text',\r\n      select: 'twitter-follow-button'\r\n    },\r\n    submitForm: handleSubmit,\r\n    groupChange: handleChange\r\n  },\r\n})"
                 },
                 {
                     "name": "fieldset",
@@ -3019,7 +3320,7 @@
                     "subtype": "variable",
                     "file": "stories/1-NgxForm-dynamic-form.stories.ts",
                     "type": "",
-                    "defaultValue": "() => ({\r\n  component: FieldsetComponent,\r\n  props: {\r\n    label: 'Fieldset',\r\n    items: [\r\n      {\r\n        label: 'Webix Text',\r\n        name: 'webixText',\r\n        type: 'webixText',\r\n        options: [],\r\n        items: [],\r\n      },\r\n      {\r\n        label: 'Webix Checkbox',\r\n        name: 'webixCheckbox',\r\n        type: 'webixCheckbox',\r\n        options: [],\r\n        items: [],\r\n      },\r\n    ]\r\n  },\r\n})"
+                    "defaultValue": "() => ({\r\n  component: FieldsetComponent,\r\n  props: {\r\n    label: 'Fieldset',\r\n    items: [\r\n      {\r\n        label: 'Text 1',\r\n        name: 'text1',\r\n        type: 'text',\r\n        options: [],\r\n        items: [],\r\n      },\r\n      {\r\n        label: 'Text 2',\r\n        name: 'text2',\r\n        type: 'text',\r\n        options: [],\r\n        items: [],\r\n      },\r\n    ]\r\n  },\r\n})"
                 },
                 {
                     "name": "handleChange",
@@ -3043,7 +3344,7 @@
                     "subtype": "variable",
                     "file": "stories/1-NgxForm-dynamic-form.stories.ts",
                     "type": "",
-                    "defaultValue": "() => ({\r\n  template: `<ii-html [(ngModel)]=\"model\" [label]=\"'Custom HTML'\"></ii-html>`,\r\n  props: {\r\n    label: 'Webix Text',\r\n    model: text('model',  '<span>Any custom HTML</span>'),\r\n  },\r\n})"
+                    "defaultValue": "() => ({\r\n  template: `<ii-html [(ngModel)]=\"model\" [label]=\"'Custom HTML'\"></ii-html>`,\r\n  props: {\r\n    label: 'Text',\r\n    model: text('model',  '<span>Any custom HTML</span>'),\r\n  },\r\n})"
                 },
                 {
                     "name": "InputEmail",
@@ -3078,6 +3379,14 @@
                     "defaultValue": "() => ({\r\n  component: MultiFieldsetComponent,\r\n  props: {\r\n    label: 'Multi Fieldset',\r\n    items: [\r\n      {\r\n        label: 'Text',\r\n        name: 'text1',\r\n        type: 'text',\r\n        options: [],\r\n        items: [],\r\n      },\r\n      {\r\n        label: 'Text2',\r\n        name: 'text2',\r\n        type: 'text',\r\n        options: [],\r\n        items: [],\r\n      },\r\n    ]\r\n  },\r\n})"
                 },
                 {
+                    "name": "recaptcha",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/1-NgxForm-dynamic-form.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: ReCaptchaComponent,\r\n  props: {\r\n    siteKey: '6LfKP_sZAAAAAAIsTU7sV8QofHdP_P_4gpqMf5g1',\r\n  },\r\n})"
+                },
+                {
                     "name": "Select",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
@@ -3093,7 +3402,7 @@
                     "subtype": "variable",
                     "file": "data-sample/dynamic-form.ts",
                     "type": "DynamicFormData",
-                    "defaultValue": "{\r\n  items: [\r\n    {\r\n      label: 'Custom HTML',\r\n      name: 'html',\r\n      type: 'html',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Text <span class=\"required-sign\">(*)</span>',\r\n      name: 'text',\r\n      type: 'text',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Textarea <span class=\"required-sign\">(*)</span>',\r\n      name: 'textarea',\r\n      type: 'textarea',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text plaeeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Email <span class=\"required-sign\">(*)</span>',\r\n      name: 'email',\r\n      type: 'email',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'email placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\":\"email\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'password',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Confirm Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'confirmPassword',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'confirm password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\": \"passwordMatch\", \"options\": []}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Select',\r\n      name: 'select',\r\n      type: 'select',\r\n      options: [\r\n        {\r\n          name: 'default',\r\n          value: 'twitter-share-button',\r\n        },\r\n        {\r\n          name: 'options',\r\n          value:\r\n            '[{\"name\":\"twitter-share-button\",\"label\":\"Share\",\"position\":\"0\"},{\"name\":\"twitter-follow-button\",\"label\":\"Follow\",\"position\":\"1\"},{\"name\":\"twitter-hashtag-button\",\"label\":\"Hashtag\",\"position\":\"2\"},{\"name\":\"twitter-mention-button\",\"label\":\"Mention\",\"position\":\"3\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-timeline\",\"label\":\"Timeline\",\"position\":\"5\"}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Webix text',\r\n      name: 'webixText',\r\n      type: 'webixText',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Fieldset',\r\n      name: 'fieldset',\r\n      type: 'fieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Webix Text',\r\n          name: 'webixText2',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Webix Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Webix Text',\r\n          name: 'webixText3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Webix Text 2',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n    {\r\n      label: 'Multi Fieldset',\r\n      name: 'multiFieldset',\r\n      type: 'multiFieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Webix Text',\r\n          name: 'webixText3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Webix Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Webix Checkbox',\r\n          name: 'text2',\r\n          type: 'text',\r\n          options: [],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n  ]\r\n\r\n}"
+                    "defaultValue": "{\r\n  items: [\r\n    {\r\n      label: 'Custom HTML',\r\n      name: 'html',\r\n      type: 'html',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Text <span class=\"required-sign\">(*)</span>',\r\n      name: 'text',\r\n      type: 'text',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Textarea <span class=\"required-sign\">(*)</span>',\r\n      name: 'textarea',\r\n      type: 'textarea',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'text plaeeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Email <span class=\"required-sign\">(*)</span>',\r\n      name: 'email',\r\n      type: 'email',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'email placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\":\"email\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'password',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Confirm Password <span class=\"required-sign\">(*)</span>',\r\n      name: 'confirmPassword',\r\n      type: 'password',\r\n      options: [\r\n        {\r\n          name: 'placeholder',\r\n          value: 'confirm password placeholder',\r\n        },\r\n        {\r\n          name: 'validators',\r\n          value: '[{\"name\":\"required\",\"options\":[]}, {\"name\": \"passwordMatch\", \"options\": []}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Select',\r\n      name: 'select',\r\n      type: 'select',\r\n      options: [\r\n        {\r\n          name: 'default',\r\n          value: 'twitter-share-button',\r\n        },\r\n        {\r\n          name: 'options',\r\n          value:\r\n            '[{\"name\":\"twitter-share-button\",\"label\":\"Share\",\"position\":\"0\"},{\"name\":\"twitter-follow-button\",\"label\":\"Follow\",\"position\":\"1\"},{\"name\":\"twitter-hashtag-button\",\"label\":\"Hashtag\",\"position\":\"2\"},{\"name\":\"twitter-mention-button\",\"label\":\"Mention\",\"position\":\"3\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-tweet\",\"label\":\"Tweet\",\"position\":\"4\"},{\"name\":\"twitter-timeline\",\"label\":\"Timeline\",\"position\":\"5\"}]',\r\n        },\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'text',\r\n      name: 'Text',\r\n      type: 'text',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-4 col-md-6 col-xs-12\"}]'\r\n        }\r\n      ],\r\n      items: [],\r\n    },\r\n    {\r\n      label: 'Fieldset',\r\n      name: 'fieldset',\r\n      type: 'fieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Text',\r\n          name: 'Text2',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Text',\r\n          name: 'text3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text 2',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n    {\r\n      label: 'Multi Fieldset',\r\n      name: 'multiFieldset',\r\n      type: 'multiFieldset',\r\n      options: [\r\n        {\r\n          name: 'htmlOptions',\r\n          value: '[{\"name\":\"cssClass\",\"value\":\"col-lg-12\"}]'\r\n        },\r\n        {\r\n          name: 'formGroupCssClass',\r\n          value: 'fieldset-wrapper'\r\n        }\r\n      ],\r\n      items: [\r\n        {\r\n          label: 'Text',\r\n          name: 'Text3',\r\n          type: 'text',\r\n          options: [\r\n            {\r\n              name: 'placeholder',\r\n              value: 'Text',\r\n            }\r\n          ],\r\n          items: [],\r\n        },\r\n        {\r\n          label: 'Checkbox',\r\n          name: 'text2',\r\n          type: 'text',\r\n          options: [],\r\n          items: [],\r\n        },\r\n      ],\r\n    },\r\n  ]\r\n\r\n}"
                 }
             ],
             "stories/0-NgxForm-validation.stories.ts": [
@@ -3172,6 +3481,16 @@
                     "file": "projects/ildar-icoosoft/ngx-form/src/lib/utils/error.ts",
                     "type": "",
                     "defaultValue": "(\r\n  formGroup: FormGroup,\r\n  formErrors: FormError[]\r\n): void => {\r\n  const formGroupErrors: string[] = [];\r\n  const formControlErrors: Record<string, string[]> = {};\r\n\r\n  formErrors.forEach(item => {\r\n    const formControlName = item.formControlName;\r\n\r\n    if (!formControlName) {\r\n      return formGroupErrors.push(item.message);\r\n    }\r\n\r\n    const formControl = formGroup.get(formControlName);\r\n\r\n    if (formControl) {\r\n      if (!formControlErrors[formControlName]) {\r\n        formControlErrors[formControlName] = [];\r\n      }\r\n      formControlErrors[formControlName].push(item.message);\r\n    } else {\r\n      formGroupErrors.push(item.message);\r\n    }\r\n  });\r\n\r\n  if (formGroupErrors.length) {\r\n    formGroup.setErrors({\r\n      customArr: formGroupErrors\r\n    });\r\n  }\r\n\r\n  for (const formControlName in formControlErrors) {\r\n    const formControl = formGroup.get(formControlName);\r\n\r\n    formControl.setErrors({\r\n      customArr: formControlErrors[formControlName]\r\n    });\r\n  }\r\n\r\n  markAllFormControlsAsTouched(formGroup);\r\n}"
+                }
+            ],
+            "projects/ildar-icoosoft/ngx-form/src/lib/components/re-captcha/re-captcha.component.ts": [
+                {
+                    "name": "nextId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/re-captcha/re-captcha.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
                 }
             ],
             "projects/ildar-icoosoft/ngx-form/src/lib/constants/ngx-form-module-config.ts": [
@@ -3305,6 +3624,25 @@
                 "name": "MultiFieldsetComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/18",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/components/re-captcha/re-captcha.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ReCaptchaComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/16",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ildar-icoosoft/ngx-form/src/lib/components/re-captcha/re-captcha.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "nextId",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -3677,6 +4015,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "multiFieldset",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/1-NgxForm-dynamic-form.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "recaptcha",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

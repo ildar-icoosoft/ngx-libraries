@@ -16,11 +16,11 @@ export const getValidators = (fieldData: DynamicFieldData, config: NgxFormModule
   const validators: ValidatorFn[] = [];
   fieldData.options.forEach(option => {
     if (option.name === 'validators') {
-      const connectValidators: any[] = JSON.parse(option.value);
+      const dynamicFormValidators: any[] = JSON.parse(option.value);
 
-      connectValidators.forEach(connectValidator => {
-        const validatorName = connectValidator.name;
-        const validatorArgs = connectValidator.options;
+      dynamicFormValidators.forEach(dynamicFormValidator => {
+        const validatorName = dynamicFormValidator.name;
+        const validatorArgs = dynamicFormValidator.options;
 
         if (config.validators[validatorName] && !config.validators[validatorName].isGroupValidator) {
           validators.push(config.validators[validatorName].validator.call(null, fieldData, ...validatorArgs));
@@ -35,11 +35,11 @@ export const getGroupValidators = (fieldData: DynamicFieldData, config: NgxFormM
   const validators: ValidatorFn[] = [];
   fieldData.options.forEach(option => {
     if (option.name === 'validators') {
-      const connectValidators: any[] = JSON.parse(option.value);
+      const dynamicFormValidators: any[] = JSON.parse(option.value);
 
-      connectValidators.forEach(connectValidator => {
-        const validatorName = connectValidator.name;
-        const validatorArgs = connectValidator.options;
+      dynamicFormValidators.forEach(dynamicFormValidator => {
+        const validatorName = dynamicFormValidator.name;
+        const validatorArgs = dynamicFormValidator.options;
 
         if (config.validators[validatorName] && config.validators[validatorName].isGroupValidator) {
           validators.push(config.validators[validatorName].validator.call(null, fieldData, ...validatorArgs));

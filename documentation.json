@@ -687,13 +687,17 @@
     "components": [
         {
             "name": "DynamicFormComponent",
-            "id": "component-DynamicFormComponent-25d604dc5804a4a68d0b6a788e524210",
+            "id": "component-DynamicFormComponent-cee0229649a246cdc76b572463cb1d12",
             "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/dynamic-form/dynamic-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [],
+            "providers": [
+                {
+                    "name": "UnsubscribeService"
+                }
+            ],
             "selector": "ii-dynamic-form",
             "styleUrls": [
                 "./dynamic-form.component.css"
@@ -707,23 +711,23 @@
                 {
                     "name": "buttons",
                     "defaultValue": "[{\r\n    label: 'Submit',\r\n    onClick: () => this.validateAndSubmit()\r\n  }]",
-                    "line": 35,
+                    "line": 36,
                     "type": "DynamicFormButton[]"
                 },
                 {
                     "name": "formCssClass",
                     "defaultValue": "''",
-                    "line": 27
+                    "line": 28
                 },
                 {
                     "name": "formData",
-                    "line": 26,
+                    "line": 27,
                     "type": "DynamicFormData"
                 },
                 {
                     "name": "initialValues",
                     "defaultValue": "{}",
-                    "line": 28,
+                    "line": 29,
                     "type": "Record<string | any>"
                 }
             ],
@@ -731,25 +735,25 @@
                 {
                     "name": "controlChange",
                     "defaultValue": "new EventEmitter()",
-                    "line": 33,
+                    "line": 34,
                     "type": "EventEmitter<ControlChangeData>"
                 },
                 {
                     "name": "groupChange",
                     "defaultValue": "new EventEmitter()",
-                    "line": 32,
+                    "line": 33,
                     "type": "EventEmitter<Record<string, any>>"
                 },
                 {
                     "name": "loadForm",
                     "defaultValue": "new EventEmitter()",
-                    "line": 31,
+                    "line": 32,
                     "type": "EventEmitter<DynamicFormComponent>"
                 },
                 {
                     "name": "submitForm",
                     "defaultValue": "new EventEmitter()",
-                    "line": 30,
+                    "line": 31,
                     "type": "EventEmitter<FormSubmitData>"
                 }
             ],
@@ -759,7 +763,7 @@
                     "type": "QueryList<DynamicFieldDirective>",
                     "optional": false,
                     "description": "",
-                    "line": 44,
+                    "line": 45,
                     "decorators": [
                         {
                             "name": "ViewChildren",
@@ -772,7 +776,7 @@
                     "type": "FormGroup",
                     "optional": false,
                     "description": "",
-                    "line": 40
+                    "line": 41
                 },
                 {
                     "name": "isSubmitting",
@@ -780,7 +784,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 42
+                    "line": 43
                 }
             ],
             "methodsClass": [
@@ -795,7 +799,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 116,
+                    "line": 117,
                     "jsdoctags": [
                         {
                             "name": "fieldData",
@@ -817,7 +821,7 @@
                     "optional": false,
                     "returnType": "AbstractControl",
                     "typeParameters": [],
-                    "line": 97,
+                    "line": 98,
                     "jsdoctags": [
                         {
                             "name": "name",
@@ -839,7 +843,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 105,
+                    "line": 106,
                     "jsdoctags": [
                         {
                             "name": "name",
@@ -861,7 +865,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 122,
+                    "line": 123,
                     "jsdoctags": [
                         {
                             "name": "fieldData",
@@ -878,7 +882,7 @@
                     "optional": false,
                     "returnType": "FormGroup",
                     "typeParameters": [],
-                    "line": 85
+                    "line": 86
                 },
                 {
                     "name": "getLabelCssClass",
@@ -891,7 +895,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 128,
+                    "line": 129,
                     "jsdoctags": [
                         {
                             "name": "fieldData",
@@ -908,7 +912,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 89
+                    "line": 90
                 },
                 {
                     "name": "getValues",
@@ -916,7 +920,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 93
+                    "line": 94
                 },
                 {
                     "name": "needToShowLabelOutside",
@@ -929,7 +933,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 134,
+                    "line": 135,
                     "jsdoctags": [
                         {
                             "name": "fieldData",
@@ -946,7 +950,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 48
+                    "line": 49
                 },
                 {
                     "name": "ngOnInit",
@@ -954,7 +958,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52
+                    "line": 53
                 },
                 {
                     "name": "onButtonClick",
@@ -971,7 +975,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 138,
+                    "line": 139,
                     "jsdoctags": [
                         {
                             "name": "button",
@@ -1000,7 +1004,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 178,
+                    "line": 179,
                     "jsdoctags": [
                         {
                             "name": "values",
@@ -1022,7 +1026,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 165,
+                    "line": 166,
                     "jsdoctags": [
                         {
                             "name": "formErrors",
@@ -1044,7 +1048,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 170,
+                    "line": 171,
                     "jsdoctags": [
                         {
                             "name": "isSubmitting",
@@ -1066,7 +1070,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 174,
+                    "line": 175,
                     "jsdoctags": [
                         {
                             "name": "values",
@@ -1083,7 +1087,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 147
+                    "line": 148
                 }
             ],
             "hostBindings": [],
@@ -1091,7 +1095,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {AfterViewInit, Component, EventEmitter, Inject, Input, OnInit, Output, QueryList, ViewChildren} from '@angular/core';\r\nimport {UnsubscribeService} from 'ii-ngx-common';\r\nimport {DynamicFormData} from '../../interfaces/dynamic-form-data';\r\nimport {FormSubmitData} from '../../interfaces/form-submit-data';\r\nimport {ControlChangeData} from '../../interfaces/control-change-data';\r\nimport {AbstractControl, FormControl, FormGroup, ValidatorFn} from '@angular/forms';\r\nimport {DynamicFormButton} from '../../interfaces/dynamic-form-button';\r\nimport {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';\r\nimport {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';\r\nimport {DynamicFieldDirective} from '../../directives/dynamic-field.directive';\r\nimport {DynamicFieldData} from '../../interfaces/dynamic-field-data';\r\nimport {getFieldDataOptionValue, getGroupValidators, getValidators, needToShowLabelOutside} from '../../utils/dynamic-form';\r\nimport {takeUntil} from 'rxjs/operators';\r\nimport {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';\r\nimport {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';\r\nimport {FormError} from '../../interfaces/form-error';\r\n\r\n\r\n@Component({\r\n  selector: 'ii-dynamic-form',\r\n  templateUrl: './dynamic-form.component.html',\r\n  styleUrls: ['./dynamic-form.component.css']\r\n})\r\nexport class DynamicFormComponent implements OnInit, AfterViewInit {\r\n\r\n  @Input() formData: DynamicFormData;\r\n  @Input() formCssClass = '';\r\n  @Input() initialValues: Record<string, 'any'> = {};\r\n\r\n  @Output() submitForm: EventEmitter<FormSubmitData> = new EventEmitter();\r\n  @Output() loadForm: EventEmitter<DynamicFormComponent> = new EventEmitter();\r\n  @Output() groupChange: EventEmitter<Record<string, any>> = new EventEmitter();\r\n  @Output() controlChange: EventEmitter<ControlChangeData> = new EventEmitter();\r\n\r\n  @Input() buttons: DynamicFormButton[] = [{\r\n    label: 'Submit',\r\n    onClick: () => this.validateAndSubmit()\r\n  }];\r\n\r\n  group: FormGroup;\r\n\r\n  isSubmitting = false;\r\n\r\n  @ViewChildren(DynamicFieldDirective) dynamicComponents: QueryList<DynamicFieldDirective>;\r\n\r\n  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig, private ngUnsubscribe$: UnsubscribeService) {}\r\n\r\n  ngAfterViewInit(): void {\r\n    this.loadForm.emit(this);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n\r\n    const groupValidators: ValidatorFn[] = [];\r\n\r\n    this.group = new FormGroup({});\r\n\r\n    this.formData.items.forEach((item: DynamicFieldData) => {\r\n      const validators: ValidatorFn[] = getValidators(item, this.config);\r\n\r\n      groupValidators.push(...getGroupValidators(item, this.config));\r\n\r\n      const value = this.initialValues[item.name];\r\n\r\n      const formControl = new FormControl(value, validators);\r\n\r\n      formControl.valueChanges.pipe(\r\n        takeUntil(this.ngUnsubscribe$)\r\n      ).subscribe(controlValue => this.controlChange.emit({\r\n        name: item.name,\r\n        formControl,\r\n        value: controlValue\r\n      }) );\r\n\r\n      this.group.addControl(item.name, formControl);\r\n    });\r\n\r\n    this.group.setValidators(groupValidators);\r\n\r\n    this.group.valueChanges.pipe(\r\n      takeUntil(this.ngUnsubscribe$)\r\n    ).subscribe(values => this.groupChange.emit(values));\r\n  }\r\n\r\n  getGroup(): FormGroup {\r\n    return this.group;\r\n  }\r\n\r\n  getRawValues(): any {\r\n    return this.group.getRawValue();\r\n  }\r\n\r\n  getValues(): any {\r\n    return this.group.value;\r\n  }\r\n\r\n  getFormControl(name: string): AbstractControl {\r\n    if (!this.group.controls[name]) {\r\n      throw Error(`form control ${name} not found`);\r\n    }\r\n\r\n    return this.group.controls[name];\r\n  }\r\n\r\n  getFormElement(name: string): any {\r\n    const arr = this.dynamicComponents.toArray();\r\n\r\n    const connectFieldDirective = arr.find(item => item.fieldData.name === name);\r\n    if (!connectFieldDirective) {\r\n      throw Error(`component ${name} not found`);\r\n    }\r\n\r\n    return connectFieldDirective.component.instance;\r\n  }\r\n\r\n  getCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'cssClass', '');\r\n  }\r\n\r\n  getFormGroupCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'formGroupCssClass', '');\r\n  }\r\n\r\n  getLabelCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');\r\n  }\r\n\r\n  needToShowLabelOutside(fieldData: DynamicFieldData): boolean {\r\n    return needToShowLabelOutside(fieldData, this.config);\r\n  }\r\n\r\n  onButtonClick(button, event): void {\r\n    event.preventDefault();\r\n\r\n    button.onClick({\r\n      form: this,\r\n      nativeEvent: event\r\n    });\r\n  }\r\n\r\n  validateAndSubmit(): void {\r\n    if (this.isSubmitting) {\r\n      return;\r\n    }\r\n    if (this.group.invalid) {\r\n      return markAllFormControlsAsTouched(this.group);\r\n    }\r\n\r\n    const formData: any = this.group.getRawValue();\r\n\r\n    this.isSubmitting = true;\r\n    this.submitForm.emit({\r\n      values: formData,\r\n      setSubmitting: (isSubmitting: boolean) => this.setSubmitting(isSubmitting),\r\n      setErrors: (errors: FormError[]) => this.setErrors(errors)\r\n    });\r\n  }\r\n\r\n  setErrors(formErrors: FormError[]): void {\r\n    setFormErrors(this.group, formErrors);\r\n    this.isSubmitting = false;\r\n  }\r\n\r\n  setSubmitting(isSubmitting: boolean): void {\r\n    this.isSubmitting = isSubmitting;\r\n  }\r\n\r\n  setValues(values: any): void {\r\n    this.group.setValue(values);\r\n  }\r\n\r\n  patchValues(values: any): void {\r\n    this.group.patchValue(values);\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import {AfterViewInit, Component, EventEmitter, Inject, Input, OnInit, Output, QueryList, ViewChildren} from '@angular/core';\r\nimport {UnsubscribeService} from 'ii-ngx-common';\r\nimport {DynamicFormData} from '../../interfaces/dynamic-form-data';\r\nimport {FormSubmitData} from '../../interfaces/form-submit-data';\r\nimport {ControlChangeData} from '../../interfaces/control-change-data';\r\nimport {AbstractControl, FormControl, FormGroup, ValidatorFn} from '@angular/forms';\r\nimport {DynamicFormButton} from '../../interfaces/dynamic-form-button';\r\nimport {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';\r\nimport {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';\r\nimport {DynamicFieldDirective} from '../../directives/dynamic-field.directive';\r\nimport {DynamicFieldData} from '../../interfaces/dynamic-field-data';\r\nimport {getFieldDataOptionValue, getGroupValidators, getValidators, needToShowLabelOutside} from '../../utils/dynamic-form';\r\nimport {takeUntil} from 'rxjs/operators';\r\nimport {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';\r\nimport {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';\r\nimport {FormError} from '../../interfaces/form-error';\r\n\r\n\r\n@Component({\r\n  selector: 'ii-dynamic-form',\r\n  templateUrl: './dynamic-form.component.html',\r\n  styleUrls: ['./dynamic-form.component.css'],\r\n  providers: [UnsubscribeService]\r\n})\r\nexport class DynamicFormComponent implements OnInit, AfterViewInit {\r\n\r\n  @Input() formData: DynamicFormData;\r\n  @Input() formCssClass = '';\r\n  @Input() initialValues: Record<string, 'any'> = {};\r\n\r\n  @Output() submitForm: EventEmitter<FormSubmitData> = new EventEmitter();\r\n  @Output() loadForm: EventEmitter<DynamicFormComponent> = new EventEmitter();\r\n  @Output() groupChange: EventEmitter<Record<string, any>> = new EventEmitter();\r\n  @Output() controlChange: EventEmitter<ControlChangeData> = new EventEmitter();\r\n\r\n  @Input() buttons: DynamicFormButton[] = [{\r\n    label: 'Submit',\r\n    onClick: () => this.validateAndSubmit()\r\n  }];\r\n\r\n  group: FormGroup;\r\n\r\n  isSubmitting = false;\r\n\r\n  @ViewChildren(DynamicFieldDirective) dynamicComponents: QueryList<DynamicFieldDirective>;\r\n\r\n  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig, private ngUnsubscribe$: UnsubscribeService) {}\r\n\r\n  ngAfterViewInit(): void {\r\n    this.loadForm.emit(this);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n\r\n    const groupValidators: ValidatorFn[] = [];\r\n\r\n    this.group = new FormGroup({});\r\n\r\n    this.formData.items.forEach((item: DynamicFieldData) => {\r\n      const validators: ValidatorFn[] = getValidators(item, this.config);\r\n\r\n      groupValidators.push(...getGroupValidators(item, this.config));\r\n\r\n      const value = this.initialValues[item.name];\r\n\r\n      const formControl = new FormControl(value, validators);\r\n\r\n      formControl.valueChanges.pipe(\r\n        takeUntil(this.ngUnsubscribe$)\r\n      ).subscribe(controlValue => this.controlChange.emit({\r\n        name: item.name,\r\n        formControl,\r\n        value: controlValue\r\n      }) );\r\n\r\n      this.group.addControl(item.name, formControl);\r\n    });\r\n\r\n    this.group.setValidators(groupValidators);\r\n\r\n    this.group.valueChanges.pipe(\r\n      takeUntil(this.ngUnsubscribe$)\r\n    ).subscribe(values => this.groupChange.emit(values));\r\n  }\r\n\r\n  getGroup(): FormGroup {\r\n    return this.group;\r\n  }\r\n\r\n  getRawValues(): any {\r\n    return this.group.getRawValue();\r\n  }\r\n\r\n  getValues(): any {\r\n    return this.group.value;\r\n  }\r\n\r\n  getFormControl(name: string): AbstractControl {\r\n    if (!this.group.controls[name]) {\r\n      throw Error(`form control ${name} not found`);\r\n    }\r\n\r\n    return this.group.controls[name];\r\n  }\r\n\r\n  getFormElement(name: string): any {\r\n    const arr = this.dynamicComponents.toArray();\r\n\r\n    const connectFieldDirective = arr.find(item => item.fieldData.name === name);\r\n    if (!connectFieldDirective) {\r\n      throw Error(`component ${name} not found`);\r\n    }\r\n\r\n    return connectFieldDirective.component.instance;\r\n  }\r\n\r\n  getCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'cssClass', '');\r\n  }\r\n\r\n  getFormGroupCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'formGroupCssClass', '');\r\n  }\r\n\r\n  getLabelCssClass(fieldData: DynamicFieldData): string {\r\n    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;\r\n\r\n    return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');\r\n  }\r\n\r\n  needToShowLabelOutside(fieldData: DynamicFieldData): boolean {\r\n    return needToShowLabelOutside(fieldData, this.config);\r\n  }\r\n\r\n  onButtonClick(button, event): void {\r\n    event.preventDefault();\r\n\r\n    button.onClick({\r\n      form: this,\r\n      nativeEvent: event\r\n    });\r\n  }\r\n\r\n  validateAndSubmit(): void {\r\n    if (this.isSubmitting) {\r\n      return;\r\n    }\r\n    if (this.group.invalid) {\r\n      return markAllFormControlsAsTouched(this.group);\r\n    }\r\n\r\n    const formData: any = this.group.getRawValue();\r\n\r\n    this.isSubmitting = true;\r\n    this.submitForm.emit({\r\n      values: formData,\r\n      setSubmitting: (isSubmitting: boolean) => this.setSubmitting(isSubmitting),\r\n      setErrors: (errors: FormError[]) => this.setErrors(errors)\r\n    });\r\n  }\r\n\r\n  setErrors(formErrors: FormError[]): void {\r\n    setFormErrors(this.group, formErrors);\r\n    this.isSubmitting = false;\r\n  }\r\n\r\n  setSubmitting(isSubmitting: boolean): void {\r\n    this.isSubmitting = isSubmitting;\r\n  }\r\n\r\n  setValues(values: any): void {\r\n    this.group.setValue(values);\r\n  }\r\n\r\n  patchValues(values: any): void {\r\n    this.group.patchValue(values);\r\n  }\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1113,7 +1117,7 @@
                         "type": "UnsubscribeService"
                     }
                 ],
-                "line": 44,
+                "line": 45,
                 "jsdoctags": [
                     {
                         "name": "config",

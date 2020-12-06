@@ -17,7 +17,7 @@ let nextId = 0;
 })
 export class ReCaptchaComponent implements ControlValueAccessor {
 
-  @Input() id: string = `ngrecaptcha-${nextId++}`;
+  @Input() id = `ngrecaptcha-${nextId++}`;
   @Input() siteKey: string;
   @Input() theme: ReCaptchaV2.Theme;
   @Input() type: ReCaptchaV2.Type;

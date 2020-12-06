@@ -1,4 +1,4 @@
-export interface IFormError {
+export interface FormError {
   formControlName?: string;
   code?: string;
   message: string;

@@ -1,0 +1,8 @@
+<select
+  [ngModel]="value"
+  [id]="inputId"
+  (change)="propagateChange($event.target.value)"
+  (blur)="propagateTouch()"
+  [disabled]="isDisabled">
+  <option [value]="option.id" *ngFor="let option of options; trackBy: trackByOption">{{option.value}}</option>
+</select>

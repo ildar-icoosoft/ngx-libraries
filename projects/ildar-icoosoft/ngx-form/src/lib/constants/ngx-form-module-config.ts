@@ -1,4 +1,4 @@
 import {InjectionToken} from '@angular/core';
-import {INgxFormModuleConfig} from '../interfaces/ngx-form-module-config';
+import {NgxFormModuleConfig} from '../interfaces/ngx-form-module-config';
 
-export const NGX_FORM_MODULE_CONFIG = new InjectionToken<INgxFormModuleConfig>('NGX_FORM_MODULE_CONFIG');
+export const NGX_FORM_MODULE_CONFIG = new InjectionToken<NgxFormModuleConfig>('NGX_FORM_MODULE_CONFIG');

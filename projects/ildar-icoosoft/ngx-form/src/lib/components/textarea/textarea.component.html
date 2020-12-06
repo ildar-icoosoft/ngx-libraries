@@ -1,0 +1,8 @@
+<textarea
+  [value]="value"
+  [id]="inputId"
+  [placeholder]="placeholder"
+  (input)="propagateChange($event.target.value)"
+  (blur)="propagateTouch()"
+  [readonly]="readonly"
+  [disabled]="isDisabled"></textarea>

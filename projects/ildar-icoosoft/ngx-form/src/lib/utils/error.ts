@@ -1,5 +1,5 @@
 import { FormControl, FormGroup } from '@angular/forms';
-import {IFormError} from '../interfaces/form-error';
+import {FormError} from '../interfaces/form-error';
 
 export const markAllFormControlsAsTouched = (formGroup: FormGroup): void => {
   Object.keys(formGroup.controls).forEach(field => {
@@ -14,7 +14,7 @@ export const markAllFormControlsAsTouched = (formGroup: FormGroup): void => {
 
 export const setFormErrors = (
   formGroup: FormGroup,
-  formErrors: IFormError[]
+  formErrors: FormError[]
 ): void => {
   const formGroupErrors: string[] = [];
   const formControlErrors: Record<string, string[]> = {};

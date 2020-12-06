@@ -1,0 +1,9 @@
+<input
+  [value]="value"
+  [type]="type"
+  [id]="inputId"
+  [placeholder]="placeholder"
+  (input)="propagateChange($event.target.value)"
+  (blur)="propagateTouch()"
+  [readonly]="readonly"
+  [disabled]="isDisabled">

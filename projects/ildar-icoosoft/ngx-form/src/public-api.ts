@@ -14,6 +14,7 @@ export * from './lib/components/multi-fieldset/multi-fieldset.component';
 export * from './lib/components/select/select.component';
 export * from './lib/components/textarea/textarea.component';
 export * from './lib/components/validation-control/validation-control.component';
+export * from './lib/components/re-captcha/re-captcha.component';
 
 export * from './lib/directives/dynamic-field.directive';
 

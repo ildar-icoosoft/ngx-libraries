@@ -2,10 +2,10 @@ import { moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
 import {
   NgxFormModule,
-} from '../projects/ildar-icoosoft/ngx-form/src/public-api';
+} from 'ii-ngx-form/src/lib/ngx-form.module';
 import {Meta} from '@storybook/angular/types-6-0';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {setFormErrors} from '../projects/ildar-icoosoft/ngx-form/src/lib/utils/error';
+import {setFormErrors} from 'ii-ngx-form/src/lib/utils/error';
 
 const handleSubmit = (group: FormGroup) => {
   action('submit-click');

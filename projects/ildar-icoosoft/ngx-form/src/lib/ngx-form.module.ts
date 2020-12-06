@@ -15,25 +15,30 @@ import { SelectComponent } from './components/select/select.component';
 import { HtmlComponent } from './components/html/html.component';
 import { FieldsetComponent } from './components/fieldset/fieldset.component';
 import { MultiFieldsetComponent } from './components/multi-fieldset/multi-fieldset.component';
+import { ReCaptchaComponent } from './components/re-captcha/re-captcha.component';
+import {RecaptchaFormsModule, RecaptchaModule} from 'ng-recaptcha';
 
 
 @NgModule({
-  declarations: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent],
+  declarations: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent, ReCaptchaComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
   ],
   entryComponents: [
     InputComponent,
     ValidationControlComponent,
     FieldsetComponent,
+    ReCaptchaComponent,
     HtmlComponent,
     MultiFieldsetComponent,
     SelectComponent,
     TextareaComponent
   ],
-  exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent],
+  exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent, ReCaptchaComponent],
   providers: [{
     provide: NGX_FORM_MODULE_CONFIG,
     useValue: defaultNgxFormModuleConfig

@@ -12,6 +12,7 @@
     "build-storybook": "npm run docs:json && build-storybook"
   },
   "private": true,
+  "workspaces": ["projects/ildar-icoosoft/*"],
   "dependencies": {
     "@angular/animations": "~10.2.0",
     "@angular/common": "~10.2.0",

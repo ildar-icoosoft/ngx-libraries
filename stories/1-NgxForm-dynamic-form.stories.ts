@@ -1,17 +1,18 @@
 import { moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
 import { text, withKnobs } from '@storybook/addon-knobs';
-import {FormSubmitData} from '../projects/ildar-icoosoft/ngx-form/src/lib/interfaces/form-submit-data';
-import {NgxFormModule} from '../projects/ildar-icoosoft/ngx-form/src/lib/ngx-form.module';
-import {InputComponent} from '../projects/ildar-icoosoft/ngx-form/src/lib/components/input/input.component';
-import {DynamicFieldData} from '../projects/ildar-icoosoft/ngx-form/src/lib/interfaces/dynamic-field-data';
-import {DynamicFieldDataOption} from '../projects/ildar-icoosoft/ngx-form/src/lib/interfaces/dynamic-field-data-option';
-import {getFieldDataOptionValue} from '../projects/ildar-icoosoft/ngx-form/src/lib/utils/dynamic-form';
-import {DynamicFormComponent} from '../projects/ildar-icoosoft/ngx-form/src/lib/components/dynamic-form/dynamic-form.component';
+import {FormSubmitData} from 'ii-ngx-form/src/lib/interfaces/form-submit-data';
+import {NgxFormModule} from 'ii-ngx-form/src/lib/ngx-form.module';
+import {InputComponent} from 'ii-ngx-form/src/lib/components/input/input.component';
+import {DynamicFieldData} from 'ii-ngx-form/src/lib/interfaces/dynamic-field-data';
+import {DynamicFieldDataOption} from 'ii-ngx-form/src/lib/interfaces/dynamic-field-data-option';
+import {getFieldDataOptionValue} from 'ii-ngx-form/src/lib/utils/dynamic-form';
+import {DynamicFormComponent} from 'ii-ngx-form/src/lib/components/dynamic-form/dynamic-form.component';
 import {dynamicFormData} from '../data-sample/dynamic-form';
-import {SelectComponent} from '../projects/ildar-icoosoft/ngx-form/src/lib/components/select/select.component';
-import {FieldsetComponent} from '../projects/ildar-icoosoft/ngx-form/src/lib/components/fieldset/fieldset.component';
-import {MultiFieldsetComponent} from '../projects/ildar-icoosoft/ngx-form/src/lib/components/multi-fieldset/multi-fieldset.component';
+import {SelectComponent} from 'ii-ngx-form/src/lib/components/select/select.component';
+import {FieldsetComponent} from 'ii-ngx-form/src/lib/components/fieldset/fieldset.component';
+import {MultiFieldsetComponent} from 'ii-ngx-form/src/lib/components/multi-fieldset/multi-fieldset.component';
+import {ReCaptchaComponent} from 'ii-ngx-form/src/lib/components/re-captcha/re-captcha.component';
 
 
 const handleSubmit = (data: FormSubmitData) => {
@@ -73,9 +74,7 @@ export const DynamicForm = () => ({
     groupChange: handleChange
   },
 });
-DynamicForm.story = {
-  name: '<ii-dynamic-form>'
-};
+DynamicForm.storyName = '<ii-dynamic-form>';
 
 export const InputText = () => ({
   component: InputComponent,
@@ -83,9 +82,7 @@ export const InputText = () => ({
     placeholder: text('placeholder', 'Enter Text'),
   },
 });
-InputText.story = {
-  name: `<ii-input>`
-};
+InputText.storyName = `<ii-input>`;
 
 
 export const InputEmail = () => ({
@@ -95,9 +92,7 @@ export const InputEmail = () => ({
     placeholder: text('placeholder', 'Enter Email'),
   },
 });
-InputEmail.story = {
-  name: `<ii-input type="email">`
-};
+InputEmail.storyName = `<ii-input type="email">`;
 
 
 export const InputPassword = () => ({
@@ -107,9 +102,7 @@ export const InputPassword = () => ({
     placeholder: text('placeholder', 'Enter Password'),
   },
 });
-InputPassword.story = {
-  name: `<ii-input type="password">`
-};
+InputPassword.storyName = `<ii-input type="password">`;
 
 export const Select = () => ({
   component: SelectComponent,
@@ -135,20 +128,23 @@ export const Select = () => ({
     }]
   },
 });
-Select.story = {
-  name: `<ii-select>`
-};
+Select.storyName = `<ii-select>`;
+
+export const recaptcha = () => ({
+  component: ReCaptchaComponent,
+  props: {
+    siteKey: '6LfKP_sZAAAAAAIsTU7sV8QofHdP_P_4gpqMf5g1',
+  },
+});
+recaptcha.storyName = `<ii-re-captcha>`;
 
 export const html = () => ({
-  template: `<ii-html [(ngModel)]="model" [label]="'Custom HTML'"></ii-html>`,
+  template: `<ii-html [(ngModel)]="model"></ii-html>`,
   props: {
-    label: 'Text',
     model: text('model',  '<span>Any custom HTML</span>'),
   },
 });
-html.story = {
-  name: `<ii-html>`
-};
+html.storyName = `<ii-html>`;
 
 export const fieldset = () => ({
   component: FieldsetComponent,
@@ -172,9 +168,7 @@ export const fieldset = () => ({
     ]
   },
 });
-fieldset.story = {
-  name: `<ii-fieldset>`
-};
+fieldset.storyName = `<ii-fieldset>`;
 
 export const multiFieldset = () => ({
   component: MultiFieldsetComponent,
@@ -198,6 +192,4 @@ export const multiFieldset = () => ({
     ]
   },
 });
-multiFieldset.story = {
-  name: `<ii-multi-fieldset>`
-};
+multiFieldset.storyName = `<ii-multi-fieldset>`;

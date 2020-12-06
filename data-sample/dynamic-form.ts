@@ -225,6 +225,34 @@ export const dynamicFormData: DynamicFormData = {
         },
       ],
     },
+    {
+      label: 'Recaptcha',
+      name: 'recaptcha',
+      type: 'reCaptcha',
+      options: [
+        {
+          name: 'doNotEncrypt',
+          value: '1',
+        },
+        {
+          name: 'doNotSave',
+          value: '1',
+        },
+        {
+          name: 'validators',
+          value: '[{"name":"required","options":[]}]',
+        },
+        {
+          name: 'htmlOptions',
+          value: '[{"name":"cssClass","value":"col-lg-12"}]'
+        },
+        {
+          name: 'siteKey',
+          value: '6LfKP_sZAAAAAAIsTU7sV8QofHdP_P_4gpqMf5g1',
+        }
+      ],
+      items: [],
+    },
   ]
 
 };

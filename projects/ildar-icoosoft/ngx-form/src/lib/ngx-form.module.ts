@@ -16,6 +16,7 @@ import { HtmlComponent } from './components/html/html.component';
 import { FieldsetComponent } from './components/fieldset/fieldset.component';
 import { MultiFieldsetComponent } from './components/multi-fieldset/multi-fieldset.component';
 import { ReCaptchaComponent } from './components/re-captcha/re-captcha.component';
+import {RecaptchaFormsModule, RecaptchaModule} from 'ng-recaptcha';
 
 
 @NgModule({
@@ -24,6 +25,8 @@ import { ReCaptchaComponent } from './components/re-captcha/re-captcha.component
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
   ],
   entryComponents: [
     InputComponent,

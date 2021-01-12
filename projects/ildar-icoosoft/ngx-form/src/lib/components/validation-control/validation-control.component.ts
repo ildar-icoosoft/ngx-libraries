@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {AbstractControl} from '@angular/forms';
 
 @Component({
   selector: 'ii-validation-control',
@@ -8,7 +8,7 @@ import {FormControl} from '@angular/forms';
 })
 export class ValidationControlComponent {
   @Input()
-  control: FormControl;
+  control: AbstractControl;
 
   constructor() {}
 

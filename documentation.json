@@ -1139,7 +1139,7 @@
                 "OnInit",
                 "AfterViewInit"
             ],
-            "templateData": "template: `\r\n<form [formGroup]=\"group\" novalidate *ngIf=\"formData\" [class]=\"formCssClass\">\r\n  <ii-form-validation-errors [group]=\"group\"></ii-form-validation-errors>\r\n\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div *ngFor=\"let fieldData of formData.items; let i = index\" [class]=\"getCssClass(fieldData)\">\r\n        <div [class]=\"'form-group ' + getFormGroupCssClass(fieldData)\">\r\n          <ii-validation-control [control]=\"group.controls[fieldData.name]\">\r\n            <label [for]=\"fieldData.name + '_' + i\" *ngIf=\"needToShowLabelOutside(fieldData)\" [innerHTML]=\"fieldData.label\" [class]=\"getLabelCssClass(fieldData)\"></label>\r\n            <ng-container\r\n              iiDynamicField\r\n              [inputId]=\"fieldData.name + '_' + i\"\r\n              [formControl]=\"group.controls[fieldData.name]\"\r\n              [fieldData]=\"fieldData\">\r\n            </ng-container>\r\n          </ii-validation-control>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-12\">\r\n        <div class=\"connect-form-buttons-container\">\r\n          <div [class]=\"button.cssContainerClass || ''\" *ngFor=\"let button of buttons\">\r\n            <button [class]=\"'btn btn-primary ' + (button.cssClass || '')\" [class.disabled]=\"group.invalid\" (click)=\"onButtonClick(button, $event)\">\r\n              <i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSubmitting\"></i>\r\n              {{button.label}}\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</form>\r\n`\r\n"
+            "templateData": "<form [formGroup]=\"group\" novalidate *ngIf=\"formData\" [class]=\"formCssClass\">\r\n  <ii-form-validation-errors [group]=\"group\"></ii-form-validation-errors>\r\n\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div *ngFor=\"let fieldData of formData.items; let i = index\" [class]=\"getCssClass(fieldData)\">\r\n        <div [class]=\"'form-group ' + getFormGroupCssClass(fieldData)\">\r\n          <ii-validation-control [control]=\"group.controls[fieldData.name]\">\r\n            <label [for]=\"fieldData.name + '_' + i\" *ngIf=\"needToShowLabelOutside(fieldData)\" [innerHTML]=\"fieldData.label\" [class]=\"getLabelCssClass(fieldData)\"></label>\r\n            <ng-container\r\n              iiDynamicField\r\n              [inputId]=\"fieldData.name + '_' + i\"\r\n              [formControl]=\"group.controls[fieldData.name]\"\r\n              [fieldData]=\"fieldData\">\r\n            </ng-container>\r\n          </ii-validation-control>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-12\">\r\n        <div class=\"connect-form-buttons-container\">\r\n          <div [class]=\"button.cssContainerClass || ''\" *ngFor=\"let button of buttons\">\r\n            <button [class]=\"'btn btn-primary ' + (button.cssClass || '')\" [class.disabled]=\"group.invalid\" (click)=\"onButtonClick(button, $event)\">\r\n              <i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSubmitting\"></i>\r\n              {{button.label}}\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</form>\r\n\r\n"
         },
         {
             "name": "FieldsetComponent",
@@ -2859,7 +2859,7 @@
         },
         {
             "name": "ValidationControlComponent",
-            "id": "component-ValidationControlComponent-47b3f809ba3ead241dcfbef7afbdad01",
+            "id": "component-ValidationControlComponent-e21f948e328aeea5bff2728249d452d1",
             "file": "projects/ildar-icoosoft/ngx-form/src/lib/components/validation-control/validation-control.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2879,7 +2879,7 @@
                 {
                     "name": "control",
                     "line": 11,
-                    "type": "FormControl"
+                    "type": "AbstractControl"
                 }
             ],
             "outputsClass": [],
@@ -2890,7 +2890,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {Component, Input} from '@angular/core';\r\nimport {FormControl} from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'ii-validation-control',\r\n  templateUrl: './validation-control.component.html',\r\n  styleUrls: ['./validation-control.component.css']\r\n})\r\nexport class ValidationControlComponent {\r\n  @Input()\r\n  control: FormControl;\r\n\r\n  constructor() {}\r\n\r\n}\r\n",
+            "sourceCode": "import {Component, Input} from '@angular/core';\r\nimport {AbstractControl} from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'ii-validation-control',\r\n  templateUrl: './validation-control.component.html',\r\n  styleUrls: ['./validation-control.component.css']\r\n})\r\nexport class ValidationControlComponent {\r\n  @Input()\r\n  control: AbstractControl;\r\n\r\n  constructor() {}\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/ildar-icoosoft/ngx-libraries/compare/ii-ngx-form@0.4.1...ii-ngx-form@0.4.2) (2021-01-13)
+
+
+### Bug Fixes
+
+* ValidationControlComponent prop type ([#18](https://github.com/ildar-icoosoft/ngx-libraries/issues/18)) ([f4817a4](https://github.com/ildar-icoosoft/ngx-libraries/commit/f4817a4c6a79ce3da9c4d5a8a5323eb22055a421))
+
+
+
+
+
+
 ## [0.4.1](https://github.com/ildar-icoosoft/ngx-libraries/compare/ii-ngx-form@0.4.0...ii-ngx-form@0.4.1) (2020-12-06)
 
 

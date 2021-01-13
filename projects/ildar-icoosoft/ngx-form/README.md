@@ -22,3 +22,8 @@ Run `ng test ngx-form` to execute the unit tests via [Karma](https://karma-runne
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Publish with lerna
+
+npx lerna run build
+npx lerna publish --contents dist

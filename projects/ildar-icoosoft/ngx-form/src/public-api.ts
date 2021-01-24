@@ -22,6 +22,7 @@ export * from './lib/pipes/validation-message.pipe';
 
 export * from './lib/interfaces/form-error';
 export * from './lib/interfaces/form-submit-data';
+export * from './lib/interfaces/dynamic-form-data';
 
 export * from './lib/utils/error';
 

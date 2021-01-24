@@ -2,7 +2,7 @@
   "name": "ii-ngx-form",
   "version": "0.4.4",
   "scripts": {
-    "build": "ng build @ildar-icoosoft/ngx-form"
+    "build": "ng build @ildar-icoosoft/ngx-form --prod"
   },
   "peerDependencies": {
     "@angular/common": "^10.2.0",

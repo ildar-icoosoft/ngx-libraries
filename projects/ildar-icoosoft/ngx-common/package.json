@@ -2,7 +2,7 @@
   "name": "ii-ngx-common",
   "version": "0.2.1",
   "scripts": {
-    "build": "ng build @ildar-icoosoft/ngx-common"
+    "build": "ng build @ildar-icoosoft/ngx-common --prod"
   },
   "peerDependencies": {
     "@angular/common": "^10.2.0",

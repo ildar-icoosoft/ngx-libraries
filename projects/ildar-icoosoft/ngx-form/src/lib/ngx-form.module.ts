@@ -45,7 +45,7 @@ import {RecaptchaFormsModule, RecaptchaModule} from 'ng-recaptcha';
   }]
 })
 export class NgxFormModule {
-  static forRoot(config: NgxFormModuleConfig): ModuleWithProviders<NgxFormModule> {
+  static forRoot(config: Partial<NgxFormModuleConfig>): ModuleWithProviders<NgxFormModule> {
     return {
       ngModule: NgxFormModule,
       providers: [{

@@ -9,7 +9,7 @@ import {FormGroup} from '@angular/forms';
 export class FormValidationErrorsComponent implements OnInit {
 
   @Input()
-  group: FormGroup;
+  group?: FormGroup;
 
   constructor() {}
 

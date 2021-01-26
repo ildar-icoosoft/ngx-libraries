@@ -19,18 +19,15 @@ let nextId = 0;
 export class ReCaptchaComponent implements ControlValueAccessor {
 
   @Input() id = `ngrecaptcha-${nextId++}`;
-  @Input() siteKey: string;
-  @Input() theme: ReCaptchaV2.Theme;
-  @Input() type: ReCaptchaV2.Type;
-  @Input() size: ReCaptchaV2.Size;
-  @Input() tabIndex: number;
-  @Input() badge: ReCaptchaV2.Badge;
+  @Input() siteKey?: string;
+  @Input() theme?: ReCaptchaV2.Theme;
+  @Input() type?: ReCaptchaV2.Type;
+  @Input() size?: ReCaptchaV2.Size;
+  @Input() tabIndex?: number;
+  @Input() badge?: ReCaptchaV2.Badge;
 
-  /** @internal */
-  private onChange: (value: string) => void;
-
-  /** @internal */
-  private onTouched: () => void;
+  private onChange?: (value: string) => void;
+  private onTouched?: () => void;
 
   @ViewChild(RecaptchaComponent, {
     static: true

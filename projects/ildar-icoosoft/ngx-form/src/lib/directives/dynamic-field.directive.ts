@@ -26,10 +26,10 @@ import {NgxFormModuleConfig} from '../interfaces/ngx-form-module-config';
 })
 export class DynamicFieldDirective implements OnInit, ControlValueAccessor {
 
-  @Input() fieldData: DynamicFieldData;
-  @Input() inputId: string;
+  @Input() fieldData!: DynamicFieldData;
+  @Input() inputId!: string;
 
-  component: ComponentRef<ControlValueAccessor>;
+  component!: ComponentRef<ControlValueAccessor>;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -74,7 +74,7 @@ export class DynamicFieldDirective implements OnInit, ControlValueAccessor {
     this.component.changeDetectorRef.detectChanges();
   }
 
-  registerOnChange(fn): void {
+  registerOnChange(fn: any): void {
     if (!this.component || !this.component.instance) {
       return;
     }
@@ -82,7 +82,7 @@ export class DynamicFieldDirective implements OnInit, ControlValueAccessor {
     return this.component.instance.registerOnChange(fn);
   }
 
-  registerOnTouched(fn): void {
+  registerOnTouched(fn: any): void {
     if (!this.component || !this.component.instance) {
       return;
     }
@@ -103,6 +103,7 @@ export class DynamicFieldDirective implements OnInit, ControlValueAccessor {
       return;
     }
 
+    // @ts-ignore
     this.component.instance.setDisabledState(isDisabled);
   }
 

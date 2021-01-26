@@ -1,6 +1,5 @@
 import { moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
-import { text, withKnobs } from '@storybook/addon-knobs';
 import {FormSubmitData} from 'ii-ngx-form/src/lib/interfaces/form-submit-data';
 import {NgxFormModule} from 'ii-ngx-form/src/lib/ngx-form.module';
 import {InputComponent} from 'ii-ngx-form/src/lib/components/input/input.component';
@@ -29,7 +28,6 @@ const handleChange = (data: any) => {
 export default {
   title: 'Example/Dynamic Form',
   decorators: [
-    withKnobs,
     moduleMetadata({
       imports: [
         // IonicModule.forRoot(),
@@ -66,7 +64,7 @@ export const DynamicForm = () => ({
   props: {
     formData: dynamicFormData,
     initialValues: {
-      html: text('html', 'some HTML text'),
+      html: 'some HTML text',
       text: 'some text',
       select: 'twitter-follow-button'
     },
@@ -79,7 +77,7 @@ DynamicForm.storyName = '<ii-dynamic-form>';
 export const InputText = () => ({
   component: InputComponent,
   props: {
-    placeholder: text('placeholder', 'Enter Text'),
+    placeholder: 'Enter Text',
   },
 });
 InputText.storyName = `<ii-input>`;
@@ -89,7 +87,7 @@ export const InputEmail = () => ({
   component: InputComponent,
   props: {
     type: 'email',
-    placeholder: text('placeholder', 'Enter Email'),
+    placeholder: 'Enter Email',
   },
 });
 InputEmail.storyName = `<ii-input type="email">`;
@@ -99,7 +97,7 @@ export const InputPassword = () => ({
   component: InputComponent,
   props: {
     type: 'password',
-    placeholder: text('placeholder', 'Enter Password'),
+    placeholder: 'Enter Password',
   },
 });
 InputPassword.storyName = `<ii-input type="password">`;
@@ -141,7 +139,7 @@ recaptcha.storyName = `<ii-re-captcha>`;
 export const html = () => ({
   template: `<ii-html [(ngModel)]="model"></ii-html>`,
   props: {
-    model: text('model',  '<span>Any custom HTML</span>'),
+    model: '<span>Any custom HTML</span>',
   },
 });
 html.storyName = `<ii-html>`;

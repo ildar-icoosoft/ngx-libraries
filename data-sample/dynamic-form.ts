@@ -1,7 +1,7 @@
-import {DynamicFormData} from '../projects/ildar-icoosoft/ngx-form/src/lib/interfaces/dynamic-form-data';
+import {DynamicForm} from 'ii-ngx-form/src/lib/interfaces/dynamic-form';
 
 
-export const dynamicFormData: DynamicFormData = {
+export const dynamicFormData: DynamicForm = {
   items: [
     {
       label: 'Custom HTML',

@@ -1,10 +1,10 @@
-import {DynamicFieldData} from '../interfaces/dynamic-field-data';
+import {DynamicField} from '../interfaces/dynamic-field';
 import {NgxFormModuleConfig} from '../interfaces/ngx-form-module-config';
 import {ValidatorFn} from '@angular/forms';
-import {DynamicFieldDataOption} from '../interfaces/dynamic-field-data-option';
+import {DynamicFieldOption} from '../interfaces/dynamic-field-option';
 
-export const getFieldDataOptionValue = (options: DynamicFieldDataOption[], name: string, defaultValue: any = undefined) => {
-  const option: DynamicFieldDataOption | undefined = options.find(item => item.name === name);
+export const getFieldDataOptionValue = (options: DynamicFieldOption[], name: string, defaultValue: any = undefined) => {
+  const option: DynamicFieldOption | undefined = options.find(item => item.name === name);
   if (option) {
     return option.value;
   }
@@ -12,7 +12,7 @@ export const getFieldDataOptionValue = (options: DynamicFieldDataOption[], name:
   return defaultValue;
 };
 
-export const getValidators = (fieldData: DynamicFieldData, config: NgxFormModuleConfig): ValidatorFn[] => {
+export const getValidators = (fieldData: DynamicField, config: NgxFormModuleConfig): ValidatorFn[] => {
   const validators: ValidatorFn[] = [];
   fieldData.options.forEach(option => {
     if (option.name === 'validators') {
@@ -31,7 +31,7 @@ export const getValidators = (fieldData: DynamicFieldData, config: NgxFormModule
   return validators;
 };
 
-export const getGroupValidators = (fieldData: DynamicFieldData, config: NgxFormModuleConfig): ValidatorFn[] => {
+export const getGroupValidators = (fieldData: DynamicField, config: NgxFormModuleConfig): ValidatorFn[] => {
   const validators: ValidatorFn[] = [];
   fieldData.options.forEach(option => {
     if (option.name === 'validators') {
@@ -50,8 +50,8 @@ export const getGroupValidators = (fieldData: DynamicFieldData, config: NgxFormM
   return validators;
 };
 
-export const needToShowLabelOutside = (fieldData: DynamicFieldData, config: NgxFormModuleConfig): boolean => {
-  const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
+export const needToShowLabelOutside = (fieldData: DynamicField, config: NgxFormModuleConfig): boolean => {
+  const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
   let result = getFieldDataOptionValue(fieldDataOptions, 'needToShowLabelOutside');
 

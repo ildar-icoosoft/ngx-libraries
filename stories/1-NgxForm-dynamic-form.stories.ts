@@ -3,8 +3,8 @@ import { action } from '@storybook/addon-actions';
 import {FormSubmitData} from 'ii-ngx-form/src/lib/interfaces/form-submit-data';
 import {NgxFormModule} from 'ii-ngx-form/src/lib/ngx-form.module';
 import {InputComponent} from 'ii-ngx-form/src/lib/components/input/input.component';
-import {DynamicFieldData} from 'ii-ngx-form/src/lib/interfaces/dynamic-field-data';
-import {DynamicFieldDataOption} from 'ii-ngx-form/src/lib/interfaces/dynamic-field-data-option';
+import {DynamicField} from 'ii-ngx-form/src/lib/interfaces/dynamic-field-data';
+import {DynamicFieldOption} from 'ii-ngx-form/src/lib/interfaces/dynamic-field-data-option';
 import {getFieldDataOptionValue} from 'ii-ngx-form/src/lib/utils/dynamic-form';
 import {DynamicFormComponent} from 'ii-ngx-form/src/lib/components/dynamic-form/dynamic-form.component';
 import {dynamicFormData} from '../data-sample/dynamic-form';
@@ -39,8 +39,8 @@ export default {
               props: {
                 type: 'password',
               },
-              mapConnectDataToProps: (fieldData: DynamicFieldData) => {
-                const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
+              mapConnectDataToProps: (fieldData: DynamicField) => {
+                const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
                 const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');
                 return {

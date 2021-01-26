@@ -1,10 +1,10 @@
 import {Component, forwardRef, Inject, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn} from '@angular/forms';
-import {DynamicFieldData} from '../../interfaces/dynamic-field-data';
+import {DynamicField} from '../../interfaces/dynamic-field';
 import {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';
 import {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';
 import {getFieldDataOptionValue, getValidators, needToShowLabelOutside} from '../../utils/dynamic-form';
-import {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';
+import {DynamicFieldOption} from '../../interfaces/dynamic-field-option';
 
 @Component({
   selector: 'ii-fieldset',
@@ -20,7 +20,7 @@ import {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option
 })
 export class FieldsetComponent implements OnInit, ControlValueAccessor {
 
-  @Input() items: DynamicFieldData[] = [];
+  @Input() items: DynamicField[] = [];
 
   @Input() initialValues: any = {};
 
@@ -32,7 +32,7 @@ export class FieldsetComponent implements OnInit, ControlValueAccessor {
 
     this.group = new FormGroup({});
 
-    this.items.forEach((item: DynamicFieldData) => {
+    this.items.forEach((item: DynamicField) => {
       const validators: ValidatorFn[] = getValidators(item, this.config);
 
       const value = this.initialValues[item.name];
@@ -44,13 +44,13 @@ export class FieldsetComponent implements OnInit, ControlValueAccessor {
     });
   }
 
-  getLabelCssClass(fieldData: DynamicFieldData): string {
-    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
+  getLabelCssClass(fieldData: DynamicField): string {
+    const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
     return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');
   }
 
-  needToShowLabelOutside(fieldData: DynamicFieldData): boolean {
+  needToShowLabelOutside(fieldData: DynamicField): boolean {
     return needToShowLabelOutside(fieldData, this.config);
   }
 

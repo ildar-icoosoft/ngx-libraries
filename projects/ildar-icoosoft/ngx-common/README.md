@@ -37,3 +37,29 @@ Marks value that's safe to use as HTML, CSS, Script, etc.
 <div [innerHTML]="data | safe:'url'">Safe css</div>
 <div [innerHTML]="data | safe:'resourceUrl'">Safe css</div>
 ```
+
+## Unsubscribe service
+
+Observable service which is unsubscribed after service is destroyed
+
+### Usage
+
+```terminal
+
+import {UnsubscribeService} from "ii-ngx-common";
+
+@Component({
+  ...
+  providers: [UnsubscribeService]
+})
+export class MyComponent {
+  constructor(unsubscribeService$: UnsubscribeService) {
+    someObservable.pipe(
+	  takeUntil(unsubscribeService$)
+	).subscribe(() => {
+	  ...
+	});
+  }
+}
+
+```

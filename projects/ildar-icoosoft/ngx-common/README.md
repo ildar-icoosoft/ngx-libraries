@@ -1,24 +1,39 @@
 # NgxCommon
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+Angular 2+ common components, pipes, services, directives.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project ngx-common` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-common`.
-> Note: Don't forget to add `--project ngx-common` or else it will be added to the default project in your `angular.json` file. 
+1. Use npm to install the package
 
-## Build
+```terminal
+$ npm install ii-ngx-common --save
+```
 
-Run `ng build ngx-common` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. You could either add into your module `imports` the `NgxCommonModule` in order to add all of the pipes.
 
-## Publishing
+```typescript
+import { NgxCommonModule } from "ii-ngx-common";
 
-After building your library with `ng build ngx-common`, go to the dist folder `cd dist/ngx-common` and run `npm publish`.
+@NgModule({
+ // ...
+ imports: [
+   // ...
+   NgxCommonModule
+ ]
+})
+```
 
-## Running unit tests
+## Safe pipe
 
-Run `ng test ngx-common` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Marks value that's safe to use as HTML, CSS, Script, etc.
 
-## Further help
+### Usage
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```terminal
+<div [innerHTML]="data | safe:'html'">Safe html</div>
+<div [innerHTML]="data | safe:'style'">Safe css</div>
+<div [innerHTML]="data | safe:'script'">Safe css</div>
+<div [innerHTML]="data | safe:'url'">Safe css</div>
+<div [innerHTML]="data | safe:'resourceUrl'">Safe css</div>
+```

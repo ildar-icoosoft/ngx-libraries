@@ -26,7 +26,9 @@ export const dynamicFormData: DynamicForm = {
       label: 'Text <span class="required-sign">(*)</span>',
       name: 'text',
       type: 'text',
-      validators: [{"name": "required", "options": []}],
+      validators: [
+        {"name": "required", "options": []}
+      ],
       options: [
         {
           name: 'placeholder',
@@ -43,7 +45,9 @@ export const dynamicFormData: DynamicForm = {
       label: 'Textarea <span class="required-sign">(*)</span>',
       name: 'textarea',
       type: 'textarea',
-      validators: [{"name": "required", "options": []}],
+      validators: [
+        {"name": "required", "options": []}
+      ],
       options: [
         {
           name: 'placeholder',
@@ -60,7 +64,10 @@ export const dynamicFormData: DynamicForm = {
       label: 'Email <span class="required-sign">(*)</span>',
       name: 'email',
       type: 'email',
-      validators: [{"name": "required", "options": []}, {"name": "email", "options": []}],
+      validators: [
+        {"name": "required", "options": []},
+        {"name": "email", "options": []}
+      ],
       options: [
         {
           name: 'placeholder',
@@ -77,7 +84,9 @@ export const dynamicFormData: DynamicForm = {
       label: 'Password <span class="required-sign">(*)</span>',
       name: 'password',
       type: 'password',
-      validators: [{"name": "required", "options": []}],
+      validators: [
+        {"name": "required", "options": []}
+      ],
       options: [
         {
           name: 'placeholder',
@@ -94,7 +103,9 @@ export const dynamicFormData: DynamicForm = {
       label: 'Confirm Password <span class="required-sign">(*)</span>',
       name: 'confirmPassword',
       type: 'password',
-      validators: [{"name": "required", "options": []}],
+      validators: [
+        {"name": "required", "options": []}
+      ],
       options: [
         {
           name: 'placeholder',
@@ -121,24 +132,24 @@ export const dynamicFormData: DynamicForm = {
           name: 'selectOptions',
           value:
             [
-              {"name": "twitter-share-button", "label": "Share"},
+              {"id": "twitter-share-button", "name": "Share"},
               {
-                "name": "twitter-follow-button",
-                "label": "Follow"
+                "id": "twitter-follow-button",
+                "name": "Follow"
               },
               {
-                "name": "twitter-hashtag-button",
-                "label": "Hashtag"
+                "id": "twitter-hashtag-button",
+                "name": "Hashtag"
               },
-              {"name": "twitter-mention-button", "label": "Mention"},
+              {"id": "twitter-mention-button", "name": "Mention"},
               {
-                "name": "twitter-tweet",
-                "label": "Tweet"
+                "id": "twitter-tweet",
+                "name": "Tweet"
               },
-              {"name": "twitter-tweet", "label": "Tweet"},
+              {"id": "twitter-tweet", "name": "Tweet"},
               {
-                "name": "twitter-timeline",
-                "label": "Timeline",
+                "id": "twitter-timeline",
+                "name": "Timeline"
               }
             ],
         },
@@ -249,7 +260,9 @@ export const dynamicFormData: DynamicForm = {
       label: 'Recaptcha',
       name: 'recaptcha',
       type: 'reCaptcha',
-      validators: [{"name": "required", "options": []}],
+      validators: [
+        {"name": "required", "options": []}
+      ],
       options: [
         {
           name: 'doNotEncrypt',

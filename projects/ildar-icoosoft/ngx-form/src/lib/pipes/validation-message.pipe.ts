@@ -12,10 +12,10 @@ export class ValidationMessagePipe implements PipeTransform {
 
   transform(errorKey: string, errorData: any): string {
     if (errorKey === 'custom') {
-      return prepareValidationMessage(errorData);
+      return prepareValidationMessage(errorData as string);
     }
     if (errorKey === 'customArr') {
-      return errorData.map(item => prepareValidationMessage(item)).join(', ');
+      return (errorData as string[]).map(item => prepareValidationMessage(item)).join(', ');
     }
 
     if (this.config.errorMessages[errorKey]) {

@@ -2,11 +2,13 @@ import {DynamicForm} from 'ii-ngx-form/src/lib/interfaces/dynamic-form';
 
 
 export const dynamicFormData: DynamicForm = {
+  validators: [],
   items: [
     {
       label: 'Custom HTML',
       name: 'html',
       type: 'html',
+      validators: [],
       options: [
         {
           name: 'htmlOptions',
@@ -19,6 +21,7 @@ export const dynamicFormData: DynamicForm = {
       label: 'Text <span class="required-sign">(*)</span>',
       name: 'text',
       type: 'text',
+      validators: [],
       options: [
         {
           name: 'placeholder',
@@ -39,6 +42,7 @@ export const dynamicFormData: DynamicForm = {
       label: 'Textarea <span class="required-sign">(*)</span>',
       name: 'textarea',
       type: 'textarea',
+      validators: [],
       options: [
         {
           name: 'placeholder',
@@ -59,6 +63,7 @@ export const dynamicFormData: DynamicForm = {
       label: 'Email <span class="required-sign">(*)</span>',
       name: 'email',
       type: 'email',
+      validators: [],
       options: [
         {
           name: 'placeholder',
@@ -79,6 +84,7 @@ export const dynamicFormData: DynamicForm = {
       label: 'Password <span class="required-sign">(*)</span>',
       name: 'password',
       type: 'password',
+      validators: [],
       options: [
         {
           name: 'placeholder',
@@ -99,6 +105,7 @@ export const dynamicFormData: DynamicForm = {
       label: 'Confirm Password <span class="required-sign">(*)</span>',
       name: 'confirmPassword',
       type: 'password',
+      validators: [],
       options: [
         {
           name: 'placeholder',
@@ -119,6 +126,7 @@ export const dynamicFormData: DynamicForm = {
       label: 'Select',
       name: 'select',
       type: 'select',
+      validators: [],
       options: [
         {
           name: 'default',
@@ -140,6 +148,7 @@ export const dynamicFormData: DynamicForm = {
       label: 'text',
       name: 'Text',
       type: 'text',
+      validators: [],
       options: [
         {
           name: 'htmlOptions',
@@ -152,6 +161,7 @@ export const dynamicFormData: DynamicForm = {
       label: 'Fieldset',
       name: 'fieldset',
       type: 'fieldset',
+      validators: [],
       options: [
         {
           name: 'htmlOptions',
@@ -167,6 +177,7 @@ export const dynamicFormData: DynamicForm = {
           label: 'Text',
           name: 'Text2',
           type: 'text',
+          validators: [],
           options: [
             {
               name: 'placeholder',
@@ -179,6 +190,7 @@ export const dynamicFormData: DynamicForm = {
           label: 'Text',
           name: 'text3',
           type: 'text',
+          validators: [],
           options: [
             {
               name: 'placeholder',
@@ -193,6 +205,7 @@ export const dynamicFormData: DynamicForm = {
       label: 'Multi Fieldset',
       name: 'multiFieldset',
       type: 'multiFieldset',
+      validators: [],
       options: [
         {
           name: 'htmlOptions',
@@ -208,6 +221,7 @@ export const dynamicFormData: DynamicForm = {
           label: 'Text',
           name: 'Text3',
           type: 'text',
+          validators: [],
           options: [
             {
               name: 'placeholder',
@@ -220,6 +234,7 @@ export const dynamicFormData: DynamicForm = {
           label: 'Checkbox',
           name: 'text2',
           type: 'text',
+          validators: [],
           options: [],
           items: [],
         },
@@ -229,6 +244,7 @@ export const dynamicFormData: DynamicForm = {
       label: 'Recaptcha',
       name: 'recaptcha',
       type: 'reCaptcha',
+      validators: [],
       options: [
         {
           name: 'doNotEncrypt',

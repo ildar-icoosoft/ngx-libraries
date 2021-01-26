@@ -1,16 +1,15 @@
-import {NgxFormModuleConfig} from '../interfaces/ngx-form-module-config';
 import {getFieldDataOptionValue} from '../utils/dynamic-form';
-import {DynamicField} from '../interfaces/dynamic-field';
-import {DynamicFieldOption} from '../interfaces/dynamic-field-option';
 import {Validators} from '@angular/forms';
 import {validateEqual} from '../validators';
-import {InputComponent} from '../components/input/input.component';
-import {SelectComponent} from '../components/select/select.component';
-import {TextareaComponent} from '../components/textarea/textarea.component';
-import {HtmlComponent} from '../components/html/html.component';
-import {MultiFieldsetComponent} from '../components/multi-fieldset/multi-fieldset.component';
-import {FieldsetComponent} from '../components/fieldset/fieldset.component';
-import {ReCaptchaComponent} from '../components/re-captcha/re-captcha.component';
+import {DynamicField, DynamicFieldOption, DynamicForm, NgxFormModuleConfig} from "../interfaces";
+import {
+  FieldsetComponent, HtmlComponent,
+  InputComponent,
+  MultiFieldsetComponent,
+  ReCaptchaComponent,
+  SelectComponent,
+  TextareaComponent
+} from "../components";
 
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
@@ -90,18 +89,8 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       mapConnectDataToProps: (fieldData: DynamicField) => {
         const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
-        let selectOptions = [];
-
-        const selectOptionsStr: string = getFieldDataOptionValue(fieldDataOptions, 'options');
-        if (selectOptionsStr) {
-          selectOptions = JSON.parse(selectOptionsStr).map((item: any) => ({
-            id: item.name,
-            value: item.label
-          }));
-        }
-
         return {
-          options: selectOptions
+          options: getFieldDataOptionValue(fieldDataOptions, 'selectOptions')
         };
       }
     },
@@ -151,27 +140,25 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       }
     },
   },
-  validators: {
+  groupValidators: {
+    passwordMatch: {
+      validator: (form: DynamicForm, field1, field2) => {
+        const a = 'password';
+        const b = fieldData.name;
+
+        return validateEqual(a, b);
+      }
+    }
+  },
+  fieldValidators: {
     required: {
-      isGroupValidator: false,
       validator: () => {
         return Validators.required;
       }
     },
     email: {
-      isGroupValidator: false,
       validator: () => {
         return Validators.email;
-      }
-    },
-    passwordMatch: {
-      isGroupValidator: true,
-      // @ts-ignore
-      validator: (fieldData: DynamicField) => {
-        const a = 'password';
-        const b = fieldData.name;
-
-        return validateEqual(a, b);
       }
     }
   },

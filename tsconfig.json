@@ -16,10 +16,10 @@
       "dom"
     ],
     "paths": {
-      "@ildar-icoosoft/ngx-form": [
+      "ii-ngx-form": [
         "projects/ildar-icoosoft/ngx-form/dist"
       ],
-      "@ildar-icoosoft/ngx-common": [
+      "ii-ngx-common": [
         "projects/ildar-icoosoft/ngx-common/dist"
       ]
     }

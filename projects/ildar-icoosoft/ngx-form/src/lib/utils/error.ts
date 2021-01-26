@@ -1,4 +1,4 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {FormError} from '../interfaces/form-error';
 
 export const markAllFormControlsAsTouched = (formGroup: FormGroup): void => {
@@ -23,7 +23,8 @@ export const setFormErrors = (
     const formControlName = item.formControlName;
 
     if (!formControlName) {
-      return formGroupErrors.push(item.message);
+      formGroupErrors.push(item.message);
+      return;
     }
 
     const formControl = formGroup.get(formControlName);
@@ -45,7 +46,7 @@ export const setFormErrors = (
   }
 
   for (const formControlName in formControlErrors) {
-    const formControl = formGroup.get(formControlName);
+    const formControl = formGroup.get(formControlName) as AbstractControl;
 
     formControl.setErrors({
       customArr: formControlErrors[formControlName]

@@ -81,6 +81,7 @@ Renders HTML `<input>` component.
 
 1. Create a component which implements [ControlValueAccessor](https://angular.io/api/forms/ControlValueAccessor)
 2. Add your component to NgxFormModule:
+
 ```typescript
 import { NgxFormModule } from "ii-ngx-form";
 
@@ -100,8 +101,8 @@ import { NgxFormModule } from "ii-ngx-form";
 ```
 
 Then you can use this Connect form data with this type:
-```typescript
 
+```typescript
 const formData: DynamicFormData = {
   items: [{
     label: 'Label',

@@ -75,16 +75,6 @@ Renders HTML `<input>` component.
 <ii-input [(ngModel)]="value" />
 ```
 
-## Webix datepicker
-
-Renders Webix [datepicker](https://docs.webix.com/desktop__datepicker.html) component
-
-### Usage
-
-```terminal
-<ii-webix-datepicker [(ngModel)]="value" />
-```
-
 ## How to add custom form controls
 
 1. Create a component which implements [ControlValueAccessor](https://angular.io/api/forms/ControlValueAccessor)

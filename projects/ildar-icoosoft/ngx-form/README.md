@@ -1,29 +1,127 @@
 # NgxForm
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+Angular 2+ form components
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project ngx-form` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-form`.
-> Note: Don't forget to add `--project ngx-form` or else it will be added to the default project in your `angular.json` file. 
+1. Use npm to install the package
 
-## Build
+```terminal
+$ npm install ii-ngx-form --save
+```
 
-Run `ng build ngx-form` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. You could either add into your module `imports` the `NgxFormModule` in order to add all of the components.
 
-## Publishing
+```typescript
+import { NgxFormModule } from "ii-ngx-form";
 
-After building your library with `ng build ngx-form`, go to the dist folder `cd dist/ngx-form` and run `npm publish`.
+@NgModule({
+ // ...
+ imports: [
+   // ...
+   NgxFormModule
+ ]
+})
+```
 
-## Running unit tests
+## Connect Form component
 
-Run `ng test ngx-form` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Renders form from Connect API.
 
-## Further help
+### Usage
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```typescript
 
-## Publish with lerna
+// component ts
 
-npx lerna run build
-npx lerna publish --contents dist
+const formData: DynamicFormData = {
+  items: [{
+    label: 'Email',
+    name: 'email',
+    type: 'email',
+    options: [{
+      name: 'placeholder',
+      value: 'enter your email'
+    }],
+    items: []
+  }, {
+    label: 'Password',
+    name: 'password',
+    type: 'password',
+    options: [{
+      name: 'placeholder',
+      value: 'enter your password'
+    }],
+    items: []
+  }]
+};
+```
+
+```terminal
+<ii-dynamic-form
+   [formData]="formData" 
+   [initialValues]="{email: '', password: '', someDate: '2019-12-30T13:50:00.061Z'}"
+   (submit)="handleSubmit($event)"
+/>
+```
+
+## Input component
+
+Renders HTML `<input>` component.
+
+### Usage
+
+```terminal
+<ii-input [(ngModel)]="value" />
+```
+
+## Webix datepicker
+
+Renders Webix [datepicker](https://docs.webix.com/desktop__datepicker.html) component
+
+### Usage
+
+```terminal
+<ii-webix-datepicker [(ngModel)]="value" />
+```
+
+## How to add custom form controls
+
+1. Create a component which implements [ControlValueAccessor](https://angular.io/api/forms/ControlValueAccessor)
+2. Add your component to NgxFormModule:
+```typescript
+import { NgxFormModule } from "ii-ngx-form";
+
+@NgModule({
+ // ...
+ imports: [
+  // ...
+  NgxFormModule.forRoot({
+   'fields': {
+    'some-new-component': {
+     component: SomeNewComponent
+    }
+   }  
+  })
+ ]
+})
+```
+
+Then you can use this Connect form data with this type:
+```typescript
+
+const formData: DynamicFormData = {
+  items: [{
+    label: 'Label',
+    name: 'name',
+    type: 'some-new-component',
+    options: [],
+    items: []
+  }]
+};
+```
+
+@@ TO-DO List
+- Set Recaptcha SiteKey via <ii-dynamic-form> props. At the current time we set <ii-dynamic-form> Recaptcha SiteKey in reCaptcha config in ngx-form.module file.  
+
+

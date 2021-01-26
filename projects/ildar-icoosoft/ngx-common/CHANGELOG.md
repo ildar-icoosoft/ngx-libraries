@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.1.9...v1.2.0) (2021-01-26)
+
+
+### Features
+
+* update readme files ([9064479](https://github.com/ildar-icoosoft/ngx-libraries/commit/906447947a998f7d04805dc8752fd9bdf52c0a80))
+
+
+
+
+
 ## [1.1.9](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.1.8...v1.1.9) (2021-01-26)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "ii-ngx-form",
-  "version": "0.4.7",
+  "version": "1.1.0",
   "scripts": {
     "build": "ng build @ildar-icoosoft/ngx-form --prod"
   },
@@ -9,7 +9,7 @@
     "@angular/core": "^10.2.0"
   },
   "dependencies": {
-    "ii-ngx-common": "^0.2.1",
+    "ii-ngx-common": "^1.1.0",
     "ng-recaptcha": "^6.1.0",
     "tslib": "^2.0.0"
   },

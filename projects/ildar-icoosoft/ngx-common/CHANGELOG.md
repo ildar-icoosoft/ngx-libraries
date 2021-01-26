@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.1.0 (2021-01-26)
+
+
+### Bug Fixes
+
+* **ngx-common:** change package name in package.json ([#11](https://github.com/ildar-icoosoft/ngx-libraries/issues/11)) ([bc6167b](https://github.com/ildar-icoosoft/ngx-libraries/commit/bc6167be3383c72318b1682e6f06dac091f0a6a3))
+* **ngx-common:** exports in public-api ([#10](https://github.com/ildar-icoosoft/ngx-libraries/issues/10)) ([7dee9d3](https://github.com/ildar-icoosoft/ngx-libraries/commit/7dee9d3b234a62f98b7f2270fa2bcb406bd2e672))
+
+
+### Features
+
+* 🎸 add build script to ngx-common package.json ([#9](https://github.com/ildar-icoosoft/ngx-libraries/issues/9)) ([3cf3797](https://github.com/ildar-icoosoft/ngx-libraries/commit/3cf37976d070681ff578c0dfc1bff5de17378371))
+* 🎸 NGXLIBRARIES-9 add ngx-common project ([#7](https://github.com/ildar-icoosoft/ngx-libraries/issues/7)) ([8763d86](https://github.com/ildar-icoosoft/ngx-libraries/commit/8763d86340a1215f9f1548a16fe529146182b913))
+* NGXLIBRARIES-13 create unsubscribe method ([#14](https://github.com/ildar-icoosoft/ngx-libraries/issues/14)) ([0b29adb](https://github.com/ildar-icoosoft/ngx-libraries/commit/0b29adb072fc00d1e33d91ae6c21d4f150ee81ce))
+* Update angular ([#20](https://github.com/ildar-icoosoft/ngx-libraries/issues/20)) ([8e798bb](https://github.com/ildar-icoosoft/ngx-libraries/commit/8e798bb1c606f354b0cf8d9f91d7a8677232f506))
+* **ngx-common:** NGXLIBRARIES-10 add safe pipe ([#8](https://github.com/ildar-icoosoft/ngx-libraries/issues/8)) ([7af37f6](https://github.com/ildar-icoosoft/ngx-libraries/commit/7af37f6a5472bae889e66cabe0f1adccda475d0c))
+
+
+
+
+
 ## [0.2.3](https://github.com/ildar-icoosoft/ngx-libraries/compare/ii-ngx-common@0.2.2...ii-ngx-common@0.2.3) (2021-01-24)
 
 **Note:** Version bump only for package ii-ngx-common

@@ -3,6 +3,10 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -16,12 +20,19 @@
       "dom"
     ],
     "paths": {
-      "ii-ngx-form": [
-        "projects/ildar-icoosoft/ngx-form/dist"
-      ],
       "ii-ngx-common": [
+        "projects/ildar-icoosoft/ngx-common/dist/ii-ngx-common",
         "projects/ildar-icoosoft/ngx-common/dist"
+      ],
+      "ii-ngx-form": [
+        "projects/ildar-icoosoft/ngx-form/dist/ii-ngx-form",
+        "projects/ildar-icoosoft/ngx-form/dist"
       ]
     }
+  },
+  "angularCompilerOptions": {
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
   }
 }

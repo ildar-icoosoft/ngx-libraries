@@ -1,5 +1,5 @@
 {
-  "extends": "../projects/ildar-icoosoft/ngx-form/tsconfig.lib.json",
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "types": [
       "node"

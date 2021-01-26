@@ -14,7 +14,6 @@ import {takeUntil} from 'rxjs/operators';
 import {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';
 import {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';
 import {FormError} from '../../interfaces/form-error';
-import {DynamicFormButtonClickEvent} from "../../interfaces/dynamic-form-button-click-event";
 
 
 @Component({

@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/ii-ngx-common@0.2.3...ii-ngx-common@1.3.0) (2021-01-26)
+
+
+### Bug Fixes
+
+* update readme files ([8e9d1ac](https://github.com/ildar-icoosoft/ngx-libraries/commit/8e9d1acbc97d86bfd0fded5ce4e184defd899c1a))
+
+
+
+## 1.2.1 (2021-01-26)
+
+
+### Bug Fixes
+
+* update readme ([cfd3e80](https://github.com/ildar-icoosoft/ngx-libraries/commit/cfd3e80e338b495106b6ca5c40d5df497f35eb16))
+
+
+
+# 1.2.0 (2021-01-26)
+
+
+### Features
+
+* update readme files ([9064479](https://github.com/ildar-icoosoft/ngx-libraries/commit/906447947a998f7d04805dc8752fd9bdf52c0a80))
+
+
+
+## 1.1.9 (2021-01-26)
+
+
+### Bug Fixes
+
+* update readme ([0f8666b](https://github.com/ildar-icoosoft/ngx-libraries/commit/0f8666bc9258c5104f28298f3573e08a3fac03ce))
+
+
+
+## 1.1.6 (2021-01-26)
+
+
+
+## 1.1.5 (2021-01-26)
+
+
+
+## 1.1.4 (2021-01-26)
+
+
+### Bug Fixes
+
+* **ii-ngx-common:** update readme ([66ed4b9](https://github.com/ildar-icoosoft/ngx-libraries/commit/66ed4b975c196b32dd846b3c2098d2e3c4a4ae4f))
+
+
+
+## 1.1.2 (2021-01-26)
+
+
+### Bug Fixes
+
+* update readme ([6e26cc0](https://github.com/ildar-icoosoft/ngx-libraries/commit/6e26cc044bb64aa28f19d29da4efafcf55e0713e))
+
+
+
+# 1.1.0 (2021-01-26)
+
+
+### Features
+
+* Update angular ([#20](https://github.com/ildar-icoosoft/ngx-libraries/issues/20)) ([8e798bb](https://github.com/ildar-icoosoft/ngx-libraries/commit/8e798bb1c606f354b0cf8d9f91d7a8677232f506))
+
+
+
+
+
 ## [1.2.1](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.2.0...v1.2.1) (2021-01-26)
 
 

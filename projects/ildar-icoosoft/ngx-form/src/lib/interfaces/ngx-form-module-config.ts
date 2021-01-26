@@ -3,7 +3,7 @@ import {ControlValueAccessor, ValidatorFn} from '@angular/forms';
 import {Type} from '@angular/core';
 
 export interface NgxFormModuleConfig {
-  fields?: {
+  fields: {
     [key: string]: {
       component: Type<ControlValueAccessor>,
       needToShowLabelOutside?: boolean;
@@ -15,10 +15,10 @@ export interface NgxFormModuleConfig {
       }
     }
   };
-  validators?: {
+  validators: {
     [key: string]: NgxFormValidatorConfig
   };
-  errorMessages?: {
+  errorMessages: {
     [key: string]: string
   };
 }

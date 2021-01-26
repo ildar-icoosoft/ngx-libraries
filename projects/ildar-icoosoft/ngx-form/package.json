@@ -12,5 +12,8 @@
     "ii-ngx-common": "^0.2.1",
     "ng-recaptcha": "^6.1.0",
     "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.168"
   }
 }

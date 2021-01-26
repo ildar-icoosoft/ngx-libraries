@@ -35,8 +35,8 @@ export const dynamicFormData: DynamicForm = {
           value: 'text placeholder',
         },
         {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-4 col-md-6 col-xs-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         }
       ],
       items: [],
@@ -51,11 +51,11 @@ export const dynamicFormData: DynamicForm = {
       options: [
         {
           name: 'placeholder',
-          value: 'text plaeeholder',
+          value: 'text placeholder',
         },
         {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-4 col-md-6 col-xs-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         }
       ],
       items: [],
@@ -74,8 +74,8 @@ export const dynamicFormData: DynamicForm = {
           value: 'email placeholder',
         },
         {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-4 col-md-6 col-xs-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         }
       ],
       items: [],
@@ -93,8 +93,8 @@ export const dynamicFormData: DynamicForm = {
           value: 'password placeholder',
         },
         {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-4 col-md-6 col-xs-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         }
       ],
       items: [],
@@ -112,8 +112,8 @@ export const dynamicFormData: DynamicForm = {
           value: 'confirm password placeholder',
         },
         {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-4 col-md-6 col-xs-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         }
       ],
       items: [],
@@ -154,8 +154,8 @@ export const dynamicFormData: DynamicForm = {
             ],
         },
         {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-4 col-md-6 col-xs-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         }
       ],
       items: [],
@@ -167,8 +167,8 @@ export const dynamicFormData: DynamicForm = {
       validators: [],
       options: [
         {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-4 col-md-6 col-xs-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         }
       ],
       items: [],
@@ -224,8 +224,8 @@ export const dynamicFormData: DynamicForm = {
       validators: [],
       options: [
         {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         },
         {
           name: 'formGroupCssClass',
@@ -273,8 +273,8 @@ export const dynamicFormData: DynamicForm = {
           value: '1',
         },
         {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-12'
         },
         {
           name: 'siteKey',

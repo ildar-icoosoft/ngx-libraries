@@ -152,7 +152,7 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       }
     },
     passwordMatch: {
-      validator: (form: DynamicForm, field1Name, field2name) => {
+      validator: (field1Name, field2name) => {
         return validateEqual(field1Name, field2name) as ValidatorFn;
       }
     }

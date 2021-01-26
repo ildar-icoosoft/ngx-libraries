@@ -2,7 +2,12 @@ import {DynamicForm} from 'ii-ngx-form/src/lib/interfaces/dynamic-form';
 
 
 export const dynamicFormData: DynamicForm = {
-  validators: [],
+  validators: [
+    {
+      name: "passwordMatch",
+      options: ['password', 'confirmPassword']
+    }
+  ],
   items: [
     {
       label: 'Custom HTML',
@@ -113,7 +118,7 @@ export const dynamicFormData: DynamicForm = {
         },
         {
           name: 'validators',
-          value: '[{"name":"required","options":[]}, {"name": "passwordMatch", "options": []}]',
+          value: '[{"name":"required","options":[]}]',
         },
         {
           name: 'htmlOptions',

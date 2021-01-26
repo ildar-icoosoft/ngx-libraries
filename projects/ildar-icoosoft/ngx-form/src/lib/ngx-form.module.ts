@@ -48,8 +48,7 @@ export class NgxFormModule {
         provide: NGX_FORM_MODULE_CONFIG,
         useValue: Object.assign({}, {
           fields: Object.assign({}, defaultNgxFormModuleConfig.fields, config.fields),
-          fieldValidators: Object.assign({}, defaultNgxFormModuleConfig.fieldValidators, config.fieldValidators),
-          groupValidators: Object.assign({}, defaultNgxFormModuleConfig.groupValidators, config.groupValidators),
+          validators: Object.assign({}, defaultNgxFormModuleConfig.validators, config.validators),
           errorMessages: Object.assign({}, defaultNgxFormModuleConfig.errorMessages, config.errorMessages),
         })
       }]

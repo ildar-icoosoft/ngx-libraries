@@ -1,5 +1,5 @@
 import {getFieldDataOptionValue} from '../utils/dynamic-form';
-import {Validators} from '@angular/forms';
+import {ValidatorFn, Validators} from '@angular/forms';
 import {validateEqual} from '../validators';
 import {DynamicField, DynamicFieldOption, DynamicForm, NgxFormModuleConfig} from "../interfaces";
 import {
@@ -140,17 +140,7 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       }
     },
   },
-  groupValidators: {
-    passwordMatch: {
-      validator: (form: DynamicForm, field1, field2) => {
-        const a = 'password';
-        const b = fieldData.name;
-
-        return validateEqual(a, b);
-      }
-    }
-  },
-  fieldValidators: {
+  validators: {
     required: {
       validator: () => {
         return Validators.required;
@@ -159,6 +149,11 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
     email: {
       validator: () => {
         return Validators.email;
+      }
+    },
+    passwordMatch: {
+      validator: (form: DynamicForm, field1Name, field2name) => {
+        return validateEqual(field1Name, field2name) as ValidatorFn;
       }
     }
   },

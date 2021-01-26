@@ -1,4 +1,4 @@
-import {DynamicFieldData} from './dynamic-field-data';
+import {DynamicField} from './dynamic-field';
 import {ControlValueAccessor, ValidatorFn} from '@angular/forms';
 import {Type} from '@angular/core';
 
@@ -10,20 +10,19 @@ export interface NgxFormModuleConfig {
       props?: {
         [key: string]: any
       },
-      mapConnectDataToProps?(connectData: DynamicFieldData): {
+      mapConnectDataToProps?(connectData: DynamicField): {
         [key: string]: any
       }
     }
   };
   validators: {
-    [key: string]: NgxFormValidatorConfig
+    [key: string]: NgxValidatorConfig
   };
   errorMessages: {
     [key: string]: string
   };
 }
 
-export interface NgxFormValidatorConfig {
-  isGroupValidator?: boolean;
+export interface NgxValidatorConfig {
   validator: (...args: any[]) => ValidatorFn
 }

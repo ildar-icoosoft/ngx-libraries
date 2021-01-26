@@ -1,10 +1,11 @@
-import {DynamicFieldData} from '../interfaces/dynamic-field-data';
+import {DynamicField} from '../interfaces/dynamic-field';
 import {NgxFormModuleConfig} from '../interfaces/ngx-form-module-config';
 import {ValidatorFn} from '@angular/forms';
-import {DynamicFieldDataOption} from '../interfaces/dynamic-field-data-option';
+import {DynamicFieldOption} from '../interfaces/dynamic-field-option';
+import {DynamicForm} from "../interfaces/dynamic-form";
 
-export const getFieldDataOptionValue = (options: DynamicFieldDataOption[], name: string, defaultValue: any = undefined) => {
-  const option: DynamicFieldDataOption | undefined = options.find(item => item.name === name);
+export const getFieldDataOptionValue = <T = unknown>(options: DynamicFieldOption[], name: string, defaultValue: any = undefined): T => {
+  const option: DynamicFieldOption | undefined = options.find(item => item.name === name);
   if (option) {
     return option.value;
   }
@@ -12,48 +13,44 @@ export const getFieldDataOptionValue = (options: DynamicFieldDataOption[], name:
   return defaultValue;
 };
 
-export const getValidators = (fieldData: DynamicFieldData, config: NgxFormModuleConfig): ValidatorFn[] => {
+export const getFieldValidators = (fieldData: DynamicField, config: NgxFormModuleConfig): ValidatorFn[] => {
   const validators: ValidatorFn[] = [];
-  fieldData.options.forEach(option => {
-    if (option.name === 'validators') {
-      const dynamicFormValidators: any[] = JSON.parse(option.value);
 
-      dynamicFormValidators.forEach(dynamicFormValidator => {
-        const validatorName = dynamicFormValidator.name;
-        const validatorArgs = dynamicFormValidator.options;
+  fieldData.validators.forEach(dynamicFormValidator => {
+    const validatorName = dynamicFormValidator.name;
+    const validatorArgs = dynamicFormValidator.options;
 
-        if (config.validators[validatorName] && !config.validators[validatorName].isGroupValidator) {
-          validators.push(config.validators[validatorName].validator.call(null, fieldData, ...validatorArgs));
-        }
-      });
+    const validatorConfig = config.validators[validatorName];
+
+    if (validatorConfig) {
+      validators.push(validatorConfig.validator.apply(null, validatorArgs));
     }
   });
+
   return validators;
 };
 
-export const getGroupValidators = (fieldData: DynamicFieldData, config: NgxFormModuleConfig): ValidatorFn[] => {
+export const getGroupValidators = (formData: DynamicForm, config: NgxFormModuleConfig): ValidatorFn[] => {
   const validators: ValidatorFn[] = [];
-  fieldData.options.forEach(option => {
-    if (option.name === 'validators') {
-      const dynamicFormValidators: any[] = JSON.parse(option.value);
 
-      dynamicFormValidators.forEach(dynamicFormValidator => {
-        const validatorName = dynamicFormValidator.name;
-        const validatorArgs = dynamicFormValidator.options;
+  formData.validators.forEach(dynamicFormValidator => {
+    const validatorName = dynamicFormValidator.name;
+    const validatorArgs = dynamicFormValidator.options;
 
-        if (config.validators[validatorName] && config.validators[validatorName].isGroupValidator) {
-          validators.push(config.validators[validatorName].validator.call(null, fieldData, ...validatorArgs));
-        }
-      });
+    const validatorConfig = config.validators[validatorName];
+
+    if (validatorConfig) {
+      validators.push(validatorConfig.validator.apply(null, validatorArgs));
     }
   });
+
   return validators;
 };
 
-export const needToShowLabelOutside = (fieldData: DynamicFieldData, config: NgxFormModuleConfig): boolean => {
-  const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
+export const needToShowLabelOutside = (fieldData: DynamicField, config: NgxFormModuleConfig): boolean => {
+  const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
-  let result = getFieldDataOptionValue(fieldDataOptions, 'needToShowLabelOutside');
+  let result = getFieldDataOptionValue<boolean | undefined>(fieldDataOptions, 'needToShowLabelOutside');
 
   if (result !== undefined) {
     return result;

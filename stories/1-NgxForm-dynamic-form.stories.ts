@@ -1,17 +1,15 @@
 import { moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
-import {FormSubmitData} from 'ii-ngx-form/src/lib/interfaces/form-submit-data';
-import {NgxFormModule} from 'ii-ngx-form/src/lib/ngx-form.module';
-import {InputComponent} from 'ii-ngx-form/src/lib/components/input/input.component';
-import {DynamicFieldData} from 'ii-ngx-form/src/lib/interfaces/dynamic-field-data';
-import {DynamicFieldDataOption} from 'ii-ngx-form/src/lib/interfaces/dynamic-field-data-option';
-import {getFieldDataOptionValue} from 'ii-ngx-form/src/lib/utils/dynamic-form';
-import {DynamicFormComponent} from 'ii-ngx-form/src/lib/components/dynamic-form/dynamic-form.component';
 import {dynamicFormData} from '../data-sample/dynamic-form';
-import {SelectComponent} from 'ii-ngx-form/src/lib/components/select/select.component';
-import {FieldsetComponent} from 'ii-ngx-form/src/lib/components/fieldset/fieldset.component';
-import {MultiFieldsetComponent} from 'ii-ngx-form/src/lib/components/multi-fieldset/multi-fieldset.component';
-import {ReCaptchaComponent} from 'ii-ngx-form/src/lib/components/re-captcha/re-captcha.component';
+import {DynamicField, DynamicFieldOption, FormSubmitData} from "ii-ngx-form/src/lib/interfaces";
+import {NgxFormModule} from "ii-ngx-form/src/lib/ngx-form.module";
+import {
+  DynamicFormComponent, FieldsetComponent,
+  InputComponent, MultiFieldsetComponent,
+  ReCaptchaComponent,
+  SelectComponent
+} from "ii-ngx-form/src/lib/components";
+import {getFieldDataOptionValue} from "ii-ngx-form/src/lib/utils/dynamic-form";
 
 
 const handleSubmit = (data: FormSubmitData) => {
@@ -39,8 +37,8 @@ export default {
               props: {
                 type: 'password',
               },
-              mapConnectDataToProps: (fieldData: DynamicFieldData) => {
-                const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
+              mapConnectDataToProps: (fieldData: DynamicField) => {
+                const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
                 const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');
                 return {

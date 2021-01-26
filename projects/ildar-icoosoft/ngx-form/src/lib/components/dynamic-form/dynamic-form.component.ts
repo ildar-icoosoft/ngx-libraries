@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, EventEmitter, Inject, Input, OnInit, Output, QueryList, ViewChildren} from '@angular/core';
 import {UnsubscribeService} from 'ii-ngx-common';
-import {DynamicFormData} from '../../interfaces/dynamic-form-data';
+import {DynamicForm} from '../../interfaces/dynamic-form';
 import {FormSubmitData} from '../../interfaces/form-submit-data';
 import {ControlChangeData} from '../../interfaces/control-change-data';
 import {AbstractControl, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
@@ -8,10 +8,10 @@ import {DynamicFormButton} from '../../interfaces/dynamic-form-button';
 import {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';
 import {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';
 import {DynamicFieldDirective} from '../../directives/dynamic-field.directive';
-import {DynamicFieldData} from '../../interfaces/dynamic-field-data';
-import {getFieldDataOptionValue, getGroupValidators, getValidators, needToShowLabelOutside} from '../../utils/dynamic-form';
+import {DynamicField} from '../../interfaces/dynamic-field';
+import {getFieldDataOptionValue, getGroupValidators, getFieldValidators, needToShowLabelOutside} from '../../utils/dynamic-form';
 import {takeUntil} from 'rxjs/operators';
-import {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';
+import {DynamicFieldOption} from '../../interfaces/dynamic-field-option';
 import {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';
 import {FormError} from '../../interfaces/form-error';
 
@@ -24,7 +24,7 @@ import {FormError} from '../../interfaces/form-error';
 })
 export class DynamicFormComponent implements OnInit, AfterViewInit {
 
-  @Input() formData!: DynamicFormData;
+  @Input() formData!: DynamicForm;
   @Input() formCssClass = '';
   @Input() initialValues: Record<string, 'any'> = {};
 
@@ -52,14 +52,10 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-    const groupValidators: ValidatorFn[] = [];
-
     this.group = new FormGroup({});
 
-    this.formData.items.forEach((item: DynamicFieldData) => {
-      const validators: ValidatorFn[] = getValidators(item, this.config);
-
-      groupValidators.push(...getGroupValidators(item, this.config));
+    this.formData.items.forEach((item: DynamicField) => {
+      const validators: ValidatorFn[] = getFieldValidators(item, this.config);
 
       const value = this.initialValues[item.name];
 
@@ -75,6 +71,8 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
 
       this.group.addControl(item.name, formControl);
     });
+
+    const groupValidators: ValidatorFn[] = getGroupValidators(this.formData, this.config);
 
     this.group.setValidators(groupValidators);
 
@@ -114,25 +112,25 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
     return connectFieldDirective.component.instance;
   }
 
-  getCssClass(fieldData: DynamicFieldData): string {
-    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
+  getCssClass(fieldData: DynamicField): string {
+    const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
     return getFieldDataOptionValue(fieldDataOptions, 'cssClass', '');
   }
 
-  getFormGroupCssClass(fieldData: DynamicFieldData): string {
-    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
+  getFormGroupCssClass(fieldData: DynamicField): string {
+    const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
     return getFieldDataOptionValue(fieldDataOptions, 'formGroupCssClass', '');
   }
 
-  getLabelCssClass(fieldData: DynamicFieldData): string {
-    const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
+  getLabelCssClass(fieldData: DynamicField): string {
+    const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
     return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');
   }
 
-  needToShowLabelOutside(fieldData: DynamicFieldData): boolean {
+  needToShowLabelOutside(fieldData: DynamicField): boolean {
     return needToShowLabelOutside(fieldData, this.config);
   }
 

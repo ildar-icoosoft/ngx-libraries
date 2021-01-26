@@ -1,12 +1,19 @@
-import {DynamicFormData} from '../projects/ildar-icoosoft/ngx-form/src/lib/interfaces/dynamic-form-data';
+import {DynamicForm} from 'ii-ngx-form/src/lib/interfaces/dynamic-form';
 
 
-export const dynamicFormData: DynamicFormData = {
+export const dynamicFormData: DynamicForm = {
+  validators: [
+    {
+      name: "passwordMatch",
+      options: ['password', 'confirmPassword']
+    }
+  ],
   items: [
     {
       label: 'Custom HTML',
       name: 'html',
       type: 'html',
+      validators: [],
       options: [
         {
           name: 'htmlOptions',
@@ -19,18 +26,17 @@ export const dynamicFormData: DynamicFormData = {
       label: 'Text <span class="required-sign">(*)</span>',
       name: 'text',
       type: 'text',
+      validators: [
+        {"name": "required", "options": []}
+      ],
       options: [
         {
           name: 'placeholder',
           value: 'text placeholder',
         },
         {
-          name: 'validators',
-          value: '[{"name":"required","options":[]}]',
-        },
-        {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-4 col-md-6 col-xs-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         }
       ],
       items: [],
@@ -39,18 +45,17 @@ export const dynamicFormData: DynamicFormData = {
       label: 'Textarea <span class="required-sign">(*)</span>',
       name: 'textarea',
       type: 'textarea',
+      validators: [
+        {"name": "required", "options": []}
+      ],
       options: [
         {
           name: 'placeholder',
-          value: 'text plaeeholder',
+          value: 'text placeholder',
         },
         {
-          name: 'validators',
-          value: '[{"name":"required","options":[]}]',
-        },
-        {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-4 col-md-6 col-xs-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         }
       ],
       items: [],
@@ -59,18 +64,18 @@ export const dynamicFormData: DynamicFormData = {
       label: 'Email <span class="required-sign">(*)</span>',
       name: 'email',
       type: 'email',
+      validators: [
+        {"name": "required", "options": []},
+        {"name": "email", "options": []}
+      ],
       options: [
         {
           name: 'placeholder',
           value: 'email placeholder',
         },
         {
-          name: 'validators',
-          value: '[{"name":"required","options":[]}, {"name":"email","options":[]}]',
-        },
-        {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-4 col-md-6 col-xs-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         }
       ],
       items: [],
@@ -79,18 +84,17 @@ export const dynamicFormData: DynamicFormData = {
       label: 'Password <span class="required-sign">(*)</span>',
       name: 'password',
       type: 'password',
+      validators: [
+        {"name": "required", "options": []}
+      ],
       options: [
         {
           name: 'placeholder',
           value: 'password placeholder',
         },
         {
-          name: 'validators',
-          value: '[{"name":"required","options":[]}]',
-        },
-        {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-4 col-md-6 col-xs-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         }
       ],
       items: [],
@@ -99,18 +103,17 @@ export const dynamicFormData: DynamicFormData = {
       label: 'Confirm Password <span class="required-sign">(*)</span>',
       name: 'confirmPassword',
       type: 'password',
+      validators: [
+        {"name": "required", "options": []}
+      ],
       options: [
         {
           name: 'placeholder',
           value: 'confirm password placeholder',
         },
         {
-          name: 'validators',
-          value: '[{"name":"required","options":[]}, {"name": "passwordMatch", "options": []}]',
-        },
-        {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-4 col-md-6 col-xs-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         }
       ],
       items: [],
@@ -119,19 +122,40 @@ export const dynamicFormData: DynamicFormData = {
       label: 'Select',
       name: 'select',
       type: 'select',
+      validators: [],
       options: [
         {
           name: 'default',
           value: 'twitter-share-button',
         },
         {
-          name: 'options',
+          name: 'selectOptions',
           value:
-            '[{"name":"twitter-share-button","label":"Share","position":"0"},{"name":"twitter-follow-button","label":"Follow","position":"1"},{"name":"twitter-hashtag-button","label":"Hashtag","position":"2"},{"name":"twitter-mention-button","label":"Mention","position":"3"},{"name":"twitter-tweet","label":"Tweet","position":"4"},{"name":"twitter-tweet","label":"Tweet","position":"4"},{"name":"twitter-timeline","label":"Timeline","position":"5"}]',
+            [
+              {"id": "twitter-share-button", "name": "Share"},
+              {
+                "id": "twitter-follow-button",
+                "name": "Follow"
+              },
+              {
+                "id": "twitter-hashtag-button",
+                "name": "Hashtag"
+              },
+              {"id": "twitter-mention-button", "name": "Mention"},
+              {
+                "id": "twitter-tweet",
+                "name": "Tweet"
+              },
+              {"id": "twitter-tweet", "name": "Tweet"},
+              {
+                "id": "twitter-timeline",
+                "name": "Timeline"
+              }
+            ],
         },
         {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-4 col-md-6 col-xs-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         }
       ],
       items: [],
@@ -140,10 +164,11 @@ export const dynamicFormData: DynamicFormData = {
       label: 'text',
       name: 'Text',
       type: 'text',
+      validators: [],
       options: [
         {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-4 col-md-6 col-xs-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         }
       ],
       items: [],
@@ -152,6 +177,7 @@ export const dynamicFormData: DynamicFormData = {
       label: 'Fieldset',
       name: 'fieldset',
       type: 'fieldset',
+      validators: [],
       options: [
         {
           name: 'htmlOptions',
@@ -167,6 +193,7 @@ export const dynamicFormData: DynamicFormData = {
           label: 'Text',
           name: 'Text2',
           type: 'text',
+          validators: [],
           options: [
             {
               name: 'placeholder',
@@ -179,6 +206,7 @@ export const dynamicFormData: DynamicFormData = {
           label: 'Text',
           name: 'text3',
           type: 'text',
+          validators: [],
           options: [
             {
               name: 'placeholder',
@@ -193,10 +221,11 @@ export const dynamicFormData: DynamicFormData = {
       label: 'Multi Fieldset',
       name: 'multiFieldset',
       type: 'multiFieldset',
+      validators: [],
       options: [
         {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
         },
         {
           name: 'formGroupCssClass',
@@ -208,6 +237,7 @@ export const dynamicFormData: DynamicFormData = {
           label: 'Text',
           name: 'Text3',
           type: 'text',
+          validators: [],
           options: [
             {
               name: 'placeholder',
@@ -220,6 +250,7 @@ export const dynamicFormData: DynamicFormData = {
           label: 'Checkbox',
           name: 'text2',
           type: 'text',
+          validators: [],
           options: [],
           items: [],
         },
@@ -229,6 +260,9 @@ export const dynamicFormData: DynamicFormData = {
       label: 'Recaptcha',
       name: 'recaptcha',
       type: 'reCaptcha',
+      validators: [
+        {"name": "required", "options": []}
+      ],
       options: [
         {
           name: 'doNotEncrypt',
@@ -239,12 +273,8 @@ export const dynamicFormData: DynamicFormData = {
           value: '1',
         },
         {
-          name: 'validators',
-          value: '[{"name":"required","options":[]}]',
-        },
-        {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-12"}]'
+          name: 'cssClass',
+          value: 'col-lg-12'
         },
         {
           name: 'siteKey',

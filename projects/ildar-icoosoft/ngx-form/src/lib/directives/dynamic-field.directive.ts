@@ -10,7 +10,7 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {DynamicFieldData} from '../interfaces/dynamic-field-data';
+import {DynamicField} from '../interfaces/dynamic-field';
 import {NGX_FORM_MODULE_CONFIG} from '../constants/ngx-form-module-config';
 import {NgxFormModuleConfig} from '../interfaces/ngx-form-module-config';
 
@@ -26,7 +26,7 @@ import {NgxFormModuleConfig} from '../interfaces/ngx-form-module-config';
 })
 export class DynamicFieldDirective implements OnInit, ControlValueAccessor {
 
-  @Input() fieldData!: DynamicFieldData;
+  @Input() fieldData!: DynamicField;
   @Input() inputId!: string;
 
   component!: ComponentRef<ControlValueAccessor>;
@@ -39,7 +39,7 @@ export class DynamicFieldDirective implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit(): void {
-    const fieldData: DynamicFieldData = this.fieldData;
+    const fieldData: DynamicField = this.fieldData;
 
     const itemConfig = this.config.fields[fieldData.type];
 

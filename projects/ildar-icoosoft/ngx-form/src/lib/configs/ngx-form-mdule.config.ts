@@ -1,16 +1,15 @@
-import {NgxFormModuleConfig} from '../interfaces/ngx-form-module-config';
 import {getFieldDataOptionValue} from '../utils/dynamic-form';
-import {DynamicFieldData} from '../interfaces/dynamic-field-data';
-import {DynamicFieldDataOption} from '../interfaces/dynamic-field-data-option';
-import {Validators} from '@angular/forms';
+import {ValidatorFn, Validators} from '@angular/forms';
 import {validateEqual} from '../validators';
-import {InputComponent} from '../components/input/input.component';
-import {SelectComponent} from '../components/select/select.component';
-import {TextareaComponent} from '../components/textarea/textarea.component';
-import {HtmlComponent} from '../components/html/html.component';
-import {MultiFieldsetComponent} from '../components/multi-fieldset/multi-fieldset.component';
-import {FieldsetComponent} from '../components/fieldset/fieldset.component';
-import {ReCaptchaComponent} from '../components/re-captcha/re-captcha.component';
+import {DynamicField, DynamicFieldOption, DynamicForm, NgxFormModuleConfig} from "../interfaces";
+import {
+  FieldsetComponent, HtmlComponent,
+  InputComponent,
+  MultiFieldsetComponent,
+  ReCaptchaComponent,
+  SelectComponent,
+  TextareaComponent
+} from "../components";
 
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
@@ -21,8 +20,8 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       props: {
         type: 'text'
       },
-      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
-        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
+      mapConnectDataToProps: (fieldData: DynamicField) => {
+        const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
         const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);
 
@@ -39,8 +38,8 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       props: {
         type: 'number'
       },
-      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
-        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
+      mapConnectDataToProps: (fieldData: DynamicField) => {
+        const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
         const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);
 
@@ -55,8 +54,8 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       component: TextareaComponent,
       needToShowLabelOutside: true,
       props: {},
-      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
-        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
+      mapConnectDataToProps: (fieldData: DynamicField) => {
+        const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
         const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);
 
@@ -71,8 +70,8 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       component: ReCaptchaComponent,
       needToShowLabelOutside: true,
       props: {},
-      mapConnectDataToProps: (connectData: DynamicFieldData) => {
-        const fieldDataOptions: DynamicFieldDataOption[] = connectData.options;
+      mapConnectDataToProps: (connectData: DynamicField) => {
+        const fieldDataOptions: DynamicFieldOption[] = connectData.options;
 
         return {
           theme: getFieldDataOptionValue(fieldDataOptions, 'theme'),
@@ -87,21 +86,11 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
     select: {
       component: SelectComponent,
       needToShowLabelOutside: true,
-      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
-        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
-
-        let selectOptions = [];
-
-        const selectOptionsStr: string = getFieldDataOptionValue(fieldDataOptions, 'options');
-        if (selectOptionsStr) {
-          selectOptions = JSON.parse(selectOptionsStr).map((item: any) => ({
-            id: item.name,
-            value: item.label
-          }));
-        }
+      mapConnectDataToProps: (fieldData: DynamicField) => {
+        const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
         return {
-          options: selectOptions
+          options: getFieldDataOptionValue(fieldDataOptions, 'selectOptions')
         };
       }
     },
@@ -111,8 +100,8 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       props: {
         type: 'email'
       },
-      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
-        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
+      mapConnectDataToProps: (fieldData: DynamicField) => {
+        const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
         const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');
         return {
@@ -123,7 +112,7 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
     fieldset: {
       component: FieldsetComponent,
       needToShowLabelOutside: true,
-      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
+      mapConnectDataToProps: (fieldData: DynamicField) => {
         return {
           items: fieldData.items
         };
@@ -132,7 +121,7 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
     multiFieldset: {
       component: MultiFieldsetComponent,
       needToShowLabelOutside: true,
-      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
+      mapConnectDataToProps: (fieldData: DynamicField) => {
         return {
           items: fieldData.items
         };
@@ -141,8 +130,8 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
     html: {
       component: HtmlComponent,
       needToShowLabelOutside: true,
-      mapConnectDataToProps: (fieldData: DynamicFieldData) => {
-        const fieldDataOptions: DynamicFieldDataOption[] = fieldData.options;
+      mapConnectDataToProps: (fieldData: DynamicField) => {
+        const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
         return {
           // label: connectData.label,
@@ -153,25 +142,18 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
   },
   validators: {
     required: {
-      isGroupValidator: false,
       validator: () => {
         return Validators.required;
       }
     },
     email: {
-      isGroupValidator: false,
       validator: () => {
         return Validators.email;
       }
     },
     passwordMatch: {
-      isGroupValidator: true,
-      // @ts-ignore
-      validator: (fieldData: DynamicFieldData) => {
-        const a = 'password';
-        const b = fieldData.name;
-
-        return validateEqual(a, b);
+      validator: (field1Name, field2name) => {
+        return validateEqual(field1Name, field2name) as ValidatorFn;
       }
     }
   },

@@ -26,10 +26,7 @@ export class ReCaptchaComponent implements ControlValueAccessor {
   @Input() tabIndex?: number;
   @Input() badge?: ReCaptchaV2.Badge;
 
-  /** @internal */
   private onChange?: (value: string) => void;
-
-  /** @internal */
   private onTouched?: () => void;
 
   @ViewChild(RecaptchaComponent, {

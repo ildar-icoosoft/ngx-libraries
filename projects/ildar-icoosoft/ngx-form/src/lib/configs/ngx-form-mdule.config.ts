@@ -12,6 +12,7 @@ import {MultiFieldsetComponent} from '../components/multi-fieldset/multi-fieldse
 import {FieldsetComponent} from '../components/fieldset/fieldset.component';
 import {ReCaptchaComponent} from '../components/re-captcha/re-captcha.component';
 
+
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
   fields: {
     text: {
@@ -93,7 +94,7 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
 
         const selectOptionsStr: string = getFieldDataOptionValue(fieldDataOptions, 'options');
         if (selectOptionsStr) {
-          selectOptions = JSON.parse(selectOptionsStr).map(item => ({
+          selectOptions = JSON.parse(selectOptionsStr).map((item: any) => ({
             id: item.name,
             value: item.label
           }));
@@ -165,6 +166,7 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
     },
     passwordMatch: {
       isGroupValidator: true,
+      // @ts-ignore
       validator: (fieldData: DynamicFieldData) => {
         const a = 'password';
         const b = fieldData.name;

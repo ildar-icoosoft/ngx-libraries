@@ -10,7 +10,7 @@ Angular 2+ common components, pipes, services, directives
 $ npm install ii-ngx-common --save
 ```
 
-2. You could either add into your module `imports` the `NgxCommonModule` in order to add all of the pipes.
+2. You could either add into your module `imports` the `NgxCommonModule` in order to add all of the pipes
 
 ```typescript
 import { NgxCommonModule } from "ii-ngx-common";
@@ -26,7 +26,7 @@ import { NgxCommonModule } from "ii-ngx-common";
 
 ## Safe pipe
 
-Marks value that's safe to use as HTML, CSS, Script, etc.
+Marks value that's safe to use as HTML, CSS, Script, etc
 
 ### Usage
 
@@ -40,7 +40,7 @@ Marks value that's safe to use as HTML, CSS, Script, etc.
 
 ## Unsubscribe service
 
-Observable service which is unsubscribed after service is destroyed.
+Observable service which is unsubscribed after service is destroyed
 
 ### Usage
 

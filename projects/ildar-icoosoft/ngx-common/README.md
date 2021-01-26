@@ -40,7 +40,7 @@ Marks value that's safe to use as HTML, CSS, Script, etc.
 
 ## Unsubscribe service
 
-Observable service which is unsubscribed after service is destroyed
+Observable service which is unsubscribed after service is destroyed.
 
 ### Usage
 

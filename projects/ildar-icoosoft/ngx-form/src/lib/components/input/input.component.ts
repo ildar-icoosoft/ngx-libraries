@@ -29,11 +29,11 @@ export class InputComponent implements ControlValueAccessor {
   propagateChange = (_: any) => {};
   propagateTouch = () => {};
 
-  registerOnChange(fn): void {
+  registerOnChange(fn: any): void {
     this.propagateChange = fn;
   }
 
-  registerOnTouched(fn): void {
+  registerOnTouched(fn: any): void {
     this.propagateTouch = fn;
   }
 

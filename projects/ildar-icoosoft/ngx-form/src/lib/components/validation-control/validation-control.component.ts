@@ -8,7 +8,7 @@ import {AbstractControl} from '@angular/forms';
 })
 export class ValidationControlComponent {
   @Input()
-  control: AbstractControl;
+  control?: AbstractControl;
 
   constructor() {}
 

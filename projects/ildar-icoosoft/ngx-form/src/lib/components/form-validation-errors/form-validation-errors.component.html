@@ -1,5 +1,5 @@
 <div class="form-validation-errors">
-  <ng-container *ngIf="group.errors">
+  <ng-container *ngIf="group && group.errors">
     <div *ngFor="let error of group.errors | keyvalue" class="alert alert-danger form-validation-errors__item">{{error.key | validationMessage:error.value}}</div>
   </ng-container>
 </div>

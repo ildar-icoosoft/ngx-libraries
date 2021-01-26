@@ -14,6 +14,7 @@ import {takeUntil} from 'rxjs/operators';
 import {DynamicFieldDataOption} from '../../interfaces/dynamic-field-data-option';
 import {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';
 import {FormError} from '../../interfaces/form-error';
+import {DynamicFormButtonClickEvent} from "../../interfaces/dynamic-form-button-click-event";
 
 
 @Component({
@@ -24,7 +25,7 @@ import {FormError} from '../../interfaces/form-error';
 })
 export class DynamicFormComponent implements OnInit, AfterViewInit {
 
-  @Input() formData: DynamicFormData;
+  @Input() formData!: DynamicFormData;
   @Input() formCssClass = '';
   @Input() initialValues: Record<string, 'any'> = {};
 
@@ -38,11 +39,11 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
     onClick: () => this.validateAndSubmit()
   }];
 
-  group: FormGroup;
+  group!: FormGroup;
 
   isSubmitting = false;
 
-  @ViewChildren(DynamicFieldDirective) dynamicComponents: QueryList<DynamicFieldDirective>;
+  @ViewChildren(DynamicFieldDirective) dynamicComponents!: QueryList<DynamicFieldDirective>;
 
   constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig, private ngUnsubscribe$: UnsubscribeService) {}
 
@@ -136,7 +137,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
     return needToShowLabelOutside(fieldData, this.config);
   }
 
-  onButtonClick(button, event): void {
+  onButtonClick(button: DynamicFormButton, event: Event): void {
     event.preventDefault();
 
     button.onClick({

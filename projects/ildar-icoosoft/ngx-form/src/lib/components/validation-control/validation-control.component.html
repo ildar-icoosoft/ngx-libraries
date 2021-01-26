@@ -1,8 +1,10 @@
-<div class="validation-control"
-     [class.has-error]="control.invalid && control.touched">
-  <ng-content></ng-content>
-  <ng-container *ngIf="control.invalid && control.touched">
-    <div *ngFor="let error of control.errors | keyvalue" class="alert alert-danger validation-control__error">{{error.key | validationMessage:error.value}}</div>
-  </ng-container>
-</div>
+<ng-container *ngIf="control">
+  <div class="validation-control"
+       [class.has-error]="control.invalid && control.touched">
+    <ng-content></ng-content>
+    <ng-container *ngIf="control.invalid && control.touched">
+      <div *ngFor="let error of control.errors | keyvalue" class="alert alert-danger validation-control__error">{{error.key | validationMessage:error.value}}</div>
+    </ng-container>
+  </div>
+</ng-container>
 

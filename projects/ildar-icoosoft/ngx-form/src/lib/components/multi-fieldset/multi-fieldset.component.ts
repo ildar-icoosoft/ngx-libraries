@@ -24,7 +24,7 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
 
   @Input() initialValues: any = {};
 
-  group: FormGroup;
+  group!: FormGroup;
 
   constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}
 
@@ -88,11 +88,11 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
   propagateChange = (_: any) => {};
   propagateTouch = () => {};
 
-  registerOnChange(fn): void {
+  registerOnChange(fn: any): void {
     this.propagateChange = fn;
   }
 
-  registerOnTouched(fn): void {
+  registerOnTouched(fn: any): void {
     this.propagateTouch = fn;
   }
 

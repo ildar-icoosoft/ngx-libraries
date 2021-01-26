@@ -10,9 +10,10 @@ Angular 2+ form components
 $ npm install ii-ngx-form --save
 ```
 
-2. You could either add into your module `imports` the `NgxFormModule` in order to add all of the components
+2. You could either add into your module `imports` the `NgxFormModule` in order to add all of the components.
 
 ```typescript
+
 import { NgxFormModule } from "ii-ngx-form";
 
 @NgModule({
@@ -22,11 +23,12 @@ import { NgxFormModule } from "ii-ngx-form";
    NgxFormModule
  ]
 })
+
 ```
 
 ## Dynamic Form component
 
-Renders dynamic form
+Renders dynamic form.
 
 ### Usage
 

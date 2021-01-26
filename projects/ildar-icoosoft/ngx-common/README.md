@@ -26,21 +26,23 @@ import { NgxCommonModule } from "ii-ngx-common";
 
 ## Safe pipe
 
-Marks value that's safe to use as HTML, CSS, Script, etc
+Marks value that's safe to use as HTML, CSS, Script, etc.
 
 ### Usage
 
 ```terminal
+
 <div [innerHTML]="data | safe:'html'">Safe html</div>
 <div [innerHTML]="data | safe:'style'">Safe css</div>
 <div [innerHTML]="data | safe:'script'">Safe css</div>
 <div [innerHTML]="data | safe:'url'">Safe css</div>
 <div [innerHTML]="data | safe:'resourceUrl'">Safe css</div>
+
 ```
 
 ## Unsubscribe service
 
-Observable service which is unsubscribed after service is destroyed
+Observable service which is unsubscribed after service is destroyed.
 
 ### Usage
 

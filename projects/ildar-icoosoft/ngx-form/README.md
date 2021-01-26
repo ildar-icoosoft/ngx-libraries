@@ -24,9 +24,9 @@ import { NgxFormModule } from "ii-ngx-form";
 })
 ```
 
-## Connect Form component
+## Dynamic Form component
 
-Renders form from Connect API.
+Renders dynamic form.
 
 ### Usage
 

@@ -2,6 +2,7 @@ import {DynamicField} from '../interfaces/dynamic-field';
 import {NgxFormModuleConfig} from '../interfaces/ngx-form-module-config';
 import {ValidatorFn} from '@angular/forms';
 import {DynamicFieldOption} from '../interfaces/dynamic-field-option';
+import {DynamicForm} from "../interfaces/dynamic-form";
 
 export const getFieldDataOptionValue = (options: DynamicFieldOption[], name: string, defaultValue: any = undefined) => {
   const option: DynamicFieldOption | undefined = options.find(item => item.name === name);
@@ -12,41 +13,37 @@ export const getFieldDataOptionValue = (options: DynamicFieldOption[], name: str
   return defaultValue;
 };
 
-export const getValidators = (fieldData: DynamicField, config: NgxFormModuleConfig): ValidatorFn[] => {
+export const getFieldValidators = (fieldData: DynamicField, config: NgxFormModuleConfig): ValidatorFn[] => {
   const validators: ValidatorFn[] = [];
-  fieldData.options.forEach(option => {
-    if (option.name === 'validators') {
-      const dynamicFormValidators: any[] = JSON.parse(option.value);
 
-      dynamicFormValidators.forEach(dynamicFormValidator => {
-        const validatorName = dynamicFormValidator.name;
-        const validatorArgs = dynamicFormValidator.options;
+  fieldData.validators.forEach(dynamicFormValidator => {
+    const validatorName = dynamicFormValidator.name;
+    const validatorArgs = dynamicFormValidator.options;
 
-        if (config.validators[validatorName] && !config.validators[validatorName].isGroupValidator) {
-          validators.push(config.validators[validatorName].validator.call(null, fieldData, ...validatorArgs));
-        }
-      });
+    const validatorConfig = config.fieldValidators[validatorName];
+
+    if (validatorConfig) {
+      validators.push(validatorConfig.validator.call(null, fieldData, ...validatorArgs));
     }
   });
+
   return validators;
 };
 
-export const getGroupValidators = (fieldData: DynamicField, config: NgxFormModuleConfig): ValidatorFn[] => {
+export const getGroupValidators = (formData: DynamicForm, config: NgxFormModuleConfig): ValidatorFn[] => {
   const validators: ValidatorFn[] = [];
-  fieldData.options.forEach(option => {
-    if (option.name === 'validators') {
-      const dynamicFormValidators: any[] = JSON.parse(option.value);
 
-      dynamicFormValidators.forEach(dynamicFormValidator => {
-        const validatorName = dynamicFormValidator.name;
-        const validatorArgs = dynamicFormValidator.options;
+  formData.validators.forEach(dynamicFormValidator => {
+    const validatorName = dynamicFormValidator.name;
+    const validatorArgs = dynamicFormValidator.options;
 
-        if (config.validators[validatorName] && config.validators[validatorName].isGroupValidator) {
-          validators.push(config.validators[validatorName].validator.call(null, fieldData, ...validatorArgs));
-        }
-      });
+    const validatorConfig = config.groupValidators[validatorName];
+
+    if (validatorConfig) {
+      validators.push(validatorConfig.validator.call(null, formData, ...validatorArgs));
     }
   });
+
   return validators;
 };
 

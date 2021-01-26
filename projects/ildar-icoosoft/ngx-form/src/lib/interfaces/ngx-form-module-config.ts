@@ -1,6 +1,7 @@
 import {DynamicField} from './dynamic-field';
 import {ControlValueAccessor, ValidatorFn} from '@angular/forms';
 import {Type} from '@angular/core';
+import {DynamicForm} from "./dynamic-form";
 
 export interface NgxFormModuleConfig {
   fields: {
@@ -15,15 +16,21 @@ export interface NgxFormModuleConfig {
       }
     }
   };
-  validators: {
-    [key: string]: NgxFormValidatorConfig
+  groupValidators: {
+    [key: string]: NgxGroupValidatorConfig
+  };
+  fieldValidators: {
+    [key: string]: NgxFieldValidatorConfig
   };
   errorMessages: {
     [key: string]: string
   };
 }
 
-export interface NgxFormValidatorConfig {
-  isGroupValidator?: boolean;
-  validator: (...args: any[]) => ValidatorFn
+export interface NgxGroupValidatorConfig {
+  validator: (form: DynamicForm, ...args: any[]) => ValidatorFn
+}
+
+export interface NgxFieldValidatorConfig {
+  validator: (field: DynamicField, ...args: any[]) => ValidatorFn
 }

@@ -9,7 +9,7 @@ import {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';
 import {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';
 import {DynamicFieldDirective} from '../../directives/dynamic-field.directive';
 import {DynamicField} from '../../interfaces/dynamic-field';
-import {getFieldDataOptionValue, getGroupValidators, getValidators, needToShowLabelOutside} from '../../utils/dynamic-form';
+import {getFieldDataOptionValue, getGroupValidators, getFieldValidators, needToShowLabelOutside} from '../../utils/dynamic-form';
 import {takeUntil} from 'rxjs/operators';
 import {DynamicFieldOption} from '../../interfaces/dynamic-field-option';
 import {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';
@@ -52,14 +52,10 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-    const groupValidators: ValidatorFn[] = [];
-
     this.group = new FormGroup({});
 
     this.formData.items.forEach((item: DynamicField) => {
-      const validators: ValidatorFn[] = getValidators(item, this.config);
-
-      groupValidators.push(...getGroupValidators(item, this.config));
+      const validators: ValidatorFn[] = getFieldValidators(item, this.config);
 
       const value = this.initialValues[item.name];
 
@@ -75,6 +71,8 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
 
       this.group.addControl(item.name, formControl);
     });
+
+    const groupValidators: ValidatorFn[] = getGroupValidators(this.formData, this.config);
 
     this.group.setValidators(groupValidators);
 

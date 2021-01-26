@@ -1,6 +1,6 @@
 {
   "name": "ii-ngx-common",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "scripts": {
     "build": "ng build @ildar-icoosoft/ngx-common --prod"
   },
@@ -10,5 +10,6 @@
   },
   "dependencies": {
     "tslib": "^2.0.0"
-  }
+  },
+  "gitHead": "23c8a558d6ff37b9af5c74fa0b3fe67028fb777f"
 }

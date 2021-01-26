@@ -5,13 +5,17 @@ export const validateEqual = (
   a: FormControl | string,
   b: FormControl | string
 ) => {
-  return (group: FormGroup): { [s: string]: boolean } => {
+  return (group: FormGroup): { [s: string]: boolean } | null => {
     const controlA = a instanceof FormControl ? a : group.root.get(a);
     const controlB = b instanceof FormControl ? b : group.root.get(b);
 
+    if (!controlA || !controlB) {
+      return null;
+    }
+
     const controlBErrors = controlB.errors;
 
-    if (controlA && controlB && controlA.value !== controlB.value) {
+    if (controlA.value !== controlB.value) {
       controlB.setErrors(
         Object.assign({}, controlBErrors, {
           mismatch: true

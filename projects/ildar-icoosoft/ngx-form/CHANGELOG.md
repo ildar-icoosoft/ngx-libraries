@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.7](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.2.1...v1.3.7) (2021-01-27)
+
+
+### Bug Fixes
+
+* update FormSubmitEvent type ([c4c813e](https://github.com/ildar-icoosoft/ngx-libraries/commit/c4c813e22ddca09cd8693c154ba1d6f5ef42cb51))
+* update readme ([5739159](https://github.com/ildar-icoosoft/ngx-libraries/commit/57391598c2919befd7b3cb3a265d9badce732c60))
+* update readme ([7f475af](https://github.com/ildar-icoosoft/ngx-libraries/commit/7f475afac4456a966aa15b12f1dba9d634d93aa6))
+* update readme ([7c448d4](https://github.com/ildar-icoosoft/ngx-libraries/commit/7c448d4d2bb3fc91c367ff7e748fb7d8c386ad2c))
+* update readme files ([6fb498c](https://github.com/ildar-icoosoft/ngx-libraries/commit/6fb498c4cc2d928fd0e748746c539f856b58b654))
+* update readme files ([8e9d1ac](https://github.com/ildar-icoosoft/ngx-libraries/commit/8e9d1acbc97d86bfd0fded5ce4e184defd899c1a))
+
+
+
+
+
 ## [1.3.6](https://github.com/ildar-icoosoft/ngx-libraries/compare/ii-ngx-form@1.3.5...ii-ngx-form@1.3.6) (2021-01-27)
 
 

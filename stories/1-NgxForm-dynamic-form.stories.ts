@@ -1,7 +1,7 @@
 import { moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
 import {dynamicFormData} from '../data-sample/dynamic-form';
-import {DynamicField, DynamicFieldOption, FormSubmitData} from "ii-ngx-form/src/lib/interfaces";
+import {DynamicField, DynamicFieldOption, FormSubmitEvent} from "ii-ngx-form/src/lib/interfaces";
 import {NgxFormModule} from "ii-ngx-form/src/lib/ngx-form.module";
 import {
   DynamicFormComponent, FieldsetComponent,
@@ -12,7 +12,7 @@ import {
 import {getFieldDataOptionValue} from "ii-ngx-form/src/lib/utils/dynamic-form";
 
 
-const handleSubmit = (data: FormSubmitData) => {
+const handleSubmit = (data: FormSubmitEvent) => {
   action('button-click');
   window.setTimeout(() => {
     data.setSubmitting(false);

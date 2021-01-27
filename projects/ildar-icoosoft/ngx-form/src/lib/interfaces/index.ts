@@ -6,6 +6,6 @@ export * from './dynamic-form-button';
 export * from './dynamic-form-button-click-event';
 export * from './dynamic-form-validator';
 export * from './form-error';
-export * from './form-submit-data';
+export * from './form-submit-event';
 export * from './ngx-form-module-config';
 export * from './select-option';

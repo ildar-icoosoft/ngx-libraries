@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, EventEmitter, Inject, Input, OnInit, Output, QueryList, ViewChildren} from '@angular/core';
 import {UnsubscribeService} from 'ii-ngx-common';
 import {DynamicForm} from '../../interfaces/dynamic-form';
-import {FormSubmitData} from '../../interfaces/form-submit-data';
+import {FormSubmitEvent} from '../../interfaces/form-submit-event';
 import {ControlChangeData} from '../../interfaces/control-change-data';
 import {AbstractControl, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
 import {DynamicFormButton} from '../../interfaces/dynamic-form-button';
@@ -28,7 +28,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
   @Input() formCssClass = '';
   @Input() initialValues: Record<string, 'any'> = {};
 
-  @Output() submitForm: EventEmitter<FormSubmitData> = new EventEmitter();
+  @Output() submitForm: EventEmitter<FormSubmitEvent> = new EventEmitter();
   @Output() loadForm: EventEmitter<DynamicFormComponent> = new EventEmitter();
   @Output() groupChange: EventEmitter<Record<string, any>> = new EventEmitter();
   @Output() controlChange: EventEmitter<ControlChangeData> = new EventEmitter();

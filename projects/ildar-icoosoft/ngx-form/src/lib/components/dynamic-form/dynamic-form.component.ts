@@ -1,14 +1,34 @@
-import {AfterViewInit, Component, EventEmitter, Inject, Input, OnInit, Output, QueryList, ViewChildren} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  OnInit,
+  Output,
+  QueryList,
+  ViewChildren
+} from '@angular/core';
 import {UnsubscribeService} from 'ii-ngx-common';
 import {AbstractControl, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
 import {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';
-import {getFieldDataOptionValue, getGroupValidators, getFieldValidators, needToShowLabelOutside} from '../../utils/dynamic-form';
+import {
+  getFieldDataOptionValue,
+  getFieldValidators,
+  getGroupValidators,
+  needToShowLabelOutside
+} from '../../utils/dynamic-form';
 import {takeUntil} from 'rxjs/operators';
 import {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';
 import {
-  ControlChangeData, DynamicField, DynamicFieldOption,
+  ControlChangeData,
+  DynamicField,
+  DynamicFieldOption,
   DynamicForm,
-  DynamicFormButton, FormError,
+  DynamicFormButton,
+  FormError,
   FormSubmitEvent,
   NgxFormModuleConfig
 } from "../../interfaces";
@@ -19,7 +39,8 @@ import {DynamicFieldDirective} from "../../directives";
   selector: 'ii-dynamic-form',
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.css'],
-  providers: [UnsubscribeService]
+  providers: [UnsubscribeService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DynamicFormComponent implements OnInit, AfterViewInit {
 
@@ -43,7 +64,11 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
 
   @ViewChildren(DynamicFieldDirective) dynamicComponents!: QueryList<DynamicFieldDirective>;
 
-  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig, private ngUnsubscribe$: UnsubscribeService) {}
+  constructor(
+    @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig,
+    private ngUnsubscribe$: UnsubscribeService,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   ngAfterViewInit(): void {
     this.loadForm.emit(this);
@@ -163,18 +188,26 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
   setErrors(formErrors: FormError[]): void {
     setFormErrors(this.group, formErrors);
     this.isSubmitting = false;
+
+    this.changeDetectorRef.markForCheck();
   }
 
   setSubmitting(isSubmitting: boolean): void {
     this.isSubmitting = isSubmitting;
+
+    this.changeDetectorRef.markForCheck();
   }
 
   setValues(values: any): void {
     this.group.setValue(values);
+
+    this.changeDetectorRef.markForCheck();
   }
 
   patchValues(values: any): void {
     this.group.patchValue(values);
+
+    this.changeDetectorRef.markForCheck();
   }
 
 }

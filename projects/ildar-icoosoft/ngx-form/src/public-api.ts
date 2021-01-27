@@ -9,3 +9,4 @@ export * from './lib/pipes';
 export * from './lib/interfaces';
 export * from './lib/validators';
 export * from './lib/utils/error';
+export { getFieldDataOptionValue } from './lib/utils/dynamic-form';

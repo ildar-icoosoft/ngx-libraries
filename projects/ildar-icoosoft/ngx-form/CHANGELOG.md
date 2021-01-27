@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.3](https://github.com/ildar-icoosoft/ngx-libraries/compare/ii-ngx-form@1.3.2...ii-ngx-form@1.3.3) (2021-01-27)
+
+**Note:** Version bump only for package ii-ngx-form
+
+
+
+
+
 ## [1.3.2](https://github.com/ildar-icoosoft/ngx-libraries/compare/ii-ngx-form@1.3.1...ii-ngx-form@1.3.2) (2021-01-26)
 
 **Note:** Version bump only for package ii-ngx-form

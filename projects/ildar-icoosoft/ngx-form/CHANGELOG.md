@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.8](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.3.7...v1.3.8) (2021-01-27)
+
+
+### Bug Fixes
+
+* **ngx-form:** changeDetector ([7a575a9](https://github.com/ildar-icoosoft/ngx-libraries/commit/7a575a9e6118f3d3c4b663426f731825960ff377))
+
+
+
+
+
 ## [1.3.7](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.2.1...v1.3.7) (2021-01-27)
 
 

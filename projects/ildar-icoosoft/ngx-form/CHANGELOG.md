@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.9](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.3.8...v1.3.9) (2021-01-27)
+
+
+### Bug Fixes
+
+* **ngx-form:** add getFieldDataOptionValue() function to public api ([08b5942](https://github.com/ildar-icoosoft/ngx-libraries/commit/08b59423fef3f63bda67515d78eab082345f4344))
+
+
+
+
+
 ## [1.3.8](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.3.7...v1.3.8) (2021-01-27)
 
 

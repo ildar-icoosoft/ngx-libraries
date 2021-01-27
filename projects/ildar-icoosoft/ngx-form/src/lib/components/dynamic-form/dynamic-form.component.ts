@@ -1,19 +1,18 @@
 import {AfterViewInit, Component, EventEmitter, Inject, Input, OnInit, Output, QueryList, ViewChildren} from '@angular/core';
 import {UnsubscribeService} from 'ii-ngx-common';
-import {DynamicForm} from '../../interfaces/dynamic-form';
-import {FormSubmitEvent} from '../../interfaces/form-submit-event';
-import {ControlChangeData} from '../../interfaces/control-change-data';
 import {AbstractControl, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
-import {DynamicFormButton} from '../../interfaces/dynamic-form-button';
 import {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';
-import {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';
-import {DynamicFieldDirective} from '../../directives/dynamic-field.directive';
-import {DynamicField} from '../../interfaces/dynamic-field';
 import {getFieldDataOptionValue, getGroupValidators, getFieldValidators, needToShowLabelOutside} from '../../utils/dynamic-form';
 import {takeUntil} from 'rxjs/operators';
-import {DynamicFieldOption} from '../../interfaces/dynamic-field-option';
 import {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';
-import {FormError} from '../../interfaces/form-error';
+import {
+  ControlChangeData, DynamicField, DynamicFieldOption,
+  DynamicForm,
+  DynamicFormButton, FormError,
+  FormSubmitEvent,
+  NgxFormModuleConfig
+} from "../../interfaces";
+import {DynamicFieldDirective} from "../../directives";
 
 
 @Component({

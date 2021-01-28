@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.14](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.3.13...v1.3.14) (2021-01-28)
+
+
+### Bug Fixes
+
+* **ngx-form:** add showButtons input in dynamic-form component ([5cbf96e](https://github.com/ildar-icoosoft/ngx-libraries/commit/5cbf96e3d9510c47fb134e5eaeefd4902d6503fd))
+
+
+
+
+
 ## [1.3.13](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.3.12...v1.3.13) (2021-01-28)
 
 

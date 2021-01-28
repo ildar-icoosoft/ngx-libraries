@@ -3,10 +3,10 @@ import {DynamicForm} from 'ii-ngx-form/src/lib/interfaces/dynamic-form';
 
 export const dynamicFormData: DynamicForm = {
   validators: [
-    {
-      name: "passwordMatch",
-      options: ['password', 'confirmPassword']
-    }
+    // {
+    //   name: "passwordMatch",
+    //   options: ['password', 'confirmPassword']
+    // }
   ],
   items: [
     {
@@ -190,7 +190,8 @@ export const dynamicFormData: DynamicForm = {
       label: 'Checkbox',
       name: 'checkbox',
       type: 'checkbox',
-      validators: [],
+      validators: [
+      ],
       options: [
         {
           name: 'cssClass',
@@ -274,9 +275,10 @@ export const dynamicFormData: DynamicForm = {
         },
         {
           label: 'Checkbox',
-          name: 'text2',
-          type: 'text',
-          validators: [],
+          name: 'checkbox2',
+          type: 'checkbox',
+          validators: [
+          ],
           options: [],
           items: [],
         },

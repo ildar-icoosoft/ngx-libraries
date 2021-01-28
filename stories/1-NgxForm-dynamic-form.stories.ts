@@ -64,7 +64,7 @@ export const DynamicForm = () => ({
     initialValues: {
       html: 'some HTML text',
       text: 'some text',
-      select: 'twitter-follow-button'
+      select: 'twitter-follow-button',
     },
     submitForm: handleSubmit,
     groupChange: handleChange

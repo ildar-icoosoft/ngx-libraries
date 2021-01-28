@@ -10,6 +10,7 @@ import {
   SelectComponent,
   TextareaComponent
 } from "../components";
+import {CheckboxComponent} from "../components/checkbox/checkbox.component";
 
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
@@ -33,18 +34,16 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       }
     },
     checkbox: {
-      component: InputComponent,
+      component: CheckboxComponent,
       needToShowLabelOutside: true,
       props: {
-        type: 'checkbox'
       },
       mapConnectDataToProps: (fieldData: DynamicField) => {
         const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
-        const readonly = getFieldDataOptionValue<boolean>(fieldDataOptions, 'readonly', false);
-
         return {
-          readonly
+          readonly: getFieldDataOptionValue<boolean>(fieldDataOptions, 'readonly', false),
+          value: getFieldDataOptionValue<boolean>(fieldDataOptions, 'value', true),
         };
       }
     },

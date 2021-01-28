@@ -1,0 +1,8 @@
+<input
+  [checked]="checked"
+  type="checkbox"
+  [id]="inputId"
+  (change)="handleChange($event)"
+  (blur)="propagateTouch()"
+  [readonly]="readonly"
+  [disabled]="isDisabled">

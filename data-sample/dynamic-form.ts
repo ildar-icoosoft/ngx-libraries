@@ -161,9 +161,35 @@ export const dynamicFormData: DynamicForm = {
       items: [],
     },
     {
-      label: 'text',
-      name: 'Text',
+      label: 'Text',
+      name: 'text',
       type: 'text',
+      validators: [],
+      options: [
+        {
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
+        }
+      ],
+      items: [],
+    },
+    {
+      label: 'Number',
+      name: 'number',
+      type: 'number',
+      validators: [],
+      options: [
+        {
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
+        }
+      ],
+      items: [],
+    },
+    {
+      label: 'Checkbox',
+      name: 'checkbox',
+      type: 'checkbox',
       validators: [],
       options: [
         {

@@ -32,6 +32,22 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
         };
       }
     },
+    checkbox: {
+      component: InputComponent,
+      needToShowLabelOutside: true,
+      props: {
+        type: 'checkbox'
+      },
+      mapConnectDataToProps: (fieldData: DynamicField) => {
+        const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
+
+        const readonly = getFieldDataOptionValue<boolean>(fieldDataOptions, 'readonly', false);
+
+        return {
+          readonly
+        };
+      }
+    },
     number: {
       component: InputComponent,
       needToShowLabelOutside: true,

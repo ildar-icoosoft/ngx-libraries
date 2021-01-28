@@ -46,7 +46,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
 
   @Input() formData!: DynamicForm;
   @Input() formCssClass = '';
-  @Input() initialValues: Record<string, 'any'> = {};
+  @Input() initialValues: Record<string, any> = {};
 
   @Output() submitForm: EventEmitter<FormSubmitEvent> = new EventEmitter();
   @Output() loadForm: EventEmitter<DynamicFormComponent> = new EventEmitter();

@@ -162,6 +162,11 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
         return Validators.required;
       }
     },
+    requiredTrue: {
+      validator: () => {
+        return Validators.requiredTrue;
+      }
+    },
     email: {
       validator: () => {
         return Validators.email;

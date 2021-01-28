@@ -47,16 +47,16 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
   @Input() formData!: DynamicForm;
   @Input() formCssClass = '';
   @Input() initialValues: Record<string, any> = {};
+  @Input() showButtons = true;
+  @Input() buttons: DynamicFormButton[] = [{
+    label: 'Submit',
+    onClick: () => this.validateAndSubmit()
+  }];
 
   @Output() submitForm: EventEmitter<FormSubmitEvent> = new EventEmitter();
   @Output() loadForm: EventEmitter<DynamicFormComponent> = new EventEmitter();
   @Output() groupChange: EventEmitter<Record<string, any>> = new EventEmitter();
   @Output() controlChange: EventEmitter<ControlChangeData> = new EventEmitter();
-
-  @Input() buttons: DynamicFormButton[] = [{
-    label: 'Submit',
-    onClick: () => this.validateAndSubmit()
-  }];
 
   group!: FormGroup;
 

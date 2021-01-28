@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.12](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.3.11...v1.3.12) (2021-01-28)
+
+
+### Bug Fixes
+
+* **ngx-form:** add checkbox input ([1ca0f28](https://github.com/ildar-icoosoft/ngx-libraries/commit/1ca0f2870228c7337eeecdf29222f910def632bf))
+
+
+
+
+
 ## [1.3.11](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.3.10...v1.3.11) (2021-01-28)
 
 **Note:** Version bump only for package ii-ngx-form

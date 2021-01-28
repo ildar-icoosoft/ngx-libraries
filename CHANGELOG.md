@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.13](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.3.12...v1.3.13) (2021-01-28)
+
+
+### Bug Fixes
+
+* **ngx-form:** DynamicFormComponent initialValues type ([cb2ca58](https://github.com/ildar-icoosoft/ngx-libraries/commit/cb2ca58f429491ba68d25894c582b7486e23beee))
+
+
+
+
+
 ## [1.3.12](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.3.11...v1.3.12) (2021-01-28)
 
 

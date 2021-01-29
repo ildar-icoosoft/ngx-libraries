@@ -26,7 +26,7 @@ import { NgxCommonModule } from "ii-ngx-common";
 
 ## Safe pipe
 
-Marks value that's safe to use as HTML, CSS, Script, etc...
+Marks value that's safe to use as HTML, CSS, Script, etc....
 
 ### Usage
 

@@ -1,10 +1,8 @@
 import {Component, forwardRef, Inject, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn} from '@angular/forms';
-import {DynamicField} from '../../interfaces/dynamic-field';
 import {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';
-import {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';
 import {getFieldDataOptionValue, getFieldValidators, needToShowLabelOutside} from '../../utils/dynamic-form';
-import {DynamicFieldOption} from '../../interfaces/dynamic-field-option';
+import {DynamicField, DynamicFieldOption, NgxFormModuleConfig} from "../../interfaces";
 
 @Component({
   selector: 'ii-multi-fieldset',
@@ -24,39 +22,33 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
 
   @Input() initialValues: any = {};
 
-  group!: FormGroup;
+  formArray!: FormArray;
 
   constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}
 
   addItem(): void {
     const groupItem = this.generateGroupItem();
 
-    (this.group.controls.items as FormArray).push(groupItem);
+    this.formArray.push(groupItem);
   }
 
-  getFormArrayControls(formGroup: FormGroup, key: string): FormGroup[] {
-    return (formGroup.controls[key] as FormArray).controls as FormGroup[];
+  getFormArrayControls(formArray: FormArray): FormGroup[] {
+    return formArray.controls as FormGroup[];
   }
 
   removeItem(index: number): void {
-    (this.group.controls.items as FormArray).removeAt(index);
+    this.formArray.removeAt(index);
   }
 
   ngOnInit(): void {
 
     const groupItem = this.generateGroupItem();
 
-    const formArray = new FormArray([
+    this.formArray = new FormArray([
       groupItem
     ]);
 
-    this.group = new FormGroup({
-      items: formArray
-    });
-
-    // debugger;
-
-    this.group.valueChanges.subscribe((val) => {
+    this.formArray.valueChanges.subscribe((val) => {
       this.propagateChange(val);
     });
   }
@@ -98,7 +90,7 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
 
   writeValue(value: any): void {
     if (value) {
-      this.group.setValue(value, {
+      this.formArray.setValue(value, {
         emitEvent: false
       });
     }
@@ -106,9 +98,9 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean): void {
     if (isDisabled) {
-      this.group.disable();
+      this.formArray.disable();
     } else {
-      this.group.enable();
+      this.formArray.enable();
     }
   }
 }

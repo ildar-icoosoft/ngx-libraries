@@ -1,5 +1,5 @@
-<div [formGroup]="group" novalidate>
-  <fieldset *ngFor="let groupItem of getFormArrayControls(group, 'items'); let i = index">
+<div [formGroup]="formArray" novalidate>
+  <fieldset *ngFor="let groupItem of getFormArrayControls(formArray); let i = index">
     <ii-validation-control [control]="groupItem.controls[fieldData.name]" *ngFor="let fieldData of items">
       <label [for]="fieldData.name + '_' + i" *ngIf="needToShowLabelOutside(fieldData)" [innerHTML]="fieldData.label" [class]="getLabelCssClass(fieldData)"></label>
       <ng-container

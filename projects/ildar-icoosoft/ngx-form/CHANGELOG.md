@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.16](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.3.15...v1.3.16) (2021-01-29)
+
+
+### Bug Fixes
+
+* **ngx-form:** update multi-fieldset ([6e69f8d](https://github.com/ildar-icoosoft/ngx-libraries/commit/6e69f8d0f288b26aced87bfa7810dc0aa3a86094))
+
+
+
+
+
 ## [1.3.15](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.3.14...v1.3.15) (2021-01-29)
 
 

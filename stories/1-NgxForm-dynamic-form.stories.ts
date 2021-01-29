@@ -13,6 +13,7 @@ import {getFieldDataOptionValue} from "ii-ngx-form/src/lib/utils/dynamic-form";
 
 
 const handleSubmit = (data: FormSubmitEvent) => {
+  debugger;
   action('button-click');
   window.setTimeout(() => {
     data.setSubmitting(false);
@@ -62,9 +63,15 @@ export const DynamicForm = () => ({
   props: {
     formData: dynamicFormData,
     initialValues: {
-      html: 'some HTML text',
-      text: 'some text',
-      select: 'twitter-follow-button',
+      rules: [{
+        conditions: [{
+
+        }],
+        nextDisplay: 's1111'
+      }]
+      // html: 'some HTML text',
+      // text: 'some text',
+      // select: 'twitter-follow-button',
     },
     submitForm: handleSubmit,
     groupChange: handleChange

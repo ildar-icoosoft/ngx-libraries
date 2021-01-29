@@ -20,14 +20,16 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
 
   @Input() items: DynamicField[] = [];
 
-  @Input() initialValues: any = {};
+  @Input() initialValues: any[] = [];
+
+  @Input() defaultValues: any = {};
 
   formArray!: FormArray;
 
   constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}
 
   addItem(): void {
-    const groupItem = this.generateGroupItem();
+    const groupItem = this.generateGroupItem(this.defaultValues);
 
     this.formArray.push(groupItem);
   }
@@ -41,12 +43,11 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit(): void {
+    const groupItems: FormGroup[] = this.initialValues.map(
+      groupValues => this.generateGroupItem(groupValues)
+    );
 
-    const groupItem = this.generateGroupItem();
-
-    this.formArray = new FormArray([
-      groupItem
-    ]);
+    this.formArray = new FormArray(groupItems);
 
     this.formArray.valueChanges.subscribe((val) => {
       this.propagateChange(val);
@@ -63,13 +64,13 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
     return needToShowLabelOutside(fieldData, this.config);
   }
 
-  private generateGroupItem(): FormGroup {
+  private generateGroupItem(groupValues: any): FormGroup {
     const group = new FormGroup({});
 
     this.items.forEach((item: DynamicField) => {
       const validators: ValidatorFn[] = getFieldValidators(item, this.config);
 
-      const value = this.initialValues[item.name];
+      const value = groupValues[item.name];
       group.addControl(item.name, new FormControl(value, validators));
     });
 
@@ -90,9 +91,11 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
 
   writeValue(value: any): void {
     if (value) {
-      this.formArray.setValue(value, {
-        emitEvent: false
-      });
+      this.formArray.clear();
+
+      (value as any[]).forEach(
+        (groupValues: any) => this.formArray.push(this.generateGroupItem(groupValues))
+      );
     }
   }
 

@@ -9,7 +9,7 @@
         [fieldData]="fieldData">
       </ng-container>
     </ii-validation-control>
-    <button (click)="removeItem(i)" class="btn btn-warning">Remove</button>
+    <button (click)="removeItem(i)" [class]="removeButtonCssClass">{{removeButtonText}}</button>
   </fieldset>
-  <button (click)="addItem()" class="btn btn-success mt-3">Add</button>
+  <button (click)="addItem()" [class]="addButtonCssClass">{{addButtonText}}</button>
 </div>

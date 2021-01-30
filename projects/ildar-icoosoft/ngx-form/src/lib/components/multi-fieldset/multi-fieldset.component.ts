@@ -22,6 +22,13 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
 
   @Input() defaultValues: any = {};
 
+  @Input() removeButtonText = 'Remove';
+  @Input() removeButtonCssClass = 'btn btn-warning mt-2';
+
+  @Input() addButtonText = 'Add';
+  @Input() addButtonCssClass = 'btn btn-success mt-3';
+
+
   formArray!: FormArray;
 
   constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}

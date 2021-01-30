@@ -11,6 +11,7 @@ import {
   TextareaComponent
 } from "../components";
 import {CheckboxComponent} from "../components/checkbox/checkbox.component";
+import {Input} from "@angular/core";
 
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
@@ -141,6 +142,10 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
 
         return {
           defaultValues: getFieldDataOptionValue(fieldDataOptions, 'defaultValues', {}),
+          removeButtonText: getFieldDataOptionValue(fieldDataOptions, 'removeButtonText', 'Remove'),
+          removeButtonCssClass: getFieldDataOptionValue(fieldDataOptions, 'removeButtonCssClass', 'btn btn-warning mt-2'),
+          addButtonText: getFieldDataOptionValue(fieldDataOptions, 'addButtonText', 'Add'),
+          addButtonCssClass: getFieldDataOptionValue(fieldDataOptions, 'addButtonCssClass', 'btn btn-success mt-3'),
           items: fieldData.items
         };
       }

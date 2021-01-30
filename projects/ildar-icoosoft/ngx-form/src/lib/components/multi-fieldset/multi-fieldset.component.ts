@@ -20,8 +20,6 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
 
   @Input() items: DynamicField[] = [];
 
-  @Input() initialValues: any[] = [];
-
   @Input() defaultValues: any = {};
 
   formArray!: FormArray;
@@ -43,11 +41,7 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit(): void {
-    const groupItems: FormGroup[] = this.initialValues.map(
-      groupValues => this.generateGroupItem(groupValues)
-    );
-
-    this.formArray = new FormArray(groupItems);
+    this.formArray = new FormArray([]);
 
     this.formArray.valueChanges.subscribe((val) => {
       this.propagateChange(val);

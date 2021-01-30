@@ -22,8 +22,6 @@ export class FieldsetComponent implements OnInit, ControlValueAccessor {
 
   @Input() items: DynamicField[] = [];
 
-  @Input() initialValues: any = {};
-
   group!: FormGroup;
 
   constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}
@@ -35,8 +33,7 @@ export class FieldsetComponent implements OnInit, ControlValueAccessor {
     this.items.forEach((item: DynamicField) => {
       const validators: ValidatorFn[] = getFieldValidators(item, this.config);
 
-      const value = this.initialValues[item.name];
-      this.group.addControl(item.name, new FormControl(value, validators));
+      this.group.addControl(item.name, new FormControl(null, validators));
     });
 
     this.group.valueChanges.subscribe((val) => {

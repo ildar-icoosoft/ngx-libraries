@@ -28,5 +28,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Publish with lerna
 
+nx lerna version
 npx lerna run build
-npx lerna publish --contents dist
+npx lerna publish --contents dist --cd-version from-git 

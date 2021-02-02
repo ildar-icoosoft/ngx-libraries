@@ -117,7 +117,9 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
         const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
 
         return {
-          options: getFieldDataOptionValue(fieldDataOptions, 'selectOptions')
+          options: getFieldDataOptionValue(fieldDataOptions, 'selectOptions'),
+          placeholder: getFieldDataOptionValue(fieldDataOptions, 'placeholder', ''),
+          multiple: getFieldDataOptionValue(fieldDataOptions, 'multiple', false),
         };
       }
     },

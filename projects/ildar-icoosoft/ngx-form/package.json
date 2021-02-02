@@ -1,14 +1,14 @@
 {
   "name": "ii-ngx-form",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "scripts": {
     "build": "ng build @ildar-icoosoft/ngx-form --prod"
   },
   "peerDependencies": {
     "@angular/cdk": "^11.1.1",
-    "@angular/material": "^11.1.1",
     "@angular/common": "^10.2.0",
-    "@angular/core": "^10.2.0"
+    "@angular/core": "^10.2.0",
+    "@angular/material": "^11.1.1"
   },
   "dependencies": {
     "ii-ngx-common": "^1.4.0",
@@ -16,9 +16,9 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.168",
     "@angular/cdk": "^11.1.1",
-    "@angular/material": "^11.1.1"
+    "@angular/material": "^11.1.1",
+    "@types/lodash": "^4.14.168"
   },
   "gitHead": "23c8a558d6ff37b9af5c74fa0b3fe67028fb777f"
 }

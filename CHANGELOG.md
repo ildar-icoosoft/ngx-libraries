@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.4.0...v1.4.1) (2021-02-02)
+
+
+### Bug Fixes
+
+* move @angular/material + @angular/cdk to peer dependencies ([46ece6a](https://github.com/ildar-icoosoft/ngx-libraries/commit/46ece6a5b66b74d408e0f6d52b68d844e208a75e))
+
+
+
+
+
 # [1.4.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.3.18...v1.4.0) (2021-02-02)
 
 

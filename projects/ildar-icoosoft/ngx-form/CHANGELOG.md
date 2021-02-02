@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.3](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.4.2...v1.4.3) (2021-02-02)
+
+
+### Bug Fixes
+
+* mat-select component ([#24](https://github.com/ildar-icoosoft/ngx-libraries/issues/24)) ([65aa5e9](https://github.com/ildar-icoosoft/ngx-libraries/commit/65aa5e96eb628d31924c57737db8f952501418b9))
+
+
+
+
+
 ## [1.4.2](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.4.1...v1.4.2) (2021-02-02)
 
 

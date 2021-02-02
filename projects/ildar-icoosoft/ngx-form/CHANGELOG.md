@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.2](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.4.1...v1.4.2) (2021-02-02)
+
+
+### Bug Fixes
+
+* material angular css ([dc1614d](https://github.com/ildar-icoosoft/ngx-libraries/commit/dc1614d99241c5f3d1b17753b4d54d63aef71d7e))
+
+
+
+
+
 ## [1.4.1](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.4.0...v1.4.1) (2021-02-02)
 
 

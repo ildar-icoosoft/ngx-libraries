@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.5](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.4.4...v1.4.5) (2021-02-02)
+
+
+### Bug Fixes
+
+* remove BrowserAnimationsModule from NgxFormMofule imports ([85f5b3f](https://github.com/ildar-icoosoft/ngx-libraries/commit/85f5b3fd590a582835818df88381038c5b4fb7c8))
+
+
+
+
+
 ## [1.4.4](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.4.3...v1.4.4) (2021-02-02)
 
 

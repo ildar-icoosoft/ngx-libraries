@@ -6,6 +6,8 @@
   },
   "whitelistedNonPeerDependencies": [
     "ng-recaptcha",
-    "ngx-common"
+    "ngx-common",
+    "@angular/cdk",
+    "@angular/material"
   ]
 }

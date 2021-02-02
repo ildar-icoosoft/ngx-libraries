@@ -10,6 +10,7 @@ import {
   SelectComponent
 } from "ii-ngx-form/src/lib/components";
 import {getFieldDataOptionValue} from "ii-ngx-form/src/lib/utils/dynamic-form";
+import {MatSelectComponent} from "ii-ngx-form/src/lib/components/mat-select/mat-select.component";
 
 
 const handleSubmit = (data: FormSubmitEvent) => {
@@ -105,26 +106,52 @@ export const Select = () => ({
   props: {
     options: [{
       id: '1',
-      value: 'Option 1'
+      name: 'Option 1'
     }, {
       id: '2',
-      value: 'Option 2'
+      name: 'Option 2'
     }, {
       id: '3',
-      value: 'Option 3'
+      name: 'Option 3'
     }, {
       id: '4',
-      value: 'Option 4'
+      name: 'Option 4'
     }, {
       id: '5',
-      value: 'Option 5'
+      name: 'Option 5'
     }, {
       id: '6',
-      value: 'Option 6'
+      name: 'Option 6'
     }]
   },
 });
 Select.storyName = `<ii-select>`;
+
+export const MatSelect = () => ({
+  component: MatSelectComponent,
+  props: {
+    options: [{
+      id: '1',
+      name: 'Option 1'
+    }, {
+      id: '2',
+      name: 'Option 2'
+    }, {
+      id: '3',
+      name: 'Option 3'
+    }, {
+      id: '4',
+      name: 'Option 4'
+    }, {
+      id: '5',
+      name: 'Option 5'
+    }, {
+      id: '6',
+      name: 'Option 6'
+    }]
+  },
+});
+MatSelect.storyName = `<ii-mat-select>`;
 
 export const recaptcha = () => ({
   component: ReCaptchaComponent,

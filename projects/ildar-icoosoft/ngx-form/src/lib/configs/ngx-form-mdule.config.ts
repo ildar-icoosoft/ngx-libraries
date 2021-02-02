@@ -11,7 +11,7 @@ import {
   TextareaComponent
 } from "../components";
 import {CheckboxComponent} from "../components/checkbox/checkbox.component";
-import {Input} from "@angular/core";
+import {MatSelectComponent} from "../components/mat-select/mat-select.component";
 
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
@@ -101,6 +101,17 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
     },
     select: {
       component: SelectComponent,
+      needToShowLabelOutside: true,
+      mapConnectDataToProps: (fieldData: DynamicField) => {
+        const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
+
+        return {
+          options: getFieldDataOptionValue(fieldDataOptions, 'selectOptions')
+        };
+      }
+    },
+    matSelect: {
+      component: MatSelectComponent,
       needToShowLabelOutside: true,
       mapConnectDataToProps: (fieldData: DynamicField) => {
         const fieldDataOptions: DynamicFieldOption[] = fieldData.options;

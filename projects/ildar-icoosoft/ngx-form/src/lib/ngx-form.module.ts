@@ -14,16 +14,21 @@ import {ValidationMessagePipe} from "./pipes";
 import {DynamicFieldDirective} from "./directives";
 import {NgxFormModuleConfig} from "./interfaces";
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { MatSelectComponent } from './components/mat-select/mat-select.component';
+import {MatSelectModule} from "@angular/material/select";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
-  declarations: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent, ReCaptchaComponent, CheckboxComponent],
+  declarations: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent, ReCaptchaComponent, CheckboxComponent, MatSelectComponent],
   imports: [
+    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RecaptchaModule,
     RecaptchaFormsModule,
+    MatSelectModule
   ],
   entryComponents: [
     InputComponent,
@@ -34,9 +39,10 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     MultiFieldsetComponent,
     SelectComponent,
     TextareaComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    MatSelectComponent
   ],
-  exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent, ReCaptchaComponent, CheckboxComponent],
+  exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent, ReCaptchaComponent, CheckboxComponent, MatSelectComponent],
   providers: [{
     provide: NGX_FORM_MODULE_CONFIG,
     useValue: defaultNgxFormModuleConfig

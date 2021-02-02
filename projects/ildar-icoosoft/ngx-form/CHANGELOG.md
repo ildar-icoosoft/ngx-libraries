@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.3.18...v1.4.0) (2021-02-02)
+
+
+### Features
+
+* подключил angular-material ([#23](https://github.com/ildar-icoosoft/ngx-libraries/issues/23)) ([f9d7cdf](https://github.com/ildar-icoosoft/ngx-libraries/commit/f9d7cdf3b49991b5b596ac376b0ab14ffb91dc1b))
+
+
+
+
+
 ## [1.3.18](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.3.17...v1.3.18) (2021-01-30)
 
 **Note:** Version bump only for package ii-ngx-form

@@ -9,7 +9,8 @@ import {
   OnInit,
   Output,
   QueryList,
-  ViewChildren
+  ViewChildren,
+  ViewEncapsulation
 } from '@angular/core';
 import {UnsubscribeService} from 'ii-ngx-common';
 import {AbstractControl, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
@@ -40,7 +41,8 @@ import {DynamicFieldDirective} from "../../directives";
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.css'],
   providers: [UnsubscribeService],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class DynamicFormComponent implements OnInit, AfterViewInit {
 
@@ -68,7 +70,8 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
     @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig,
     private ngUnsubscribe$: UnsubscribeService,
     private changeDetectorRef: ChangeDetectorRef
-  ) {}
+  ) {
+  }
 
   ngAfterViewInit(): void {
     this.loadForm.emit(this);
@@ -91,7 +94,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
         name: item.name,
         formControl,
         value: controlValue
-      }) );
+      }));
 
       this.group.addControl(item.name, formControl);
     });

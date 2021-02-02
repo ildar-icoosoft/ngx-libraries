@@ -10,6 +10,8 @@ import {
   SelectComponent
 } from "ii-ngx-form/src/lib/components";
 import {getFieldDataOptionValue} from "ii-ngx-form/src/lib/utils/dynamic-form";
+import {MatSelectComponent} from "ii-ngx-form/src/lib/components/mat-select/mat-select.component";
+import {CheckboxComponent} from "ii-ngx-form/src/lib/components/checkbox/checkbox.component";
 
 
 const handleSubmit = (data: FormSubmitEvent) => {
@@ -100,31 +102,70 @@ export const InputPassword = () => ({
 });
 InputPassword.storyName = `<ii-input type="password">`;
 
+
+export const Checkbox = () => ({
+  component: CheckboxComponent,
+  props: {
+  },
+});
+Checkbox.storyName = `<ii-checkbox>`;
+
 export const Select = () => ({
   component: SelectComponent,
   props: {
     options: [{
       id: '1',
-      value: 'Option 1'
+      name: 'Option 1'
     }, {
       id: '2',
-      value: 'Option 2'
+      name: 'Option 2'
     }, {
       id: '3',
-      value: 'Option 3'
+      name: 'Option 3'
     }, {
       id: '4',
-      value: 'Option 4'
+      name: 'Option 4'
     }, {
       id: '5',
-      value: 'Option 5'
+      name: 'Option 5'
     }, {
       id: '6',
-      value: 'Option 6'
+      name: 'Option 6'
     }]
   },
 });
 Select.storyName = `<ii-select>`;
+
+export const MatSelect = () => ({
+  template: `
+    <ii-mat-select [options]="options" [ngModel]="model" (ngModelChange)="onChange($event)" [multiple]="multiple"></ii-mat-select>
+  `,
+  props: {
+    options: [{
+      id: '1',
+      name: 'Option 1'
+    }, {
+      id: '2',
+      name: 'Option 2'
+    }, {
+      id: '3',
+      name: 'Option 3'
+    }, {
+      id: '4',
+      name: 'Option 4'
+    }, {
+      id: '5',
+      name: 'Option 5'
+    }, {
+      id: '6',
+      name: 'Option 6'
+    }],
+    model: ['3'],
+    multiple: true,
+    onChange: () => {}
+  },
+});
+MatSelect.storyName = `<ii-mat-select>`;
 
 export const recaptcha = () => ({
   component: ReCaptchaComponent,

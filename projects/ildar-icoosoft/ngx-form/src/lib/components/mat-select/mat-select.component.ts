@@ -1,10 +1,6 @@
-import {Component, forwardRef, OnInit} from '@angular/core';
+import {Component, forwardRef, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
+import {SelectOption} from "../../interfaces";
 
 @Component({
   selector: 'ii-mat-select',
@@ -20,11 +16,12 @@ interface Food {
 })
 export class MatSelectComponent implements OnInit, ControlValueAccessor {
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
+  @Input() options: SelectOption[] = [];
+
+  @Input() placeholder = '';
+  @Input() inputId = '';
+
+  @Input() multiple = false;
 
   value: any;
 
@@ -46,10 +43,8 @@ export class MatSelectComponent implements OnInit, ControlValueAccessor {
     this.propagateTouch = fn;
   }
 
-  writeValue(value: string | undefined): void {
-    if (value !== undefined) {
-      this.value = value;
-    }
+  writeValue(value: any): void {
+    this.value = value;
   }
 
   setDisabledState(isDisabled: boolean): void {

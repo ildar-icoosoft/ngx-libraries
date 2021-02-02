@@ -1,6 +1,9 @@
-
 import { setCompodocJson } from "@storybook/addon-docs/angular";
 import docJson from "../documentation.json";
+
+import '!style-loader!css-loader!@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
 setCompodocJson(docJson);
 
 

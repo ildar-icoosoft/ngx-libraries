@@ -16,13 +16,11 @@ import {NgxFormModuleConfig} from "./interfaces";
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { MatSelectComponent } from './components/mat-select/mat-select.component';
 import {MatSelectModule} from "@angular/material/select";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
   declarations: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent, ReCaptchaComponent, CheckboxComponent, MatSelectComponent],
   imports: [
-    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

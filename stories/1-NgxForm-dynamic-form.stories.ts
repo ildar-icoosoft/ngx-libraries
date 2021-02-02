@@ -12,6 +12,7 @@ import {
 import {getFieldDataOptionValue} from "ii-ngx-form/src/lib/utils/dynamic-form";
 import {MatSelectComponent} from "ii-ngx-form/src/lib/components/mat-select/mat-select.component";
 import {CheckboxComponent} from "ii-ngx-form/src/lib/components/checkbox/checkbox.component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 const handleSubmit = (data: FormSubmitEvent) => {
@@ -30,7 +31,7 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [
-        // IonicModule.forRoot(),
+        BrowserAnimationsModule,
         NgxFormModule.forRoot({
           fields: {
             password: {

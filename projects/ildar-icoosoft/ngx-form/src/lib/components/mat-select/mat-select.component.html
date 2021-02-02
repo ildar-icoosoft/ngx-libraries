@@ -1,10 +1,11 @@
 <mat-form-field appearance="fill">
   <mat-label *ngIf="placeholder">{{placeholder}}</mat-label>
   <mat-select
+    [multiple]="multiple"
     [ngModel]="value"
     [id]="inputId"
     [placeholder]="placeholder"
-    (change)="propagateChange($event.target.value)"
+    (selectionChange)="propagateChange($event.value)"
     (blur)="propagateTouch()"
     [disabled]="isDisabled"
   >

@@ -21,6 +21,8 @@ export class MatSelectComponent implements OnInit, ControlValueAccessor {
   @Input() placeholder = '';
   @Input() inputId = '';
 
+  @Input() multiple = false;
+
   value: any;
 
   isDisabled = false;
@@ -42,7 +44,6 @@ export class MatSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(value: any): void {
-    debugger;
     this.value = value;
   }
 

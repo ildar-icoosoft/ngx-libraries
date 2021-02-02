@@ -11,6 +11,7 @@ import {
 } from "ii-ngx-form/src/lib/components";
 import {getFieldDataOptionValue} from "ii-ngx-form/src/lib/utils/dynamic-form";
 import {MatSelectComponent} from "ii-ngx-form/src/lib/components/mat-select/mat-select.component";
+import {CheckboxComponent} from "ii-ngx-form/src/lib/components/checkbox/checkbox.component";
 
 
 const handleSubmit = (data: FormSubmitEvent) => {
@@ -101,6 +102,14 @@ export const InputPassword = () => ({
 });
 InputPassword.storyName = `<ii-input type="password">`;
 
+
+export const Checkbox = () => ({
+  component: CheckboxComponent,
+  props: {
+  },
+});
+Checkbox.storyName = `<ii-checkbox>`;
+
 export const Select = () => ({
   component: SelectComponent,
   props: {
@@ -128,7 +137,9 @@ export const Select = () => ({
 Select.storyName = `<ii-select>`;
 
 export const MatSelect = () => ({
-  component: MatSelectComponent,
+  template: `
+    <ii-mat-select [options]="options" [ngModel]="model" (ngModelChange)="onChange($event)" [multiple]="multiple"></ii-mat-select>
+  `,
   props: {
     options: [{
       id: '1',
@@ -148,7 +159,10 @@ export const MatSelect = () => ({
     }, {
       id: '6',
       name: 'Option 6'
-    }]
+    }],
+    model: ['3'],
+    multiple: true,
+    onChange: () => {}
   },
 });
 MatSelect.storyName = `<ii-mat-select>`;

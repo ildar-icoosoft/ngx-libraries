@@ -1,0 +1,6 @@
+/*
+@todo. нужно придумать, как подключить стили. Если я подключаю их здесь в CSS и включаю encapsulation: ViewEncapsulation.None,
+то в сторибуке всё работает, но не работает в приложении. Поэтому пока здесь мы подключать CSS не будем.
+*/
+/*
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";*/

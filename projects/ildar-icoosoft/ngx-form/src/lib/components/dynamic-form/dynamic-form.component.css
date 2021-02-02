@@ -1,11 +1,3 @@
-/*
-Приходится подключать CSS от angular-material таким образом, хотя по документации нужно это делать в файле angular.json:
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.scss"
-            ],
-видимо документация написана для приложения, и этот метод для библиотеки не подходит
-*/
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
 
 

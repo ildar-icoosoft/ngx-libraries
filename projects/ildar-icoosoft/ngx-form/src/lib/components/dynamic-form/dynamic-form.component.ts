@@ -9,8 +9,7 @@ import {
   OnInit,
   Output,
   QueryList,
-  ViewChildren,
-  ViewEncapsulation
+  ViewChildren
 } from '@angular/core';
 import {UnsubscribeService} from 'ii-ngx-common';
 import {AbstractControl, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
@@ -41,8 +40,7 @@ import {DynamicFieldDirective} from "../../directives";
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.css'],
   providers: [UnsubscribeService],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DynamicFormComponent implements OnInit, AfterViewInit {
 

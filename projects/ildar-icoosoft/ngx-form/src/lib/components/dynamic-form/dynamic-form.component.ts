@@ -53,8 +53,8 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
     onClick: () => this.validateAndSubmit()
   }];
 
-  @Output() submitForm: EventEmitter<FormSubmitEvent> = new EventEmitter();
-  @Output() loadForm: EventEmitter<DynamicFormComponent> = new EventEmitter();
+  @Output() formSubmit: EventEmitter<FormSubmitEvent> = new EventEmitter();
+  @Output() formLoad: EventEmitter<DynamicFormComponent> = new EventEmitter();
   @Output() groupChange: EventEmitter<Record<string, any>> = new EventEmitter();
   @Output() controlChange: EventEmitter<ControlChangeData> = new EventEmitter();
 
@@ -72,7 +72,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.loadForm.emit(this);
+    this.formLoad.emit(this);
   }
 
   ngOnInit(): void {
@@ -179,7 +179,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
     const formData: any = this.group.getRawValue();
 
     this.isSubmitting = true;
-    this.submitForm.emit({
+    this.formSubmit.emit({
       values: formData,
       setSubmitting: (isSubmitting: boolean) => this.setSubmitting(isSubmitting),
       setErrors: (errors: FormError[]) => this.setErrors(errors)

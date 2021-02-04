@@ -69,7 +69,7 @@ export const DynamicForm = () => ({
       text: 'some text',
       select: 'twitter-follow-button',
     },
-    submitForm: handleSubmit,
+    formSubmit: handleSubmit,
     groupChange: handleChange
   },
 });

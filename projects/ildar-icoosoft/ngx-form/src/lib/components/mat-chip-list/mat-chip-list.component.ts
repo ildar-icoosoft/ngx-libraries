@@ -72,7 +72,7 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
       newValue.push(itemId);
     }
     this.propagateChange(newValue);
-    // this.value = newValue;
+    this.value = newValue; // меняем value, тк. иначе новое значение не отрисовывается
   }
 
   add(event: MatChipInputEvent): void {
@@ -98,7 +98,7 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
 
       const newValue = [...this.value, trimmedValue];
       this.propagateChange(newValue);
-      // this.value = newValue;
+      this.value = newValue; // меняем value, тк. иначе новое значение не отрисовывается
     }
 
     // Reset the input value

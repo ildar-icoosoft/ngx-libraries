@@ -170,7 +170,12 @@ MatSelect.storyName = `<ii-mat-select>`;
 
 export const MatChipList = () => ({
   template: `
-    <ii-mat-chip-list [options]="options" [ngModel]="model" (ngModelChange)="onChange($event)"></ii-mat-chip-list>
+    <ii-mat-chip-list
+     [options]="options"
+     [placeholder]="placeholder"
+     [ngModel]="model"
+     (ngModelChange)="onChange($event)"
+    ></ii-mat-chip-list>
   `,
   props: {
     options: [{
@@ -192,8 +197,8 @@ export const MatChipList = () => ({
       id: '6',
       name: 'Option 6'
     }],
+    placeholder: 'Add new item...',
     model: ['3'],
-    multiple: true,
     onChange: () => {}
   },
 });

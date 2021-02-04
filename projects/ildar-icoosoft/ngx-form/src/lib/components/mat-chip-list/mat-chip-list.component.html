@@ -27,11 +27,15 @@
     [disabled]="isDisabled"
   >
     <mat-chip *ngFor="let option of options" [selectable]="selectable"
-              [removable]="removable" (removed)="remove(option)" [value]="option.id">
+              [removable]="false" [value]="option.id">
       {{option.name}}
-      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
     </mat-chip>
-    <input placeholder="New fruit..."
+    <mat-chip *ngFor="let option of newOptions" [selectable]="selectable"
+              [removable]="true" (removed)="remove(option)" [value]="option.id">
+      {{option.name}}
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <input [placeholder]="placeholder"
            [matChipInputFor]="chipList"
            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
            [matChipInputAddOnBlur]="addOnBlur"

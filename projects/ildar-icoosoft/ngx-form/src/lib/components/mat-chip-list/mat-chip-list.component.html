@@ -1,0 +1,51 @@
+<!--
+<mat-form-field appearance="fill">
+  <mat-label *ngIf="placeholder">{{placeholder}}</mat-label>
+  <mat-select
+    [multiple]="multiple"
+    [ngModel]="value"
+    [id]="inputId"
+    [placeholder]="placeholder"
+    (selectionChange)="propagateChange($event.value)"
+    (blur)="propagateTouch()"
+    [disabled]="isDisabled"
+  >
+    <mat-option *ngFor="let option of options" [value]="option.id">
+      {{option.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+-->
+
+
+<mat-form-field>
+  <mat-label>{{label}}</mat-label>
+  <mat-chip-list
+    #chipList
+    [multiple]="true"
+    [disabled]="isDisabled"
+    [ngModel]="value"
+  >
+    <mat-chip *ngFor="let option of options"
+              [value]="option.id"
+              (click)="handleChipClick(option.id)"
+              (blur)="propagateTouch()"
+    >
+      {{option.name}}
+    </mat-chip>
+    <mat-chip *ngFor="let option of newOptions"
+              [value]="option.id"
+              (click)="handleChipClick(option.id)"
+              (blur)="propagateTouch()"
+    >
+      {{option.name}}
+    </mat-chip>
+    <input [placeholder]="placeholder"
+           [matChipInputFor]="chipList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matChipInputAddOnBlur]="true"
+           (matChipInputTokenEnd)="add($event)"
+           (blur)="propagateTouch()"
+    >
+  </mat-chip-list>
+</mat-form-field>

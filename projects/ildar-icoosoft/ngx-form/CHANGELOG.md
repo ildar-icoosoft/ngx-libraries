@@ -3,17 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.5.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.4.7...v1.5.0) (2021-02-04)
-
-
-### Features
-
-* add sortable-multiselect component ([d2e8810](https://github.com/ildar-icoosoft/ngx-libraries/commit/d2e88106c6354e8015e037b3bac7ea2d5a303d6c))
-
-
-
-
-
 ## [1.4.7](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.4.6...v1.4.7) (2021-02-04)
 
 

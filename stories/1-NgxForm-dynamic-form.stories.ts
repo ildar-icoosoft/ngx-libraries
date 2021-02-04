@@ -168,6 +168,37 @@ export const MatSelect = () => ({
 });
 MatSelect.storyName = `<ii-mat-select>`;
 
+export const MatChipList = () => ({
+  template: `
+    <ii-mat-chip-list [options]="options" [ngModel]="model" (ngModelChange)="onChange($event)"></ii-mat-chip-list>
+  `,
+  props: {
+    options: [{
+      id: '1',
+      name: 'Option 1'
+    }, {
+      id: '2',
+      name: 'Option 2'
+    }, {
+      id: '3',
+      name: 'Option 3'
+    }, {
+      id: '4',
+      name: 'Option 4'
+    }, {
+      id: '5',
+      name: 'Option 5'
+    }, {
+      id: '6',
+      name: 'Option 6'
+    }],
+    model: ['3'],
+    multiple: true,
+    onChange: () => {}
+  },
+});
+MatChipList.storyName = `<ii-mat-chip-list>`;
+
 export const SortableMultiselect = (args: SortableMultiselectComponent) => ({
   component: SortableMultiselectComponent,
   props: args

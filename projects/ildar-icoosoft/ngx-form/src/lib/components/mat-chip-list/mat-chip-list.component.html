@@ -1,0 +1,40 @@
+<!--
+<mat-form-field appearance="fill">
+  <mat-label *ngIf="placeholder">{{placeholder}}</mat-label>
+  <mat-select
+    [multiple]="multiple"
+    [ngModel]="value"
+    [id]="inputId"
+    [placeholder]="placeholder"
+    (selectionChange)="propagateChange($event.value)"
+    (blur)="propagateTouch()"
+    [disabled]="isDisabled"
+  >
+    <mat-option *ngFor="let option of options" [value]="option.id">
+      {{option.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+-->
+
+
+<mat-form-field>
+  <mat-label>{{label}}</mat-label>
+  <mat-chip-list
+    #chipList
+    [ngModel]="value"
+    [id]="inputId"
+    [disabled]="isDisabled"
+  >
+    <mat-chip *ngFor="let option of options" [selectable]="selectable"
+              [removable]="removable" (removed)="remove(option)" [value]="option.id">
+      {{option.name}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input placeholder="New fruit..."
+           [matChipInputFor]="chipList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matChipInputAddOnBlur]="addOnBlur"
+           (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+</mat-form-field>

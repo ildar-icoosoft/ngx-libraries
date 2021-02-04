@@ -13,6 +13,7 @@ import {
 import {CheckboxComponent} from "../components/checkbox/checkbox.component";
 import {MatSelectComponent} from "../components/mat-select/mat-select.component";
 import {SortableMultiselectComponent} from "../components/sortable-multiselect/sortable-multiselect.component";
+import {MatChipListComponent} from "../components/mat-chip-list/mat-chip-list.component";
 
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
@@ -121,6 +122,20 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
           options: getFieldDataOptionValue(fieldDataOptions, 'selectOptions'),
           placeholder: getFieldDataOptionValue(fieldDataOptions, 'placeholder', ''),
           multiple: getFieldDataOptionValue(fieldDataOptions, 'multiple', false),
+        };
+      }
+    },
+    matChipList: {
+      component: MatChipListComponent,
+      needToShowLabelOutside: false,
+      mapConnectDataToProps: (fieldData: DynamicField) => {
+        const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
+
+        return {
+          options: getFieldDataOptionValue(fieldDataOptions, 'selectOptions'),
+          placeholder: getFieldDataOptionValue(fieldDataOptions, 'placeholder', ''),
+          label: fieldData.label,
+          inputId: getFieldDataOptionValue(fieldDataOptions, 'inputId', ''),
         };
       }
     },

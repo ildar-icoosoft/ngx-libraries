@@ -21,7 +21,6 @@ import {pull as _pull} from "lodash";
 export class MatChipListComponent implements OnInit, ControlValueAccessor {
 
   @Input() options: SelectOption[] = [];
-
   newOptions: SelectOption[] = [];
 
   @Input() label = '';
@@ -37,18 +36,6 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-  }
-
-  changeA(data: any): void {
-    // debugger;
-  }
-
-  changeB(data: any): void {
-    // debugger;
-  }
-
-  changeC(data: any): void {
-    // debugger;
   }
 
   propagateChange = (_: any) => {};
@@ -74,11 +61,18 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
   }
 
   handleChipClick(itemId: string): void {
-    if (this.value.includes(itemId)) {
-      _pull(this.value, itemId);
-    } else {
-      this.value.push(itemId);
+    if (this.isDisabled) {
+      return;
     }
+
+    const newValue = [...this.value];
+    if (this.value.includes(itemId)) {
+      _pull(newValue, itemId);
+    } else {
+      newValue.push(itemId);
+    }
+    this.propagateChange(newValue);
+    // this.value = newValue;
   }
 
   add(event: MatChipInputEvent): void {
@@ -101,7 +95,10 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
         id: trimmedValue,
         name: trimmedValue
       });
-      this.value.push(trimmedValue);
+
+      const newValue = [...this.value, trimmedValue];
+      this.propagateChange(newValue);
+      // this.value = newValue;
     }
 
     // Reset the input value

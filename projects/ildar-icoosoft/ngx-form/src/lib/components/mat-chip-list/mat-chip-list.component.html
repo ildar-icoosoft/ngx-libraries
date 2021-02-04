@@ -23,21 +23,20 @@
   <mat-chip-list
     #chipList
     [multiple]="true"
-    [selectable]="true"
+    [disabled]="isDisabled"
+    [ngModel]="value"
   >
     <mat-chip *ngFor="let option of options"
               [value]="option.id"
-              [selected]="value.includes(option.id)"
-              (selectionChange)="changeB($event)"
               (click)="handleChipClick(option.id)"
+              (blur)="propagateTouch()"
     >
       {{option.name}}
     </mat-chip>
     <mat-chip *ngFor="let option of newOptions"
               [value]="option.id"
-              [selected]="value.includes(option.id)"
-              (selectionChange)="changeC($event)"
               (click)="handleChipClick(option.id)"
+              (blur)="propagateTouch()"
     >
       {{option.name}}
     </mat-chip>
@@ -45,6 +44,8 @@
            [matChipInputFor]="chipList"
            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
            [matChipInputAddOnBlur]="true"
-           (matChipInputTokenEnd)="add($event)">
+           (matChipInputTokenEnd)="add($event)"
+           (blur)="propagateTouch()"
+    >
   </mat-chip-list>
 </mat-form-field>

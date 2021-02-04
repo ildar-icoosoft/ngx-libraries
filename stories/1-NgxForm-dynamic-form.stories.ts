@@ -199,8 +199,8 @@ export const MatChipList = () => ({
     }],
     placeholder: 'Add new item...',
     model: ['2', '4'],
-    onChange: (data) => {
-      debugger;
+    onChange: (data: any) => {
+      console.log('onChange', data);
     }
   },
 });

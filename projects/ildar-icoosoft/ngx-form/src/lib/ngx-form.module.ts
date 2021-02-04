@@ -2,7 +2,7 @@ import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {NGX_FORM_MODULE_CONFIG} from './constants/ngx-form-module-config';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {defaultNgxFormModuleConfig} from './configs/ngx-form-mdule.config';
+import {defaultNgxFormModuleConfig} from './configs/ngx-form-module.config';
 import {RecaptchaFormsModule, RecaptchaModule} from 'ng-recaptcha';
 import {
   DynamicFormComponent, FieldsetComponent,
@@ -47,7 +47,8 @@ import {MatIconModule} from "@angular/material/icon";
     TextareaComponent,
     CheckboxComponent,
     MatSelectComponent,
-    SortableMultiselectComponent
+    SortableMultiselectComponent,
+    MatChipListComponent
   ],
   exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent, ReCaptchaComponent, CheckboxComponent, MatSelectComponent, SortableMultiselectComponent, MatChipListComponent],
   providers: [{

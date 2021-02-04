@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.6](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.4.5...v1.4.6) (2021-02-04)
+
+
+### Bug Fixes
+
+* rename submitForm to formSubmit, loadForm to formLoad ([6f3ff72](https://github.com/ildar-icoosoft/ngx-libraries/commit/6f3ff7200bfd7b1ddda54fb8a0b0d5db68d46fe5))
+
+
+
+
+
 ## [1.4.5](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.4.4...v1.4.5) (2021-02-02)
 
 

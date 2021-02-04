@@ -31,13 +31,7 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
 
   isDisabled = false;
 
-  //
-  visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  //
+  separatorKeysCodes: number[] = [ENTER, COMMA];
 
   constructor() { }
 

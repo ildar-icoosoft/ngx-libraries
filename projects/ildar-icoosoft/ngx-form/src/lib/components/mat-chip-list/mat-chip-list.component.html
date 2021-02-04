@@ -26,11 +26,11 @@
     [id]="inputId"
     [disabled]="isDisabled"
   >
-    <mat-chip *ngFor="let option of options" [selectable]="selectable"
+    <mat-chip *ngFor="let option of options" [selectable]="true"
               [removable]="false" [value]="option.id">
       {{option.name}}
     </mat-chip>
-    <mat-chip *ngFor="let option of newOptions" [selectable]="selectable"
+    <mat-chip *ngFor="let option of newOptions" [selectable]="true"
               [removable]="true" (removed)="remove(option)" [value]="option.id">
       {{option.name}}
       <mat-icon matChipRemove>cancel</mat-icon>
@@ -38,7 +38,7 @@
     <input [placeholder]="placeholder"
            [matChipInputFor]="chipList"
            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-           [matChipInputAddOnBlur]="addOnBlur"
+           [matChipInputAddOnBlur]="true"
            (matChipInputTokenEnd)="add($event)">
   </mat-chip-list>
 </mat-form-field>

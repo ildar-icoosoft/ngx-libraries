@@ -198,8 +198,10 @@ export const MatChipList = () => ({
       name: 'Option 6'
     }],
     placeholder: 'Add new item...',
-    model: ['3'],
-    onChange: () => {}
+    model: ['2', '4'],
+    onChange: (data) => {
+      debugger;
+    }
   },
 });
 MatChipList.storyName = `<ii-mat-chip-list>`;

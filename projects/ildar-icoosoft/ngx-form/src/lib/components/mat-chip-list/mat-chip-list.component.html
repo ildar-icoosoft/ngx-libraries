@@ -22,18 +22,24 @@
   <mat-label>{{label}}</mat-label>
   <mat-chip-list
     #chipList
-    [ngModel]="value"
-    [id]="inputId"
-    [disabled]="isDisabled"
+    [multiple]="true"
+    [selectable]="true"
   >
-    <mat-chip *ngFor="let option of options" [selectable]="true"
-              [removable]="false" [value]="option.id">
+    <mat-chip *ngFor="let option of options"
+              [value]="option.id"
+              [selected]="value.includes(option.id)"
+              (selectionChange)="changeB($event)"
+              (click)="handleChipClick(option.id)"
+    >
       {{option.name}}
     </mat-chip>
-    <mat-chip *ngFor="let option of newOptions" [selectable]="true"
-              [removable]="true" (removed)="remove(option)" [value]="option.id">
+    <mat-chip *ngFor="let option of newOptions"
+              [value]="option.id"
+              [selected]="value.includes(option.id)"
+              (selectionChange)="changeC($event)"
+              (click)="handleChipClick(option.id)"
+    >
       {{option.name}}
-      <mat-icon matChipRemove>cancel</mat-icon>
     </mat-chip>
     <input [placeholder]="placeholder"
            [matChipInputFor]="chipList"

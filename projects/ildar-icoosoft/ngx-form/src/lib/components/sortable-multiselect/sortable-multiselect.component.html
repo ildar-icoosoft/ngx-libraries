@@ -1,0 +1,20 @@
+<ng-select class="mb-1"
+           [items]="items"
+           [ngModel]="selectedItems"
+           (ngModelChange)="onChange($event)"
+           (change)="changeItems($event)"
+           (blur)="onTouch($event)"
+           bindLabel="name"
+           bindValue="id"
+           [multiple]="true"
+           [closeOnSelect]="false"
+           [searchable]="true"
+           [clearSearchOnAdd]="true"
+           [placeholder]="placeholder">
+  <ng-template ng-label-tmp let-item="item" let-clear="clear">
+    <span class="ng-value-icon left" (click)="moveLeft(item)" aria-hidden="true"><</span>
+    <span class="ng-value-label">{{item.name}}</span>
+    <span class="ng-value-icon" (click)="clear(item)" aria-hidden="true">×</span>
+    <span class="ng-value-icon right" (click)="moveRight(item)" aria-hidden="true">></span>
+  </ng-template>
+</ng-select>

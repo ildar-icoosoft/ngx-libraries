@@ -195,6 +195,44 @@ export const dynamicFormData: DynamicForm = {
       items: [],
     },
     {
+      label: 'sortableMultiselect',
+      name: 'sortableMultiselect',
+      type: 'sortableMultiselect',
+      validators: [],
+      options: [
+        {
+          name: 'selectOptions',
+          value:
+            [
+              {"id": "twitter-share-button", "name": "Share"},
+              {
+                "id": "twitter-follow-button",
+                "name": "Follow"
+              },
+              {
+                "id": "twitter-hashtag-button",
+                "name": "Hashtag"
+              },
+              {"id": "twitter-mention-button", "name": "Mention"},
+              {
+                "id": "twitter-tweet",
+                "name": "Tweet"
+              },
+              {"id": "twitter-tweet", "name": "Tweet"},
+              {
+                "id": "twitter-timeline",
+                "name": "Timeline"
+              }
+            ],
+        },
+        {
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12'
+        }
+      ],
+      items: [],
+    },
+    {
       label: 'Text',
       name: 'text',
       type: 'text',

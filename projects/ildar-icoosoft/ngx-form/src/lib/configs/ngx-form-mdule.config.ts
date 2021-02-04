@@ -1,7 +1,7 @@
 import {getFieldDataOptionValue} from '../utils/dynamic-form';
 import {ValidatorFn, Validators} from '@angular/forms';
 import {validateEqual} from '../validators';
-import {DynamicField, DynamicFieldOption, DynamicForm, NgxFormModuleConfig} from "../interfaces";
+import {DynamicField, DynamicFieldOption, DynamicForm, NgxFormModuleConfig, SelectOption} from "../interfaces";
 import {
   FieldsetComponent, HtmlComponent,
   InputComponent,
@@ -12,6 +12,7 @@ import {
 } from "../components";
 import {CheckboxComponent} from "../components/checkbox/checkbox.component";
 import {MatSelectComponent} from "../components/mat-select/mat-select.component";
+import {SortableMultiselectComponent} from "../components/sortable-multiselect/sortable-multiselect.component";
 
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
@@ -120,6 +121,20 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
           options: getFieldDataOptionValue(fieldDataOptions, 'selectOptions'),
           placeholder: getFieldDataOptionValue(fieldDataOptions, 'placeholder', ''),
           multiple: getFieldDataOptionValue(fieldDataOptions, 'multiple', false),
+        };
+      }
+    },
+    sortableMultiselect: {
+      component: SortableMultiselectComponent,
+      needToShowLabelOutside: true,
+      props: {
+      },
+      mapConnectDataToProps: (fieldData: DynamicField) => {
+        const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
+
+        return {
+          placeholder: getFieldDataOptionValue<string>(fieldDataOptions, 'placeholder', ''),
+          items: getFieldDataOptionValue<SelectOption[]>(fieldDataOptions, 'selectOptions')
         };
       }
     },

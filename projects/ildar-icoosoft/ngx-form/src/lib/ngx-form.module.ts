@@ -16,17 +16,20 @@ import {NgxFormModuleConfig} from "./interfaces";
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { MatSelectComponent } from './components/mat-select/mat-select.component';
 import {MatSelectModule} from "@angular/material/select";
+import { SortableMultiselectComponent } from './components/sortable-multiselect/sortable-multiselect.component';
+import {NgSelectModule} from "@ng-select/ng-select";
 
 
 @NgModule({
-  declarations: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent, ReCaptchaComponent, CheckboxComponent, MatSelectComponent],
+  declarations: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent, ReCaptchaComponent, CheckboxComponent, MatSelectComponent, SortableMultiselectComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RecaptchaModule,
     RecaptchaFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    NgSelectModule
   ],
   entryComponents: [
     InputComponent,
@@ -38,9 +41,10 @@ import {MatSelectModule} from "@angular/material/select";
     SelectComponent,
     TextareaComponent,
     CheckboxComponent,
-    MatSelectComponent
+    MatSelectComponent,
+    SortableMultiselectComponent
   ],
-  exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent, ReCaptchaComponent, CheckboxComponent, MatSelectComponent],
+  exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent, ReCaptchaComponent, CheckboxComponent, MatSelectComponent, SortableMultiselectComponent],
   providers: [{
     provide: NGX_FORM_MODULE_CONFIG,
     useValue: defaultNgxFormModuleConfig

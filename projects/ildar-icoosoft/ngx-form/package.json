@@ -1,6 +1,6 @@
 {
   "name": "ii-ngx-form",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "scripts": {
     "build": "ng build @ildar-icoosoft/ngx-form --prod"
   },

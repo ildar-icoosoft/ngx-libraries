@@ -87,6 +87,13 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
 
     const trimmedValue = value.trim();
 
+    if (
+      this.options.some(item => item.id === trimmedValue) ||
+      this.newOptions.some(item => item.id === trimmedValue)
+    ) {
+      return;
+    }
+
     if (trimmedValue) {
       const trimmedValue = value.trim();
 
@@ -94,19 +101,12 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
         id: trimmedValue,
         name: trimmedValue
       });
+      this.value.push(trimmedValue);
     }
 
     // Reset the input value
     if (input) {
       input.value = '';
-    }
-  }
-
-  remove(fruit: SelectOption): void {
-    const index = this.newOptions.indexOf(fruit);
-
-    if (index >= 0) {
-      this.newOptions.splice(index, 1);
     }
   }
 //

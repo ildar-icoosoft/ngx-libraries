@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.5.0...v1.6.0) (2021-02-04)
+
+
+### Features
+
+* добавил компонент mat-chip-list ([#26](https://github.com/ildar-icoosoft/ngx-libraries/issues/26)) ([6dc3810](https://github.com/ildar-icoosoft/ngx-libraries/commit/6dc3810c6992616a717629c9bb0eb4967b9a3ecb))
+
+
+
+
+
 # [1.5.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.4.7...v1.5.0) (2021-02-04)
 
 

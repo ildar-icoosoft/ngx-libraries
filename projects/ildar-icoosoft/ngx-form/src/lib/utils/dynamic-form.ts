@@ -16,7 +16,7 @@ export const getFieldValidators = (fieldData: DynamicField, config: NgxFormModul
   if (fieldData.validators) {
     fieldData.validators.forEach(dynamicFormValidator => {
       const validatorName = dynamicFormValidator.name;
-      const validatorArgs = dynamicFormValidator.options;
+      const validatorArgs = dynamicFormValidator.options || [];
 
       const validatorConfig = config.validators[validatorName];
 
@@ -35,7 +35,7 @@ export const getGroupValidators = (formData: DynamicForm, config: NgxFormModuleC
   if (formData.validators) {
     formData.validators.forEach(dynamicFormValidator => {
       const validatorName = dynamicFormValidator.name;
-      const validatorArgs = dynamicFormValidator.options;
+      const validatorArgs = dynamicFormValidator.options || [];
 
       const validatorConfig = config.validators[validatorName];
 

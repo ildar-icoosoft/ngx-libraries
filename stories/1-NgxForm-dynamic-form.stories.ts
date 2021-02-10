@@ -41,7 +41,7 @@ export default {
                 type: 'password',
               },
               mapConnectDataToProps: (fieldData: DynamicField) => {
-                const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
+                const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
 
                 const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');
                 return {

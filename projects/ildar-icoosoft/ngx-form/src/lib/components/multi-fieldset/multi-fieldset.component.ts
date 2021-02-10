@@ -56,7 +56,7 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
   }
 
   getLabelCssClass(fieldData: DynamicField): string {
-    const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
+    const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
 
     return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');
   }

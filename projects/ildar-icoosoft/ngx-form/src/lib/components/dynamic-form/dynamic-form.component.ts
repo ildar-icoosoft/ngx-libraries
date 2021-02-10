@@ -138,19 +138,19 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
   }
 
   getCssClass(fieldData: DynamicField): string {
-    const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
+    const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
 
     return getFieldDataOptionValue(fieldDataOptions, 'cssClass', '');
   }
 
   getFormGroupCssClass(fieldData: DynamicField): string {
-    const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
+    const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
 
     return getFieldDataOptionValue(fieldDataOptions, 'formGroupCssClass', '');
   }
 
   getLabelCssClass(fieldData: DynamicField): string {
-    const fieldDataOptions: DynamicFieldOption[] = fieldData.options;
+    const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
 
     return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');
   }

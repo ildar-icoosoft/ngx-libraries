@@ -1,5 +1,5 @@
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
-import {FormError} from '../interfaces/form-error';
+import {FormError} from '../interfaces';
 
 export const markAllFormControlsAsTouched = (formGroup: FormGroup): void => {
   Object.keys(formGroup.controls).forEach(field => {

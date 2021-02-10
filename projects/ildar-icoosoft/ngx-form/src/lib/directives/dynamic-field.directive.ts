@@ -10,9 +10,8 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {DynamicField} from '../interfaces/dynamic-field';
 import {NGX_FORM_MODULE_CONFIG} from '../constants/ngx-form-module-config';
-import {NgxFormModuleConfig} from '../interfaces/ngx-form-module-config';
+import {NgxFormModuleConfig, DynamicField} from '../interfaces';
 
 @Directive({
   selector: '[iiDynamicField]',

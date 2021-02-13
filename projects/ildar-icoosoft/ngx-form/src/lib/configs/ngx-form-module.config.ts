@@ -1,7 +1,7 @@
 import {getFieldDataOptionValue} from '../utils/dynamic-form';
 import {ValidatorFn, Validators} from '@angular/forms';
 import {validateEqual} from '../validators';
-import {DynamicField, DynamicFieldOption, NgxFormModuleConfig, SelectOption} from "../interfaces";
+import {DynamicField, DynamicFieldOption, NgxFormModuleConfig, SelectOption} from "../types";
 import {
   FieldsetComponent, HtmlComponent,
   InputComponent,

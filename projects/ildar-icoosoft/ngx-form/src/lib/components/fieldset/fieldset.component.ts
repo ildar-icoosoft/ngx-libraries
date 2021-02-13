@@ -1,10 +1,10 @@
 import {Component, forwardRef, Inject, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn} from '@angular/forms';
-import {DynamicField} from '../../interfaces/dynamic-field';
+import {DynamicField} from '../../types/dynamic-field';
 import {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';
-import {NgxFormModuleConfig} from '../../interfaces/ngx-form-module-config';
+import {NgxFormModuleConfig} from '../../types/ngx-form-module-config';
 import {getFieldDataOptionValue, getFieldValidators, needToShowLabelOutside} from '../../utils/dynamic-form';
-import {DynamicFieldOption} from '../../interfaces/dynamic-field-option';
+import {DynamicFieldOption} from '../../types/dynamic-field-option';
 
 @Component({
   selector: 'ii-fieldset',

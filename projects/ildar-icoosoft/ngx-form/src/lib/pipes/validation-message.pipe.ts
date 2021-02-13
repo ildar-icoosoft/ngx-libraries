@@ -1,7 +1,7 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {prepareValidationMessage} from '../utils/error';
 import {NGX_FORM_MODULE_CONFIG} from '../constants/ngx-form-module-config';
-import {NgxFormModuleConfig} from '../interfaces/ngx-form-module-config';
+import {NgxFormModuleConfig} from '../types/ngx-form-module-config';
 
 @Pipe({
   name: 'validationMessage'

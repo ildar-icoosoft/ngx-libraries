@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {NGX_FORM_MODULE_CONFIG} from '../constants/ngx-form-module-config';
-import {NgxFormModuleConfig, DynamicField} from '../interfaces';
+import {NgxFormModuleConfig, DynamicField} from '../types';
 
 @Directive({
   selector: '[iiDynamicField]',

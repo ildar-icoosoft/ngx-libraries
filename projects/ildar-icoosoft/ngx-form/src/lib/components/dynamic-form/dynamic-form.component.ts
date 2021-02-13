@@ -31,7 +31,7 @@ import {
   FormError,
   FormSubmitEvent,
   NgxFormModuleConfig
-} from "../../interfaces";
+} from "../../types";
 import {DynamicFieldDirective} from "../../directives";
 
 

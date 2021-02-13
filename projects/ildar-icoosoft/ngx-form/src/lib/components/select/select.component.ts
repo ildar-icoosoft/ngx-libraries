@@ -1,6 +1,6 @@
 import {Component, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {SelectOption} from '../../interfaces/select-option';
+import {SelectOption} from '../../types/select-option';
 
 @Component({
   selector: 'ii-select',

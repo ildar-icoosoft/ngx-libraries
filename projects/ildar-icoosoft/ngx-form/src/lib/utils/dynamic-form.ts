@@ -1,10 +1,10 @@
 import {ValidatorFn} from '@angular/forms';
-import {DynamicField, DynamicFieldOption, DynamicForm, NgxFormModuleConfig} from "../interfaces";
+import {DynamicField, DynamicFieldOption, DynamicForm, NgxFormModuleConfig} from "../types";
 
 export const getFieldDataOptionValue = <T = unknown>(options: DynamicFieldOption[], name: string, defaultValue: any = undefined): T => {
   const option: DynamicFieldOption | undefined = options.find(item => item.name === name);
   if (option) {
-    return option.value;
+    return option.value as T;
   }
 
   return defaultValue;

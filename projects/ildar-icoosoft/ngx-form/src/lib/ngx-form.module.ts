@@ -12,7 +12,7 @@ import {
 } from "./components";
 import {ValidationMessagePipe} from "./pipes";
 import {DynamicFieldDirective} from "./directives";
-import {NgxFormModuleConfig} from "./interfaces";
+import {NgxFormModuleConfig} from "./types";
 import {CheckboxComponent} from './components/checkbox/checkbox.component';
 import {MatSelectComponent} from './components/mat-select/mat-select.component';
 import {MatSelectModule} from "@angular/material/select";

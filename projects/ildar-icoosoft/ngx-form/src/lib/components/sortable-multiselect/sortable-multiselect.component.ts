@@ -36,8 +36,10 @@ export class SortableMultiselectComponent implements OnInit, ControlValueAccesso
     this.onTouch = fn;
   }
 
-  writeValue(items: string[]): void {
-    this.selectedItems = items;
+  writeValue(value: string[] | null): void {
+    if (value !== null) {
+      this.selectedItems = value;
+    }
   }
 
   changeItems(items: SelectOption[]): void {

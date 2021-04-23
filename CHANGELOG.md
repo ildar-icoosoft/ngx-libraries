@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.14](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.7.13...v1.7.14) (2021-04-23)
+
+**Note:** Version bump only for package ngx-libraries
+
+
+
+
+
+## [1.7.13](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.7.3...v1.7.13) (2021-04-23)
+
+
+### Bug Fixes
+
+* lerna config ([2404d56](https://github.com/ildar-icoosoft/ngx-libraries/commit/2404d56bc050c44682922e232fb6d9eba2c63cea))
+
+
+
+
+
+
 ## [1.7.3](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.7.2...v1.7.3) (2021-02-14)
 
 **Note:** Version bump only for package ngx-libraries

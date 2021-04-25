@@ -33,6 +33,11 @@ jobs:
       - name: Test
         run: yarn test:ci
 
+      - name: Configure Git User
+        run: |
+          git config --global user.email "bot@lerna-publish-action"
+          git config --global user.name "@$GITHUB_ACTOR"
+
       - name: Lerna publish
         run: lerna publish --contents dist --yes
         env:

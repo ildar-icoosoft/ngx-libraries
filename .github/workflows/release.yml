@@ -43,8 +43,11 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Lerna diff
+        run: lerna diff
+
       - name: Lerna publish
-        run: lerna version
+        run: lerna publish --contents dist --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

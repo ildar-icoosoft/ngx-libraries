@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.7.26 (2021-04-25)
+
+
+### Bug Fixes
+
+* interm ([4f47aa3](https://github.com/ildar-icoosoft/ngx-libraries/commit/4f47aa3d43159289e81c079735815504ab986219))
+
+
+
+
+
 ## 1.7.25 (2021-04-25)
 
 **Note:** Version bump only for package ii-ngx-common

@@ -1,6 +1,6 @@
 {
   "name": "ii-ngx-common",
-  "version": "1.7.24",
+  "version": "1.7.25",
   "scripts": {
     "build": "ng build @ildar-icoosoft/ngx-common --prod"
   },

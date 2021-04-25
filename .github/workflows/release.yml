@@ -43,8 +43,8 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Lerna diff
-        run: lerna diff
+      - name: NPX Lerna diff
+        run: npx lerna diff
 
       - name: Lerna publish
         run: lerna publish --contents dist --yes

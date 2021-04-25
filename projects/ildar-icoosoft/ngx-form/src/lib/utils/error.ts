@@ -46,11 +46,13 @@ export const setFormErrors = (
   }
 
   for (const formControlName in formControlErrors) {
-    const formControl = formGroup.get(formControlName) as AbstractControl;
+    if (formControlErrors.hasOwnProperty(formControlName)) {
+      const formControl = formGroup.get(formControlName) as AbstractControl;
 
-    formControl.setErrors({
-      customArr: formControlErrors[formControlName]
-    });
+      formControl.setErrors({
+        customArr: formControlErrors[formControlName]
+      });
+    }
   }
 
   markAllFormControlsAsTouched(formGroup);
@@ -58,7 +60,7 @@ export const setFormErrors = (
 
 export const prepareValidationMessage = (value: string): string => {
   return value;
-}
+};
 
 
 

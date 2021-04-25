@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FieldsetComponent } from './fieldset.component';
 
 xdescribe('FieldsetComponent', () => {
-  let component: FieldsetComponent;
+/*  let component: FieldsetComponent;
   let fixture: ComponentFixture<FieldsetComponent>;
 
   beforeEach(async () => {
@@ -11,7 +11,7 @@ xdescribe('FieldsetComponent', () => {
       declarations: [ FieldsetComponent ]
     })
     .compileComponents();
-  });
+  });*/
 
  /* beforeEach(() => {
     fixture = TestBed.createComponent(FieldsetComponent);

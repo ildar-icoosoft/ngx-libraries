@@ -1,7 +1,7 @@
 import {getFieldDataOptionValue} from '../utils/dynamic-form';
 import {ValidatorFn, Validators} from '@angular/forms';
 import {validateEqual} from '../validators';
-import {DynamicField, DynamicFieldOption, NgxFormModuleConfig, SelectOption} from "../types";
+import {DynamicField, DynamicFieldOption, NgxFormModuleConfig, SelectOption} from '../types';
 import {
   FieldsetComponent, HtmlComponent,
   InputComponent,
@@ -9,11 +9,11 @@ import {
   ReCaptchaComponent,
   SelectComponent,
   TextareaComponent
-} from "../components";
-import {CheckboxComponent} from "../components/checkbox/checkbox.component";
-import {MatSelectComponent} from "../components/mat-select/mat-select.component";
-import {SortableMultiselectComponent} from "../components/sortable-multiselect/sortable-multiselect.component";
-import {MatChipListComponent} from "../components/mat-chip-list/mat-chip-list.component";
+} from '../components';
+import {CheckboxComponent} from '../components/checkbox/checkbox.component';
+import {MatSelectComponent} from '../components/mat-select/mat-select.component';
+import {SortableMultiselectComponent} from '../components/sortable-multiselect/sortable-multiselect.component';
+import {MatChipListComponent} from '../components/mat-chip-list/mat-chip-list.component';
 
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {

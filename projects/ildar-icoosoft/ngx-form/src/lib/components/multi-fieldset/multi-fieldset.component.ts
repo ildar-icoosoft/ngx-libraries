@@ -2,7 +2,7 @@ import {Component, forwardRef, Inject, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn} from '@angular/forms';
 import {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';
 import {getFieldDataOptionValue, getFieldValidators, needToShowLabelOutside} from '../../utils/dynamic-form';
-import {DynamicField, DynamicFieldOption, NgxFormModuleConfig} from "../../types";
+import {DynamicField, DynamicFieldOption, NgxFormModuleConfig} from '../../types';
 
 @Component({
   selector: 'ii-multi-fieldset',

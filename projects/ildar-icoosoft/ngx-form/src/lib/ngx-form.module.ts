@@ -9,22 +9,39 @@ import {
   FormValidationErrorsComponent, HtmlComponent,
   InputComponent, MultiFieldsetComponent, ReCaptchaComponent, SelectComponent, TextareaComponent,
   ValidationControlComponent
-} from "./components";
-import {ValidationMessagePipe} from "./pipes";
-import {DynamicFieldDirective} from "./directives";
-import {NgxFormModuleConfig} from "./types";
+} from './components';
+import {ValidationMessagePipe} from './pipes';
+import {DynamicFieldDirective} from './directives';
+import {NgxFormModuleConfig} from './types';
 import {CheckboxComponent} from './components/checkbox/checkbox.component';
 import {MatSelectComponent} from './components/mat-select/mat-select.component';
-import {MatSelectModule} from "@angular/material/select";
+import {MatSelectModule} from '@angular/material/select';
 import {SortableMultiselectComponent} from './components/sortable-multiselect/sortable-multiselect.component';
-import {NgSelectModule} from "@ng-select/ng-select";
+import {NgSelectModule} from '@ng-select/ng-select';
 import {MatChipListComponent} from './components/mat-chip-list/mat-chip-list.component';
-import {MatChipsModule} from "@angular/material/chips";
-import {MatIconModule} from "@angular/material/icon";
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
-  declarations: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent, ReCaptchaComponent, CheckboxComponent, MatSelectComponent, SortableMultiselectComponent, MatChipListComponent],
+  declarations: [
+    FormValidationErrorsComponent,
+    ValidationControlComponent,
+    ValidationMessagePipe,
+    DynamicFormComponent,
+    DynamicFieldDirective,
+    InputComponent,
+    TextareaComponent,
+    SelectComponent,
+    HtmlComponent,
+    FieldsetComponent,
+    MultiFieldsetComponent,
+    ReCaptchaComponent,
+    CheckboxComponent,
+    MatSelectComponent,
+    SortableMultiselectComponent,
+    MatChipListComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -50,7 +67,24 @@ import {MatIconModule} from "@angular/material/icon";
     SortableMultiselectComponent,
     MatChipListComponent
   ],
-  exports: [FormValidationErrorsComponent, ValidationControlComponent, ValidationMessagePipe, DynamicFormComponent, DynamicFieldDirective, InputComponent, TextareaComponent, SelectComponent, HtmlComponent, FieldsetComponent, MultiFieldsetComponent, ReCaptchaComponent, CheckboxComponent, MatSelectComponent, SortableMultiselectComponent, MatChipListComponent],
+  exports: [
+    FormValidationErrorsComponent,
+    ValidationControlComponent,
+    ValidationMessagePipe,
+    DynamicFormComponent,
+    DynamicFieldDirective,
+    InputComponent,
+    TextareaComponent,
+    SelectComponent,
+    HtmlComponent,
+    FieldsetComponent,
+    MultiFieldsetComponent,
+    ReCaptchaComponent,
+    CheckboxComponent,
+    MatSelectComponent,
+    SortableMultiselectComponent,
+    MatChipListComponent
+  ],
   providers: [{
     provide: NGX_FORM_MODULE_CONFIG,
     useValue: defaultNgxFormModuleConfig

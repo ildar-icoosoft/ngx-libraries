@@ -24,5 +24,5 @@ export interface NgxFormModuleConfig {
 }
 
 export interface NgxValidatorConfig {
-  validator: (...args: any[]) => ValidatorFn
+  validator: (...args: any[]) => ValidatorFn;
 }

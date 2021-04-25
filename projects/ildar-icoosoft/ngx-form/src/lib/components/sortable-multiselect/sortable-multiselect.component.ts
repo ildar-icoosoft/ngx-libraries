@@ -1,6 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {SelectOption} from "../../types";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {SelectOption} from '../../types';
 
 @Component({
   selector: 'ii-sortable-multiselect',

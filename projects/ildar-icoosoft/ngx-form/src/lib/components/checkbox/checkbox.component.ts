@@ -1,5 +1,5 @@
 import {Component, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
   selector: 'ii-checkbox',
@@ -22,10 +22,13 @@ export class CheckboxComponent implements ControlValueAccessor {
   checked = false;
   isDisabled = false;
 
-  constructor() { }
+  constructor() {
+  }
 
-  propagateChange = (_: any) => {};
-  propagateTouch = () => {};
+  propagateChange = (_: any) => {
+  }
+  propagateTouch = () => {
+  }
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;

@@ -44,7 +44,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Lerna publish
-        run: npx lerna publish --contents dist --cd-version from-git --yes
+        run: lerna publish --contents dist --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

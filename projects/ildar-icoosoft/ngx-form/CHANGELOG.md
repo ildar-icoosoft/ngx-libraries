@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.7.19 (2021-04-25)
+
+
+### Bug Fixes
+
+* update ngx-form readme ([775df91](https://github.com/ildar-icoosoft/ngx-libraries/commit/775df912ab342c5fbfe730c1d70bf690930c3f20))
+
+
+
+
+
 ## 1.7.18 (2021-04-25)
 
 **Note:** Version bump only for package ii-ngx-form

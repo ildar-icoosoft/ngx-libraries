@@ -38,4 +38,4 @@ jobs:
         run: yarn lint
 
       - name: Test
-        run: lerna publish  --contents dist
+        run: yarn test --ci

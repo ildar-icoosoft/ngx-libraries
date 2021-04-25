@@ -28,7 +28,7 @@ import { NgxFormModule } from "ii-ngx-form";
 
 ## Dynamic Form component
 
-Renders dynamic form...
+Renders dynamic form....
 
 ### Usage
 

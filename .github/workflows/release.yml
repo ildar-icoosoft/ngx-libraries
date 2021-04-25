@@ -5,7 +5,7 @@ on:
     branches: [ NGXLIBRARIES-17_github-actions ]
 
 jobs:
-  run:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Begin CI...

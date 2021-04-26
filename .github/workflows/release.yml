@@ -2,7 +2,7 @@ name: Release
 
 on:
   push:
-    branches: [ NGXLIBRARIES-17_github-actions ]
+    branches: [ master ]
 
 jobs:
   release:

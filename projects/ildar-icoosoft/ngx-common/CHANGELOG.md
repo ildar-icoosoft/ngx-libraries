@@ -3,6 +3,136 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.31](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.7.30...v1.7.31) (2021-04-26)
+
+
+### Bug Fixes
+
+* update ngx-common ([aa995cc](https://github.com/ildar-icoosoft/ngx-libraries/commit/aa995cc7ca90e2380af25a5f8051e35d5ec5b626))
+
+
+
+
+
+## 1.7.28 (2021-04-25)
+
+
+### Bug Fixes
+
+* interm ([b7476d4](https://github.com/ildar-icoosoft/ngx-libraries/commit/b7476d453e87ab8cb33ad9368a259235d215ba15))
+
+
+
+
+
+## 1.7.27 (2021-04-25)
+
+
+### Bug Fixes
+
+* interm ([468176a](https://github.com/ildar-icoosoft/ngx-libraries/commit/468176a3f2012399642d7f8fbf2f3c5421edcaea))
+
+
+
+
+
+## 1.7.26 (2021-04-25)
+
+
+### Bug Fixes
+
+* interm ([4f47aa3](https://github.com/ildar-icoosoft/ngx-libraries/commit/4f47aa3d43159289e81c079735815504ab986219))
+
+
+
+
+
+## 1.7.25 (2021-04-25)
+
+**Note:** Version bump only for package ii-ngx-common
+
+
+
+
+
+## 1.7.24 (2021-04-25)
+
+**Note:** Version bump only for package ii-ngx-common
+
+
+
+
+
+## 1.7.23 (2021-04-25)
+
+**Note:** Version bump only for package ii-ngx-common
+
+
+
+
+
+## 1.7.22 (2021-04-25)
+
+**Note:** Version bump only for package ii-ngx-common
+
+
+
+
+
+## 1.7.21 (2021-04-25)
+
+
+### Bug Fixes
+
+* interm ([4ff232d](https://github.com/ildar-icoosoft/ngx-libraries/commit/4ff232dfcb2c4a9e1f9dfb1397f94fefd6caa418))
+
+
+
+
+
+## 1.7.19 (2021-04-25)
+
+
+### Bug Fixes
+
+* update ngx-form readme ([775df91](https://github.com/ildar-icoosoft/ngx-libraries/commit/775df912ab342c5fbfe730c1d70bf690930c3f20))
+
+
+
+
+
+## 1.7.18 (2021-04-25)
+
+**Note:** Version bump only for package ii-ngx-common
+
+
+
+
+
+## 1.7.17 (2021-04-25)
+
+**Note:** Version bump only for package ii-ngx-common
+
+
+
+
+
+## 1.7.16 (2021-04-25)
+
+**Note:** Version bump only for package ii-ngx-common
+
+
+
+
+
+## 1.7.15 (2021-04-25)
+
+**Note:** Version bump only for package ii-ngx-common
+
+
+
+
+
 # [1.7.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.6.1...v1.7.0) (2021-02-06)
 
 

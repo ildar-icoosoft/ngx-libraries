@@ -1,9 +1,9 @@
 import {Component, OnInit, ChangeDetectionStrategy, Input, forwardRef, ChangeDetectorRef} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {SelectOption} from "../../types";
-import {COMMA, ENTER} from "@angular/cdk/keycodes";
-import {MatChipInputEvent} from "@angular/material/chips";
-import {pull as _pull} from "lodash";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {SelectOption} from '../../types';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material/chips';
+import {pull as _pull} from 'lodash';
 
 @Component({
   selector: 'ii-mat-chip-list',
@@ -89,8 +89,6 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
     }
 
     if (trimmedValue) {
-      const trimmedValue = value.trim();
-
       this.newOptions.push({
         id: trimmedValue,
         name: trimmedValue

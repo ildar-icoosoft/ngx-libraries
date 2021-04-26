@@ -3,6 +3,179 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.31](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.7.30...v1.7.31) (2021-04-26)
+
+
+### Bug Fixes
+
+* update ngx-common ([aa995cc](https://github.com/ildar-icoosoft/ngx-libraries/commit/aa995cc7ca90e2380af25a5f8051e35d5ec5b626))
+
+
+
+
+
+## [1.7.30](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.7.29...v1.7.30) (2021-04-26)
+
+
+### Bug Fixes
+
+* interm ([e5b3a7c](https://github.com/ildar-icoosoft/ngx-libraries/commit/e5b3a7cc3d6e466639e5fa6e58ac319ad561459a))
+* interm ([8acf00e](https://github.com/ildar-icoosoft/ngx-libraries/commit/8acf00e0919c2c482305fe75e5c3f333aaea5a9e))
+
+
+
+
+
+## [1.7.29](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.7.28...v1.7.29) (2021-04-26)
+
+
+### Bug Fixes
+
+* interm ([9ac1d86](https://github.com/ildar-icoosoft/ngx-libraries/commit/9ac1d86a50010fbbd5d8ab9104b5b7d6aac62995))
+* interm ([0fe51a4](https://github.com/ildar-icoosoft/ngx-libraries/commit/0fe51a406056d2170d5b5d2bd1bb8002e5a48315))
+* interm ([3446b1d](https://github.com/ildar-icoosoft/ngx-libraries/commit/3446b1da162720d033b199e3a3d5ce6489a731cd))
+* interm ([bf4f4ca](https://github.com/ildar-icoosoft/ngx-libraries/commit/bf4f4ca3c533feaa887fa302284cf08120d9729c))
+* interm ([2cf099f](https://github.com/ildar-icoosoft/ngx-libraries/commit/2cf099f2dbd57f0373f9985992a407491a695fd3))
+* interm ([fba2177](https://github.com/ildar-icoosoft/ngx-libraries/commit/fba21777dec19265dcbe1090ae3e6f72448656d6))
+* interm ([5819e0d](https://github.com/ildar-icoosoft/ngx-libraries/commit/5819e0d62de0bf92746144831956a5db9c9e5c76))
+* interm ([5d59495](https://github.com/ildar-icoosoft/ngx-libraries/commit/5d59495d02c1bb3ddfa1bcb54a62829f0c83f3f2))
+* interm ([2ac237d](https://github.com/ildar-icoosoft/ngx-libraries/commit/2ac237dd288aadabde141e375a69ce00fe083a1f))
+
+
+
+
+
+## 1.7.28 (2021-04-25)
+
+
+### Bug Fixes
+
+* interm ([b7476d4](https://github.com/ildar-icoosoft/ngx-libraries/commit/b7476d453e87ab8cb33ad9368a259235d215ba15))
+
+
+
+
+
+## 1.7.27 (2021-04-25)
+
+
+### Bug Fixes
+
+* interm ([468176a](https://github.com/ildar-icoosoft/ngx-libraries/commit/468176a3f2012399642d7f8fbf2f3c5421edcaea))
+
+
+
+
+
+## 1.7.26 (2021-04-25)
+
+
+### Bug Fixes
+
+* interm ([4f47aa3](https://github.com/ildar-icoosoft/ngx-libraries/commit/4f47aa3d43159289e81c079735815504ab986219))
+
+
+
+
+
+## 1.7.25 (2021-04-25)
+
+**Note:** Version bump only for package ngx-libraries
+
+
+
+
+
+## 1.7.24 (2021-04-25)
+
+**Note:** Version bump only for package ngx-libraries
+
+
+
+
+
+## 1.7.23 (2021-04-25)
+
+**Note:** Version bump only for package ngx-libraries
+
+
+
+
+
+## 1.7.22 (2021-04-25)
+
+**Note:** Version bump only for package ngx-libraries
+
+
+
+
+
+## 1.7.21 (2021-04-25)
+
+
+### Bug Fixes
+
+* interm ([4ff232d](https://github.com/ildar-icoosoft/ngx-libraries/commit/4ff232dfcb2c4a9e1f9dfb1397f94fefd6caa418))
+
+
+
+
+
+## [1.7.20](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.7.19...v1.7.20) (2021-04-25)
+
+
+### Bug Fixes
+
+* update ngx-form readme ([28b3c97](https://github.com/ildar-icoosoft/ngx-libraries/commit/28b3c97060db7e1221af50f3564b34934079e2bf))
+
+
+
+
+
+
+## 1.7.19 (2021-04-25)
+
+
+### Bug Fixes
+
+* update ngx-form readme ([775df91](https://github.com/ildar-icoosoft/ngx-libraries/commit/775df912ab342c5fbfe730c1d70bf690930c3f20))
+
+
+
+
+
+## 1.7.18 (2021-04-25)
+
+**Note:** Version bump only for package ngx-libraries
+
+
+
+
+
+## 1.7.17 (2021-04-25)
+
+**Note:** Version bump only for package ngx-libraries
+
+
+
+
+
+## 1.7.16 (2021-04-25)
+
+**Note:** Version bump only for package ngx-libraries
+
+
+
+
+
+## 1.7.15 (2021-04-25)
+
+**Note:** Version bump only for package ngx-libraries
+
+
+
+
+
 ## [1.7.14](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.7.13...v1.7.14) (2021-04-23)
 
 **Note:** Version bump only for package ngx-libraries

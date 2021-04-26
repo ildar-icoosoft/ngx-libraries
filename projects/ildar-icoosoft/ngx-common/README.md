@@ -4,7 +4,7 @@ Angular 2+ common components, pipes, services, directives
 
 ## Installation
 
-1. Use npm to install the package.
+1. Use npm to install the package
 
 ```terminal
 $ npm install ii-ngx-common --save

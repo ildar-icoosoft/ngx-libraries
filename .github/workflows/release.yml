@@ -18,9 +18,9 @@ jobs:
         run: |
           git config --global user.email "bot@lerna-publish-action"
           git config --global user.name "@$GITHUB_ACTOR"
-          git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_PAT@github.com/ildar-icoosoft/ngx-libraries
-        env:
-          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+#          git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_PAT@github.com/ildar-icoosoft/ngx-libraries
+#        env:
+#          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
       # pulls all tags (needed for lerna / semantic release to correctly version)
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
@@ -55,8 +55,8 @@ jobs:
       - name: Lerna diff
         run: lerna diff
 
-      - name: Lerna changed
-        run: lerna changed
+#      - name: Lerna changed
+#        run: lerna changed
 
 #      - name: Lerna publish
 #        run: npx lerna publish --contents dist --yes

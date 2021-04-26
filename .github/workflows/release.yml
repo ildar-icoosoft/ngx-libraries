@@ -10,6 +10,20 @@ jobs:
     steps:
       - name: Begin CI...
         uses: actions/checkout@v2
+        with:
+          # pulls all commits (needed for lerna / semantic release to correctly version)
+          fetch-depth: "0"
+
+      - name: Configure Git User
+        run: |
+          git config --global user.email "bot@lerna-publish-action"
+          git config --global user.name "@$GITHUB_ACTOR"
+          git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_PAT@github.com/ildar-icoosoft/ngx-libraries
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+      # pulls all tags (needed for lerna / semantic release to correctly version)
+      - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
       - name: Use Node 12
         uses: actions/setup-node@v1
@@ -33,11 +47,6 @@ jobs:
       - name: Test
         run: yarn test:ci
 
-      - name: Configure Git User
-        run: |
-          git config --global user.email "bot@lerna-publish-action"
-          git config --global user.name "@$GITHUB_ACTOR"
-
       - name: Authenticate with NPM Registry
         run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
         env:
@@ -47,7 +56,7 @@ jobs:
         run: lerna diff
 
       - name: Lerna changed
-        run: lerna changed --include-merged-tags
+        run: lerna changed
 
 #      - name: Lerna publish
 #        run: npx lerna publish --contents dist --yes

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.29](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.7.28...v1.7.29) (2021-04-26)
+
+
+### Bug Fixes
+
+* interm ([9ac1d86](https://github.com/ildar-icoosoft/ngx-libraries/commit/9ac1d86a50010fbbd5d8ab9104b5b7d6aac62995))
+* interm ([0fe51a4](https://github.com/ildar-icoosoft/ngx-libraries/commit/0fe51a406056d2170d5b5d2bd1bb8002e5a48315))
+* interm ([3446b1d](https://github.com/ildar-icoosoft/ngx-libraries/commit/3446b1da162720d033b199e3a3d5ce6489a731cd))
+* interm ([bf4f4ca](https://github.com/ildar-icoosoft/ngx-libraries/commit/bf4f4ca3c533feaa887fa302284cf08120d9729c))
+* interm ([2cf099f](https://github.com/ildar-icoosoft/ngx-libraries/commit/2cf099f2dbd57f0373f9985992a407491a695fd3))
+* interm ([fba2177](https://github.com/ildar-icoosoft/ngx-libraries/commit/fba21777dec19265dcbe1090ae3e6f72448656d6))
+* interm ([5819e0d](https://github.com/ildar-icoosoft/ngx-libraries/commit/5819e0d62de0bf92746144831956a5db9c9e5c76))
+* interm ([5d59495](https://github.com/ildar-icoosoft/ngx-libraries/commit/5d59495d02c1bb3ddfa1bcb54a62829f0c83f3f2))
+* interm ([2ac237d](https://github.com/ildar-icoosoft/ngx-libraries/commit/2ac237dd288aadabde141e375a69ce00fe083a1f))
+
+
+
+
+
 ## 1.7.28 (2021-04-25)
 
 

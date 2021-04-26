@@ -18,12 +18,9 @@ jobs:
         run: |
           git config --global user.email "bot@lerna-publish-action"
           git config --global user.name "@$GITHUB_ACTOR"
-#          git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_PAT@github.com/ildar-icoosoft/ngx-libraries
-#        env:
-#          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
       # pulls all tags (needed for lerna / semantic release to correctly version)
-#      - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
       - name: Use Node 12
         uses: actions/setup-node@v1
@@ -52,16 +49,8 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Lerna diff
-        run: lerna diff
-
-      - name: Lerna changed
-        run: lerna changed
-
-#      - name: Lerna publish
-#        run: npx lerna publish --contents dist --yes
-#        env:
-#          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Lerna publish
+        run: npx lerna publish --contents dist --yes
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 

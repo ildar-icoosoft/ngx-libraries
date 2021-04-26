@@ -55,8 +55,8 @@ jobs:
       - name: Lerna diff
         run: lerna diff
 
-#      - name: Lerna changed
-#        run: lerna changed
+      - name: Lerna changed
+        run: lerna changed
 
 #      - name: Lerna publish
 #        run: npx lerna publish --contents dist --yes

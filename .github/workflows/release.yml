@@ -47,7 +47,7 @@ jobs:
         run: lerna diff
 
       - name: Lerna changed
-        run: lerna changed
+        run: lerna changed --include-merged-tags
 
 #      - name: Lerna publish
 #        run: npx lerna publish --contents dist --yes

@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ NGXLIBRARIES-17_github-actions ]
+    branches: [ NGXLIBRARIES-17_github-actions__ ]
   pull_request:
-    branches: [ NGXLIBRARIES-17_github-actions ]
+    branches: [ NGXLIBRARIES-17_github-actions__ ]
 
 jobs:
   build:

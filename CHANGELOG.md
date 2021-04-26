@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.31](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.7.30...v1.7.31) (2021-04-26)
+
+
+### Bug Fixes
+
+* update ngx-common ([aa995cc](https://github.com/ildar-icoosoft/ngx-libraries/commit/aa995cc7ca90e2380af25a5f8051e35d5ec5b626))
+
+
+
+
+
 ## [1.7.30](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.7.29...v1.7.30) (2021-04-26)
 
 

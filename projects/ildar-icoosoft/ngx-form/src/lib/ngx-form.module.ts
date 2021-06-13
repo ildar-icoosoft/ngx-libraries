@@ -21,6 +21,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import {MatChipListComponent} from './components/mat-chip-list/mat-chip-list.component';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
+import {ReactJsonSchemaFormService} from "./services/react-json-schema-form.service";
 
 
 @NgModule({
@@ -94,14 +95,17 @@ export class NgxFormModule {
   static forRoot(config: Partial<NgxFormModuleConfig>): ModuleWithProviders<NgxFormModule> {
     return {
       ngModule: NgxFormModule,
-      providers: [{
-        provide: NGX_FORM_MODULE_CONFIG,
-        useValue: Object.assign({}, {
-          fields: Object.assign({}, defaultNgxFormModuleConfig.fields, config.fields),
-          validators: Object.assign({}, defaultNgxFormModuleConfig.validators, config.validators),
-          errorMessages: Object.assign({}, defaultNgxFormModuleConfig.errorMessages, config.errorMessages),
-        })
-      }]
+      providers: [
+        {
+          provide: NGX_FORM_MODULE_CONFIG,
+          useValue: Object.assign({}, {
+            fields: Object.assign({}, defaultNgxFormModuleConfig.fields, config.fields),
+            validators: Object.assign({}, defaultNgxFormModuleConfig.validators, config.validators),
+            errorMessages: Object.assign({}, defaultNgxFormModuleConfig.errorMessages, config.errorMessages),
+          })
+        },
+        ReactJsonSchemaFormService
+      ]
     };
   }
 }

@@ -5,6 +5,7 @@ export interface DynamicField {
   label: string;
   name: string;
   type: string;
+  default?: unknown;
   validators?: DynamicFormValidator[];
   options?: DynamicFieldOption[];
   items?: DynamicField[];

@@ -22,7 +22,10 @@
         // Настройки для Prettier
         "plugin:prettier/recommended"
       ],
-      "rules": {}
+      "rules": {
+        "import/no-extraneous-dependencies": 0,
+        "import/prefer-default-export": "off"
+      }
     },
     {
       "files": [

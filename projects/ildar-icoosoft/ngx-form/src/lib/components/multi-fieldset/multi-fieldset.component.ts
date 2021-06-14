@@ -90,7 +90,8 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
     return group;
   }
 
-  propagateChange = () => {};
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  propagateChange = (_: any) => {};
 
   propagateTouch = () => {};
 

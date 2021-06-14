@@ -58,7 +58,8 @@ export class FieldsetComponent implements OnInit, ControlValueAccessor {
     return needToShowLabelOutside(fieldData, this.config);
   }
 
-  propagateChange = () => {};
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  propagateChange = (_: any) => {};
 
   propagateTouch = () => {};
 

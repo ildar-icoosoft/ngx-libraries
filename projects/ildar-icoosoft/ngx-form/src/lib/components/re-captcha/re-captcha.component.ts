@@ -1,6 +1,6 @@
-import {Component, forwardRef, Input, ViewChild} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {RecaptchaComponent} from 'ng-recaptcha';
+import { Component, forwardRef, Input, ViewChild } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { RecaptchaComponent } from 'ng-recaptcha';
 
 let nextId = 0;
 
@@ -11,30 +11,36 @@ let nextId = 0;
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => ReCaptchaComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class ReCaptchaComponent implements ControlValueAccessor {
-
+  // eslint-disable-next-line no-plusplus
   @Input() id = `ngrecaptcha-${nextId++}`;
+
   @Input() siteKey?: string;
+
   @Input() theme?: ReCaptchaV2.Theme;
+
   @Input() type?: ReCaptchaV2.Type;
+
   @Input() size?: ReCaptchaV2.Size;
+
   @Input() tabIndex?: number;
+
   @Input() badge?: ReCaptchaV2.Badge;
 
   private onChange?: (value: string) => void;
+
   private onTouched?: () => void;
 
   @ViewChild(RecaptchaComponent, {
-    static: true
-  }) private host !: RecaptchaComponent;
-
-  constructor() {
-  }
+    static: true,
+  })
+  private host!: RecaptchaComponent;
 
   public writeValue(value: string): void {
     if (!value) {
@@ -58,6 +64,4 @@ export class ReCaptchaComponent implements ControlValueAccessor {
       this.onTouched();
     }
   }
-
 }
-

@@ -1,5 +1,5 @@
-import {Component, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'ii-checkbox',
@@ -8,27 +8,27 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => CheckboxComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class CheckboxComponent implements ControlValueAccessor {
-
   @Input() inputId = '';
+
   @Input() readonly = false;
+
   @Input() value: any = true;
 
   checked = false;
+
   isDisabled = false;
 
-  constructor() {
-  }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  propagateChange = (_: any) => {};
 
-  propagateChange = (_: any) => {
-  }
-  propagateTouch = () => {
-  }
+  propagateTouch = () => {};
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
@@ -39,7 +39,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   writeValue(value: any): void {
-    this.checked = (value === this.value);
+    this.checked = value === this.value;
   }
 
   setDisabledState(isDisabled: boolean): void {
@@ -47,9 +47,8 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   handleChange(event: Event): void {
-    const checked = (event.currentTarget as HTMLInputElement).checked;
+    const { checked } = event.currentTarget as HTMLInputElement;
 
     this.propagateChange(checked ? this.value : false);
   }
-
 }

@@ -5,18 +5,18 @@ import {
   SafeResourceUrl,
   SafeScript,
   SafeStyle,
-  SafeUrl
+  SafeUrl,
 } from '@angular/platform-browser';
 
 @Pipe({
-  name: 'safe'
+  name: 'safe',
 })
 export class SafePipe implements PipeTransform {
   constructor(protected sanitizer: DomSanitizer) {}
 
   transform(
     value: any,
-    type: string
+    type: string,
   ): SafeHtml | SafeStyle | SafeScript | SafeUrl | SafeResourceUrl {
     switch (type) {
       case 'html':

@@ -1,8 +1,18 @@
-import {Component, forwardRef, Inject, Input, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn} from '@angular/forms';
-import {DynamicField, NgxFormModuleConfig, DynamicFieldOption} from '../../types';
-import {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';
-import {getFieldDataOptionValue, getFieldValidators, needToShowLabelOutside} from '../../utils/dynamic-form';
+import { Component, forwardRef, Inject, Input, OnInit } from '@angular/core';
+import {
+  ControlValueAccessor,
+  FormControl,
+  FormGroup,
+  NG_VALUE_ACCESSOR,
+  ValidatorFn,
+} from '@angular/forms';
+import { DynamicField, NgxFormModuleConfig, DynamicFieldOption } from '../../types';
+import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
+import {
+  getFieldDataOptionValue,
+  getFieldValidators,
+  needToShowLabelOutside,
+} from '../../utils/dynamic-form';
 
 @Component({
   selector: 'ii-fieldset',
@@ -11,13 +21,13 @@ import {getFieldDataOptionValue, getFieldValidators, needToShowLabelOutside} fro
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => FieldsetComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class FieldsetComponent implements OnInit, ControlValueAccessor {
-
   @Input() items: DynamicField[] = [];
 
   group!: FormGroup;
@@ -25,7 +35,6 @@ export class FieldsetComponent implements OnInit, ControlValueAccessor {
   constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}
 
   ngOnInit(): void {
-
     this.group = new FormGroup({});
 
     this.items.forEach((item: DynamicField) => {
@@ -49,8 +58,9 @@ export class FieldsetComponent implements OnInit, ControlValueAccessor {
     return needToShowLabelOutside(fieldData, this.config);
   }
 
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   propagateChange = (_: any) => {};
+
   propagateTouch = () => {};
 
   registerOnChange(fn: any): void {
@@ -64,7 +74,7 @@ export class FieldsetComponent implements OnInit, ControlValueAccessor {
   writeValue(value: any): void {
     if (value) {
       this.group.setValue(value, {
-        emitEvent: false
+        emitEvent: false,
       });
     }
   }

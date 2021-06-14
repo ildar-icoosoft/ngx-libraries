@@ -1,0 +1,41 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json",
+          "e2e/tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        // Стайл гайд AirBnB
+        "airbnb-typescript/base",
+        // Настройки для Prettier
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "import/no-extraneous-dependencies": 0,
+        "import/prefer-default-export": "off",
+        "class-methods-use-this": 0
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {}
+    }
+  ]
+}

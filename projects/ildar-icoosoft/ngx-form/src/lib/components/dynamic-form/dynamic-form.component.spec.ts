@@ -8,9 +8,8 @@ xdescribe('DynamicFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DynamicFormComponent ]
-    })
-    .compileComponents();
+      declarations: [DynamicFormComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ xdescribe('DynamicFormComponent', () => {
     fixture.detectChanges();
   });
 
-/*  it('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
-  });*/
+  });
 });

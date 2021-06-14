@@ -1,5 +1,5 @@
-import {Component, forwardRef, Input, OnInit} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'ii-textarea',
@@ -8,25 +8,27 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => TextareaComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class TextareaComponent implements ControlValueAccessor {
-
   @Input() type = 'text';
+
   @Input() placeholder = '';
+
   @Input() inputId = '';
+
   @Input() readonly = false;
 
   value = '';
 
   isDisabled = false;
 
-  constructor() { }
+  propagateChange = () => {};
 
-  propagateChange = (_: any) => {};
   propagateTouch = () => {};
 
   registerOnChange(fn: any): void {
@@ -46,7 +48,4 @@ export class TextareaComponent implements ControlValueAccessor {
   setDisabledState(isDisabled: boolean): void {
     this.isDisabled = isDisabled;
   }
-
 }
-
-

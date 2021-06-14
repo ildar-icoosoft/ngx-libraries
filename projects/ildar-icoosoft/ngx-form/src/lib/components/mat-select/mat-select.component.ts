@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Input, OnInit} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {SelectOption} from '../../types';
+import { ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { SelectOption } from '../../types';
 
 @Component({
   selector: 'ii-mat-select',
@@ -10,16 +10,17 @@ import {SelectOption} from '../../types';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => MatSelectComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
-export class MatSelectComponent implements OnInit, ControlValueAccessor {
-
+export class MatSelectComponent implements ControlValueAccessor {
   @Input() options: SelectOption[] = [];
 
   @Input() placeholder = '';
+
   @Input() inputId = '';
 
   @Input() multiple = false;
@@ -28,12 +29,8 @@ export class MatSelectComponent implements OnInit, ControlValueAccessor {
 
   isDisabled = false;
 
-  constructor() { }
+  propagateChange = () => {};
 
-  ngOnInit(): void {
-  }
-
-  propagateChange = (_: any) => {};
   propagateTouch = () => {};
 
   registerOnChange(fn: any): void {

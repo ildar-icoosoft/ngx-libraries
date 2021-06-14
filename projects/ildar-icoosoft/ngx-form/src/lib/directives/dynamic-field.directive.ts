@@ -9,9 +9,9 @@ import {
   OnInit,
   ViewContainerRef,
 } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {NGX_FORM_MODULE_CONFIG} from '../constants/ngx-form-module-config';
-import {NgxFormModuleConfig, DynamicField} from '../types';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NGX_FORM_MODULE_CONFIG } from '../constants/ngx-form-module-config';
+import { NgxFormModuleConfig, DynamicField } from '../types';
 
 @Directive({
   selector: '[iiDynamicField]',
@@ -34,11 +34,10 @@ export class DynamicFieldDirective implements OnInit, ControlValueAccessor {
     private componentFactoryResolver: ComponentFactoryResolver,
     private viewContainerRef: ViewContainerRef,
     @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig,
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
-    const {fieldData} = this;
+    const { fieldData } = this;
 
     const itemConfig = this.config.fields[fieldData.type];
 
@@ -50,7 +49,9 @@ export class DynamicFieldDirective implements OnInit, ControlValueAccessor {
       );
     }
 
-    const componentFactory: ComponentFactory<ControlValueAccessor> = this.componentFactoryResolver.resolveComponentFactory(itemConfig.component);
+    const componentFactory: ComponentFactory<ControlValueAccessor> = this.componentFactoryResolver.resolveComponentFactory(
+      itemConfig.component,
+    );
 
     this.component = this.viewContainerRef.createComponent(componentFactory);
 

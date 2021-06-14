@@ -9,8 +9,7 @@ describe('SortableMultiselectComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SortableMultiselectComponent],
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

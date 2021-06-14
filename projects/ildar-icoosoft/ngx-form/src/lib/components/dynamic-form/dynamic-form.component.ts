@@ -11,19 +11,17 @@ import {
   QueryList,
   ViewChildren,
 } from '@angular/core';
-import {UnsubscribeService} from 'ii-ngx-common';
-import {
-  AbstractControl, FormControl, FormGroup, ValidatorFn,
-} from '@angular/forms';
-import {takeUntil} from 'rxjs/operators';
-import {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';
+import { UnsubscribeService } from 'ii-ngx-common';
+import { AbstractControl, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
+import { takeUntil } from 'rxjs/operators';
+import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
 import {
   getFieldDataOptionValue,
   getFieldValidators,
   getGroupValidators,
   needToShowLabelOutside,
 } from '../../utils/dynamic-form';
-import {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';
+import { markAllFormControlsAsTouched, setFormErrors } from '../../utils/error';
 import {
   ControlChangeData,
   DynamicField,
@@ -34,7 +32,7 @@ import {
   FormSubmitEvent,
   NgxFormModuleConfig,
 } from '../../types';
-import {DynamicFieldDirective} from '../../directives';
+import { DynamicFieldDirective } from '../../directives';
 
 @Component({
   selector: 'ii-dynamic-form',
@@ -52,10 +50,12 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
 
   @Input() showButtons = true;
 
-  @Input() buttons: DynamicFormButton[] = [{
-    label: 'Submit',
-    onClick: () => this.validateAndSubmit(),
-  }];
+  @Input() buttons: DynamicFormButton[] = [
+    {
+      label: 'Submit',
+      onClick: () => this.validateAndSubmit(),
+    },
+  ];
 
   @Output() submitForm: EventEmitter<FormSubmitEvent> = new EventEmitter();
 
@@ -75,8 +75,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
     @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig,
     private ngUnsubscribe$: UnsubscribeService,
     private changeDetectorRef: ChangeDetectorRef,
-  ) {
-  }
+  ) {}
 
   ngAfterViewInit(): void {
     this.loadForm.emit(this);
@@ -92,13 +91,13 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
 
       const formControl = new FormControl(value, validators);
 
-      formControl.valueChanges.pipe(
-        takeUntil(this.ngUnsubscribe$),
-      ).subscribe((controlValue) => this.controlChange.emit({
-        name: item.name,
-        formControl,
-        value: controlValue,
-      }));
+      formControl.valueChanges.pipe(takeUntil(this.ngUnsubscribe$)).subscribe((controlValue) =>
+        this.controlChange.emit({
+          name: item.name,
+          formControl,
+          value: controlValue,
+        }),
+      );
 
       this.group.addControl(item.name, formControl);
     });
@@ -107,9 +106,9 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
 
     this.group.setValidators(groupValidators);
 
-    this.group.valueChanges.pipe(
-      takeUntil(this.ngUnsubscribe$),
-    ).subscribe((values) => this.groupChange.emit(values));
+    this.group.valueChanges
+      .pipe(takeUntil(this.ngUnsubscribe$))
+      .subscribe((values) => this.groupChange.emit(values));
   }
 
   getGroup(): FormGroup {

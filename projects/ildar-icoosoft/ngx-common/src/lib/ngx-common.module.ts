@@ -4,8 +4,7 @@ import { ArrayIncludesPipe } from './pipes/array-includes.pipe';
 
 @NgModule({
   declarations: [SafePipe, ArrayIncludesPipe],
-  imports: [
-  ],
+  imports: [],
   exports: [SafePipe, ArrayIncludesPipe],
 })
-export class NgxCommonModule { }
+export class NgxCommonModule {}

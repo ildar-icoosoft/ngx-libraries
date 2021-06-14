@@ -1,8 +1,6 @@
-import {
-  Component, forwardRef, Input, ViewChild,
-} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {RecaptchaComponent} from 'ng-recaptcha';
+import { Component, forwardRef, Input, ViewChild } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { RecaptchaComponent } from 'ng-recaptcha';
 
 let nextId = 0;
 
@@ -39,10 +37,10 @@ export class ReCaptchaComponent implements ControlValueAccessor {
 
   @ViewChild(RecaptchaComponent, {
     static: true,
-  }) private host !: RecaptchaComponent;
+  })
+  private host!: RecaptchaComponent;
 
-  constructor() {
-  }
+  constructor() {}
 
   public writeValue(value: string): void {
     if (!value) {

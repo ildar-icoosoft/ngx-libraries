@@ -1,4 +1,4 @@
-import {DynamicFormButtonClickEvent} from './dynamic-form-button-click-event';
+import { DynamicFormButtonClickEvent } from './dynamic-form-button-click-event';
 
 export interface DynamicFormButton {
   cssClass?: string;

@@ -9,8 +9,7 @@ xdescribe('MultiFieldsetComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [MultiFieldsetComponent],
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ xdescribe('MultiFieldsetComponent', () => {
     fixture.detectChanges();
   });
 
-/*  it('should create', () => {
+  /*  it('should create', () => {
     expect(component).toBeTruthy();
   }); */
 });

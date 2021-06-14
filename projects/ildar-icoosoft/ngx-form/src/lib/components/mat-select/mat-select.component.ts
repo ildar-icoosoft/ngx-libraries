@@ -1,8 +1,6 @@
-import {
-  ChangeDetectionStrategy, Component, forwardRef, Input, OnInit,
-} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {SelectOption} from '../../types';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { SelectOption } from '../../types';
 
 @Component({
   selector: 'ii-mat-select',
@@ -30,10 +28,9 @@ export class MatSelectComponent implements OnInit, ControlValueAccessor {
 
   isDisabled = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   propagateChange = (_: any) => {};
 

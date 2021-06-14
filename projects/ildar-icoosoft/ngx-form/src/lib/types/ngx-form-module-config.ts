@@ -1,6 +1,6 @@
-import {ControlValueAccessor, ValidatorFn} from '@angular/forms';
-import {Type} from '@angular/core';
-import {DynamicField} from './dynamic-field';
+import { ControlValueAccessor, ValidatorFn } from '@angular/forms';
+import { Type } from '@angular/core';
+import { DynamicField } from './dynamic-field';
 
 export interface NgxFormModuleConfig {
   fields: {
@@ -10,7 +10,9 @@ export interface NgxFormModuleConfig {
       props?: {
         [key: string]: any;
       };
-      mapConnectDataToProps?(connectData: DynamicField): {
+      mapConnectDataToProps?(
+        connectData: DynamicField,
+      ): {
         [key: string]: any;
       };
     };

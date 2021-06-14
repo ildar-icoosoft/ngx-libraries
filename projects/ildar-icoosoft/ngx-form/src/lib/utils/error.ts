@@ -1,5 +1,5 @@
-import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
-import {FormError} from '../types';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { FormError } from '../types';
 
 export const markAllFormControlsAsTouched = (formGroup: FormGroup): void => {
   Object.keys(formGroup.controls).forEach((field) => {
@@ -12,15 +12,12 @@ export const markAllFormControlsAsTouched = (formGroup: FormGroup): void => {
   });
 };
 
-export const setFormErrors = (
-  formGroup: FormGroup,
-  formErrors: FormError[],
-): void => {
+export const setFormErrors = (formGroup: FormGroup, formErrors: FormError[]): void => {
   const formGroupErrors: string[] = [];
   const formControlErrors: Record<string, string[]> = {};
 
   formErrors.forEach((item) => {
-    const {formControlName} = item;
+    const { formControlName } = item;
 
     if (!formControlName) {
       formGroupErrors.push(item.message);

@@ -1,6 +1,6 @@
-import {Component, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {SelectOption} from '../../types/select-option';
+import { Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { SelectOption } from '../../types/select-option';
 
 @Component({
   selector: 'ii-select',
@@ -23,7 +23,7 @@ export class SelectComponent implements ControlValueAccessor {
 
   isDisabled = false;
 
-  constructor() { }
+  constructor() {}
 
   trackByOption(index: number, item: SelectOption): string {
     return item.id;

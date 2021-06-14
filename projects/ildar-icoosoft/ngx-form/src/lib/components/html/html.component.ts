@@ -1,5 +1,5 @@
-import {Component, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'ii-html',
@@ -20,7 +20,7 @@ export class HtmlComponent implements ControlValueAccessor {
 
   isDisabled = false;
 
-  constructor() { }
+  constructor() {}
 
   propagateChange = (_: any) => {};
 

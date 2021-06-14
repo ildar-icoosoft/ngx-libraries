@@ -1,8 +1,6 @@
-import {
-  Component, OnInit, ChangeDetectionStrategy, forwardRef, Input,
-} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {SelectOption} from '../../types';
+import { Component, OnInit, ChangeDetectionStrategy, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { SelectOption } from '../../types';
 
 @Component({
   selector: 'ii-sortable-multiselect',
@@ -24,9 +22,9 @@ export class SortableMultiselectComponent implements OnInit, ControlValueAccesso
 
   selectedItems: string[] = [];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onChange: any = () => {};
 
@@ -53,8 +51,8 @@ export class SortableMultiselectComponent implements OnInit, ControlValueAccesso
   private moveItem(item: SelectOption, shift: number): void {
     const index = this.selectedItems.indexOf(item.id);
     if (
-      (shift < 0 && index > shift + 1)
-      || (shift > 0 && index < this.selectedItems.length - shift)
+      (shift < 0 && index > shift + 1) ||
+      (shift > 0 && index < this.selectedItems.length - shift)
     ) {
       const buf = this.selectedItems.splice(index, 1);
       this.selectedItems.splice(index + shift, 0, buf[0]);

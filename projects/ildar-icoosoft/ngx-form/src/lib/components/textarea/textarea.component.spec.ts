@@ -9,8 +9,7 @@ describe('TextareaComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TextareaComponent],
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,11 +1,16 @@
 import {
-  Component, OnInit, ChangeDetectionStrategy, Input, forwardRef, ChangeDetectorRef,
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Input,
+  forwardRef,
+  ChangeDetectorRef,
 } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {pull as _pull} from 'lodash';
-import {SelectOption} from '../../types';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { pull as _pull } from 'lodash';
+import { SelectOption } from '../../types';
 
 @Component({
   selector: 'ii-mat-chip-list',
@@ -37,10 +42,9 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
 
   separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   propagateChange = (_: any) => {};
 
@@ -81,14 +85,14 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
   }
 
   add(event: MatChipInputEvent): void {
-    const {input} = event;
-    const {value} = event;
+    const { input } = event;
+    const { value } = event;
 
     const trimmedValue = value.trim();
 
     if (
-      this.options.some((item) => item.id === trimmedValue)
-      || this.newOptions.some((item) => item.id === trimmedValue)
+      this.options.some((item) => item.id === trimmedValue) ||
+      this.newOptions.some((item) => item.id === trimmedValue)
     ) {
       return;
     }
@@ -109,5 +113,5 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
       input.value = '';
     }
   }
-//
+  //
 }

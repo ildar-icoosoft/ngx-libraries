@@ -1,4 +1,4 @@
-import {FormError} from './form-error';
+import { FormError } from './form-error';
 
 export interface FormSubmitEvent<T = Record<string, any>> {
   values: T;

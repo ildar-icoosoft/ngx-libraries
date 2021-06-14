@@ -35,14 +35,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/ildar-icoosoft/ngx-common/tsconfig.lib.json",
-              "projects/ildar-icoosoft/ngx-common/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/ildar-icoosoft/ngx-common/**/*.ts",
+              "projects/ildar-icoosoft/ngx-common/**/*.html"
             ]
           }
         }
@@ -75,19 +72,19 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/ildar-icoosoft/ngx-form/tsconfig.lib.json",
-              "projects/ildar-icoosoft/ngx-form/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/ildar-icoosoft/ngx-form/**/*.ts",
+              "projects/ildar-icoosoft/ngx-form/**/*.html"
             ]
           }
         }
       }
     }
   },
-  "defaultProject": "@ildar-icoosoft/ngx-common"
+  "defaultProject": "",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

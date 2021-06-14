@@ -1,8 +1,8 @@
-import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
-import {FormError} from '../types';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { FormError } from '../types';
 
 export const markAllFormControlsAsTouched = (formGroup: FormGroup): void => {
-  Object.keys(formGroup.controls).forEach(field => {
+  Object.keys(formGroup.controls).forEach((field) => {
     const control = formGroup.get(field);
     if (control instanceof FormControl) {
       control.markAsTouched({ onlySelf: true });
@@ -12,15 +12,12 @@ export const markAllFormControlsAsTouched = (formGroup: FormGroup): void => {
   });
 };
 
-export const setFormErrors = (
-  formGroup: FormGroup,
-  formErrors: FormError[]
-): void => {
+export const setFormErrors = (formGroup: FormGroup, formErrors: FormError[]): void => {
   const formGroupErrors: string[] = [];
   const formControlErrors: Record<string, string[]> = {};
 
-  formErrors.forEach(item => {
-    const formControlName = item.formControlName;
+  formErrors.forEach((item) => {
+    const { formControlName } = item;
 
     if (!formControlName) {
       formGroupErrors.push(item.message);
@@ -41,26 +38,19 @@ export const setFormErrors = (
 
   if (formGroupErrors.length) {
     formGroup.setErrors({
-      customArr: formGroupErrors
+      customArr: formGroupErrors,
     });
   }
 
-  for (const formControlName in formControlErrors) {
-    if (formControlErrors.hasOwnProperty(formControlName)) {
-      const formControl = formGroup.get(formControlName) as AbstractControl;
+  Object.keys(formControlErrors).forEach((formControlName) => {
+    const formControl = formGroup.get(formControlName) as AbstractControl;
 
-      formControl.setErrors({
-        customArr: formControlErrors[formControlName]
-      });
-    }
-  }
+    formControl.setErrors({
+      customArr: formControlErrors[formControlName],
+    });
+  });
 
   markAllFormControlsAsTouched(formGroup);
 };
 
-export const prepareValidationMessage = (value: string): string => {
-  return value;
-};
-
-
-
+export const prepareValidationMessage = (value: string): string => value;

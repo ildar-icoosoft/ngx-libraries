@@ -1,8 +1,12 @@
-import {ValidatorFn} from '@angular/forms';
-import {DynamicField, DynamicFieldOption, DynamicForm, NgxFormModuleConfig} from '../types';
+import { ValidatorFn } from '@angular/forms';
+import { DynamicField, DynamicFieldOption, DynamicForm, NgxFormModuleConfig } from '../types';
 
-export const getFieldDataOptionValue = <T = unknown>(options: DynamicFieldOption[], name: string, defaultValue: any = undefined): T => {
-  const option: DynamicFieldOption | undefined = options.find(item => item.name === name);
+export const getFieldDataOptionValue = <T = unknown>(
+  options: DynamicFieldOption[],
+  name: string,
+  defaultValue: any = undefined,
+): T => {
+  const option: DynamicFieldOption | undefined = options.find((item) => item.name === name);
   if (option) {
     return option.value as T;
   }
@@ -10,11 +14,14 @@ export const getFieldDataOptionValue = <T = unknown>(options: DynamicFieldOption
   return defaultValue;
 };
 
-export const getFieldValidators = (fieldData: DynamicField, config: NgxFormModuleConfig): ValidatorFn[] => {
+export const getFieldValidators = (
+  fieldData: DynamicField,
+  config: NgxFormModuleConfig,
+): ValidatorFn[] => {
   const validators: ValidatorFn[] = [];
 
   if (fieldData.validators) {
-    fieldData.validators.forEach(dynamicFormValidator => {
+    fieldData.validators.forEach((dynamicFormValidator) => {
       const validatorName = dynamicFormValidator.name;
       const validatorArgs = dynamicFormValidator.options || [];
 
@@ -29,11 +36,14 @@ export const getFieldValidators = (fieldData: DynamicField, config: NgxFormModul
   return validators;
 };
 
-export const getGroupValidators = (formData: DynamicForm, config: NgxFormModuleConfig): ValidatorFn[] => {
+export const getGroupValidators = (
+  formData: DynamicForm,
+  config: NgxFormModuleConfig,
+): ValidatorFn[] => {
   const validators: ValidatorFn[] = [];
 
   if (formData.validators) {
-    formData.validators.forEach(dynamicFormValidator => {
+    formData.validators.forEach((dynamicFormValidator) => {
       const validatorName = dynamicFormValidator.name;
       const validatorArgs = dynamicFormValidator.options || [];
 
@@ -48,10 +58,16 @@ export const getGroupValidators = (formData: DynamicForm, config: NgxFormModuleC
   return validators;
 };
 
-export const needToShowLabelOutside = (fieldData: DynamicField, config: NgxFormModuleConfig): boolean => {
+export const needToShowLabelOutside = (
+  fieldData: DynamicField,
+  config: NgxFormModuleConfig,
+): boolean => {
   const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
 
-  let result = getFieldDataOptionValue<boolean | undefined>(fieldDataOptions, 'needToShowLabelOutside');
+  let result = getFieldDataOptionValue<boolean | undefined>(
+    fieldDataOptions,
+    'needToShowLabelOutside',
+  );
 
   if (result !== undefined) {
     return result;
@@ -62,7 +78,7 @@ export const needToShowLabelOutside = (fieldData: DynamicField, config: NgxFormM
     const supportedTypes: string = Object.keys(config.fields).join(', ');
     throw Error(
       `Trying to use an unsupported type (${fieldData.type}).
-        Supported types: ${supportedTypes}`
+        Supported types: ${supportedTypes}`,
     );
   }
 
@@ -70,4 +86,3 @@ export const needToShowLabelOutside = (fieldData: DynamicField, config: NgxFormM
 
   return result;
 };
-

@@ -1,20 +1,20 @@
-import {getFieldDataOptionValue} from '../utils/dynamic-form';
-import {ValidatorFn, Validators} from '@angular/forms';
-import {validateEqual} from '../validators';
-import {DynamicField, DynamicFieldOption, NgxFormModuleConfig, SelectOption} from '../types';
+import { ValidatorFn, Validators } from '@angular/forms';
+import { getFieldDataOptionValue } from '../utils/dynamic-form';
+import { validateEqual } from '../validators';
+import { DynamicField, DynamicFieldOption, NgxFormModuleConfig, SelectOption } from '../types';
 import {
-  FieldsetComponent, HtmlComponent,
+  FieldsetComponent,
+  HtmlComponent,
   InputComponent,
   MultiFieldsetComponent,
   ReCaptchaComponent,
   SelectComponent,
-  TextareaComponent
+  TextareaComponent,
 } from '../components';
-import {CheckboxComponent} from '../components/checkbox/checkbox.component';
-import {MatSelectComponent} from '../components/mat-select/mat-select.component';
-import {SortableMultiselectComponent} from '../components/sortable-multiselect/sortable-multiselect.component';
-import {MatChipListComponent} from '../components/mat-chip-list/mat-chip-list.component';
-
+import { CheckboxComponent } from '../components/checkbox/checkbox.component';
+import { MatSelectComponent } from '../components/mat-select/mat-select.component';
+import { SortableMultiselectComponent } from '../components/sortable-multiselect/sortable-multiselect.component';
+import { MatChipListComponent } from '../components/mat-chip-list/mat-chip-list.component';
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
   fields: {
@@ -22,25 +22,28 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       component: InputComponent,
       needToShowLabelOutside: true,
       props: {
-        type: 'text'
+        type: 'text',
       },
       mapConnectDataToProps: (fieldData: DynamicField) => {
         const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
 
         const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);
 
-        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');
+        const placeholder: string | undefined = getFieldDataOptionValue(
+          fieldDataOptions,
+          'placeholder',
+          '',
+        );
         return {
           placeholder,
-          readonly
+          readonly,
         };
-      }
+      },
     },
     checkbox: {
       component: CheckboxComponent,
       needToShowLabelOutside: true,
-      props: {
-      },
+      props: {},
       mapConnectDataToProps: (fieldData: DynamicField) => {
         const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
 
@@ -48,25 +51,29 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
           readonly: getFieldDataOptionValue<boolean>(fieldDataOptions, 'readonly', false),
           value: getFieldDataOptionValue<boolean>(fieldDataOptions, 'value', true),
         };
-      }
+      },
     },
     number: {
       component: InputComponent,
       needToShowLabelOutside: true,
       props: {
-        type: 'number'
+        type: 'number',
       },
       mapConnectDataToProps: (fieldData: DynamicField) => {
         const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
 
         const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);
 
-        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');
+        const placeholder: string | undefined = getFieldDataOptionValue(
+          fieldDataOptions,
+          'placeholder',
+          '',
+        );
         return {
           placeholder,
-          readonly
+          readonly,
         };
-      }
+      },
     },
     textarea: {
       component: TextareaComponent,
@@ -77,12 +84,16 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
 
         const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);
 
-        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');
+        const placeholder: string | undefined = getFieldDataOptionValue(
+          fieldDataOptions,
+          'placeholder',
+          '',
+        );
         return {
           placeholder,
-          readonly
+          readonly,
         };
-      }
+      },
     },
     reCaptcha: {
       component: ReCaptchaComponent,
@@ -99,7 +110,7 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
           badge: getFieldDataOptionValue(fieldDataOptions, 'badge'),
           siteKey: getFieldDataOptionValue(fieldDataOptions, 'siteKey'),
         };
-      }
+      },
     },
     select: {
       component: SelectComponent,
@@ -108,9 +119,9 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
         const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
 
         return {
-          options: getFieldDataOptionValue(fieldDataOptions, 'selectOptions')
+          options: getFieldDataOptionValue(fieldDataOptions, 'selectOptions'),
         };
-      }
+      },
     },
     matSelect: {
       component: MatSelectComponent,
@@ -123,7 +134,7 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
           placeholder: getFieldDataOptionValue(fieldDataOptions, 'placeholder', ''),
           multiple: getFieldDataOptionValue(fieldDataOptions, 'multiple', false),
         };
-      }
+      },
     },
     matChipList: {
       component: MatChipListComponent,
@@ -137,45 +148,46 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
           label: fieldData.label,
           inputId: getFieldDataOptionValue(fieldDataOptions, 'inputId', ''),
         };
-      }
+      },
     },
     sortableMultiselect: {
       component: SortableMultiselectComponent,
       needToShowLabelOutside: true,
-      props: {
-      },
+      props: {},
       mapConnectDataToProps: (fieldData: DynamicField) => {
         const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
 
         return {
           placeholder: getFieldDataOptionValue<string>(fieldDataOptions, 'placeholder', ''),
-          items: getFieldDataOptionValue<SelectOption[]>(fieldDataOptions, 'selectOptions')
+          items: getFieldDataOptionValue<SelectOption[]>(fieldDataOptions, 'selectOptions'),
         };
-      }
+      },
     },
     email: {
       component: InputComponent,
       needToShowLabelOutside: true,
       props: {
-        type: 'email'
+        type: 'email',
       },
       mapConnectDataToProps: (fieldData: DynamicField) => {
         const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
 
-        const placeholder: string | undefined = getFieldDataOptionValue(fieldDataOptions, 'placeholder', '');
+        const placeholder: string | undefined = getFieldDataOptionValue(
+          fieldDataOptions,
+          'placeholder',
+          '',
+        );
         return {
-          placeholder
+          placeholder,
         };
-      }
+      },
     },
     fieldset: {
       component: FieldsetComponent,
       needToShowLabelOutside: true,
-      mapConnectDataToProps: (fieldData: DynamicField) => {
-        return {
-          items: fieldData.items
-        };
-      }
+      mapConnectDataToProps: (fieldData: DynamicField) => ({
+        items: fieldData.items,
+      }),
     },
     multiFieldset: {
       component: MultiFieldsetComponent,
@@ -186,12 +198,20 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
         return {
           defaultValues: getFieldDataOptionValue(fieldDataOptions, 'defaultValues', {}),
           removeButtonText: getFieldDataOptionValue(fieldDataOptions, 'removeButtonText', 'Remove'),
-          removeButtonCssClass: getFieldDataOptionValue(fieldDataOptions, 'removeButtonCssClass', 'btn btn-warning mt-2'),
+          removeButtonCssClass: getFieldDataOptionValue(
+            fieldDataOptions,
+            'removeButtonCssClass',
+            'btn btn-warning mt-2',
+          ),
           addButtonText: getFieldDataOptionValue(fieldDataOptions, 'addButtonText', 'Add'),
-          addButtonCssClass: getFieldDataOptionValue(fieldDataOptions, 'addButtonCssClass', 'btn btn-success mt-3'),
-          items: fieldData.items
+          addButtonCssClass: getFieldDataOptionValue(
+            fieldDataOptions,
+            'addButtonCssClass',
+            'btn btn-success mt-3',
+          ),
+          items: fieldData.items,
         };
-      }
+      },
     },
     html: {
       component: HtmlComponent,
@@ -201,32 +221,24 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
 
         return {
           // label: connectData.label,
-          cssClass: getFieldDataOptionValue(fieldDataOptions, 'inputCssClass', '')
+          cssClass: getFieldDataOptionValue(fieldDataOptions, 'inputCssClass', ''),
         };
-      }
+      },
     },
   },
   validators: {
     required: {
-      validator: () => {
-        return Validators.required;
-      }
+      validator: () => Validators.required,
     },
     requiredTrue: {
-      validator: () => {
-        return Validators.requiredTrue;
-      }
+      validator: () => Validators.requiredTrue,
     },
     email: {
-      validator: () => {
-        return Validators.email;
-      }
+      validator: () => Validators.email,
     },
     passwordMatch: {
-      validator: (field1Name, field2name) => {
-        return validateEqual(field1Name, field2name) as ValidatorFn;
-      }
-    }
+      validator: (field1Name, field2name) => validateEqual(field1Name, field2name) as ValidatorFn,
+    },
   },
   errorMessages: {
     required: 'This field is required',
@@ -237,5 +249,5 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
     age: 'The age under {requiredAge} is not accepted',
     min: 'The minimum value for an input field is {min}',
     max: 'The maximum value for an input field is {max}',
-  }
+  },
 };

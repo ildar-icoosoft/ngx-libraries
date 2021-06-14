@@ -1,13 +1,12 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
-import {prepareValidationMessage} from '../utils/error';
-import {NGX_FORM_MODULE_CONFIG} from '../constants/ngx-form-module-config';
-import {NgxFormModuleConfig} from '../types/ngx-form-module-config';
+import { Inject, Pipe, PipeTransform } from '@angular/core';
+import { prepareValidationMessage } from '../utils/error';
+import { NGX_FORM_MODULE_CONFIG } from '../constants/ngx-form-module-config';
+import { NgxFormModuleConfig } from '../types/ngx-form-module-config';
 
 @Pipe({
-  name: 'validationMessage'
+  name: 'validationMessage',
 })
 export class ValidationMessagePipe implements PipeTransform {
-
   constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}
 
   transform(errorKey: string, errorData: any): string {
@@ -15,21 +14,16 @@ export class ValidationMessagePipe implements PipeTransform {
       return prepareValidationMessage(errorData as string);
     }
     if (errorKey === 'customArr') {
-      return (errorData as string[]).map(item => prepareValidationMessage(item)).join(', ');
+      return (errorData as string[]).map((item) => prepareValidationMessage(item)).join(', ');
     }
 
     if (this.config.errorMessages[errorKey]) {
       let messageTemplate = this.config.errorMessages[errorKey];
 
       if (typeof errorData === 'object') {
-        for (const key in errorData) {
-          if (errorData.hasOwnProperty(key)) {
-            messageTemplate = messageTemplate.replace(
-              '{' + key + '}',
-              errorData[key]
-            );
-          }
-        }
+        Object.keys(errorData).forEach((key) => {
+          messageTemplate = messageTemplate.replace(`{${key}}`, errorData[key]);
+        });
       }
 
       return messageTemplate;
@@ -37,5 +31,4 @@ export class ValidationMessagePipe implements PipeTransform {
 
     return `[${errorKey}]`;
   }
-
 }

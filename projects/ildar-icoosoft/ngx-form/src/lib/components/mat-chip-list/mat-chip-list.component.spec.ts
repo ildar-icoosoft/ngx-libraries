@@ -8,9 +8,8 @@ describe('MatChipListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MatChipListComponent ]
-    })
-    .compileComponents();
+      declarations: [MatChipListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

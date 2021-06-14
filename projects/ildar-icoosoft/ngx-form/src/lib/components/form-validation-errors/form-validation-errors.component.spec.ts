@@ -8,9 +8,8 @@ describe('FormValidationErrorsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormValidationErrorsComponent ]
-    })
-    .compileComponents();
+      declarations: [FormValidationErrorsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

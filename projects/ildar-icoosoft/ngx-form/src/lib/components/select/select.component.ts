@@ -1,6 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { SelectOption } from '../../types/select-option';
+import { SelectOption } from '../../types';
 
 @Component({
   selector: 'ii-select',
@@ -9,6 +9,7 @@ import { SelectOption } from '../../types/select-option';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => SelectComponent),
       multi: true,
     },
@@ -23,13 +24,11 @@ export class SelectComponent implements ControlValueAccessor {
 
   isDisabled = false;
 
-  constructor() {}
-
   trackByOption(index: number, item: SelectOption): string {
     return item.id;
   }
 
-  propagateChange = (_: any) => {};
+  propagateChange = () => {};
 
   propagateTouch = () => {};
 

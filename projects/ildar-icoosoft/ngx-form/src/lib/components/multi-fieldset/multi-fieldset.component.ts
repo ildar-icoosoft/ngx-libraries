@@ -22,6 +22,7 @@ import { DynamicField, DynamicFieldOption, NgxFormModuleConfig } from '../../typ
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => MultiFieldsetComponent),
       multi: true,
     },
@@ -89,7 +90,7 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
     return group;
   }
 
-  propagateChange = (_: any) => {};
+  propagateChange = () => {};
 
   propagateTouch = () => {};
 

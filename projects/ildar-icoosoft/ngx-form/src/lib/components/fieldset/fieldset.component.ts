@@ -21,6 +21,7 @@ import {
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => FieldsetComponent),
       multi: true,
     },
@@ -57,7 +58,7 @@ export class FieldsetComponent implements OnInit, ControlValueAccessor {
     return needToShowLabelOutside(fieldData, this.config);
   }
 
-  propagateChange = (_: any) => {};
+  propagateChange = () => {};
 
   propagateTouch = () => {};
 

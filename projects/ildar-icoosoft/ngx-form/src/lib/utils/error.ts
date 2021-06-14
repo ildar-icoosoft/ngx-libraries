@@ -42,15 +42,13 @@ export const setFormErrors = (formGroup: FormGroup, formErrors: FormError[]): vo
     });
   }
 
-  for (const formControlName in formControlErrors) {
-    if (formControlErrors.hasOwnProperty(formControlName)) {
-      const formControl = formGroup.get(formControlName) as AbstractControl;
+  Object.keys(formControlErrors).forEach((formControlName) => {
+    const formControl = formGroup.get(formControlName) as AbstractControl;
 
-      formControl.setErrors({
-        customArr: formControlErrors[formControlName],
-      });
-    }
-  }
+    formControl.setErrors({
+      customArr: formControlErrors[formControlName],
+    });
+  });
 
   markAllFormControlsAsTouched(formGroup);
 };

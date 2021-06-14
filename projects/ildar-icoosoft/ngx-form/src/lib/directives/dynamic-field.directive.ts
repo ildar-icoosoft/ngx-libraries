@@ -18,6 +18,7 @@ import { NgxFormModuleConfig, DynamicField } from '../types';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => DynamicFieldDirective),
       multi: true,
     },
@@ -78,7 +79,7 @@ export class DynamicFieldDirective implements OnInit, ControlValueAccessor {
       return;
     }
 
-    return this.component.instance.registerOnChange(fn);
+    this.component.instance.registerOnChange(fn);
   }
 
   registerOnTouched(fn: any): void {
@@ -86,7 +87,7 @@ export class DynamicFieldDirective implements OnInit, ControlValueAccessor {
       return;
     }
 
-    return this.component.instance.registerOnTouched(fn);
+    this.component.instance.registerOnTouched(fn);
   }
 
   writeValue(value: string | undefined): void {
@@ -102,7 +103,8 @@ export class DynamicFieldDirective implements OnInit, ControlValueAccessor {
       return;
     }
 
-    // @ts-ignore
-    this.component.instance.setDisabledState(isDisabled);
+    if (this.component.instance.setDisabledState) {
+      this.component.instance.setDisabledState(isDisabled);
+    }
   }
 }

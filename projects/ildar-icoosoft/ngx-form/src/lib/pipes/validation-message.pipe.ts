@@ -21,11 +21,9 @@ export class ValidationMessagePipe implements PipeTransform {
       let messageTemplate = this.config.errorMessages[errorKey];
 
       if (typeof errorData === 'object') {
-        for (const key in errorData) {
-          if (errorData.hasOwnProperty(key)) {
-            messageTemplate = messageTemplate.replace(`{${key}}`, errorData[key]);
-          }
-        }
+        Object.keys(errorData).forEach((key) => {
+          messageTemplate = messageTemplate.replace(`{${key}}`, errorData[key]);
+        });
       }
 
       return messageTemplate;

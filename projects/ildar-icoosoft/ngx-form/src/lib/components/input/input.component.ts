@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => InputComponent),
       multi: true,
     },
@@ -26,9 +27,7 @@ export class InputComponent implements ControlValueAccessor {
 
   isDisabled = false;
 
-  constructor() {}
-
-  propagateChange = (_: any) => {};
+  propagateChange = () => {};
 
   propagateTouch = () => {};
 

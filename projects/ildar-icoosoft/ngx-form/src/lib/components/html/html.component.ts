@@ -8,6 +8,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => HtmlComponent),
       multi: true,
     },
@@ -20,9 +21,7 @@ export class HtmlComponent implements ControlValueAccessor {
 
   isDisabled = false;
 
-  constructor() {}
-
-  propagateChange = (_: any) => {};
+  propagateChange = () => {};
 
   propagateTouch = () => {};
 

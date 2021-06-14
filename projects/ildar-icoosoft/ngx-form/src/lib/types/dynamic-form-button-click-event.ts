@@ -1,6 +1,6 @@
-import { DynamicFormComponent } from '../components';
+import { DynamicFormComponentType } from './dynamic-form-component-type';
 
 export interface DynamicFormButtonClickEvent {
-  form: DynamicFormComponent;
+  form: DynamicFormComponentType;
   nativeEvent: Event;
 }

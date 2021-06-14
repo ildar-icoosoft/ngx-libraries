@@ -8,6 +8,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => CheckboxComponent),
       multi: true,
     },
@@ -24,8 +25,7 @@ export class CheckboxComponent implements ControlValueAccessor {
 
   isDisabled = false;
 
-  constructor() {}
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   propagateChange = (_: any) => {};
 
   propagateTouch = () => {};

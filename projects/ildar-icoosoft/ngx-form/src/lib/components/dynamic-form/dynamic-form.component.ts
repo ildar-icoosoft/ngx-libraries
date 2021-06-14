@@ -33,6 +33,7 @@ import {
   NgxFormModuleConfig,
 } from '../../types';
 import { DynamicFieldDirective } from '../../directives';
+import { DynamicFormComponentType } from '../../types/dynamic-form-component-type';
 
 @Component({
   selector: 'ii-dynamic-form',
@@ -41,7 +42,7 @@ import { DynamicFieldDirective } from '../../directives';
   providers: [UnsubscribeService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DynamicFormComponent implements OnInit, AfterViewInit {
+export class DynamicFormComponent implements DynamicFormComponentType, OnInit, AfterViewInit {
   @Input() formData!: DynamicForm;
 
   @Input() formCssClass = '';
@@ -178,7 +179,8 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
       return;
     }
     if (this.group.invalid) {
-      return markAllFormControlsAsTouched(this.group);
+      markAllFormControlsAsTouched(this.group);
+      return;
     }
 
     const formData: any = this.group.getRawValue();
@@ -204,13 +206,13 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
     this.changeDetectorRef.markForCheck();
   }
 
-  setValues(values: any): void {
+  setValues(values: Record<string, any>): void {
     this.group.setValue(values);
 
     this.changeDetectorRef.markForCheck();
   }
 
-  patchValues(values: any): void {
+  patchValues(values: Record<string, any>): void {
     this.group.patchValue(values);
 
     this.changeDetectorRef.markForCheck();

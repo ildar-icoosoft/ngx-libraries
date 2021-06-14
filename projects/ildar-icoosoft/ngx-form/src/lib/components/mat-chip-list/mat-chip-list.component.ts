@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   ChangeDetectionStrategy,
   Input,
   forwardRef,
@@ -20,12 +19,13 @@ import { SelectOption } from '../../types';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => MatChipListComponent),
       multi: true,
     },
   ],
 })
-export class MatChipListComponent implements OnInit, ControlValueAccessor {
+export class MatChipListComponent implements ControlValueAccessor {
   @Input() options: SelectOption[] = [];
 
   newOptions: SelectOption[] = [];
@@ -44,8 +44,7 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
-  ngOnInit(): void {}
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   propagateChange = (_: any) => {};
 
   propagateTouch = () => {};
@@ -113,5 +112,4 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
       input.value = '';
     }
   }
-  //
 }

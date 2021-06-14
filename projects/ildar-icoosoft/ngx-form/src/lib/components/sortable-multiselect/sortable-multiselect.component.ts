@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, forwardRef, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectOption } from '../../types';
 
@@ -11,20 +11,17 @@ import { SelectOption } from '../../types';
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => SortableMultiselectComponent),
     },
   ],
 })
-export class SortableMultiselectComponent implements OnInit, ControlValueAccessor {
+export class SortableMultiselectComponent implements ControlValueAccessor {
   @Input() items: SelectOption[] = [];
 
   @Input() placeholder = '';
 
   selectedItems: string[] = [];
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   onChange: any = () => {};
 

@@ -11,12 +11,14 @@ let nextId = 0;
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => ReCaptchaComponent),
       multi: true,
     },
   ],
 })
 export class ReCaptchaComponent implements ControlValueAccessor {
+  // eslint-disable-next-line no-plusplus
   @Input() id = `ngrecaptcha-${nextId++}`;
 
   @Input() siteKey?: string;
@@ -39,8 +41,6 @@ export class ReCaptchaComponent implements ControlValueAccessor {
     static: true,
   })
   private host!: RecaptchaComponent;
-
-  constructor() {}
 
   public writeValue(value: string): void {
     if (!value) {

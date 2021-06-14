@@ -10,12 +10,11 @@ import {SelectOption} from '../../types/select-option';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => SelectComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class SelectComponent implements ControlValueAccessor {
-
   @Input() options: SelectOption[] = [];
 
   @Input() inputId = '';
@@ -31,6 +30,7 @@ export class SelectComponent implements ControlValueAccessor {
   }
 
   propagateChange = (_: any) => {};
+
   propagateTouch = () => {};
 
   registerOnChange(fn: any): void {

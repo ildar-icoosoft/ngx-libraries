@@ -8,9 +8,9 @@ describe('ReCaptchaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReCaptchaComponent ]
+      declarations: [ReCaptchaComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

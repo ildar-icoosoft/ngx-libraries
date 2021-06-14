@@ -1,4 +1,6 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Input, OnInit} from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, forwardRef, Input, OnInit,
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {SelectOption} from '../../types';
 
@@ -11,15 +13,15 @@ import {SelectOption} from '../../types';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => MatSelectComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class MatSelectComponent implements OnInit, ControlValueAccessor {
-
   @Input() options: SelectOption[] = [];
 
   @Input() placeholder = '';
+
   @Input() inputId = '';
 
   @Input() multiple = false;
@@ -34,6 +36,7 @@ export class MatSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   propagateChange = (_: any) => {};
+
   propagateTouch = () => {};
 
   registerOnChange(fn: any): void {

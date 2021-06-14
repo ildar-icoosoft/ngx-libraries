@@ -8,9 +8,9 @@ xdescribe('DynamicFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DynamicFormComponent ]
+      declarations: [DynamicFormComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +21,5 @@ xdescribe('DynamicFormComponent', () => {
 
 /*  it('should create', () => {
     expect(component).toBeTruthy();
-  });*/
+  }); */
 });

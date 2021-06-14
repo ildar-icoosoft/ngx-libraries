@@ -7,5 +7,3 @@ export interface DynamicFormButton {
   label: string;
   onClick(event: DynamicFormButtonClickEvent): void;
 }
-
-

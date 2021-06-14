@@ -1,4 +1,6 @@
-import {Component, forwardRef, Input, ViewChild} from '@angular/core';
+import {
+  Component, forwardRef, Input, ViewChild,
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {RecaptchaComponent} from 'ng-recaptcha';
 
@@ -12,25 +14,31 @@ let nextId = 0;
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => ReCaptchaComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class ReCaptchaComponent implements ControlValueAccessor {
-
   @Input() id = `ngrecaptcha-${nextId++}`;
+
   @Input() siteKey?: string;
+
   @Input() theme?: ReCaptchaV2.Theme;
+
   @Input() type?: ReCaptchaV2.Type;
+
   @Input() size?: ReCaptchaV2.Size;
+
   @Input() tabIndex?: number;
+
   @Input() badge?: ReCaptchaV2.Badge;
 
   private onChange?: (value: string) => void;
+
   private onTouched?: () => void;
 
   @ViewChild(RecaptchaComponent, {
-    static: true
+    static: true,
   }) private host !: RecaptchaComponent;
 
   constructor() {
@@ -58,6 +66,4 @@ export class ReCaptchaComponent implements ControlValueAccessor {
       this.onTouched();
     }
   }
-
 }
-

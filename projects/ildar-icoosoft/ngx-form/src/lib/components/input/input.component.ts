@@ -1,4 +1,6 @@
-import {Component, forwardRef, Input, OnInit} from '@angular/core';
+import {
+  Component, forwardRef, Input, OnInit,
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
@@ -9,15 +11,17 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => InputComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class InputComponent implements ControlValueAccessor {
-
   @Input() type = 'text';
+
   @Input() placeholder = '';
+
   @Input() inputId = '';
+
   @Input() readonly = false;
 
   value = '';
@@ -27,6 +31,7 @@ export class InputComponent implements ControlValueAccessor {
   constructor() { }
 
   propagateChange = (_: any) => {};
+
   propagateTouch = () => {};
 
   registerOnChange(fn: any): void {
@@ -46,5 +51,4 @@ export class InputComponent implements ControlValueAccessor {
   setDisabledState(isDisabled: boolean): void {
     this.isDisabled = isDisabled;
   }
-
 }

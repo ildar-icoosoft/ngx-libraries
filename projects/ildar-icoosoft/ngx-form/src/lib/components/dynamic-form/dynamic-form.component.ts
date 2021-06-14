@@ -9,18 +9,20 @@ import {
   OnInit,
   Output,
   QueryList,
-  ViewChildren
+  ViewChildren,
 } from '@angular/core';
 import {UnsubscribeService} from 'ii-ngx-common';
-import {AbstractControl, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
+import {
+  AbstractControl, FormControl, FormGroup, ValidatorFn,
+} from '@angular/forms';
+import {takeUntil} from 'rxjs/operators';
 import {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';
 import {
   getFieldDataOptionValue,
   getFieldValidators,
   getGroupValidators,
-  needToShowLabelOutside
+  needToShowLabelOutside,
 } from '../../utils/dynamic-form';
-import {takeUntil} from 'rxjs/operators';
 import {markAllFormControlsAsTouched, setFormErrors} from '../../utils/error';
 import {
   ControlChangeData,
@@ -30,32 +32,37 @@ import {
   DynamicFormButton,
   FormError,
   FormSubmitEvent,
-  NgxFormModuleConfig
+  NgxFormModuleConfig,
 } from '../../types';
 import {DynamicFieldDirective} from '../../directives';
-
 
 @Component({
   selector: 'ii-dynamic-form',
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.css'],
   providers: [UnsubscribeService],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DynamicFormComponent implements OnInit, AfterViewInit {
-
   @Input() formData!: DynamicForm;
+
   @Input() formCssClass = '';
+
   @Input() initialValues: Record<string, any> = {};
+
   @Input() showButtons = true;
+
   @Input() buttons: DynamicFormButton[] = [{
     label: 'Submit',
-    onClick: () => this.validateAndSubmit()
+    onClick: () => this.validateAndSubmit(),
   }];
 
   @Output() submitForm: EventEmitter<FormSubmitEvent> = new EventEmitter();
+
   @Output() loadForm: EventEmitter<DynamicFormComponent> = new EventEmitter();
+
   @Output() groupChange: EventEmitter<Record<string, any>> = new EventEmitter();
+
   @Output() controlChange: EventEmitter<ControlChangeData> = new EventEmitter();
 
   group!: FormGroup;
@@ -67,7 +74,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
   constructor(
     @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig,
     private ngUnsubscribe$: UnsubscribeService,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
   ) {
   }
 
@@ -76,7 +83,6 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-
     this.group = new FormGroup({});
 
     this.formData.items.forEach((item: DynamicField) => {
@@ -87,11 +93,11 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
       const formControl = new FormControl(value, validators);
 
       formControl.valueChanges.pipe(
-        takeUntil(this.ngUnsubscribe$)
-      ).subscribe(controlValue => this.controlChange.emit({
+        takeUntil(this.ngUnsubscribe$),
+      ).subscribe((controlValue) => this.controlChange.emit({
         name: item.name,
         formControl,
-        value: controlValue
+        value: controlValue,
       }));
 
       this.group.addControl(item.name, formControl);
@@ -102,8 +108,8 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
     this.group.setValidators(groupValidators);
 
     this.group.valueChanges.pipe(
-      takeUntil(this.ngUnsubscribe$)
-    ).subscribe(values => this.groupChange.emit(values));
+      takeUntil(this.ngUnsubscribe$),
+    ).subscribe((values) => this.groupChange.emit(values));
   }
 
   getGroup(): FormGroup {
@@ -129,7 +135,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
   getFormElement(name: string): any {
     const arr = this.dynamicComponents.toArray();
 
-    const connectFieldDirective = arr.find(item => item.fieldData.name === name);
+    const connectFieldDirective = arr.find((item) => item.fieldData.name === name);
     if (!connectFieldDirective) {
       throw Error(`component ${name} not found`);
     }
@@ -164,7 +170,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
 
     button.onClick({
       form: this,
-      nativeEvent: event
+      nativeEvent: event,
     });
   }
 
@@ -182,7 +188,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
     this.submitForm.emit({
       values: formData,
       setSubmitting: (isSubmitting: boolean) => this.setSubmitting(isSubmitting),
-      setErrors: (errors: FormError[]) => this.setErrors(errors)
+      setErrors: (errors: FormError[]) => this.setErrors(errors),
     });
   }
 
@@ -210,5 +216,4 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
 
     this.changeDetectorRef.markForCheck();
   }
-
 }

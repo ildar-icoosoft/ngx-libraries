@@ -8,9 +8,9 @@ xdescribe('MultiFieldsetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MultiFieldsetComponent ]
+      declarations: [MultiFieldsetComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +21,5 @@ xdescribe('MultiFieldsetComponent', () => {
 
 /*  it('should create', () => {
     expect(component).toBeTruthy();
-  });*/
+  }); */
 });

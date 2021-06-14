@@ -9,26 +9,29 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => CheckboxComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class CheckboxComponent implements ControlValueAccessor {
-
   @Input() inputId = '';
+
   @Input() readonly = false;
+
   @Input() value: any = true;
 
   checked = false;
+
   isDisabled = false;
 
   constructor() {
   }
 
   propagateChange = (_: any) => {
-  }
+  };
+
   propagateTouch = () => {
-  }
+  };
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
@@ -47,9 +50,8 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   handleChange(event: Event): void {
-    const checked = (event.currentTarget as HTMLInputElement).checked;
+    const {checked} = event.currentTarget as HTMLInputElement;
 
     this.propagateChange(checked ? this.value : false);
   }
-
 }

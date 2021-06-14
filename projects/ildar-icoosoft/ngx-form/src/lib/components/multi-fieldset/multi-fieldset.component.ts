@@ -1,5 +1,9 @@
-import {Component, forwardRef, Inject, Input, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn} from '@angular/forms';
+import {
+  Component, forwardRef, Inject, Input, OnInit,
+} from '@angular/core';
+import {
+  ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn,
+} from '@angular/forms';
 import {NGX_FORM_MODULE_CONFIG} from '../../constants/ngx-form-module-config';
 import {getFieldDataOptionValue, getFieldValidators, needToShowLabelOutside} from '../../utils/dynamic-form';
 import {DynamicField, DynamicFieldOption, NgxFormModuleConfig} from '../../types';
@@ -12,22 +16,22 @@ import {DynamicField, DynamicFieldOption, NgxFormModuleConfig} from '../../types
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => MultiFieldsetComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
-
   @Input() items: DynamicField[] = [];
 
   @Input() defaultValues: any = {};
 
   @Input() removeButtonText = 'Remove';
+
   @Input() removeButtonCssClass = 'btn btn-warning mt-2';
 
   @Input() addButtonText = 'Add';
-  @Input() addButtonCssClass = 'btn btn-success mt-3';
 
+  @Input() addButtonCssClass = 'btn btn-success mt-3';
 
   formArray!: FormArray;
 
@@ -78,8 +82,8 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
     return group;
   }
 
-
   propagateChange = (_: any) => {};
+
   propagateTouch = () => {};
 
   registerOnChange(fn: any): void {
@@ -95,7 +99,7 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
       this.formArray.clear();
 
       (value as any[]).forEach(
-        (groupValues: any) => this.formArray.push(this.generateGroupItem(groupValues))
+        (groupValues: any) => this.formArray.push(this.generateGroupItem(groupValues)),
       );
     }
   }
@@ -108,4 +112,3 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
     }
   }
 }
-

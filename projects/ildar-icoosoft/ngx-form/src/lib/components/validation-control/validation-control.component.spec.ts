@@ -8,9 +8,9 @@ describe('ValidationControlComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ValidationControlComponent ]
+      declarations: [ValidationControlComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

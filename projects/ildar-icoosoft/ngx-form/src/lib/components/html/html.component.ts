@@ -9,12 +9,11 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => HtmlComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class HtmlComponent implements ControlValueAccessor {
-
   @Input() cssClass = '';
 
   value = '';
@@ -24,6 +23,7 @@ export class HtmlComponent implements ControlValueAccessor {
   constructor() { }
 
   propagateChange = (_: any) => {};
+
   propagateTouch = () => {};
 
   registerOnChange(fn: any): void {
@@ -43,6 +43,4 @@ export class HtmlComponent implements ControlValueAccessor {
   setDisabledState(isDisabled: boolean): void {
     this.isDisabled = isDisabled;
   }
-
 }
-

@@ -1,25 +1,25 @@
-import {DynamicField} from './dynamic-field';
 import {ControlValueAccessor, ValidatorFn} from '@angular/forms';
 import {Type} from '@angular/core';
+import {DynamicField} from './dynamic-field';
 
 export interface NgxFormModuleConfig {
   fields: {
     [key: string]: {
-      component: Type<ControlValueAccessor>,
+      component: Type<ControlValueAccessor>;
       needToShowLabelOutside?: boolean;
       props?: {
-        [key: string]: any
-      },
+        [key: string]: any;
+      };
       mapConnectDataToProps?(connectData: DynamicField): {
-        [key: string]: any
-      }
-    }
+        [key: string]: any;
+      };
+    };
   };
   validators: {
-    [key: string]: NgxValidatorConfig
+    [key: string]: NgxValidatorConfig;
   };
   errorMessages: {
-    [key: string]: string
+    [key: string]: string;
   };
 }
 

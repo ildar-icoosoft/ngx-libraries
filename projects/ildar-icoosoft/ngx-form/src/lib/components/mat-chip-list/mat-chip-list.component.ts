@@ -1,9 +1,11 @@
-import {Component, OnInit, ChangeDetectionStrategy, Input, forwardRef, ChangeDetectorRef} from '@angular/core';
+import {
+  Component, OnInit, ChangeDetectionStrategy, Input, forwardRef, ChangeDetectorRef,
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {SelectOption} from '../../types';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {pull as _pull} from 'lodash';
+import {SelectOption} from '../../types';
 
 @Component({
   selector: 'ii-mat-chip-list',
@@ -14,17 +16,19 @@ import {pull as _pull} from 'lodash';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => MatChipListComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class MatChipListComponent implements OnInit, ControlValueAccessor {
-
   @Input() options: SelectOption[] = [];
+
   newOptions: SelectOption[] = [];
 
   @Input() label = '';
+
   @Input() placeholder = '';
+
   @Input() inputId = '';
 
   value: string[] = [];
@@ -39,6 +43,7 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
   }
 
   propagateChange = (_: any) => {};
+
   propagateTouch = () => {};
 
   registerOnChange(fn: any): void {
@@ -76,14 +81,14 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
   }
 
   add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
+    const {input} = event;
+    const {value} = event;
 
     const trimmedValue = value.trim();
 
     if (
-      this.options.some(item => item.id === trimmedValue) ||
-      this.newOptions.some(item => item.id === trimmedValue)
+      this.options.some((item) => item.id === trimmedValue)
+      || this.newOptions.some((item) => item.id === trimmedValue)
     ) {
       return;
     }
@@ -91,7 +96,7 @@ export class MatChipListComponent implements OnInit, ControlValueAccessor {
     if (trimmedValue) {
       this.newOptions.push({
         id: trimmedValue,
-        name: trimmedValue
+        name: trimmedValue,
       });
 
       const newValue = [...this.value, trimmedValue];

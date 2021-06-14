@@ -8,9 +8,9 @@ describe('MatSelectComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MatSelectComponent ]
+      declarations: [MatSelectComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

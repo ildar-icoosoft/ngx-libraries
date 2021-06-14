@@ -1,4 +1,6 @@
-import {Component, OnInit, ChangeDetectionStrategy, forwardRef, Input} from '@angular/core';
+import {
+  Component, OnInit, ChangeDetectionStrategy, forwardRef, Input,
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {SelectOption} from '../../types';
 
@@ -12,20 +14,22 @@ import {SelectOption} from '../../types';
       provide: NG_VALUE_ACCESSOR,
       multi: true,
       useExisting: forwardRef(() => SortableMultiselectComponent),
-    }
-  ]
+    },
+  ],
 })
 export class SortableMultiselectComponent implements OnInit, ControlValueAccessor {
   @Input() items: SelectOption[] = [];
+
   @Input() placeholder = '';
 
   selectedItems: string[] = [];
 
   constructor() { }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void { }
 
   onChange: any = () => {};
+
   onTouch: any = () => {};
 
   registerOnChange(fn: any): void {
@@ -43,14 +47,14 @@ export class SortableMultiselectComponent implements OnInit, ControlValueAccesso
   }
 
   changeItems(items: SelectOption[]): void {
-    this.selectedItems = items.map(item => item.id);
+    this.selectedItems = items.map((item) => item.id);
   }
 
   private moveItem(item: SelectOption, shift: number): void {
     const index = this.selectedItems.indexOf(item.id);
     if (
-      (shift < 0 && index > shift + 1) ||
-      (shift > 0 && index < this.selectedItems.length - shift)
+      (shift < 0 && index > shift + 1)
+      || (shift > 0 && index < this.selectedItems.length - shift)
     ) {
       const buf = this.selectedItems.splice(index, 1);
       this.selectedItems.splice(index + shift, 0, buf[0]);

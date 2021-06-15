@@ -27,6 +27,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { MatSelectComponent } from './components/mat-select/mat-select.component';
 import { SortableMultiselectComponent } from './components/sortable-multiselect/sortable-multiselect.component';
 import { MatChipListComponent } from './components/mat-chip-list/mat-chip-list.component';
+import { ReactJsonSchemaFormService } from './services';
 
 @NgModule({
   declarations: [
@@ -110,6 +111,7 @@ export class NgxFormModule {
             errorMessages: { ...defaultNgxFormModuleConfig.errorMessages, ...config.errorMessages },
           },
         },
+        ReactJsonSchemaFormService,
       ],
     };
   }

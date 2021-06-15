@@ -9,3 +9,5 @@ export * from './form-error';
 export * from './form-submit-event';
 export * from './ngx-form-module-config';
 export * from './select-option';
+export * from './react-json-schema';
+export * from './react-json-ui-schema';

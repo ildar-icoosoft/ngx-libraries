@@ -88,7 +88,8 @@ export class DynamicFormComponent implements DynamicFormComponentType, OnInit, A
     this.formData.items.forEach((item: DynamicField) => {
       const validators: ValidatorFn[] = getFieldValidators(item, this.config);
 
-      const value = this.initialValues[item.name];
+      const value =
+        this.initialValues[item.name] === undefined ? item.default : this.initialValues[item.name];
 
       const formControl = new FormControl(value, validators);
 

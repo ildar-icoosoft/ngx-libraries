@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.7.33...v1.8.0) (2021-06-19)
+
+
+### Features
+
+* NGXFORM-4 Добавить параметр default в DynamicField ([#34](https://github.com/ildar-icoosoft/ngx-libraries/issues/34)) ([5e3b4f3](https://github.com/ildar-icoosoft/ngx-libraries/commit/5e3b4f333fc08da39221319673f77cc9f318e14f))
+
+
+
+
+
 ## [1.7.33](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.7.32...v1.7.33) (2021-06-14)
 
 **Note:** Version bump only for package ii-ngx-form

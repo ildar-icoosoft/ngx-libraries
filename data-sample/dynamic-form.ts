@@ -1,12 +1,11 @@
-import {DynamicForm} from 'ii-ngx-form/src/lib/interfaces/dynamic-form';
-
+import { DynamicForm } from 'ii-ngx-form/src/lib/types';
 
 export const dynamicFormData: DynamicForm = {
   validators: [
     {
-      name: "passwordMatch",
-      options: ['password', 'confirmPassword']
-    }
+      name: 'passwordMatch',
+      options: ['password', 'confirmPassword'],
+    },
   ],
   items: [
     {
@@ -17,8 +16,8 @@ export const dynamicFormData: DynamicForm = {
       options: [
         {
           name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-12"}]'
-        }
+          value: '[{"name":"cssClass","value":"col-lg-12"}]',
+        },
       ],
       items: [],
     },
@@ -26,9 +25,7 @@ export const dynamicFormData: DynamicForm = {
       label: 'Text <span class="required-sign">(*)</span>',
       name: 'text',
       type: 'text',
-      validators: [
-        {"name": "required", "options": []}
-      ],
+      validators: [{ name: 'required', options: [] }],
       options: [
         {
           name: 'placeholder',
@@ -36,8 +33,8 @@ export const dynamicFormData: DynamicForm = {
         },
         {
           name: 'cssClass',
-          value: 'col-lg-4 col-md-6 col-xs-12'
-        }
+          value: 'col-lg-4 col-md-6 col-xs-12',
+        },
       ],
       items: [],
     },
@@ -45,9 +42,7 @@ export const dynamicFormData: DynamicForm = {
       label: 'Textarea <span class="required-sign">(*)</span>',
       name: 'textarea',
       type: 'textarea',
-      validators: [
-        {"name": "required", "options": []}
-      ],
+      validators: [{ name: 'required', options: [] }],
       options: [
         {
           name: 'placeholder',
@@ -55,8 +50,8 @@ export const dynamicFormData: DynamicForm = {
         },
         {
           name: 'cssClass',
-          value: 'col-lg-4 col-md-6 col-xs-12'
-        }
+          value: 'col-lg-4 col-md-6 col-xs-12',
+        },
       ],
       items: [],
     },
@@ -65,8 +60,8 @@ export const dynamicFormData: DynamicForm = {
       name: 'email',
       type: 'email',
       validators: [
-        {"name": "required", "options": []},
-        {"name": "email", "options": []}
+        { name: 'required', options: [] },
+        { name: 'email', options: [] },
       ],
       options: [
         {
@@ -75,8 +70,8 @@ export const dynamicFormData: DynamicForm = {
         },
         {
           name: 'cssClass',
-          value: 'col-lg-4 col-md-6 col-xs-12'
-        }
+          value: 'col-lg-4 col-md-6 col-xs-12',
+        },
       ],
       items: [],
     },
@@ -84,9 +79,7 @@ export const dynamicFormData: DynamicForm = {
       label: 'Password <span class="required-sign">(*)</span>',
       name: 'password',
       type: 'password',
-      validators: [
-        {"name": "required", "options": []}
-      ],
+      validators: [{ name: 'required', options: [] }],
       options: [
         {
           name: 'placeholder',
@@ -94,8 +87,8 @@ export const dynamicFormData: DynamicForm = {
         },
         {
           name: 'cssClass',
-          value: 'col-lg-4 col-md-6 col-xs-12'
-        }
+          value: 'col-lg-4 col-md-6 col-xs-12',
+        },
       ],
       items: [],
     },
@@ -103,9 +96,7 @@ export const dynamicFormData: DynamicForm = {
       label: 'Confirm Password <span class="required-sign">(*)</span>',
       name: 'confirmPassword',
       type: 'password',
-      validators: [
-        {"name": "required", "options": []}
-      ],
+      validators: [{ name: 'required', options: [] }],
       options: [
         {
           name: 'placeholder',
@@ -113,8 +104,8 @@ export const dynamicFormData: DynamicForm = {
         },
         {
           name: 'cssClass',
-          value: 'col-lg-4 col-md-6 col-xs-12'
-        }
+          value: 'col-lg-4 col-md-6 col-xs-12',
+        },
       ],
       items: [],
     },
@@ -126,33 +117,32 @@ export const dynamicFormData: DynamicForm = {
       options: [
         {
           name: 'selectOptions',
-          value:
-            [
-              {"id": "twitter-share-button", "name": "Share"},
-              {
-                "id": "twitter-follow-button",
-                "name": "Follow"
-              },
-              {
-                "id": "twitter-hashtag-button",
-                "name": "Hashtag"
-              },
-              {"id": "twitter-mention-button", "name": "Mention"},
-              {
-                "id": "twitter-tweet",
-                "name": "Tweet"
-              },
-              {"id": "twitter-tweet", "name": "Tweet"},
-              {
-                "id": "twitter-timeline",
-                "name": "Timeline"
-              }
-            ],
+          value: [
+            { id: 'twitter-share-button', name: 'Share' },
+            {
+              id: 'twitter-follow-button',
+              name: 'Follow',
+            },
+            {
+              id: 'twitter-hashtag-button',
+              name: 'Hashtag',
+            },
+            { id: 'twitter-mention-button', name: 'Mention' },
+            {
+              id: 'twitter-tweet',
+              name: 'Tweet',
+            },
+            { id: 'twitter-tweet', name: 'Tweet' },
+            {
+              id: 'twitter-timeline',
+              name: 'Timeline',
+            },
+          ],
         },
         {
           name: 'cssClass',
-          value: 'col-lg-4 col-md-6 col-xs-12'
-        }
+          value: 'col-lg-4 col-md-6 col-xs-12',
+        },
       ],
       items: [],
     },
@@ -164,33 +154,32 @@ export const dynamicFormData: DynamicForm = {
       options: [
         {
           name: 'selectOptions',
-          value:
-            [
-              {"id": "twitter-share-button", "name": "Share"},
-              {
-                "id": "twitter-follow-button",
-                "name": "Follow"
-              },
-              {
-                "id": "twitter-hashtag-button",
-                "name": "Hashtag"
-              },
-              {"id": "twitter-mention-button", "name": "Mention"},
-              {
-                "id": "twitter-tweet",
-                "name": "Tweet"
-              },
-              {"id": "twitter-tweet", "name": "Tweet"},
-              {
-                "id": "twitter-timeline",
-                "name": "Timeline"
-              }
-            ],
+          value: [
+            { id: 'twitter-share-button', name: 'Share' },
+            {
+              id: 'twitter-follow-button',
+              name: 'Follow',
+            },
+            {
+              id: 'twitter-hashtag-button',
+              name: 'Hashtag',
+            },
+            { id: 'twitter-mention-button', name: 'Mention' },
+            {
+              id: 'twitter-tweet',
+              name: 'Tweet',
+            },
+            { id: 'twitter-tweet', name: 'Tweet' },
+            {
+              id: 'twitter-timeline',
+              name: 'Timeline',
+            },
+          ],
         },
         {
           name: 'cssClass',
-          value: 'col-lg-4 col-md-6 col-xs-12'
-        }
+          value: 'col-lg-4 col-md-6 col-xs-12',
+        },
       ],
       items: [],
     },
@@ -202,37 +191,36 @@ export const dynamicFormData: DynamicForm = {
       options: [
         {
           name: 'selectOptions',
-          value:
-            [
-              {"id": "twitter-share-button", "name": "Share"},
-              {
-                "id": "twitter-follow-button",
-                "name": "Follow"
-              },
-              {
-                "id": "twitter-hashtag-button",
-                "name": "Hashtag"
-              },
-              {"id": "twitter-mention-button", "name": "Mention"},
-              {
-                "id": "twitter-tweet",
-                "name": "Tweet"
-              },
-              {"id": "twitter-tweet", "name": "Tweet"},
-              {
-                "id": "twitter-timeline",
-                "name": "Timeline"
-              }
-            ],
+          value: [
+            { id: 'twitter-share-button', name: 'Share' },
+            {
+              id: 'twitter-follow-button',
+              name: 'Follow',
+            },
+            {
+              id: 'twitter-hashtag-button',
+              name: 'Hashtag',
+            },
+            { id: 'twitter-mention-button', name: 'Mention' },
+            {
+              id: 'twitter-tweet',
+              name: 'Tweet',
+            },
+            { id: 'twitter-tweet', name: 'Tweet' },
+            {
+              id: 'twitter-timeline',
+              name: 'Timeline',
+            },
+          ],
         },
         {
           name: 'cssClass',
-          value: 'col-lg-4 col-md-6 col-xs-12'
+          value: 'col-lg-4 col-md-6 col-xs-12',
         },
         {
           name: 'placeholder',
-          value: 'add new social network...'
-        }
+          value: 'add new social network...',
+        },
       ],
       items: [],
     },
@@ -244,33 +232,32 @@ export const dynamicFormData: DynamicForm = {
       options: [
         {
           name: 'selectOptions',
-          value:
-            [
-              {"id": "twitter-share-button", "name": "Share"},
-              {
-                "id": "twitter-follow-button",
-                "name": "Follow"
-              },
-              {
-                "id": "twitter-hashtag-button",
-                "name": "Hashtag"
-              },
-              {"id": "twitter-mention-button", "name": "Mention"},
-              {
-                "id": "twitter-tweet",
-                "name": "Tweet"
-              },
-              {"id": "twitter-tweet", "name": "Tweet"},
-              {
-                "id": "twitter-timeline",
-                "name": "Timeline"
-              }
-            ],
+          value: [
+            { id: 'twitter-share-button', name: 'Share' },
+            {
+              id: 'twitter-follow-button',
+              name: 'Follow',
+            },
+            {
+              id: 'twitter-hashtag-button',
+              name: 'Hashtag',
+            },
+            { id: 'twitter-mention-button', name: 'Mention' },
+            {
+              id: 'twitter-tweet',
+              name: 'Tweet',
+            },
+            { id: 'twitter-tweet', name: 'Tweet' },
+            {
+              id: 'twitter-timeline',
+              name: 'Timeline',
+            },
+          ],
         },
         {
           name: 'cssClass',
-          value: 'col-lg-4 col-md-6 col-xs-12'
-        }
+          value: 'col-lg-4 col-md-6 col-xs-12',
+        },
       ],
       items: [],
     },
@@ -282,8 +269,8 @@ export const dynamicFormData: DynamicForm = {
       options: [
         {
           name: 'cssClass',
-          value: 'col-lg-4 col-md-6 col-xs-12'
-        }
+          value: 'col-lg-4 col-md-6 col-xs-12',
+        },
       ],
       items: [],
     },
@@ -295,8 +282,8 @@ export const dynamicFormData: DynamicForm = {
       options: [
         {
           name: 'cssClass',
-          value: 'col-lg-4 col-md-6 col-xs-12'
-        }
+          value: 'col-lg-4 col-md-6 col-xs-12',
+        },
       ],
       items: [],
     },
@@ -304,13 +291,12 @@ export const dynamicFormData: DynamicForm = {
       label: 'Checkbox',
       name: 'checkbox',
       type: 'checkbox',
-      validators: [
-      ],
+      validators: [],
       options: [
         {
           name: 'cssClass',
-          value: 'col-lg-4 col-md-6 col-xs-12'
-        }
+          value: 'col-lg-4 col-md-6 col-xs-12',
+        },
       ],
       items: [],
     },
@@ -322,12 +308,12 @@ export const dynamicFormData: DynamicForm = {
       options: [
         {
           name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-12"}]'
+          value: '[{"name":"cssClass","value":"col-lg-12"}]',
         },
         {
           name: 'formGroupCssClass',
-          value: 'fieldset-wrapper'
-        }
+          value: 'fieldset-wrapper',
+        },
       ],
       items: [
         {
@@ -339,7 +325,7 @@ export const dynamicFormData: DynamicForm = {
             {
               name: 'placeholder',
               value: 'Text',
-            }
+            },
           ],
           items: [],
         },
@@ -352,7 +338,7 @@ export const dynamicFormData: DynamicForm = {
             {
               name: 'placeholder',
               value: 'Text 2',
-            }
+            },
           ],
           items: [],
         },
@@ -366,12 +352,12 @@ export const dynamicFormData: DynamicForm = {
       options: [
         {
           name: 'cssClass',
-          value: 'col-lg-4 col-md-6 col-xs-12'
+          value: 'col-lg-4 col-md-6 col-xs-12',
         },
         {
           name: 'formGroupCssClass',
-          value: 'fieldset-wrapper'
-        }
+          value: 'fieldset-wrapper',
+        },
       ],
       items: [
         {
@@ -383,7 +369,7 @@ export const dynamicFormData: DynamicForm = {
             {
               name: 'placeholder',
               value: 'Text',
-            }
+            },
           ],
           items: [],
         },
@@ -391,8 +377,7 @@ export const dynamicFormData: DynamicForm = {
           label: 'Checkbox',
           name: 'checkbox2',
           type: 'checkbox',
-          validators: [
-          ],
+          validators: [],
           options: [],
           items: [],
         },
@@ -402,9 +387,7 @@ export const dynamicFormData: DynamicForm = {
       label: 'Recaptcha',
       name: 'recaptcha',
       type: 'reCaptcha',
-      validators: [
-        {"name": "required", "options": []}
-      ],
+      validators: [{ name: 'required', options: [] }],
       options: [
         {
           name: 'doNotEncrypt',
@@ -416,15 +399,14 @@ export const dynamicFormData: DynamicForm = {
         },
         {
           name: 'cssClass',
-          value: 'col-lg-12'
+          value: 'col-lg-12',
         },
         {
           name: 'siteKey',
           value: '6LfKP_sZAAAAAAIsTU7sV8QofHdP_P_4gpqMf5g1',
-        }
+        },
       ],
       items: [],
     },
-  ]
-
+  ],
 };

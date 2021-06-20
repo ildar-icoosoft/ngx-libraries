@@ -8,12 +8,8 @@ import {
   ValidatorFn,
 } from '@angular/forms';
 import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
-import {
-  getFieldDataOptionValue,
-  getFieldValidators,
-  needToShowLabelOutside,
-} from '../../utils/dynamic-form';
-import { DynamicField, DynamicFieldOption, NgxFormModuleConfig } from '../../types';
+import { getFieldValidators } from '../../utils/dynamic-form';
+import { DynamicField, NgxFormModuleConfig } from '../../types';
 
 @Component({
   selector: 'ii-multi-fieldset',
@@ -65,16 +61,6 @@ export class MultiFieldsetComponent implements OnInit, ControlValueAccessor {
     this.formArray.valueChanges.subscribe((val) => {
       this.propagateChange(val);
     });
-  }
-
-  getLabelCssClass(fieldData: DynamicField): string {
-    const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
-
-    return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');
-  }
-
-  needToShowLabelOutside(fieldData: DynamicField): boolean {
-    return needToShowLabelOutside(fieldData, this.config);
   }
 
   private generateGroupItem(groupValues: any): FormGroup {

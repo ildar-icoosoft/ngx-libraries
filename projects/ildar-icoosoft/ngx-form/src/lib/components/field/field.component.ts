@@ -1,8 +1,10 @@
-import { Component, ChangeDetectionStrategy, Input, Inject } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+import { Component, ChangeDetectionStrategy, Input, Inject, ViewChild } from '@angular/core';
+import { AbstractControl, ControlValueAccessor } from '@angular/forms';
 import { DynamicField, DynamicFieldOption, NgxFormModuleConfig } from '../../types';
 import { getFieldDataOptionValue, needToShowLabelOutside } from '../../utils/dynamic-form';
 import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
+import { DynamicFieldDirective } from '../../directives';
+import { FieldComponentType } from '../../types/field-component-type';
 
 @Component({
   selector: 'ii-field',
@@ -10,12 +12,14 @@ import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
   styleUrls: ['./field.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FieldComponent {
-  @Input() fieldData?: DynamicField;
+export class FieldComponent implements FieldComponentType {
+  @Input() fieldData!: DynamicField;
 
-  @Input() control?: AbstractControl;
+  @Input() control!: AbstractControl;
 
   @Input() index = 0;
+
+  @ViewChild(DynamicFieldDirective) dynamicField!: DynamicFieldDirective;
 
   constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}
 
@@ -39,5 +43,9 @@ export class FieldComponent {
 
   needToShowLabelOutside(fieldData: DynamicField): boolean {
     return needToShowLabelOutside(fieldData, this.config);
+  }
+
+  getFormElement(): Component & ControlValueAccessor {
+    return this.dynamicField.component.instance;
   }
 }

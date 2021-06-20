@@ -1,4 +1,5 @@
 import {
+  Component,
   ComponentFactory,
   ComponentFactoryResolver,
   ComponentRef,
@@ -29,7 +30,7 @@ export class DynamicFieldDirective implements OnInit, ControlValueAccessor {
 
   @Input() inputId!: string;
 
-  component!: ComponentRef<ControlValueAccessor>;
+  component!: ComponentRef<Component & ControlValueAccessor>;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,

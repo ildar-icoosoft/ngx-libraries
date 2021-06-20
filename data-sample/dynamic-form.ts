@@ -26,6 +26,7 @@ export const dynamicFormData: DynamicForm = {
       name: 'text',
       type: 'text',
       validators: [{ name: 'required', options: [] }],
+      hidden: true,
       options: [
         {
           name: 'placeholder',

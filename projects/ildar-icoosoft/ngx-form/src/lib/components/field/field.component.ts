@@ -25,6 +25,10 @@ export class FieldComponent {
     return getFieldDataOptionValue(fieldDataOptions, 'cssClass', '');
   }
 
+  isHidden(fieldData: DynamicField): boolean {
+    return fieldData.hidden || false;
+  }
+
   getFormGroupCssClass(fieldData: DynamicField): string {
     const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
 

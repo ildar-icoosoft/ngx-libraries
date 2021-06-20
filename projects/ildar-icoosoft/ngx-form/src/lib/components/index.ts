@@ -1,5 +1,6 @@
 export * from './dynamic-form/dynamic-form.component';
 export * from './fieldset/fieldset.component';
+export * from './field/field.component';
 export * from './form-validation-errors/form-validation-errors.component';
 export * from './html/html.component';
 export * from './input/input.component';

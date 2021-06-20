@@ -6,13 +6,9 @@ import {
   NG_VALUE_ACCESSOR,
   ValidatorFn,
 } from '@angular/forms';
-import { DynamicField, NgxFormModuleConfig, DynamicFieldOption } from '../../types';
+import { DynamicField, NgxFormModuleConfig } from '../../types';
 import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
-import {
-  getFieldDataOptionValue,
-  getFieldValidators,
-  needToShowLabelOutside,
-} from '../../utils/dynamic-form';
+import { getFieldValidators } from '../../utils/dynamic-form';
 
 @Component({
   selector: 'ii-fieldset',
@@ -46,16 +42,6 @@ export class FieldsetComponent implements OnInit, ControlValueAccessor {
     this.group.valueChanges.subscribe((val) => {
       this.propagateChange(val);
     });
-  }
-
-  getLabelCssClass(fieldData: DynamicField): string {
-    const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
-
-    return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');
-  }
-
-  needToShowLabelOutside(fieldData: DynamicField): boolean {
-    return needToShowLabelOutside(fieldData, this.config);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

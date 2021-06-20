@@ -15,17 +15,11 @@ import { UnsubscribeService } from 'ii-ngx-common';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
 import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
-import {
-  getFieldDataOptionValue,
-  getFieldValidators,
-  getGroupValidators,
-  needToShowLabelOutside,
-} from '../../utils/dynamic-form';
+import { getFieldValidators, getGroupValidators } from '../../utils/dynamic-form';
 import { markAllFormControlsAsTouched, setFormErrors } from '../../utils/error';
 import {
   ControlChangeData,
   DynamicField,
-  DynamicFieldOption,
   DynamicForm,
   DynamicFormButton,
   FormError,
@@ -142,28 +136,6 @@ export class DynamicFormComponent implements DynamicFormComponentType, OnInit, A
     }
 
     return connectFieldDirective.component.instance;
-  }
-
-  getCssClass(fieldData: DynamicField): string {
-    const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
-
-    return getFieldDataOptionValue(fieldDataOptions, 'cssClass', '');
-  }
-
-  getFormGroupCssClass(fieldData: DynamicField): string {
-    const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
-
-    return getFieldDataOptionValue(fieldDataOptions, 'formGroupCssClass', '');
-  }
-
-  getLabelCssClass(fieldData: DynamicField): string {
-    const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
-
-    return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');
-  }
-
-  needToShowLabelOutside(fieldData: DynamicField): boolean {
-    return needToShowLabelOutside(fieldData, this.config);
   }
 
   onButtonClick(button: DynamicFormButton, event: Event): void {

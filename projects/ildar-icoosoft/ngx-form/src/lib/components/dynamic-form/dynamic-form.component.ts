@@ -12,7 +12,13 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { UnsubscribeService } from 'ii-ngx-common';
-import { AbstractControl, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  FormControl,
+  FormGroup,
+  ValidatorFn,
+} from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
 import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
 import { getFieldValidators, getGroupValidators } from '../../utils/dynamic-form';
@@ -26,8 +32,10 @@ import {
   FormSubmitEvent,
   NgxFormModuleConfig,
 } from '../../types';
-import { DynamicFieldDirective } from '../../directives';
 import { DynamicFormComponentType } from '../../types/dynamic-form-component-type';
+// короткий путь .. использовать нельзя, т.к. возникает циклическая зависимость
+import { FieldComponent } from '../field/field.component';
+import { FieldComponentType } from '../../types/field-component-type';
 
 @Component({
   selector: 'ii-dynamic-form',
@@ -64,7 +72,7 @@ export class DynamicFormComponent implements DynamicFormComponentType, OnInit, A
 
   isSubmitting = false;
 
-  @ViewChildren(DynamicFieldDirective) dynamicComponents!: QueryList<DynamicFieldDirective>;
+  @ViewChildren(FieldComponent) fieldComponents!: QueryList<FieldComponent>;
 
   constructor(
     @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig,
@@ -127,15 +135,19 @@ export class DynamicFormComponent implements DynamicFormComponentType, OnInit, A
     return this.group.controls[name];
   }
 
-  getFormElement(name: string): any {
-    const arr = this.dynamicComponents.toArray();
+  getFormElement(name: string): Component & ControlValueAccessor {
+    return this.getField(name).getFormElement();
+  }
 
-    const connectFieldDirective = arr.find((item) => item.fieldData.name === name);
-    if (!connectFieldDirective) {
-      throw Error(`component ${name} not found`);
+  getField(name: string): FieldComponentType {
+    const arr = this.fieldComponents.toArray();
+
+    const fieldComponent = arr.find((item) => item.fieldData.name === name);
+    if (!fieldComponent) {
+      throw Error(`field ${name} not found`);
     }
 
-    return connectFieldDirective.component.instance;
+    return fieldComponent;
   }
 
   onButtonClick(button: DynamicFormButton, event: Event): void {

@@ -11,7 +11,13 @@ import {
   forwardRef,
   AfterViewInit,
 } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  AbstractControl,
+  ControlContainer,
+  ControlValueAccessor,
+  FormControl,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 import { DynamicField, DynamicFieldOption, NgxFormModuleConfig } from '../../types';
 import { getFieldDataOptionValue, needToShowLabelOutside } from '../../utils/dynamic-form';
 import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
@@ -34,7 +40,20 @@ import { FieldComponentType } from '../../types/field-component-type';
 export class FieldComponent implements AfterViewInit, ControlValueAccessor, FieldComponentType {
   @Input() fieldData!: DynamicField;
 
-  @Input() control!: AbstractControl;
+  @Input() formControl?: FormControl;
+
+  @Input() formControlName?: string;
+
+  // @see https://stackoverflow.com/a/64493999/1740116
+  get control(): FormControl {
+    if (this.formControl) {
+      return this.formControl;
+    }
+
+    return (this.controlContainer.control as AbstractControl).get(
+      this.formControlName as string,
+    ) as FormControl;
+  }
 
   @Input() index = 0;
 
@@ -49,6 +68,7 @@ export class FieldComponent implements AfterViewInit, ControlValueAccessor, Fiel
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig,
+    private controlContainer: ControlContainer,
   ) {}
 
   ngAfterViewInit(): void {

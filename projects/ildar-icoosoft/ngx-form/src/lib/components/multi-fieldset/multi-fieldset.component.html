@@ -3,7 +3,7 @@
     <ii-field
       *ngFor="let fieldData of items;"
       [fieldData]="fieldData"
-      [control]="groupItem.controls[fieldData.name]"
+      [formControl]="groupItem.controls[fieldData.name]"
       [index]="i"
     ></ii-field>
     <button (click)="removeItem(i)" [class]="removeButtonCssClass">{{removeButtonText}}</button>

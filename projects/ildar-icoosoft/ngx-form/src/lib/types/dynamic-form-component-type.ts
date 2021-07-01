@@ -4,11 +4,16 @@ import { FieldComponentType } from './field-component-type';
 
 export interface DynamicFormComponentType extends Component {
   getGroup(): FormGroup;
-  getRawValues(): any;
-  getValues(): any;
+
+  getRawValues(): unknown;
+
+  getValues(): unknown;
+
   getFormControl(name: string): AbstractControl;
-  getFormElement(name: string): Component;
+
   getField(name: string): FieldComponentType;
-  setValues(values: Record<string, any>): void;
-  patchValues(values: Record<string, any>): void;
+
+  setValues(values: Record<string, unknown>): void;
+
+  patchValues(values: Record<string, unknown>): void;
 }

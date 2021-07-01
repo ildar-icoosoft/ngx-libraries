@@ -20,8 +20,14 @@
       "dom"
     ],
     "paths": {
-      "ii-ngx-common": ["projects/ildar-icoosoft/ngx-common/src/public-api"],
-      "ii-ngx-form": ["projects/ildar-icoosoft/ngx-form/src/public-api"]
+      "ii-ngx-common": [
+        "projects/ildar-icoosoft/ngx-common/dist/ii-ngx-common",
+        "projects/ildar-icoosoft/ngx-common/dist"
+      ],
+      "ii-ngx-form": [
+        "projects/ildar-icoosoft/ngx-form/dist/ii-ngx-form",
+        "projects/ildar-icoosoft/ngx-form/dist"
+      ]
     }
   },
   "angularCompilerOptions": {

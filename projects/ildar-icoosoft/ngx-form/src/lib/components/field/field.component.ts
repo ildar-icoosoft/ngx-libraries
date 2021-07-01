@@ -22,6 +22,8 @@ import { DynamicField, DynamicFieldOption, NgxFormModuleConfig } from '../../typ
 import { getFieldDataOptionValue, needToShowLabelOutside } from '../../utils/dynamic-form';
 import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
 import { FieldComponentType } from '../../types/field-component-type';
+// eslint-disable-next-line import/no-cycle
+import { FieldsetComponent } from '../fieldset/fieldset.component';
 
 @Component({
   selector: 'ii-field',
@@ -113,6 +115,16 @@ export class FieldComponent implements AfterViewInit, ControlValueAccessor, Fiel
     const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
 
     return getFieldDataOptionValue(fieldDataOptions, 'cssClass', '');
+  }
+
+  getFieldsetItem(name: string): FieldComponentType {
+    if (this.fieldData.type !== 'fieldset') {
+      throw Error(`getFieldsetItem is allowed only for fieldset component`);
+    }
+
+    const formElement = this.getFormElement() as FieldsetComponent;
+
+    return formElement.getFieldsetItem(name);
   }
 
   isHidden(fieldData: DynamicField): boolean {

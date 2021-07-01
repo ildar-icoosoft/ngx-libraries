@@ -79,6 +79,17 @@ export const DynamicForm = () => ({
 });
 DynamicForm.storyName = '<ii-dynamic-form>';
 
+export const DynamicFormDemo = () => ({
+  component: DynamicFormComponent,
+  props: {
+    formData: dynamicFormData,
+    initialValues: {},
+    submitForm: handleSubmit,
+    groupChange: handleChange,
+  },
+});
+DynamicFormDemo.storyName = '<dynamic-form-demo>';
+
 export const InputText = () => ({
   component: InputComponent,
   props: {

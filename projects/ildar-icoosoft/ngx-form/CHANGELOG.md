@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.9.0...v1.10.0) (2021-07-01)
+
+
+### Features
+
+* NGXFORM-9 Добавить в FieldComponent метод для скрытия, показа поля ([#40](https://github.com/ildar-icoosoft/ngx-libraries/issues/40)) ([13cdb26](https://github.com/ildar-icoosoft/ngx-libraries/commit/13cdb26434a9a3295613a7dc32e7b7b62be115f3))
+
+
+
+
+
 # [1.9.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.8.0...v1.9.0) (2021-07-01)
 
 

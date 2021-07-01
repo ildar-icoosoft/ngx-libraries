@@ -31,6 +31,10 @@ export class TextareaComponent implements ControlValueAccessor {
 
   propagateTouch = () => {};
 
+  log() {
+    console.log('TextareaComponent');
+  }
+
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
   }

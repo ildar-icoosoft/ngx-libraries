@@ -1,9 +1,20 @@
-import { Component, ChangeDetectionStrategy, Input, Inject, ViewChild } from '@angular/core';
-import { AbstractControl, ControlValueAccessor } from '@angular/forms';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  Inject,
+  ViewChild,
+  ComponentFactoryResolver,
+  ViewContainerRef,
+  ComponentFactory,
+  ComponentRef,
+  forwardRef,
+  AfterViewInit,
+} from '@angular/core';
+import { AbstractControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DynamicField, DynamicFieldOption, NgxFormModuleConfig } from '../../types';
 import { getFieldDataOptionValue, needToShowLabelOutside } from '../../utils/dynamic-form';
 import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
-import { DynamicFieldDirective } from '../../directives';
 import { FieldComponentType } from '../../types/field-component-type';
 
 @Component({
@@ -11,17 +22,78 @@ import { FieldComponentType } from '../../types/field-component-type';
   templateUrl: './field.component.html',
   styleUrls: ['./field.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
+      useExisting: forwardRef(() => FieldComponent),
+      multi: true,
+    },
+  ],
 })
-export class FieldComponent implements FieldComponentType {
+export class FieldComponent implements AfterViewInit, ControlValueAccessor, FieldComponentType {
   @Input() fieldData!: DynamicField;
 
   @Input() control!: AbstractControl;
 
   @Input() index = 0;
 
-  @ViewChild(DynamicFieldDirective) dynamicField!: DynamicFieldDirective;
+  @ViewChild('inputEl', { read: ViewContainerRef }) inputRef!: ViewContainerRef;
 
-  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}
+  private component!: ComponentRef<Component & ControlValueAccessor>;
+
+  private controlOnChangeFn = () => {};
+
+  private controlOnTouchedFn = () => {};
+
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig,
+  ) {}
+
+  log() {
+    console.log('FieldComponent');
+  }
+
+  ngAfterViewInit(): void {
+    const { fieldData, index } = this;
+
+    const itemConfig = this.config.fields[fieldData.type];
+
+    if (!itemConfig) {
+      const supportedTypes: string = Object.keys(this.config.fields).join(', ');
+      throw Error(
+        `Trying to use an unsupported type (${fieldData.type}).
+        Supported types: ${supportedTypes}`,
+      );
+    }
+
+    const componentFactory: ComponentFactory<ControlValueAccessor> = this.componentFactoryResolver.resolveComponentFactory(
+      itemConfig.component,
+    );
+
+    this.component = this.inputRef.createComponent(componentFactory);
+
+    console.log('this.component2', this.component);
+
+    const props: Record<string, any> = {};
+
+    props.inputId = `${fieldData.name}_${index}`;
+
+    if (itemConfig.props) {
+      Object.assign(props, itemConfig.props);
+    }
+    if (itemConfig.mapConnectDataToProps) {
+      Object.assign(props, itemConfig.mapConnectDataToProps(fieldData));
+    }
+
+    Object.assign(this.component.instance, props);
+
+    this.component.instance.registerOnChange(this.controlOnChangeFn);
+    this.component.instance.registerOnTouched(this.controlOnTouchedFn);
+
+    this.component.changeDetectorRef.detectChanges();
+  }
 
   getCssClass(fieldData: DynamicField): string {
     const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
@@ -50,6 +122,30 @@ export class FieldComponent implements FieldComponentType {
   }
 
   getFormElement(): Component & ControlValueAccessor {
-    return this.dynamicField.component.instance;
+    return this.component.instance;
+  }
+
+  registerOnChange(fn: any): void {
+    this.controlOnChangeFn = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.controlOnTouchedFn = fn;
+  }
+
+  writeValue(value: string | undefined): void {
+    if (!this.component || !this.component.instance) {
+      return;
+    }
+    this.component.instance.writeValue(value);
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    if (!this.component || !this.component.instance) {
+      return;
+    }
+    if (this.component.instance.setDisabledState) {
+      this.component.instance.setDisabledState(isDisabled);
+    }
   }
 }

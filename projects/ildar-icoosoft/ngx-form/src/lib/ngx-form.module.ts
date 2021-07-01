@@ -21,7 +21,6 @@ import {
   ValidationControlComponent,
 } from './components';
 import { ValidationMessagePipe } from './pipes';
-import { DynamicFieldDirective } from './directives';
 import { NgxFormModuleConfig } from './types';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { MatSelectComponent } from './components/mat-select/mat-select.component';
@@ -35,7 +34,6 @@ import { FieldComponent } from './components/field/field.component';
     ValidationControlComponent,
     ValidationMessagePipe,
     DynamicFormComponent,
-    DynamicFieldDirective,
     InputComponent,
     TextareaComponent,
     SelectComponent,
@@ -79,7 +77,6 @@ import { FieldComponent } from './components/field/field.component';
     ValidationControlComponent,
     ValidationMessagePipe,
     DynamicFormComponent,
-    DynamicFieldDirective,
     InputComponent,
     TextareaComponent,
     SelectComponent,

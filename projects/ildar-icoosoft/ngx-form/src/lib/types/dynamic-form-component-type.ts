@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, FormGroup } from '@angular/forms';
 import { FieldComponentType } from './field-component-type';
 
 export interface DynamicFormComponentType extends Component {
+  getFormElement(name: string): Component & ControlValueAccessor;
+
   getGroup(): FormGroup;
 
   getRawValues(): unknown;

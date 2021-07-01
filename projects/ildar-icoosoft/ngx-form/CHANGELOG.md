@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.8.0...v1.9.0) (2021-07-01)
+
+
+### Features
+
+* NGXFORM-5 Добавить возможность скрывать/показывать контролы ([#37](https://github.com/ildar-icoosoft/ngx-libraries/issues/37)) ([5b331d8](https://github.com/ildar-icoosoft/ngx-libraries/commit/5b331d8a4660d74328624a265bb583be58dab55c))
+* NGXFORM-6 Создать компонент field ([#35](https://github.com/ildar-icoosoft/ngx-libraries/issues/35)) ([7120b5f](https://github.com/ildar-icoosoft/ngx-libraries/commit/7120b5f5fff53d7f5bf9b32e4d0ca5938c6ab2ed))
+* NGXFORM-6 Создать компонент field ([#36](https://github.com/ildar-icoosoft/ngx-libraries/issues/36)) ([84b880a](https://github.com/ildar-icoosoft/ngx-libraries/commit/84b880a1cf93079aabe3d2766d6d21534c08cab2))
+* NGXFORM-8 Добавить в интерфейс FieldComponentType методы getCssClass, isHidden, getFormGroupCssClass, getLabelCssClass, needToShowLabelOutside ([#38](https://github.com/ildar-icoosoft/ngx-libraries/issues/38)) ([bbda1bc](https://github.com/ildar-icoosoft/ngx-libraries/commit/bbda1bc374094c7aa3fb359685db0d31b12bfcd5))
+
+
+
+
+
 # [1.8.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.7.33...v1.8.0) (2021-06-19)
 
 

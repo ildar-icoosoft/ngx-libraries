@@ -44,6 +44,10 @@ export class FieldComponent implements AfterViewInit, ControlValueAccessor, Fiel
 
   @Input() formControlName?: string;
 
+  @Input() index = 0;
+
+  @ViewChild('inputEl', { read: ViewContainerRef }) inputRef!: ViewContainerRef;
+
   // @see https://stackoverflow.com/a/64493999/1740116
   get control(): FormControl {
     if (this.formControl) {
@@ -54,10 +58,6 @@ export class FieldComponent implements AfterViewInit, ControlValueAccessor, Fiel
       this.formControlName as string,
     ) as FormControl;
   }
-
-  @Input() index = 0;
-
-  @ViewChild('inputEl', { read: ViewContainerRef }) inputRef!: ViewContainerRef;
 
   private component!: ComponentRef<Component & ControlValueAccessor>;
 

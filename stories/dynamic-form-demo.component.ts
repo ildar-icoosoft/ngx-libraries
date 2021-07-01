@@ -1,5 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { DynamicForm, DynamicFormComponent } from 'ii-ngx-form';
+import { DynamicFormComponent } from 'ii-ngx-form/src/lib/components';
+import { DynamicForm } from 'ii-ngx-form/src/lib/types';
 import { dynamicFormData } from '../data-sample/dynamic-form';
 
 @Component({
@@ -20,7 +21,10 @@ export class DynamicFormDemoComponent {
   //     const el = this.dynamicForm.getFormElement('fieldset');
   //     const field = this.dynamicForm.getField('fieldset');
   //     const fieldsetItem = field.getFieldsetItem('fieldsetText2');
-  //     debugger;
+  //
+  //     fieldsetItem.toggle();
+  //
+  //     this.dynamicForm.getField('hiddenText').show();
   //   }, 5000);
   // }
 }

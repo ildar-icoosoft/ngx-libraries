@@ -1,19 +1,16 @@
 import { Component } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
-import { DynamicField } from './dynamic-field';
 
 export interface FieldComponentType extends Component {
   getFormElement(): Component & ControlValueAccessor;
 
-  getCssClass(fieldData: DynamicField): string;
+  readonly hidden: boolean;
 
-  isHidden(fieldData: DynamicField): boolean;
+  toggle(): void;
+
+  hide(): void;
+
+  show(): void;
 
   getFieldsetItem(name: string): FieldComponentType;
-
-  getFormGroupCssClass(fieldData: DynamicField): string;
-
-  getLabelCssClass(fieldData: DynamicField): string;
-
-  needToShowLabelOutside(fieldData: DynamicField): boolean;
 }

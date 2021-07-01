@@ -70,8 +70,6 @@ export class FieldComponent implements AfterViewInit, ControlValueAccessor, Fiel
 
     this.component = this.inputRef.createComponent(componentFactory);
 
-    console.log('this.component2', this.component);
-
     const props: Record<string, any> = {};
 
     props.inputId = `${fieldData.name}_${index}`;

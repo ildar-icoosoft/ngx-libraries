@@ -3,11 +3,12 @@
 
   <div class="container">
     <div class="row">
-      <ii-field
-        *ngFor="let fieldData of formData.items;"
-        [fieldData]="fieldData"
-        [control]="group.controls[fieldData.name]"
-      ></ii-field>
+      <ng-container *ngFor="let fieldData of formData.items">
+        <ii-field
+          [fieldData]="fieldData"
+          [formControl]="group.controls[fieldData.name]"
+        ></ii-field>
+      </ng-container>
     </div>
 
     <div class="row" *ngIf="showButtons">
@@ -24,4 +25,3 @@
     </div>
   </div>
 </form>
-

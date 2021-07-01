@@ -9,6 +9,8 @@ export interface FieldComponentType extends Component {
 
   isHidden(fieldData: DynamicField): boolean;
 
+  getFieldsetItem(name: string): FieldComponentType;
+
   getFormGroupCssClass(fieldData: DynamicField): string;
 
   getLabelCssClass(fieldData: DynamicField): string;

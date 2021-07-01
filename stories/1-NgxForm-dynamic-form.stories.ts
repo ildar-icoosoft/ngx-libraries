@@ -15,6 +15,7 @@ import { CheckboxComponent } from 'ii-ngx-form/src/lib/components/checkbox/check
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SortableMultiselectComponent } from 'ii-ngx-form/src/lib/components/sortable-multiselect/sortable-multiselect.component';
 import { dynamicFormData } from '../data-sample/dynamic-form';
+import { DynamicFormDemoComponent } from './dynamic-form-demo.component';
 
 const handleSubmit = (data: FormSubmitEvent) => {
   action('button-click');
@@ -78,6 +79,17 @@ export const DynamicForm = () => ({
   },
 });
 DynamicForm.storyName = '<ii-dynamic-form>';
+
+export const DynamicFormDemo = () => ({
+  component: DynamicFormDemoComponent,
+  props: {
+    formData: dynamicFormData,
+    initialValues: {},
+    submitForm: handleSubmit,
+    groupChange: handleChange,
+  },
+});
+DynamicFormDemo.storyName = '<dynamic-form-demo>';
 
 export const InputText = () => ({
   component: InputComponent,

@@ -1,32 +1,130 @@
-import { Component, ChangeDetectionStrategy, Input, Inject, ViewChild } from '@angular/core';
-import { AbstractControl, ControlValueAccessor } from '@angular/forms';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  Inject,
+  ViewChild,
+  ComponentFactoryResolver,
+  ViewContainerRef,
+  ComponentFactory,
+  ComponentRef,
+  forwardRef,
+  AfterViewInit,
+} from '@angular/core';
+import {
+  AbstractControl,
+  ControlContainer,
+  ControlValueAccessor,
+  FormControl,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 import { DynamicField, DynamicFieldOption, NgxFormModuleConfig } from '../../types';
 import { getFieldDataOptionValue, needToShowLabelOutside } from '../../utils/dynamic-form';
 import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
-import { DynamicFieldDirective } from '../../directives';
 import { FieldComponentType } from '../../types/field-component-type';
+// eslint-disable-next-line import/no-cycle
+import { FieldsetComponent } from '../fieldset/fieldset.component';
 
 @Component({
   selector: 'ii-field',
   templateUrl: './field.component.html',
   styleUrls: ['./field.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
+      useExisting: forwardRef(() => FieldComponent),
+      multi: true,
+    },
+  ],
 })
-export class FieldComponent implements FieldComponentType {
+export class FieldComponent implements AfterViewInit, ControlValueAccessor, FieldComponentType {
   @Input() fieldData!: DynamicField;
 
-  @Input() control!: AbstractControl;
+  @Input() formControl?: FormControl;
+
+  @Input() formControlName?: string;
 
   @Input() index = 0;
 
-  @ViewChild(DynamicFieldDirective) dynamicField!: DynamicFieldDirective;
+  @ViewChild('inputEl', { read: ViewContainerRef }) inputRef!: ViewContainerRef;
 
-  constructor(@Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig) {}
+  // @see https://stackoverflow.com/a/64493999/1740116
+  get control(): FormControl {
+    if (this.formControl) {
+      return this.formControl;
+    }
+
+    return (this.controlContainer.control as AbstractControl).get(
+      this.formControlName as string,
+    ) as FormControl;
+  }
+
+  private component!: ComponentRef<Component & ControlValueAccessor>;
+
+  private controlOnChangeFn = () => {};
+
+  private controlOnTouchedFn = () => {};
+
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig,
+    private controlContainer: ControlContainer,
+  ) {}
+
+  ngAfterViewInit(): void {
+    const { fieldData, index } = this;
+
+    const itemConfig = this.config.fields[fieldData.type];
+
+    if (!itemConfig) {
+      const supportedTypes: string = Object.keys(this.config.fields).join(', ');
+      throw Error(
+        `Trying to use an unsupported type (${fieldData.type}).
+        Supported types: ${supportedTypes}`,
+      );
+    }
+
+    const componentFactory: ComponentFactory<ControlValueAccessor> = this.componentFactoryResolver.resolveComponentFactory(
+      itemConfig.component,
+    );
+
+    this.component = this.inputRef.createComponent(componentFactory);
+
+    const props: Record<string, any> = {};
+
+    props.inputId = `${fieldData.name}_${index}`;
+
+    if (itemConfig.props) {
+      Object.assign(props, itemConfig.props);
+    }
+    if (itemConfig.mapConnectDataToProps) {
+      Object.assign(props, itemConfig.mapConnectDataToProps(fieldData));
+    }
+
+    Object.assign(this.component.instance, props);
+
+    this.component.instance.registerOnChange(this.controlOnChangeFn);
+    this.component.instance.registerOnTouched(this.controlOnTouchedFn);
+
+    this.component.changeDetectorRef.detectChanges();
+  }
 
   getCssClass(fieldData: DynamicField): string {
     const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
 
     return getFieldDataOptionValue(fieldDataOptions, 'cssClass', '');
+  }
+
+  getFieldsetItem(name: string): FieldComponentType {
+    if (this.fieldData.type !== 'fieldset') {
+      throw Error(`getFieldsetItem is allowed only for fieldset component`);
+    }
+
+    const formElement = this.getFormElement() as FieldsetComponent;
+
+    return formElement.getFieldsetItem(name);
   }
 
   isHidden(fieldData: DynamicField): boolean {
@@ -50,6 +148,30 @@ export class FieldComponent implements FieldComponentType {
   }
 
   getFormElement(): Component & ControlValueAccessor {
-    return this.dynamicField.component.instance;
+    return this.component.instance;
+  }
+
+  registerOnChange(fn: any): void {
+    this.controlOnChangeFn = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.controlOnTouchedFn = fn;
+  }
+
+  writeValue(value: string | undefined): void {
+    if (!this.component || !this.component.instance) {
+      return;
+    }
+    this.component.instance.writeValue(value);
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    if (!this.component || !this.component.instance) {
+      return;
+    }
+    if (this.component.instance.setDisabledState) {
+      this.component.instance.setDisabledState(isDisabled);
+    }
   }
 }

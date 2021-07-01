@@ -2,12 +2,7 @@
   <div [class]="'form-group ' + getFormGroupCssClass(fieldData)">
     <ii-validation-control [control]="control">
       <label [for]="fieldData.name  + '_' + index" *ngIf="needToShowLabelOutside(fieldData)" [innerHTML]="fieldData.label" [class]="getLabelCssClass(fieldData)"></label>
-      <ng-container
-        iiDynamicField
-        [inputId]="fieldData.name + '_' + index"
-        [formControl]="control"
-        [fieldData]="fieldData">
-      </ng-container>
+      <ng-container #inputEl></ng-container>
     </ii-validation-control>
   </div>
 </div>

@@ -1,4 +1,12 @@
-import { Component, forwardRef, Inject, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  forwardRef,
+  Inject,
+  Input,
+  OnInit,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
@@ -9,6 +17,10 @@ import {
 import { DynamicField, NgxFormModuleConfig } from '../../types';
 import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
 import { getFieldValidators } from '../../utils/dynamic-form';
+import { FieldsetComponentType } from '../../types/fieldset-component-type';
+import { FieldComponentType } from '../../types/field-component-type';
+// eslint-disable-next-line import/no-cycle
+import { FieldComponent } from '../field/field.component';
 
 @Component({
   selector: 'ii-fieldset',
@@ -23,8 +35,10 @@ import { getFieldValidators } from '../../utils/dynamic-form';
     },
   ],
 })
-export class FieldsetComponent implements OnInit, ControlValueAccessor {
+export class FieldsetComponent implements FieldsetComponentType, OnInit, ControlValueAccessor {
   @Input() items: DynamicField[] = [];
+
+  @ViewChildren(FieldComponent) fieldComponents!: QueryList<FieldComponent>;
 
   group!: FormGroup;
 
@@ -42,6 +56,17 @@ export class FieldsetComponent implements OnInit, ControlValueAccessor {
     this.group.valueChanges.subscribe((val) => {
       this.propagateChange(val);
     });
+  }
+
+  getFieldsetItem(name: string): FieldComponentType {
+    const arr = this.fieldComponents.toArray();
+
+    const fieldComponent = arr.find((item) => item.fieldData.name === name);
+    if (!fieldComponent) {
+      throw Error(`field ${name} not found`);
+    }
+
+    return fieldComponent;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

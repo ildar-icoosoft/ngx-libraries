@@ -2,6 +2,6 @@
   <ii-field
     *ngFor="let fieldData of items"
     [fieldData]="fieldData"
-    [control]="group.controls[fieldData.name]"
+    [formControl]="group.controls[fieldData.name]"
   ></ii-field>
 </fieldset>

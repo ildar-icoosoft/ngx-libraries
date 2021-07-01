@@ -9,6 +9,50 @@ export const dynamicFormData: DynamicForm = {
   ],
   items: [
     {
+      label: 'Fieldset',
+      name: 'fieldset',
+      type: 'fieldset',
+      validators: [],
+      options: [
+        {
+          name: 'htmlOptions',
+          value: '[{"name":"cssClass","value":"col-lg-12"}]',
+        },
+        {
+          name: 'formGroupCssClass',
+          value: 'fieldset-wrapper',
+        },
+      ],
+      items: [
+        {
+          label: 'Text 1',
+          name: 'fieldsetText1',
+          type: 'text',
+          validators: [{ name: 'required', options: [] }],
+          options: [
+            {
+              name: 'placeholder',
+              value: 'Text 1',
+            },
+          ],
+          items: [],
+        },
+        {
+          label: 'Text 2',
+          name: 'fieldsetText2',
+          type: 'text',
+          validators: [],
+          options: [
+            {
+              name: 'placeholder',
+              value: 'Text 2',
+            },
+          ],
+          items: [],
+        },
+      ],
+    },
+    {
       label: 'Custom HTML',
       name: 'html',
       type: 'html',
@@ -300,50 +344,6 @@ export const dynamicFormData: DynamicForm = {
         },
       ],
       items: [],
-    },
-    {
-      label: 'Fieldset',
-      name: 'fieldset',
-      type: 'fieldset',
-      validators: [],
-      options: [
-        {
-          name: 'htmlOptions',
-          value: '[{"name":"cssClass","value":"col-lg-12"}]',
-        },
-        {
-          name: 'formGroupCssClass',
-          value: 'fieldset-wrapper',
-        },
-      ],
-      items: [
-        {
-          label: 'Text',
-          name: 'Text2',
-          type: 'text',
-          validators: [],
-          options: [
-            {
-              name: 'placeholder',
-              value: 'Text',
-            },
-          ],
-          items: [],
-        },
-        {
-          label: 'Text',
-          name: 'text3',
-          type: 'text',
-          validators: [],
-          options: [
-            {
-              name: 'placeholder',
-              value: 'Text 2',
-            },
-          ],
-          items: [],
-        },
-      ],
     },
     {
       label: 'Multi Fieldset',

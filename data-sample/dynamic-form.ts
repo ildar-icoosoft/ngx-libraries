@@ -66,8 +66,8 @@ export const dynamicFormData: DynamicForm = {
       items: [],
     },
     {
-      label: 'Text <span class="required-sign">(*)</span>',
-      name: 'text',
+      label: 'Hidden Text <span class="required-sign">(*)</span>',
+      name: 'hiddenText',
       type: 'text',
       validators: [{ name: 'required', options: [] }],
       hidden: true,

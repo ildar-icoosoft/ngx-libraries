@@ -1,7 +1,7 @@
-<div [class]="getCssClass(fieldData)" [hidden]="isHidden(fieldData)">
-  <div [class]="'form-group ' + getFormGroupCssClass(fieldData)">
+<div [class]="getCssClass()" [hidden]="hidden">
+  <div [class]="'form-group ' + getFormGroupCssClass()">
     <ii-validation-control [control]="control">
-      <label [for]="fieldData.name  + '_' + index" *ngIf="needToShowLabelOutside(fieldData)" [innerHTML]="fieldData.label" [class]="getLabelCssClass(fieldData)"></label>
+      <label [for]="fieldData.name  + '_' + index" *ngIf="needToShowLabelOutside()" [innerHTML]="fieldData.label" [class]="getLabelCssClass()"></label>
       <ng-container #inputEl></ng-container>
     </ii-validation-control>
   </div>

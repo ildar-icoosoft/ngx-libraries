@@ -10,6 +10,8 @@ import {
   ComponentRef,
   forwardRef,
   AfterViewInit,
+  OnInit,
+  ChangeDetectorRef,
 } from '@angular/core';
 import {
   AbstractControl,
@@ -39,7 +41,8 @@ import { FieldsetComponent } from '../fieldset/fieldset.component';
     },
   ],
 })
-export class FieldComponent implements AfterViewInit, ControlValueAccessor, FieldComponentType {
+export class FieldComponent
+  implements AfterViewInit, OnInit, ControlValueAccessor, FieldComponentType {
   @Input() fieldData!: DynamicField;
 
   @Input() formControl?: FormControl;
@@ -49,6 +52,8 @@ export class FieldComponent implements AfterViewInit, ControlValueAccessor, Fiel
   @Input() index = 0;
 
   @ViewChild('inputEl', { read: ViewContainerRef }) inputRef!: ViewContainerRef;
+
+  readonly hidden!: boolean;
 
   // @see https://stackoverflow.com/a/64493999/1740116
   get control(): FormControl {
@@ -71,6 +76,7 @@ export class FieldComponent implements AfterViewInit, ControlValueAccessor, Fiel
     private componentFactoryResolver: ComponentFactoryResolver,
     @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig,
     private controlContainer: ControlContainer,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngAfterViewInit(): void {
@@ -111,8 +117,12 @@ export class FieldComponent implements AfterViewInit, ControlValueAccessor, Fiel
     this.component.changeDetectorRef.detectChanges();
   }
 
-  getCssClass(fieldData: DynamicField): string {
-    const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
+  ngOnInit(): void {
+    (this as { hidden: boolean }).hidden = this.fieldData.hidden || false;
+  }
+
+  getCssClass(): string {
+    const fieldDataOptions: DynamicFieldOption[] = this.fieldData.options || [];
 
     return getFieldDataOptionValue(fieldDataOptions, 'cssClass', '');
   }
@@ -127,24 +137,35 @@ export class FieldComponent implements AfterViewInit, ControlValueAccessor, Fiel
     return formElement.getFieldsetItem(name);
   }
 
-  isHidden(fieldData: DynamicField): boolean {
-    return fieldData.hidden || false;
+  hide(): void {
+    (this as { hidden: boolean }).hidden = true;
+    this.cdr.markForCheck();
   }
 
-  getFormGroupCssClass(fieldData: DynamicField): string {
-    const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
+  show(): void {
+    (this as { hidden: boolean }).hidden = false;
+    this.cdr.markForCheck();
+  }
+
+  toggle(): void {
+    (this as { hidden: boolean }).hidden = !this.hidden;
+    this.cdr.markForCheck();
+  }
+
+  getFormGroupCssClass(): string {
+    const fieldDataOptions: DynamicFieldOption[] = this.fieldData.options || [];
 
     return getFieldDataOptionValue(fieldDataOptions, 'formGroupCssClass', '');
   }
 
-  getLabelCssClass(fieldData: DynamicField): string {
-    const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
+  getLabelCssClass(): string {
+    const fieldDataOptions: DynamicFieldOption[] = this.fieldData.options || [];
 
     return getFieldDataOptionValue(fieldDataOptions, 'labelCssClass', '');
   }
 
-  needToShowLabelOutside(fieldData: DynamicField): boolean {
-    return needToShowLabelOutside(fieldData, this.config);
+  needToShowLabelOutside(): boolean {
+    return needToShowLabelOutside(this.fieldData, this.config);
   }
 
   getFormElement(): Component & ControlValueAccessor {

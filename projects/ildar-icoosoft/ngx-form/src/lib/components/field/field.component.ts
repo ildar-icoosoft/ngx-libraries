@@ -51,10 +51,6 @@ export class FieldComponent implements AfterViewInit, ControlValueAccessor, Fiel
     @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig,
   ) {}
 
-  log() {
-    console.log('FieldComponent');
-  }
-
   ngAfterViewInit(): void {
     const { fieldData, index } = this;
 

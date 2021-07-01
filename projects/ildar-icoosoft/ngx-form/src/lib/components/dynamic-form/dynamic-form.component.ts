@@ -80,10 +80,6 @@ export class DynamicFormComponent implements DynamicFormComponentType, OnInit, A
     private changeDetectorRef: ChangeDetectorRef,
   ) {}
 
-  log() {
-    console.log('DynamicFormComponent');
-  }
-
   ngAfterViewInit(): void {
     this.loadForm.emit(this);
   }

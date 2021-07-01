@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { DynamicForm } from 'ii-ngx-form/src/lib/types';
+import { Component, Input, ViewChild } from '@angular/core';
+import { DynamicForm, DynamicFormComponent } from 'ii-ngx-form';
 import { dynamicFormData } from '../data-sample/dynamic-form';
 
 @Component({
@@ -12,4 +12,15 @@ export class DynamicFormDemoComponent {
   @Input() formData: DynamicForm = dynamicFormData;
 
   @Input() initialValues = {};
+
+  @ViewChild(DynamicFormComponent) dynamicForm!: DynamicFormComponent;
+
+  // constructor() {
+  //   setTimeout(() => {
+  //     const el = this.dynamicForm.getFormElement('fieldset');
+  //     const field = this.dynamicForm.getField('fieldset');
+  //     const fieldsetItem = field.getFieldsetItem('fieldsetText2');
+  //     debugger;
+  //   }, 5000);
+  // }
 }

@@ -20,6 +20,9 @@ import {
   FormControl,
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
+import { ReplaySubject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { UnsubscribeService } from 'ii-ngx-common';
 import { DynamicField, DynamicFieldOption, NgxFormModuleConfig } from '../../types';
 import { getFieldDataOptionValue, needToShowLabelOutside } from '../../utils/dynamic-form';
 import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
@@ -39,6 +42,7 @@ import { FieldsetComponent } from '../fieldset/fieldset.component';
       useExisting: forwardRef(() => FieldComponent),
       multi: true,
     },
+    UnsubscribeService,
   ],
 })
 export class FieldComponent
@@ -54,6 +58,10 @@ export class FieldComponent
   @ViewChild('inputEl', { read: ViewContainerRef }) inputRef!: ViewContainerRef;
 
   readonly hidden!: boolean;
+
+  private writeValueSubject = new ReplaySubject<unknown>(1);
+
+  private setDisabledStateSubject = new ReplaySubject<boolean>(1);
 
   // @see https://stackoverflow.com/a/64493999/1740116
   get control(): FormControl {
@@ -77,6 +85,7 @@ export class FieldComponent
     @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig,
     private controlContainer: ControlContainer,
     private cdr: ChangeDetectorRef,
+    private ngUnsubscribe$: UnsubscribeService,
   ) {}
 
   ngAfterViewInit(): void {
@@ -113,6 +122,16 @@ export class FieldComponent
 
     this.component.instance.registerOnChange(this.controlOnChangeFn);
     this.component.instance.registerOnTouched(this.controlOnTouchedFn);
+
+    this.writeValueSubject
+      .pipe(takeUntil(this.ngUnsubscribe$))
+      .subscribe((value) => this.component.instance.writeValue(value));
+
+    this.setDisabledStateSubject.pipe(takeUntil(this.ngUnsubscribe$)).subscribe((isDisabled) => {
+      if (this.component.instance.setDisabledState) {
+        this.component.instance.setDisabledState(isDisabled);
+      }
+    });
 
     this.component.changeDetectorRef.detectChanges();
   }
@@ -181,18 +200,10 @@ export class FieldComponent
   }
 
   writeValue(value: string | undefined): void {
-    if (!this.component || !this.component.instance) {
-      return;
-    }
-    this.component.instance.writeValue(value);
+    this.writeValueSubject.next(value);
   }
 
   setDisabledState(isDisabled: boolean): void {
-    if (!this.component || !this.component.instance) {
-      return;
-    }
-    if (this.component.instance.setDisabledState) {
-      this.component.instance.setDisabledState(isDisabled);
-    }
+    this.setDisabledStateSubject.next(isDisabled);
   }
 }

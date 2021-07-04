@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.10.2...v1.11.0) (2021-07-04)
+
+
+### Features
+
+* NGXFORM-12 Добавить JSON schema validator ([#43](https://github.com/ildar-icoosoft/ngx-libraries/issues/43)) ([73a86a7](https://github.com/ildar-icoosoft/ngx-libraries/commit/73a86a7edf88e7005504c6005d46e8cf98a8e56c))
+
+
+
+
+
 ## [1.10.2](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.10.1...v1.10.2) (2021-07-02)
 
 

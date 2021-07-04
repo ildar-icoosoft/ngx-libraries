@@ -12,6 +12,7 @@
     "@ng-select/ng-select": "^6.0.0"
   },
   "dependencies": {
+    "ajv": "7.0.0",
     "ii-ngx-common": "^1.7.33",
     "ng-recaptcha": "^6.1.0",
     "tslib": "^2.0.0"

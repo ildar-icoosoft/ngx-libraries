@@ -1,5 +1,52 @@
 import { DynamicForm } from 'ii-ngx-form/src/lib/types';
 
+export const dynamicFormDataWithJsonSchemaValidator: DynamicForm = {
+  validators: [
+    {
+      name: 'jsonSchema',
+      options: [
+        {
+          type: 'object',
+          properties: {
+            fieldsetText1: { type: 'string' },
+            fieldsetText2: { type: 'string' },
+          },
+          required: ['fieldsetText1'],
+          additionalProperties: false,
+        },
+      ],
+    },
+  ],
+  items: [
+    {
+      label: 'Text 1',
+      name: 'fieldsetText1',
+      type: 'text',
+      validators: [],
+      options: [
+        {
+          name: 'placeholder',
+          value: 'Text 1',
+        },
+      ],
+      items: [],
+    },
+    {
+      label: 'Text 2',
+      name: 'fieldsetText2',
+      type: 'text',
+      validators: [],
+      options: [
+        {
+          name: 'placeholder',
+          value: 'Text 2',
+        },
+      ],
+      items: [],
+    },
+  ],
+};
+
 export const dynamicFormData: DynamicForm = {
   validators: [
     {

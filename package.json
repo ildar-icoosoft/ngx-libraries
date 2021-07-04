@@ -11,8 +11,7 @@
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook",
-    "prepublish": "lerna run build",
-    "prepare": "husky install"
+    "prepare": "lerna run build && husky install"
   },
   "private": true,
   "workspaces": [

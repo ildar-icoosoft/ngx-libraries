@@ -17,6 +17,7 @@ import { SortableMultiselectComponent } from 'ii-ngx-form/src/lib/components/sor
 import {
   dynamicFormData,
   dynamicFormDataWithJsonSchemaValidator,
+  dynamicFormDemoWithDependencies,
 } from '../data-sample/dynamic-form';
 import { DynamicFormDemoComponent } from './dynamic-form-demo.component';
 
@@ -104,6 +105,17 @@ export const DynamicFormDemoWithJsonSchemaValidator = () => ({
   },
 });
 DynamicFormDemoWithJsonSchemaValidator.storyName = '<dynamic-form-demo> with json-schema validator';
+
+export const DynamicFormDemoWithDependencies = () => ({
+  component: DynamicFormDemoComponent,
+  props: {
+    formData: dynamicFormDemoWithDependencies,
+    initialValues: {},
+    submitForm: handleSubmit,
+    groupChange: handleChange,
+  },
+});
+DynamicFormDemoWithDependencies.storyName = '<dynamic-form-demo> with dependencies';
 
 export const InputText = () => ({
   component: InputComponent,

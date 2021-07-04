@@ -1,5 +1,56 @@
 import { DynamicForm } from 'ii-ngx-form/src/lib/types';
 
+export const dynamicFormDemoWithDependencies: DynamicForm = {
+  items: [
+    {
+      label: 'Text 1',
+      name: 'text1',
+      type: 'text',
+      validators: [],
+      options: [
+        {
+          name: 'placeholder',
+          value: 'Text 1',
+        },
+      ],
+      items: [],
+    },
+    {
+      label: 'Show text 2',
+      name: 'showText2',
+      type: 'checkbox',
+      validators: [],
+      options: [],
+      items: [],
+    },
+  ],
+  dependencies: {
+    showText2: {
+      condition: {
+        type: 'oneOf',
+        value: [true],
+      },
+      subschema: {
+        items: [
+          {
+            label: 'Text 2',
+            name: 'text2',
+            type: 'text',
+            validators: [],
+            options: [
+              {
+                name: 'placeholder',
+                value: 'Text 2',
+              },
+            ],
+            items: [],
+          },
+        ],
+      },
+    },
+  },
+};
+
 export const dynamicFormDataWithJsonSchemaValidator: DynamicForm = {
   validators: [
     {

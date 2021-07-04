@@ -14,7 +14,10 @@ import { getFieldDataOptionValue } from 'ii-ngx-form/src/lib/utils/dynamic-form'
 import { CheckboxComponent } from 'ii-ngx-form/src/lib/components/checkbox/checkbox.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SortableMultiselectComponent } from 'ii-ngx-form/src/lib/components/sortable-multiselect/sortable-multiselect.component';
-import { dynamicFormData } from '../data-sample/dynamic-form';
+import {
+  dynamicFormData,
+  dynamicFormDataWithJsonSchemaValidator,
+} from '../data-sample/dynamic-form';
 import { DynamicFormDemoComponent } from './dynamic-form-demo.component';
 
 const handleSubmit = (data: FormSubmitEvent) => {
@@ -90,6 +93,17 @@ export const DynamicFormDemo = () => ({
   },
 });
 DynamicFormDemo.storyName = '<dynamic-form-demo>';
+
+export const DynamicFormDemoWithJsonSchemaValidator = () => ({
+  component: DynamicFormDemoComponent,
+  props: {
+    formData: dynamicFormDataWithJsonSchemaValidator,
+    initialValues: {},
+    submitForm: handleSubmit,
+    groupChange: handleChange,
+  },
+});
+DynamicFormDemoWithJsonSchemaValidator.storyName = '<dynamic-form-demo> with json-schema validator';
 
 export const InputText = () => ({
   component: InputComponent,

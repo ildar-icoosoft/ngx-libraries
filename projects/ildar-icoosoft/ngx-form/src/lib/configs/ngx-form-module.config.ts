@@ -1,4 +1,5 @@
 import { ValidatorFn, Validators } from '@angular/forms';
+import { JSONSchemaType, Schema } from 'ajv';
 import { getFieldDataOptionValue } from '../utils/dynamic-form';
 import { validateEqual } from '../validators';
 import { DynamicField, DynamicFieldOption, NgxFormModuleConfig, SelectOption } from '../types';
@@ -15,6 +16,7 @@ import { CheckboxComponent } from '../components/checkbox/checkbox.component';
 import { MatSelectComponent } from '../components/mat-select/mat-select.component';
 import { SortableMultiselectComponent } from '../components/sortable-multiselect/sortable-multiselect.component';
 import { MatChipListComponent } from '../components/mat-chip-list/mat-chip-list.component';
+import { validateJsonSchema } from '../validators/validate-json-schema';
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
   fields: {
@@ -239,6 +241,10 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
     passwordMatch: {
       validator: (field1Name, field2name) => validateEqual(field1Name, field2name) as ValidatorFn,
     },
+    jsonSchema: {
+      validator: (jsonSchema: Schema | JSONSchemaType<unknown>) =>
+        validateJsonSchema(jsonSchema) as ValidatorFn,
+    },
   },
   errorMessages: {
     required: 'This field is required',
@@ -249,5 +255,6 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
     age: 'The age under {requiredAge} is not accepted',
     min: 'The minimum value for an input field is {min}',
     max: 'The maximum value for an input field is {max}',
+    jsonSchema: 'JSON Schema error: {message}',
   },
 };

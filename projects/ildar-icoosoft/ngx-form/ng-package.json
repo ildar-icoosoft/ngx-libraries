@@ -6,6 +6,7 @@
   },
   "whitelistedNonPeerDependencies": [
     "ng-recaptcha",
-    "ngx-common"
+    "ngx-common",
+    "ajv"
   ]
 }

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.11.0...v1.12.0) (2021-07-05)
+
+
+### Features
+
+* NGXFORM-13 Поддержка dependencies ([#44](https://github.com/ildar-icoosoft/ngx-libraries/issues/44)) ([4201221](https://github.com/ildar-icoosoft/ngx-libraries/commit/42012211cce8fc7c44b76f05fcbb0d2df2a2fb2d))
+
+
+
+
+
 # [1.11.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.10.2...v1.11.0) (2021-07-04)
 
 

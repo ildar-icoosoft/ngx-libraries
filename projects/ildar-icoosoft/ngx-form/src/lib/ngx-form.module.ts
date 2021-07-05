@@ -27,6 +27,10 @@ import { MatSelectComponent } from './components/mat-select/mat-select.component
 import { SortableMultiselectComponent } from './components/sortable-multiselect/sortable-multiselect.component';
 import { MatChipListComponent } from './components/mat-chip-list/mat-chip-list.component';
 import { FieldComponent } from './components/field/field.component';
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MAT_DATE_FORMATS, NativeDateModule} from "@angular/material/core";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -46,6 +50,7 @@ import { FieldComponent } from './components/field/field.component';
     SortableMultiselectComponent,
     MatChipListComponent,
     FieldComponent,
+    DatepickerComponent,
   ],
   imports: [
     CommonModule,
@@ -57,6 +62,9 @@ import { FieldComponent } from './components/field/field.component';
     NgSelectModule,
     MatChipsModule,
     MatIconModule,
+    MatDatepickerModule,
+    NativeDateModule,
+    MatInputModule
   ],
   entryComponents: [
     InputComponent,
@@ -94,6 +102,20 @@ import { FieldComponent } from './components/field/field.component';
     {
       provide: NGX_FORM_MODULE_CONFIG,
       useValue: defaultNgxFormModuleConfig,
+    },
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: {
+        parse: {
+          dateInput: ['l', 'LL'],
+        },
+        display: {
+          dateInput: 'L',
+          monthYearLabel: 'MMM YYYY',
+          dateA11yLabel: 'LL',
+          monthYearA11yLabel: 'MMMM YYYY',
+        },
+      },
     },
   ],
 })

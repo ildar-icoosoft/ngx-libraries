@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { DynamicField, DynamicFieldOption, FormSubmitEvent } from 'ii-ngx-form/src/lib/types';
 import { NgxFormModule } from 'ii-ngx-form/src/lib/ngx-form.module';
 import {
+  DatepickerComponent,
   DynamicFormComponent,
   FieldsetComponent,
   InputComponent,
@@ -141,6 +142,14 @@ DynamicFormDemoWithDependenciesAdvanced.argTypes = {
   submitForm: { action: 'submitForm' },
   groupChange: { action: 'groupChange' },
 };
+
+export const Datepicker = () => ({
+  component: DatepickerComponent,
+  props: {
+    placeholder: 'Enter date',
+  },
+});
+Datepicker.storyName = `<ii-datepicker>`;
 
 export const InputText = () => ({
   component: InputComponent,

@@ -4,6 +4,7 @@ import { getFieldDataOptionValue } from '../utils/dynamic-form';
 import { validateEqual } from '../validators';
 import { DynamicField, DynamicFieldOption, NgxFormModuleConfig, SelectOption } from '../types';
 import {
+  DatepickerComponent,
   FieldsetComponent,
   HtmlComponent,
   InputComponent,
@@ -20,6 +21,26 @@ import { validateJsonSchema } from '../validators/validate-json-schema';
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
   fields: {
+    datepicker: {
+      component: DatepickerComponent,
+      needToShowLabelOutside: true,
+      props: {},
+      mapConnectDataToProps: (fieldData: DynamicField) => {
+        const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
+
+        const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);
+
+        const placeholder: string | undefined = getFieldDataOptionValue(
+          fieldDataOptions,
+          'placeholder',
+          '',
+        );
+        return {
+          placeholder,
+          readonly,
+        };
+      },
+    },
     text: {
       component: InputComponent,
       needToShowLabelOutside: true,

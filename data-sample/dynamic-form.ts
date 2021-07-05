@@ -25,29 +25,31 @@ export const dynamicFormDemoWithDependencies: DynamicForm = {
     },
   ],
   dependencies: {
-    showText2: {
-      condition: {
-        type: 'oneOf',
-        value: [true],
+    showText2: [
+      {
+        condition: {
+          type: 'oneOf',
+          value: [true],
+        },
+        subschema: {
+          items: [
+            {
+              label: 'Text 2',
+              name: 'text2',
+              type: 'text',
+              validators: [],
+              options: [
+                {
+                  name: 'placeholder',
+                  value: 'Text 2',
+                },
+              ],
+              items: [],
+            },
+          ],
+        },
       },
-      subschema: {
-        items: [
-          {
-            label: 'Text 2',
-            name: 'text2',
-            type: 'text',
-            validators: [],
-            options: [
-              {
-                name: 'placeholder',
-                value: 'Text 2',
-              },
-            ],
-            items: [],
-          },
-        ],
-      },
-    },
+    ],
   },
 };
 

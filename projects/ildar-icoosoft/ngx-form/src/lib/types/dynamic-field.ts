@@ -12,5 +12,5 @@ export interface DynamicField {
   validators?: DynamicFormValidator[];
   options?: DynamicFieldOption[];
   items?: DynamicField[];
-  dependencies?: Record<string, DynamicFormDependency>;
+  dependencies?: Record<string, DynamicFormDependency[]>;
 }

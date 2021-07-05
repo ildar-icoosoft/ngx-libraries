@@ -5,5 +5,5 @@ import { DynamicFormDependency } from './dynamic-form-dependency';
 export interface DynamicForm {
   validators?: DynamicFormValidator[];
   items: DynamicField[];
-  dependencies?: Record<string, DynamicFormDependency>;
+  dependencies?: Record<string, DynamicFormDependency[]>;
 }

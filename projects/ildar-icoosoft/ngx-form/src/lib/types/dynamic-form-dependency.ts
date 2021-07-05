@@ -4,5 +4,7 @@ import { DynamicField } from './dynamic-field';
 
 export interface DynamicFormDependency {
   condition: DynamicFormDependencyCondition;
-  subschema: Partial<DynamicField>;
+  subschema: {
+    items: DynamicField[];
+  };
 }

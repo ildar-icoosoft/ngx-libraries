@@ -106,16 +106,20 @@ export const DynamicFormDemoWithJsonSchemaValidator = () => ({
 });
 DynamicFormDemoWithJsonSchemaValidator.storyName = '<dynamic-form-demo> with json-schema validator';
 
-export const DynamicFormDemoWithDependencies = () => ({
+export const DynamicFormDemoWithDependencies = (args: DynamicFormDemoComponent) => ({
   component: DynamicFormDemoComponent,
-  props: {
-    formData: dynamicFormDemoWithDependencies,
-    initialValues: {},
-    submitForm: handleSubmit,
-    groupChange: handleChange,
-  },
+  props: args,
 });
+DynamicFormDemoWithDependencies.args = {
+  formData: dynamicFormDemoWithDependencies,
+  initialValues: {},
+  submitForm: handleSubmit,
+};
 DynamicFormDemoWithDependencies.storyName = '<dynamic-form-demo> with dependencies';
+DynamicFormDemoWithDependencies.argTypes = {
+  submitForm: { action: 'submitForm' },
+  groupChange: { action: 'groupChange' },
+};
 
 export const InputText = () => ({
   component: InputComponent,

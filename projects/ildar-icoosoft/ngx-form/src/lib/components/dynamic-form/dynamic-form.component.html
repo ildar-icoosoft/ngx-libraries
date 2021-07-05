@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row">
       <ii-field
-        *ngFor="let fieldData of formData.items"
+        *ngFor="let fieldData of formDataWithDependencies.items"
         [fieldData]="fieldData"
         [formControl]="group.controls[fieldData.name]"
       ></ii-field>

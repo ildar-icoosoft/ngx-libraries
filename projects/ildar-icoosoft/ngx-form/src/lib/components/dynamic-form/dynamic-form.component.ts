@@ -20,6 +20,7 @@ import {
   ValidatorFn,
 } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
+import { cloneDeep as _cloneDeep, uniqBy as _uniqBy } from 'lodash';
 import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
 import { getFieldValidators, getGroupValidators } from '../../utils/dynamic-form';
 import { markAllFormControlsAsTouched, setFormErrors } from '../../utils/error';
@@ -28,6 +29,7 @@ import {
   DynamicField,
   DynamicForm,
   DynamicFormButton,
+  DynamicFormDependency,
   FormError,
   FormSubmitEvent,
   NgxFormModuleConfig,
@@ -45,11 +47,13 @@ import { FieldComponentType } from '../../types/field-component-type';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DynamicFormComponent implements DynamicFormComponentType, OnInit, AfterViewInit {
+  formDataWithDependencies!: DynamicForm;
+
   @Input() formData!: DynamicForm;
 
   @Input() formCssClass = '';
 
-  @Input() initialValues: Record<string, any> = {};
+  @Input() initialValues: Record<string, unknown> = {};
 
   @Input() showButtons = true;
 
@@ -85,26 +89,10 @@ export class DynamicFormComponent implements DynamicFormComponentType, OnInit, A
   }
 
   ngOnInit(): void {
-    this.group = new FormGroup({});
+    this.formDataWithDependencies = this.applyDependencies(this.formData, this.initialValues);
+    this.group = this.initGroup(this.formDataWithDependencies, this.initialValues);
 
-    this.formData.items.forEach((item: DynamicField) => {
-      const validators: ValidatorFn[] = getFieldValidators(item, this.config);
-
-      const value =
-        this.initialValues[item.name] === undefined ? item.default : this.initialValues[item.name];
-
-      const formControl = new FormControl(value, validators);
-
-      formControl.valueChanges.pipe(takeUntil(this.ngUnsubscribe$)).subscribe((controlValue) =>
-        this.controlChange.emit({
-          name: item.name,
-          formControl,
-          value: controlValue,
-        }),
-      );
-
-      this.group.addControl(item.name, formControl);
-    });
+    this.watchForDependenciesChange(this.formDataWithDependencies, this.group);
 
     const groupValidators: ValidatorFn[] = getGroupValidators(this.formData, this.config);
 
@@ -113,6 +101,76 @@ export class DynamicFormComponent implements DynamicFormComponentType, OnInit, A
     this.group.valueChanges
       .pipe(takeUntil(this.ngUnsubscribe$))
       .subscribe((values) => this.groupChange.emit(values));
+  }
+
+  private watchForDependenciesChange(formData: DynamicForm, formGroup: FormGroup): void {
+    Object.keys(formGroup.controls).forEach((controlName) => {
+      const formControl = formGroup.get(controlName) as FormControl;
+
+      formControl.valueChanges.pipe(takeUntil(this.ngUnsubscribe$)).subscribe(() => {
+        if (formData.dependencies?.[controlName]) {
+          const groupValues = this.group.getRawValue();
+          this.formDataWithDependencies = this.applyDependencies(this.formData, groupValues);
+          this.group = this.initGroup(this.formDataWithDependencies, groupValues);
+          this.watchForDependenciesChange(this.formDataWithDependencies, this.group);
+        }
+      });
+    });
+  }
+
+  private applyDependencies(formData: DynamicForm, values: Record<string, unknown>): DynamicForm {
+    const formDataWithDependencies: DynamicForm = _cloneDeep(formData);
+
+    if (formData.dependencies) {
+      const dependencies = formData.dependencies as Record<string, DynamicFormDependency[]>;
+
+      Object.keys(dependencies).forEach((fieldName) => {
+        if (dependencies[fieldName]) {
+          dependencies[fieldName].forEach((dependency) => {
+            if (
+              dependency.condition.type === 'oneOf' &&
+              dependency.condition.value.includes(values[fieldName])
+            ) {
+              this.mergeSchemas(formDataWithDependencies, dependency.subschema);
+            }
+          });
+        }
+      });
+    }
+
+    return formDataWithDependencies;
+  }
+
+  private initGroup(formData: DynamicForm, values: Record<string, unknown>): FormGroup {
+    const group = new FormGroup({});
+
+    this.formDataWithDependencies.items.forEach((item: DynamicField) => {
+      const validators: ValidatorFn[] = getFieldValidators(item, this.config);
+
+      const value = values[item.name] === undefined ? item.default : values[item.name];
+
+      const formControl = new FormControl(value, validators);
+
+      formControl.valueChanges.pipe(takeUntil(this.ngUnsubscribe$)).subscribe((controlValue) => {
+        this.controlChange.emit({
+          name: item.name,
+          formControl,
+          value: controlValue,
+        });
+      });
+
+      group.addControl(item.name, formControl);
+    });
+
+    return group;
+  }
+
+  private mergeSchemas(
+    schema: Pick<DynamicField, 'items'>,
+    subschema: Pick<DynamicField, 'items'>,
+  ): void {
+    // eslint-disable-next-line no-param-reassign
+    schema.items = _uniqBy([...(schema.items || []), ...(subschema.items || [])], 'name');
   }
 
   getGroup(): FormGroup {

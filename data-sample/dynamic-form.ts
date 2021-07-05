@@ -1,6 +1,83 @@
 import { DynamicForm } from 'ii-ngx-form/src/lib/types';
 
-export const dynamicFormDemoWithDependencies: DynamicForm = {
+export const dynamicFormDemoWithDependenciesAdvanced: DynamicForm = {
+  validators: [],
+  items: [
+    {
+      label: 'First name (наберите "some first name")',
+      name: 'firstName',
+      type: 'text',
+      default: 'Chuck',
+      validators: [],
+      options: [],
+      items: [],
+    },
+    {
+      label: 'Дополнительные атрибуты',
+      name: 'attrs',
+      type: 'fieldset',
+      validators: [],
+      options: [],
+      items: [
+        {
+          label: 'Заголовок атрибута (наберите "some title")',
+          name: 'title',
+          type: 'text',
+          validators: [],
+          options: [],
+          items: [],
+        },
+      ],
+      dependencies: {
+        title: [
+          {
+            condition: {
+              type: 'oneOf',
+              value: ['some title'],
+            },
+            subschema: {
+              items: [
+                {
+                  label: 'Описание атрибута',
+                  name: 'desc',
+                  type: 'text',
+                  validators: [],
+                  options: [],
+                  items: [],
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+  dependencies: {
+    firstName: [
+      {
+        condition: {
+          type: 'oneOf',
+          value: ['some first name'],
+        },
+        subschema: {
+          items: [
+            {
+              label: 'Last name',
+              name: 'lastName',
+              type: 'text',
+              default: undefined,
+              validators: [],
+              options: [],
+              items: [],
+            },
+          ],
+        },
+      },
+    ],
+  },
+};
+
+export const dynamicFormDemoWithDependenciesSimple: DynamicForm = {
   items: [
     {
       label: 'Text 1',

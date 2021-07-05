@@ -103,13 +103,18 @@ export class DynamicFormComponent implements DynamicFormComponentType, OnInit, A
       .subscribe((values) => this.groupChange.emit(values));
   }
 
+  trackByField(index: number, field: DynamicField): string {
+    return field.name;
+  }
+
   private watchForDependenciesChange(formData: DynamicForm, formGroup: FormGroup): void {
     Object.keys(formGroup.controls).forEach((controlName) => {
       const formControl = formGroup.get(controlName) as FormControl;
 
       formControl.valueChanges.pipe(takeUntil(this.ngUnsubscribe$)).subscribe(() => {
         if (formData.dependencies?.[controlName]) {
-          const groupValues = this.group.getRawValue();
+          const groupValues = formGroup.getRawValue();
+
           this.formDataWithDependencies = this.applyDependencies(this.formData, groupValues);
           this.group = this.initGroup(this.formDataWithDependencies, groupValues);
           this.watchForDependenciesChange(this.formDataWithDependencies, this.group);

@@ -17,7 +17,8 @@ import { SortableMultiselectComponent } from 'ii-ngx-form/src/lib/components/sor
 import {
   dynamicFormData,
   dynamicFormDataWithJsonSchemaValidator,
-  dynamicFormDemoWithDependencies,
+  dynamicFormDemoWithDependenciesAdvanced,
+  dynamicFormDemoWithDependenciesSimple,
 } from '../data-sample/dynamic-form';
 import { DynamicFormDemoComponent } from './dynamic-form-demo.component';
 
@@ -106,17 +107,33 @@ export const DynamicFormDemoWithJsonSchemaValidator = () => ({
 });
 DynamicFormDemoWithJsonSchemaValidator.storyName = '<dynamic-form-demo> with json-schema validator';
 
-export const DynamicFormDemoWithDependencies = (args: DynamicFormDemoComponent) => ({
+export const DynamicFormDemoWithDependenciesSimple = (args: DynamicFormDemoComponent) => ({
   component: DynamicFormDemoComponent,
   props: args,
 });
-DynamicFormDemoWithDependencies.args = {
-  formData: dynamicFormDemoWithDependencies,
+DynamicFormDemoWithDependenciesSimple.args = {
+  formData: dynamicFormDemoWithDependenciesSimple,
   initialValues: {},
   submitForm: handleSubmit,
 };
-DynamicFormDemoWithDependencies.storyName = '<dynamic-form-demo> with dependencies';
-DynamicFormDemoWithDependencies.argTypes = {
+DynamicFormDemoWithDependenciesSimple.storyName = '<dynamic-form-demo> with dependencies (simple)';
+DynamicFormDemoWithDependenciesSimple.argTypes = {
+  submitForm: { action: 'submitForm' },
+  groupChange: { action: 'groupChange' },
+};
+
+export const DynamicFormDemoWithDependenciesAdvanced = (args: DynamicFormDemoComponent) => ({
+  component: DynamicFormDemoComponent,
+  props: args,
+});
+DynamicFormDemoWithDependenciesAdvanced.args = {
+  formData: dynamicFormDemoWithDependenciesAdvanced,
+  initialValues: {},
+  submitForm: handleSubmit,
+};
+DynamicFormDemoWithDependenciesAdvanced.storyName =
+  '<dynamic-form-demo> with dependencies (advanced)';
+DynamicFormDemoWithDependenciesAdvanced.argTypes = {
   submitForm: { action: 'submitForm' },
   groupChange: { action: 'groupChange' },
 };

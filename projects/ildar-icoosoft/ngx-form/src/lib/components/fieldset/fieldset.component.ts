@@ -45,10 +45,6 @@ export class FieldsetComponent implements FieldsetComponentType, OnInit, Control
 
   @Input() fieldDataWithDependencies!: DynamicField;
 
-  // @Input() items: DynamicField[] = [];
-  //
-  // @Input() dependencies?: Record<string, DynamicFormDependency[]>;
-
   @ViewChildren(FieldComponent) fieldComponents!: QueryList<FieldComponent>;
 
   group!: FormGroup;

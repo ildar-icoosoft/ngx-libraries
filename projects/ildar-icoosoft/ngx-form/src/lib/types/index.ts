@@ -5,6 +5,8 @@ export * from './dynamic-form';
 export * from './dynamic-form-button';
 export * from './dynamic-form-button-click-event';
 export * from './dynamic-form-component-type';
+export * from './dynamic-form-dependency';
+export * from './dynamic-form-dependency-condition';
 export * from './dynamic-form-validator';
 export * from './field-component-type';
 export * from './fieldset-component-type';

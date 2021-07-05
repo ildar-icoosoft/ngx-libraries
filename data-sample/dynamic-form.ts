@@ -1,5 +1,135 @@
 import { DynamicForm } from 'ii-ngx-form/src/lib/types';
 
+export const dynamicFormDemoWithDependenciesAdvanced: DynamicForm = {
+  validators: [],
+  items: [
+    {
+      label: 'First name (наберите "some first name")',
+      name: 'firstName',
+      type: 'text',
+      default: 'Chuck',
+      validators: [],
+      options: [],
+      items: [],
+    },
+    {
+      label: 'Дополнительные атрибуты',
+      name: 'attrs',
+      type: 'fieldset',
+      validators: [],
+      options: [],
+      items: [
+        {
+          label: 'Заголовок атрибута (наберите "some title")',
+          name: 'title',
+          type: 'text',
+          validators: [],
+          options: [],
+          items: [],
+        },
+      ],
+      dependencies: {
+        title: [
+          {
+            condition: {
+              type: 'oneOf',
+              value: ['some title'],
+            },
+            subschema: {
+              items: [
+                {
+                  label: 'Описание атрибута',
+                  name: 'desc',
+                  type: 'text',
+                  validators: [],
+                  options: [],
+                  items: [],
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+  dependencies: {
+    firstName: [
+      {
+        condition: {
+          type: 'oneOf',
+          value: ['some first name'],
+        },
+        subschema: {
+          items: [
+            {
+              label: 'Last name',
+              name: 'lastName',
+              type: 'text',
+              default: undefined,
+              validators: [],
+              options: [],
+              items: [],
+            },
+          ],
+        },
+      },
+    ],
+  },
+};
+
+export const dynamicFormDemoWithDependenciesSimple: DynamicForm = {
+  items: [
+    {
+      label: 'Text 1',
+      name: 'text1',
+      type: 'text',
+      validators: [],
+      options: [
+        {
+          name: 'placeholder',
+          value: 'Text 1',
+        },
+      ],
+      items: [],
+    },
+    {
+      label: 'Show text 2',
+      name: 'showText2',
+      type: 'checkbox',
+      validators: [],
+      options: [],
+      items: [],
+    },
+  ],
+  dependencies: {
+    showText2: [
+      {
+        condition: {
+          type: 'oneOf',
+          value: [true],
+        },
+        subschema: {
+          items: [
+            {
+              label: 'Text 2',
+              name: 'text2',
+              type: 'text',
+              validators: [],
+              options: [
+                {
+                  name: 'placeholder',
+                  value: 'Text 2',
+                },
+              ],
+              items: [],
+            },
+          ],
+        },
+      },
+    ],
+  },
+};
+
 export const dynamicFormDataWithJsonSchemaValidator: DynamicForm = {
   validators: [
     {

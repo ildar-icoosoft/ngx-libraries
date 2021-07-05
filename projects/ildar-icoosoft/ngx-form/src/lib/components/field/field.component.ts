@@ -120,20 +120,22 @@ export class FieldComponent
 
     Object.assign(this.component.instance, props);
 
+    this.component.changeDetectorRef.detectChanges();
+
     this.component.instance.registerOnChange(this.controlOnChangeFn);
     this.component.instance.registerOnTouched(this.controlOnTouchedFn);
 
-    this.writeValueSubject
-      .pipe(takeUntil(this.ngUnsubscribe$))
-      .subscribe((value) => this.component.instance.writeValue(value));
+    this.writeValueSubject.pipe(takeUntil(this.ngUnsubscribe$)).subscribe((value) => {
+      this.component.instance.writeValue(value);
+      this.component.changeDetectorRef.detectChanges();
+    });
 
     this.setDisabledStateSubject.pipe(takeUntil(this.ngUnsubscribe$)).subscribe((isDisabled) => {
       if (this.component.instance.setDisabledState) {
         this.component.instance.setDisabledState(isDisabled);
+        this.component.changeDetectorRef.detectChanges();
       }
     });
-
-    this.component.changeDetectorRef.detectChanges();
   }
 
   ngOnInit(): void {

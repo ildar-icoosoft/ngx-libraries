@@ -1,6 +1,6 @@
 <fieldset [formGroup]="group" novalidate>
   <ii-field
-    *ngFor="let fieldData of items"
+    *ngFor="let fieldData of fieldDataWithDependencies.items; trackBy: trackByField"
     [fieldData]="fieldData"
     [formControl]="group.controls[fieldData.name]"
   ></ii-field>

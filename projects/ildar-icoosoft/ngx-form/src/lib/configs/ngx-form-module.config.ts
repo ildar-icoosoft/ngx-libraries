@@ -188,7 +188,7 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
       component: FieldsetComponent,
       needToShowLabelOutside: true,
       mapConnectDataToProps: (fieldData: DynamicField) => ({
-        items: fieldData.items,
+        fieldData,
       }),
     },
     multiFieldset: {

@@ -149,7 +149,7 @@ export class DynamicFormComponent implements DynamicFormComponentType, OnInit, A
   private initGroup(formData: DynamicForm, values: Record<string, unknown>): FormGroup {
     const group = new FormGroup({});
 
-    this.formDataWithDependencies.items.forEach((item: DynamicField) => {
+    formData.items.forEach((item: DynamicField) => {
       const validators: ValidatorFn[] = getFieldValidators(item, this.config);
 
       const value = values[item.name] === undefined ? item.default : values[item.name];

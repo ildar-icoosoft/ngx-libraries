@@ -128,7 +128,11 @@ export const DynamicFormDemoWithDependenciesAdvanced = (args: DynamicFormDemoCom
 });
 DynamicFormDemoWithDependenciesAdvanced.args = {
   formData: dynamicFormDemoWithDependenciesAdvanced,
-  initialValues: {},
+  initialValues: {
+    attrs: {
+      title: 'gfdgdfgdfg',
+    },
+  },
   submitForm: handleSubmit,
 };
 DynamicFormDemoWithDependenciesAdvanced.storyName =

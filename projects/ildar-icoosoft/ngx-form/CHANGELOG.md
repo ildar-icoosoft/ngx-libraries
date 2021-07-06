@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.12.0...v1.13.0) (2021-07-06)
+
+
+### Features
+
+* NGXFORM-14 Добавить контрол mat-datepicker ([#45](https://github.com/ildar-icoosoft/ngx-libraries/issues/45)) ([2aedafb](https://github.com/ildar-icoosoft/ngx-libraries/commit/2aedafbf0e80907197c39b5fc7c9a4b14ca736b4))
+
+
+
+
+
 # [1.12.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.11.0...v1.12.0) (2021-07-05)
 
 

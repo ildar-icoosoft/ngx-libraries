@@ -2,33 +2,36 @@ import { Component, ChangeDetectionStrategy, forwardRef, Input } from '@angular/
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'ii-datepicker',
-  templateUrl: './datepicker.component.html',
-  styleUrls: ['./datepicker.component.css'],
+  selector: 'ii-mat-datepicker',
+  templateUrl: './mat-datepicker.component.html',
+  styleUrls: ['./mat-datepicker.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       // eslint-disable-next-line @typescript-eslint/no-use-before-define
-      useExisting: forwardRef(() => DatepickerComponent),
+      useExisting: forwardRef(() => MatDatepickerComponent),
       multi: true,
     },
   ],
 })
-export class DatepickerComponent {
+export class MatDatepickerComponent {
   @Input() placeholder = '';
 
   @Input() inputId = '';
-
-  @Input() readonly = false;
 
   value = '';
 
   isDisabled = false;
 
-  propagateChange = () => {};
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  propagateChange = (date: string | null) => {};
 
   propagateTouch = () => {};
+
+  handleDateChange(date: Date | null): void {
+    this.propagateChange(date?.toISOString() || null);
+  }
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;

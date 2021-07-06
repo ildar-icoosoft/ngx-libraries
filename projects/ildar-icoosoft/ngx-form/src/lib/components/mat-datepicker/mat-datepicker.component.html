@@ -3,7 +3,7 @@
   <input
     matInput
     [matDatepicker]="picker"
-    (dateChange)="propagateChange($event.value)"
+    (dateChange)="handleDateChange($event.value)"
     [ngModel]="value"
     (blur)="propagateTouch()"
     [disabled]="isDisabled"

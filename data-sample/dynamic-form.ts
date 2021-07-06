@@ -261,6 +261,23 @@ export const dynamicFormData: DynamicForm = {
       items: [],
     },
     {
+      label: 'Mat Datepicker <span class="required-sign">(*)</span>',
+      name: 'matDatepicker',
+      type: 'matDatepicker',
+      validators: [{ name: 'required', options: [] }],
+      options: [
+        {
+          name: 'placeholder',
+          value: 'enter date',
+        },
+        {
+          name: 'cssClass',
+          value: 'col-lg-4 col-md-6 col-xs-12',
+        },
+      ],
+      items: [],
+    },
+    {
       label: 'Textarea <span class="required-sign">(*)</span>',
       name: 'textarea',
       type: 'textarea',

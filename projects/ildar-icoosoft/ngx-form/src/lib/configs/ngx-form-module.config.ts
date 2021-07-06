@@ -4,7 +4,6 @@ import { getFieldDataOptionValue } from '../utils/dynamic-form';
 import { validateEqual } from '../validators';
 import { DynamicField, DynamicFieldOption, NgxFormModuleConfig, SelectOption } from '../types';
 import {
-  DatepickerComponent,
   FieldsetComponent,
   HtmlComponent,
   InputComponent,
@@ -18,17 +17,16 @@ import { MatSelectComponent } from '../components/mat-select/mat-select.componen
 import { SortableMultiselectComponent } from '../components/sortable-multiselect/sortable-multiselect.component';
 import { MatChipListComponent } from '../components/mat-chip-list/mat-chip-list.component';
 import { validateJsonSchema } from '../validators/validate-json-schema';
+import { MatDatepickerComponent } from '../components/mat-datepicker/mat-datepicker.component';
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
   fields: {
-    datepicker: {
-      component: DatepickerComponent,
+    matDatepicker: {
+      component: MatDatepickerComponent,
       needToShowLabelOutside: true,
       props: {},
       mapConnectDataToProps: (fieldData: DynamicField) => {
         const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
-
-        const readonly: boolean = getFieldDataOptionValue(fieldDataOptions, 'readonly', false);
 
         const placeholder: string | undefined = getFieldDataOptionValue(
           fieldDataOptions,
@@ -37,7 +35,6 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
         );
         return {
           placeholder,
-          readonly,
         };
       },
     },

@@ -1,5 +1,5 @@
 export * from './checkbox/checkbox.component';
-export * from './datepicker/datepicker.component';
+export * from './mat-datepicker/mat-datepicker.component';
 export * from './dynamic-form/dynamic-form.component';
 export * from './field/field.component';
 export * from './fieldset/fieldset.component';

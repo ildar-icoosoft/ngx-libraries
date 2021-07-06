@@ -6,6 +6,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_DATE_FORMATS, NativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 import { NGX_FORM_MODULE_CONFIG } from './constants/ngx-form-module-config';
 import { defaultNgxFormModuleConfig } from './configs/ngx-form-module.config';
 import {
@@ -27,10 +30,7 @@ import { MatSelectComponent } from './components/mat-select/mat-select.component
 import { SortableMultiselectComponent } from './components/sortable-multiselect/sortable-multiselect.component';
 import { MatChipListComponent } from './components/mat-chip-list/mat-chip-list.component';
 import { FieldComponent } from './components/field/field.component';
-import { DatepickerComponent } from './components/datepicker/datepicker.component';
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MAT_DATE_FORMATS, NativeDateModule} from "@angular/material/core";
-import {MatInputModule} from "@angular/material/input";
+import { MatDatepickerComponent } from './components/mat-datepicker/mat-datepicker.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,7 @@ import {MatInputModule} from "@angular/material/input";
     SortableMultiselectComponent,
     MatChipListComponent,
     FieldComponent,
-    DatepickerComponent,
+    MatDatepickerComponent,
   ],
   imports: [
     CommonModule,
@@ -64,7 +64,7 @@ import {MatInputModule} from "@angular/material/input";
     MatIconModule,
     MatDatepickerModule,
     NativeDateModule,
-    MatInputModule
+    MatInputModule,
   ],
   entryComponents: [
     InputComponent,
@@ -79,6 +79,7 @@ import {MatInputModule} from "@angular/material/input";
     MatSelectComponent,
     SortableMultiselectComponent,
     MatChipListComponent,
+    MatDatepickerComponent,
   ],
   exports: [
     FormValidationErrorsComponent,
@@ -97,6 +98,7 @@ import {MatInputModule} from "@angular/material/input";
     SortableMultiselectComponent,
     MatChipListComponent,
     FieldComponent,
+    MatDatepickerComponent,
   ],
   providers: [
     {

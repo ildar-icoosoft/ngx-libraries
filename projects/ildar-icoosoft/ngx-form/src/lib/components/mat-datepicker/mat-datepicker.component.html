@@ -1,0 +1,15 @@
+<mat-form-field appearance="fill">
+  <mat-label *ngIf="placeholder">{{placeholder}}</mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    (dateChange)="handleDateChange($event.value)"
+    [ngModel]="value"
+    (blur)="propagateTouch()"
+    [disabled]="isDisabled"
+  >
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker
+    #picker
+  ></mat-datepicker>
+</mat-form-field>

@@ -6,6 +6,7 @@ import {
   DynamicFormComponent,
   FieldsetComponent,
   InputComponent,
+  MatDatepickerComponent,
   MultiFieldsetComponent,
   ReCaptchaComponent,
   SelectComponent,
@@ -140,6 +141,22 @@ DynamicFormDemoWithDependenciesAdvanced.storyName =
 DynamicFormDemoWithDependenciesAdvanced.argTypes = {
   submitForm: { action: 'submitForm' },
   groupChange: { action: 'groupChange' },
+};
+
+export const Datepicker = (args: MatDatepickerComponent) => ({
+  // component: MatDatepickerComponent,
+  template:
+    '<ii-mat-datepicker [placeholder]="placeholder" [ngModel]="model" (ngModelChange)="onChange($event)"></ii-mat-datepicker>',
+  props: args,
+});
+Datepicker.storyName = `<ii-datepicker>`;
+Datepicker.args = {
+  placeholder: 'Enter date',
+  readonly: false,
+  model: new Date().toISOString(),
+};
+Datepicker.argTypes = {
+  onChange: { action: 'onChange' },
 };
 
 export const InputText = () => ({

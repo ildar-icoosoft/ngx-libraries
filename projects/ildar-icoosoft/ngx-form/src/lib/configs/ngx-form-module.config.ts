@@ -17,9 +17,27 @@ import { MatSelectComponent } from '../components/mat-select/mat-select.componen
 import { SortableMultiselectComponent } from '../components/sortable-multiselect/sortable-multiselect.component';
 import { MatChipListComponent } from '../components/mat-chip-list/mat-chip-list.component';
 import { validateJsonSchema } from '../validators/validate-json-schema';
+import { MatDatepickerComponent } from '../components/mat-datepicker/mat-datepicker.component';
 
 export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
   fields: {
+    matDatepicker: {
+      component: MatDatepickerComponent,
+      needToShowLabelOutside: true,
+      props: {},
+      mapConnectDataToProps: (fieldData: DynamicField) => {
+        const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];
+
+        const placeholder: string | undefined = getFieldDataOptionValue(
+          fieldDataOptions,
+          'placeholder',
+          '',
+        );
+        return {
+          placeholder,
+        };
+      },
+    },
     text: {
       component: InputComponent,
       needToShowLabelOutside: true,

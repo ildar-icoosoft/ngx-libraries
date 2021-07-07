@@ -84,7 +84,7 @@ export class FieldComponent
     private componentFactoryResolver: ComponentFactoryResolver,
     @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig,
     private controlContainer: ControlContainer,
-    private cdr: ChangeDetectorRef,
+    public cdr: ChangeDetectorRef,
     private ngUnsubscribe$: UnsubscribeService,
   ) {}
 

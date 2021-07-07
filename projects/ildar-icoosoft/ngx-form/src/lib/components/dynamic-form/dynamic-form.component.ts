@@ -227,7 +227,9 @@ export class DynamicFormComponent implements DynamicFormComponentType, OnInit, A
       return;
     }
     if (this.group.invalid) {
+      // @todo. Проверить, работает ли это для вложенных форм (fieldset и multifieldset)
       markAllFormControlsAsTouched(this.group);
+      this.fieldComponents.forEach((item) => item.cdr.markForCheck());
       return;
     }
 

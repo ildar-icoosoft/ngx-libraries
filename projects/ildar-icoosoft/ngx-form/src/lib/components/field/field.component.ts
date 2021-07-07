@@ -81,10 +81,10 @@ export class FieldComponent
   private controlOnTouchedFn = () => {};
 
   constructor(
+    public cdr: ChangeDetectorRef,
     private componentFactoryResolver: ComponentFactoryResolver,
     @Inject(NGX_FORM_MODULE_CONFIG) private config: NgxFormModuleConfig,
     private controlContainer: ControlContainer,
-    private cdr: ChangeDetectorRef,
     private ngUnsubscribe$: UnsubscribeService,
   ) {}
 

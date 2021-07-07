@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.1](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.13.0...v1.13.1) (2021-07-07)
+
+
+### Bug Fixes
+
+* Если нажать на кнопку отправки, то невалидные поля не подсвечиваются ([#46](https://github.com/ildar-icoosoft/ngx-libraries/issues/46)) ([0668ef5](https://github.com/ildar-icoosoft/ngx-libraries/commit/0668ef5410f36d1ef798da265e0d7e3478d38910))
+
+
+
+
+
 # [1.13.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.12.0...v1.13.0) (2021-07-06)
 
 

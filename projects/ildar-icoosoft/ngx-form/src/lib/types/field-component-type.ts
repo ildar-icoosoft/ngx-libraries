@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
+import { LoadDictionaryEvent } from './load-dictionary-event';
 
 export interface FieldComponentType extends Component {
   getFormElement(): Component & ControlValueAccessor;
@@ -13,4 +14,6 @@ export interface FieldComponentType extends Component {
   show(): void;
 
   getFieldsetItem(name: string): FieldComponentType;
+
+  loadDictionary: EventEmitter<LoadDictionaryEvent>;
 }

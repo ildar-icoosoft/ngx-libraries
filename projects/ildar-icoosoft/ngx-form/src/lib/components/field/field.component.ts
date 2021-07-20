@@ -12,23 +12,35 @@ import {
   AfterViewInit,
   OnInit,
   ChangeDetectorRef,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import {
   AbstractControl,
   ControlContainer,
   ControlValueAccessor,
   FormControl,
+  FormGroup,
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { UnsubscribeService } from 'ii-ngx-common';
-import { DynamicField, DynamicFieldOption, NgxFormModuleConfig } from '../../types';
+import {
+  DynamicField,
+  DynamicFieldOption,
+  NgxFormModuleConfig,
+  FieldComponentType,
+  FieldsetComponentType,
+} from '../../types';
 import { getFieldDataOptionValue, needToShowLabelOutside } from '../../utils/dynamic-form';
 import { NGX_FORM_MODULE_CONFIG } from '../../constants/ngx-form-module-config';
-import { FieldComponentType } from '../../types/field-component-type';
+
 // eslint-disable-next-line import/no-cycle
-import { FieldsetComponent } from '../fieldset/fieldset.component';
+import { FieldsetComponent } from '..';
+import { LoadDictionaryEvent } from '../../types/load-dictionary-event';
+import { ComponentWithDictionary } from '../../types/component-with-dictionary';
+import { DynamicFieldDictionary } from '../../types/dynamic-field-dictionary';
 
 @Component({
   selector: 'ii-field',
@@ -55,9 +67,17 @@ export class FieldComponent
 
   @Input() index = 0;
 
+  @Input() group!: FormGroup;
+
+  @Output() loadDictionary = new EventEmitter<LoadDictionaryEvent>();
+
   @ViewChild('inputEl', { read: ViewContainerRef }) inputRef!: ViewContainerRef;
 
   readonly hidden!: boolean;
+
+  dictionaryIsLoading = false;
+
+  loadDictionaryError: string | null = null;
 
   private writeValueSubject = new ReplaySubject<unknown>(1);
 
@@ -119,6 +139,51 @@ export class FieldComponent
     }
 
     Object.assign(this.component.instance, props);
+
+    if (fieldData.dictionary) {
+      const componentWithDictionary = this.component.instance as Component &
+        ControlValueAccessor &
+        ComponentWithDictionary;
+
+      this.emitLoadDictionaryEvent(
+        fieldData.dictionary,
+        componentWithDictionary,
+        this.group.getRawValue(),
+      );
+
+      if (fieldData.dictionary.relations) {
+        const relations = fieldData.dictionary.relations as Record<string, string>;
+
+        Object.keys(relations).forEach((relationKey) => {
+          const controlName = relations[relationKey];
+
+          this.group.controls[controlName].valueChanges
+            .pipe(takeUntil(this.ngUnsubscribe$))
+            .subscribe((value) => {
+              this.emitLoadDictionaryEvent(
+                fieldData.dictionary as DynamicFieldDictionary,
+                componentWithDictionary,
+                {
+                  ...this.group.getRawValue(),
+                  [controlName]: value,
+                },
+              );
+            });
+        });
+      }
+    }
+
+    if (this.fieldData.type === 'fieldset') {
+      const fieldsetComponent = this.component.instance as Component &
+        ControlValueAccessor &
+        FieldsetComponentType;
+
+      fieldsetComponent.loadDictionary
+        .pipe(takeUntil(this.ngUnsubscribe$))
+        .subscribe((event: LoadDictionaryEvent) => {
+          this.loadDictionary.emit(event);
+        });
+    }
 
     this.component.changeDetectorRef.detectChanges();
 
@@ -207,5 +272,47 @@ export class FieldComponent
 
   setDisabledState(isDisabled: boolean): void {
     this.setDisabledStateSubject.next(isDisabled);
+  }
+
+  private emitLoadDictionaryEvent(
+    dictionary: DynamicFieldDictionary,
+    componentWithDictionary: Component & ControlValueAccessor & ComponentWithDictionary,
+    groupValue: Record<string, unknown>,
+  ): void {
+    this.dictionaryIsLoading = true;
+    this.loadDictionaryError = null;
+    this.cdr.markForCheck();
+
+    this.loadDictionary.emit({
+      name: dictionary.name,
+      filter: this.getDictionaryRelationValues(dictionary, groupValue),
+      setOptions: (options) => {
+        this.dictionaryIsLoading = false;
+        componentWithDictionary.setOptions(options);
+        this.cdr.markForCheck();
+      },
+      setError: (error) => {
+        this.loadDictionaryError = error;
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  private getDictionaryRelationValues(
+    dictionary: DynamicFieldDictionary,
+    groupValue: Record<string, unknown>,
+  ): Record<string, unknown> {
+    const result: Record<string, unknown> = {};
+
+    if (dictionary.relations) {
+      const relations = dictionary.relations as Record<string, string>;
+
+      Object.keys(relations).forEach((relationKey) => {
+        const controlName = relations[relationKey];
+        result[controlName] = groupValue[controlName];
+      });
+    }
+
+    return result;
   }
 }

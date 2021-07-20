@@ -3,5 +3,7 @@
     *ngFor="let fieldData of fieldDataWithDependencies.items; trackBy: trackByField"
     [fieldData]="fieldData"
     [formControl]="group.controls[fieldData.name]"
+    [group]="group"
+    (loadDictionary)="loadDictionary.emit($event)"
   ></ii-field>
 </fieldset>

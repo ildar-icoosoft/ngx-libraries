@@ -1,5 +1,106 @@
 import { DynamicForm } from 'ii-ngx-form/src/lib/types';
 
+export const dynamicFormDemoWithDictionaryInFieldset: DynamicForm = {
+  items: [
+    {
+      label: 'Fieldset',
+      name: 'fieldset',
+      type: 'fieldset',
+      validators: [],
+      options: [],
+      items: [
+        {
+          label: 'Услуга',
+          name: 'basedOnService',
+          type: 'select',
+          validators: [{ name: 'required' }],
+          dictionary: {
+            name: 'services',
+          },
+          options: [
+            {
+              name: 'selectOptions',
+              value: [],
+            },
+            {
+              name: 'cssClass',
+              value: 'col-12',
+            },
+          ],
+        },
+        {
+          label: 'Версия',
+          name: 'basedOnVersion',
+          type: 'select',
+          validators: [{ name: 'required' }],
+          dictionary: {
+            name: 'serviceVersions',
+            relations: {
+              service: 'basedOnService',
+            },
+          },
+          options: [
+            {
+              name: 'selectOptions',
+              value: [],
+            },
+            {
+              name: 'cssClass',
+              value: 'col-12',
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+export const dynamicFormDemoWithDictionary: DynamicForm = {
+  items: [
+    {
+      label: 'Услуга',
+      name: 'basedOnService',
+      type: 'select',
+      validators: [{ name: 'required' }],
+      dictionary: {
+        name: 'services',
+      },
+      options: [
+        {
+          name: 'selectOptions',
+          value: [],
+        },
+        {
+          name: 'cssClass',
+          value: 'col-12',
+        },
+      ],
+    },
+    {
+      label: 'Версия',
+      name: 'basedOnVersion',
+      type: 'select',
+      validators: [{ name: 'required' }],
+      dictionary: {
+        name: 'serviceVersions',
+        relations: {
+          service: 'basedOnService',
+        },
+      },
+      options: [
+        {
+          name: 'selectOptions',
+          value: [],
+        },
+        {
+          name: 'cssClass',
+          value: 'col-12',
+        },
+      ],
+    },
+  ],
+};
+
 export const dynamicFormDemoWithDependenciesAdvanced: DynamicForm = {
   validators: [],
   items: [

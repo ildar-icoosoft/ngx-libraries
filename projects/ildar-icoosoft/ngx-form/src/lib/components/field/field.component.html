@@ -1,5 +1,15 @@
+
+
 <div [class]="getCssClass()" [hidden]="hidden">
-  <div [class]="'form-group ' + getFormGroupCssClass()">
+  <div *ngIf="loadDictionaryError" class="alert alert-warning text-center">
+    Ошибка при загрузке словаря: {{loadDictionaryError}}
+  </div>
+
+  <div *ngIf="dictionaryIsLoading">
+    <i class="fa fa-spinner fa-pulse"></i>
+  </div>
+
+  <div [class]="'form-group ' + getFormGroupCssClass()" [hidden]="dictionaryIsLoading">
     <ii-validation-control [control]="control">
       <label [for]="fieldData.name  + '_' + index" *ngIf="needToShowLabelOutside()" [innerHTML]="fieldData.label" [class]="getLabelCssClass()"></label>
       <ng-container #inputEl></ng-container>

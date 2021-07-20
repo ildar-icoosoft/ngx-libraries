@@ -1,10 +1,12 @@
 import {
   ChangeDetectorRef,
   Component,
+  EventEmitter,
   forwardRef,
   Inject,
   Input,
   OnInit,
+  Output,
   QueryList,
   ViewChildren,
 } from '@angular/core';
@@ -25,6 +27,7 @@ import { FieldComponentType } from '../../types/field-component-type';
 // eslint-disable-next-line import/no-cycle
 import { FieldComponent } from '../field/field.component';
 import { getFieldValidators } from '../../utils/dynamic-form';
+import { LoadDictionaryEvent } from '../../types/load-dictionary-event';
 
 @Component({
   selector: 'ii-fieldset',
@@ -44,6 +47,8 @@ export class FieldsetComponent implements FieldsetComponentType, OnInit, Control
   @Input() fieldData!: DynamicField;
 
   @Input() fieldDataWithDependencies!: DynamicField;
+
+  @Output() loadDictionary = new EventEmitter<LoadDictionaryEvent>();
 
   @ViewChildren(FieldComponent) fieldComponents!: QueryList<FieldComponent>;
 

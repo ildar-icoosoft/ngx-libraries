@@ -35,9 +35,10 @@ import {
   NgxFormModuleConfig,
 } from '../../types';
 import { DynamicFormComponentType } from '../../types/dynamic-form-component-type';
-// короткий путь .. использовать нельзя, т.к. возникает циклическая зависимость
+// eslint-disable-next-line import/no-cycle
 import { FieldComponent } from '../field/field.component';
 import { FieldComponentType } from '../../types/field-component-type';
+import { LoadDictionaryEvent } from '../../types/load-dictionary-event';
 
 @Component({
   selector: 'ii-dynamic-form',
@@ -71,6 +72,8 @@ export class DynamicFormComponent implements DynamicFormComponentType, OnInit, A
   @Output() groupChange: EventEmitter<Record<string, any>> = new EventEmitter();
 
   @Output() controlChange: EventEmitter<ControlChangeData> = new EventEmitter();
+
+  @Output() loadDictionary = new EventEmitter<LoadDictionaryEvent>();
 
   group!: FormGroup;
 

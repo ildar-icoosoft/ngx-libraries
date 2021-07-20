@@ -15,11 +15,14 @@ import { getFieldDataOptionValue } from 'ii-ngx-form/src/lib/utils/dynamic-form'
 import { CheckboxComponent } from 'ii-ngx-form/src/lib/components/checkbox/checkbox.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SortableMultiselectComponent } from 'ii-ngx-form/src/lib/components/sortable-multiselect/sortable-multiselect.component';
+import { LoadDictionaryEvent } from 'ii-ngx-form/src/lib/types/load-dictionary-event';
 import {
   dynamicFormData,
   dynamicFormDataWithJsonSchemaValidator,
   dynamicFormDemoWithDependenciesAdvanced,
   dynamicFormDemoWithDependenciesSimple,
+  dynamicFormDemoWithDictionary,
+  dynamicFormDemoWithDictionaryInFieldset,
 } from '../data-sample/dynamic-form';
 import { DynamicFormDemoComponent } from './dynamic-form-demo.component';
 
@@ -32,6 +35,10 @@ const handleSubmit = (data: FormSubmitEvent) => {
 
 const handleChange = () => {
   action('form-change');
+};
+
+const handleControlChange = () => {
+  action('control-change');
 };
 
 export default {
@@ -96,6 +103,58 @@ export const DynamicFormDemo = () => ({
   },
 });
 DynamicFormDemo.storyName = '<dynamic-form-demo>';
+
+const handleLoadDictionary = (event: LoadDictionaryEvent) => {
+  console.log('event', event);
+
+  setTimeout(() => {
+    console.log('setOptions');
+
+    event.setOptions([
+      {
+        id: 'comp1',
+        name: 'Услуга 1',
+      },
+      {
+        id: 'comp2',
+        name: 'Услуга 2',
+      },
+      {
+        id: 'comp3',
+        name: 'Услуга 3',
+      },
+    ]);
+  }, 5000);
+};
+
+export const DynamicFormDemoWithDictionaryInFieldset = () => ({
+  component: DynamicFormDemoComponent,
+  props: {
+    formData: dynamicFormDemoWithDictionaryInFieldset,
+    initialValues: {},
+    submitForm: handleSubmit,
+    groupChange: handleChange,
+    controlChange: handleControlChange,
+    loadDictionary: handleLoadDictionary,
+  },
+});
+DynamicFormDemoWithDictionaryInFieldset.storyName =
+  '<dynamic-form-demo> with dictionary in fieldset';
+
+export const DynamicFormDemoWithDictionary = () => ({
+  component: DynamicFormDemoComponent,
+  props: {
+    formData: dynamicFormDemoWithDictionary,
+    initialValues: {
+      basedOnService: 'comp2',
+    },
+    submitForm: handleSubmit,
+    groupChange: handleChange,
+    controlChange: handleControlChange,
+    loadDictionary: handleLoadDictionary,
+  },
+});
+DynamicFormDemoWithDictionary.storyName = '<dynamic-form-demo> with dictionary';
 
 export const DynamicFormDemoWithJsonSchemaValidator = () => ({
   component: DynamicFormDemoComponent,

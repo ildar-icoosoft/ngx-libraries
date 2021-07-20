@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { DynamicFormComponent } from 'ii-ngx-form/src/lib/components';
 import { ControlChangeData, DynamicForm, FormSubmitEvent } from 'ii-ngx-form/src/lib/types';
+import { LoadDictionaryEvent } from 'ii-ngx-form/src/lib/types/load-dictionary-event';
 import { dynamicFormData } from '../data-sample/dynamic-form';
 
 @Component({
@@ -13,6 +14,7 @@ import { dynamicFormData } from '../data-sample/dynamic-form';
       (groupChange)="groupChange.emit($event)"
       (controlChange)="controlChange.emit($event)"
       (submitForm)="submitForm.emit($event)"
+      (loadDictionary)="loadDictionary.emit($event)"
     ></ii-dynamic-form>
   `,
 })
@@ -21,13 +23,15 @@ export class DynamicFormDemoComponent {
 
   @Input() initialValues = {};
 
-  @Output() submitForm: EventEmitter<FormSubmitEvent> = new EventEmitter();
+  @Output() submitForm = new EventEmitter<FormSubmitEvent>();
 
-  @Output() loadForm: EventEmitter<DynamicFormComponent> = new EventEmitter();
+  @Output() loadForm = new EventEmitter<DynamicFormComponent>();
 
-  @Output() groupChange: EventEmitter<Record<string, any>> = new EventEmitter();
+  @Output() groupChange = new EventEmitter<Record<string, any>>();
 
-  @Output() controlChange: EventEmitter<ControlChangeData> = new EventEmitter();
+  @Output() controlChange = new EventEmitter<ControlChangeData>();
+
+  @Output() loadDictionary = new EventEmitter<LoadDictionaryEvent>();
 
   @ViewChild(DynamicFormComponent) dynamicForm!: DynamicFormComponent;
 

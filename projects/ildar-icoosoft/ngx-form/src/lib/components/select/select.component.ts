@@ -1,5 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ComponentWithDictionary } from '../../types/component-with-dictionary';
 import { SelectOption } from '../../types';
 
 @Component({
@@ -15,12 +16,12 @@ import { SelectOption } from '../../types';
     },
   ],
 })
-export class SelectComponent implements ControlValueAccessor {
+export class SelectComponent implements ControlValueAccessor, ComponentWithDictionary {
   @Input() options: SelectOption[] = [];
 
   @Input() inputId = '';
 
-  value = '';
+  value: unknown = '';
 
   isDisabled = false;
 
@@ -28,7 +29,8 @@ export class SelectComponent implements ControlValueAccessor {
     return item.id;
   }
 
-  propagateChange = () => {};
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  propagateChange = (value: unknown) => {};
 
   propagateTouch = () => {};
 

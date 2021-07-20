@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.1](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.14.0...v1.14.1) (2021-07-20)
+
+
+### Bug Fixes
+
+* исправлена перерисовка после изменения поля, от которого зависит появление другого поля (через dependencies) ([#48](https://github.com/ildar-icoosoft/ngx-libraries/issues/48)) ([672c756](https://github.com/ildar-icoosoft/ngx-libraries/commit/672c756654c5919c0cf058f63df52d7dbb0dca59))
+
+
+
+
+
 # [1.14.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.13.1...v1.14.0) (2021-07-20)
 
 

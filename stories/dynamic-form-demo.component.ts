@@ -35,7 +35,7 @@ export class DynamicFormDemoComponent {
 
   @ViewChild(DynamicFormComponent) dynamicForm!: DynamicFormComponent;
 
-  // c onstructor() {
+  // constructor() {
   //   setTimeout(() => {
   //     const el = this.dynamicForm.getFormElement('fieldset');
   //     const field = this.dynamicForm.getField('fieldset');

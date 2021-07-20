@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.13.1...v1.14.0) (2021-07-20)
+
+
+### Features
+
+* NGXFORM-15 Сделать поддержку dictionary ([#47](https://github.com/ildar-icoosoft/ngx-libraries/issues/47)) ([8e42d83](https://github.com/ildar-icoosoft/ngx-libraries/commit/8e42d83d26d2ae7d17223dfbe270f641dc0e7c82))
+
+
+
+
+
 ## [1.13.1](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.13.0...v1.13.1) (2021-07-07)
 
 

@@ -78,7 +78,7 @@ export class FieldsetComponent implements FieldsetComponentType, OnInit, Control
           this.fieldDataWithDependencies = this.applyDependencies(this.fieldData, groupValues);
           this.group = this.initGroup(this.fieldDataWithDependencies, groupValues);
           this.watchForDependenciesChange(this.fieldDataWithDependencies, this.group);
-          this.cdr.markForCheck();
+          this.cdr.detectChanges(); // markForCheck не обновит FieldComponent (проверял, если в поле есть dictionary)
         }
       });
     });

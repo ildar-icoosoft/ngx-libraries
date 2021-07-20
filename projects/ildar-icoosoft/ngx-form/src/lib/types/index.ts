@@ -1,5 +1,7 @@
+export * from './component-with-dictionary';
 export * from './control-change-data';
 export * from './dynamic-field';
+export * from './dynamic-field-dictionary';
 export * from './dynamic-field-option';
 export * from './dynamic-form';
 export * from './dynamic-form-button';
@@ -12,5 +14,6 @@ export * from './field-component-type';
 export * from './fieldset-component-type';
 export * from './form-error';
 export * from './form-submit-event';
+export * from './load-dictionary-event';
 export * from './ngx-form-module-config';
 export * from './select-option';

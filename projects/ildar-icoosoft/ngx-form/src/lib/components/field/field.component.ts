@@ -289,12 +289,13 @@ export class FieldComponent
       setOptions: (options) => {
         this.dictionaryIsLoading = false;
         componentWithDictionary.setOptions(options);
-        this.cdr.markForCheck();
+        this.cdr.detectChanges();
       },
       setError: (error) => {
         this.loadDictionaryError = error;
         this.dictionaryIsLoading = false;
-        this.cdr.markForCheck();
+        // почему-то если setErrors вызывается без таймаута, то с markForCheck на проде не происходит перерисовки
+        this.cdr.detectChanges();
       },
     });
   }

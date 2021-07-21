@@ -293,6 +293,7 @@ export class FieldComponent
       },
       setError: (error) => {
         this.loadDictionaryError = error;
+        this.dictionaryIsLoading = false;
         this.cdr.markForCheck();
       },
     });

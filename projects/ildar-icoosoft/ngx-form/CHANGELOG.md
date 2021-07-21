@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.4](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.14.3...v1.14.4) (2021-07-21)
+
+
+### Bug Fixes
+
+* Перерисовка dictionaries, если вызвать setError() ([#51](https://github.com/ildar-icoosoft/ngx-libraries/issues/51)) ([00b72af](https://github.com/ildar-icoosoft/ngx-libraries/commit/00b72af2cab0c5bf9fab4e79a5081e98d5fde35a))
+
+
+
+
+
 ## [1.14.3](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.14.2...v1.14.3) (2021-07-21)
 
 

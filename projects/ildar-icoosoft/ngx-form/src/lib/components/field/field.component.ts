@@ -281,7 +281,9 @@ export class FieldComponent
   ): void {
     this.dictionaryIsLoading = true;
     this.loadDictionaryError = null;
-    this.cdr.markForCheck();
+
+    // на проде markForCheck почему-то не запускает перерисовку (в сторибуке markForCheck работает)
+    this.cdr.detectChanges();
 
     this.loadDictionary.emit({
       name: dictionary.name,
@@ -294,7 +296,7 @@ export class FieldComponent
       setError: (error) => {
         this.loadDictionaryError = error;
         this.dictionaryIsLoading = false;
-        // почему-то если setErrors вызывается без таймаута, то с markForCheck на проде не происходит перерисовки
+        // на проде markForCheck почему-то не запускает перерисовку (в сторибуке markForCheck работает)
         this.cdr.detectChanges();
       },
     });

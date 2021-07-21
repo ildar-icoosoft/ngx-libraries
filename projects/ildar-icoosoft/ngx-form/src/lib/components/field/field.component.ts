@@ -309,7 +309,7 @@ export class FieldComponent
 
       Object.keys(relations).forEach((relationKey) => {
         const controlName = relations[relationKey];
-        result[controlName] = groupValue[controlName];
+        result[relationKey] = groupValue[controlName];
       });
     }
 

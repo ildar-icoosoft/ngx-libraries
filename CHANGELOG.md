@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.2](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.14.1...v1.14.2) (2021-07-21)
+
+
+### Bug Fixes
+
+* Исправлена передача свойства relations в LoadDictionaryEvent ([#49](https://github.com/ildar-icoosoft/ngx-libraries/issues/49)) ([b9e9a24](https://github.com/ildar-icoosoft/ngx-libraries/commit/b9e9a240b99b710e48c0db086377841bfed66be8))
+
+
+
+
+
 ## [1.14.1](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.14.0...v1.14.1) (2021-07-20)
 
 

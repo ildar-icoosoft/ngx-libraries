@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.6](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.14.5...v1.14.6) (2021-07-22)
+
+
+### Bug Fixes
+
+* Переименовал mapConnectDataToProps в mapFieldDataToProps ([#53](https://github.com/ildar-icoosoft/ngx-libraries/issues/53)) ([4ebf0c8](https://github.com/ildar-icoosoft/ngx-libraries/commit/4ebf0c86eaae0f82263914050f73b9649f25a1e6))
+
+
+
+
+
 ## [1.14.5](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.14.4...v1.14.5) (2021-07-21)
 
 

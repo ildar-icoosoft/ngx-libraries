@@ -10,8 +10,8 @@ export interface NgxFormModuleConfig {
       props?: {
         [key: string]: any;
       };
-      mapConnectDataToProps?(
-        connectData: DynamicField,
+      mapFieldDataToProps?(
+        field: DynamicField,
       ): {
         [key: string]: any;
       };

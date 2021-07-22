@@ -134,8 +134,8 @@ export class FieldComponent
     if (itemConfig.props) {
       Object.assign(props, itemConfig.props);
     }
-    if (itemConfig.mapConnectDataToProps) {
-      Object.assign(props, itemConfig.mapConnectDataToProps(fieldData));
+    if (itemConfig.mapFieldDataToProps) {
+      Object.assign(props, itemConfig.mapFieldDataToProps(fieldData));
     }
 
     Object.assign(this.component.instance, props);

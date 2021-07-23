@@ -23,7 +23,7 @@ export const defaultNgxFormModuleConfig: NgxFormModuleConfig = {
   fields: {
     matDatepicker: {
       component: MatDatepickerComponent,
-      needToShowLabelOutside: true,
+      needToShowLabelOutside: false,
       props: {},
       mapFieldDataToProps: (fieldData: DynamicField) => {
         const fieldDataOptions: DynamicFieldOption[] = fieldData.options || [];

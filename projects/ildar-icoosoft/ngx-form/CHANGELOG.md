@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.7](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.14.6...v1.14.7) (2021-07-23)
+
+
+### Bug Fixes
+
+* matdatepicker label ([#54](https://github.com/ildar-icoosoft/ngx-libraries/issues/54)) ([9ad69a9](https://github.com/ildar-icoosoft/ngx-libraries/commit/9ad69a9e8e11022169f5eae26efce79e0692952b))
+
+
+
+
+
 ## [1.14.6](https://github.com/ildar-icoosoft/ngx-libraries/compare/v1.14.5...v1.14.6) (2021-07-22)
 
 
